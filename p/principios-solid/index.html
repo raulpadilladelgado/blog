@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Los principio SOLID son convenciones en cuanto a diseño de software que ayudan a conseguir un código más mantenible, tolerante a cambios, y testeable.
+Todos los desarrolladores de un equipo deberían tener nociones de diseño de software para fomentar la autonomía y agilidad del equipo
+Huir de STUPID, el enemigo de SOLID S → Singleton: Hay un objeto que lo contiene todo. No necesita inyección de dependencias. Y se encuentra por todo el programa.'><title>Principios SOLID</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/principios-solid/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Principios SOLID'>
+<meta property='og:description' content='Introducción Los principio SOLID son convenciones en cuanto a diseño de software que ayudan a conseguir un código más mantenible, tolerante a cambios, y testeable.
+Todos los desarrolladores de un equipo deberían tener nociones de diseño de software para fomentar la autonomía y agilidad del equipo
+Huir de STUPID, el enemigo de SOLID S → Singleton: Hay un objeto que lo contiene todo. No necesita inyección de dependencias. Y se encuentra por todo el programa.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/principios-solid/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-11-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-11-28T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Principios SOLID">
+<meta name="twitter:description" content="Introducción Los principio SOLID son convenciones en cuanto a diseño de software que ayudan a conseguir un código más mantenible, tolerante a cambios, y testeable.
+Todos los desarrolladores de un equipo deberían tener nociones de diseño de software para fomentar la autonomía y agilidad del equipo
+Huir de STUPID, el enemigo de SOLID S → Singleton: Hay un objeto que lo contiene todo. No necesita inyección de dependencias. Y se encuentra por todo el programa.">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/backend/" >
+                backend
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/principios-solid/">Principios SOLID</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 28, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="introducción">Introducción</h1>
+<p>Los principio SOLID son convenciones en cuanto a diseño de software que ayudan a conseguir un código más mantenible, tolerante a cambios, y testeable.</p>
+<p>Todos los desarrolladores de un equipo deberían tener nociones de diseño de software para fomentar la autonomía y agilidad del equipo</p>
+<h1 id="huir-de-stupid-el-enemigo-de-solid">Huir de STUPID, el enemigo de SOLID</h1>
+<p>S → Singleton: Hay un objeto que lo contiene todo. No necesita inyección de dependencias. Y se encuentra por todo el programa. Tiene demasiadas resposabilidades.</p>
+<p>T → Tight Coupling: Fuertemente acoplado. Conoces la implementación concreta del repositorio de usuario (un mysql por ejemplo), algo que dificulta el cambio de tipo de base de datos. El código no es tolerante a cambios.</p>
+<p>U → Untestability: Código intesteable. Muy visto en los singleton. Código muy junto sin ningún tipo de inyección de dependencias que nos lleva a tener un código imposible de testear.</p>
+<p>P → Premature Optimization: Realizar mucho más código del necesario atendiendo al futuro. Se debe pensar con vistas a futuro pero a raíz de las posibles necesidades, no de un simple &ldquo;por si acaso&rdquo;.</p>
+<p>I → Indescriptive Naming: Naming confuso que no refleja intencionalidad o significado alguno.</p>
+<p>D → Duplication: Duplicación del mismo código en muchos lados que necesita de una abstracción o extracción a métodos o clases que solo tienen una responsabilidad y pueden ser parte de otra clase.</p>
+<h1 id="uml">UML</h1>
+<p><strong>Connotaciones negativas</strong></p>
+<p>Un modelo de diagramas que tiene una metodologia de trabajo en cascada:</p>
+<p>Especificación de requisitos → Desarrollo → Testing</p>
+<p>Una forma de trabajo muy lineal que no entiende de cambios durante el ciclo de desarrollo (especificación de requisitos), derivada de como se desarrollaba software hace tiempo.</p>
+<p><strong>Ventajas</strong></p>
+<p>Lenguaje de diagramas ilustrativo para nuestros diseños de software (clases e interacción entre ellas) Riguroso: Permite especificar hasta un nivel de detalle suficiente para identificar acoplamiento entre clases y sus relaciones sin ser verboso Agnóstico del lenguaje: No entra en detalles de implementación si quiera al nivel de qué lenguaje de programación se está usando</p>
+<p><strong>¿Qué tipos hay?</strong></p>
+<ul>
+<li>
+<p><em>Casos de uso</em>: se busca definir todos los posibles casos de uso (acciones) que pueda hacer un usuario<br>
+<figure 
+	>
+	<a href="/blog/images/Untitled4.png" >
+		<img src="/blog/images/Untitled4.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+</li>
+<li>
+<p><em>Secuencia</em>: Se trata de un diagrama que con el que podremos ver el flujo de nuestra aplicación, representando cómo interaccionan las clases (comunicación entre objetos)<br>
+<figure 
+	>
+	<a href="/blog/images/Untitled5.png" >
+		<img src="/blog/images/Untitled5.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+</li>
+<li>
+<p><em>Clases</em>: Este tipo de diagramas son muy populares y nos permiten ver no solo los atributos y métodos de cada clase, sino también las diferentes relaciones de herencia, interfaces e implementaciones de estas. ¿Ventajas?:<br>
+→ Diagrama de clases con 4 garabatos para ponernos de acuerdo u obtener feedback de nuestro equipo antes de implementarlo de forma rápida<br>
+→ Documentar implementaciones ya existentes para facilitar la revisión de código. Por ejemplo, a la hora de hacer una nueva Pull Request (PR), generar el diagrama desde IntelliJ/PhpStorm con 2 clics para adjuntar una imagen a la descripción de la PR.</p>
+</li>
+</ul>
+<h2 id="uml-con-intellij">UML con IntelliJ</h2>
+<p>Con esta herramienta podemos hacer diagramas de clases.</p>
+<p>Seleccionamos las que queremos → Click derecho → Diagrams → Show Diagram</p>
+<p>Nos encontraremos unas opciones tal que así:</p>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled6.png" >
+		<img src="/blog/images/Untitled6.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<ol>
+<li>Campos</li>
+<li>Constructor</li>
+<li>Métodos</li>
+<li>Propiedades</li>
+<li>Inner clases</li>
+</ol>
+<p>También podemos mediante clic derecho sobre una clase abstracta añadir sus implementaciones al esquema:</p>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled7-1024x502.png" >
+		<img src="/blog/images/Untitled7-1024x502.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>Otro truco es añadir las clases usando <em>Espacio</em></p>
+<hr>
+<p>Un resumen rápido de lo que podemos hacer sobre diagramas en IntelliJ:</p>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled8.png" >
+		<img src="/blog/images/Untitled8.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h1 id="s-single-responsability-principle---srp">S (Single responsability principle - SRP)</h1>
+<p><strong>¿Que es?</strong></p>
+<p>Una clase = un concepto = una responsabilidad</p>
+<p>O lo que es lo mismo una sola razón para cambiar</p>
+<p><strong>¿Como?</strong></p>
+<p>Clases que funcionen como servicios con pequeños objetivos acotados, entendiéndose un servicio como un orquestador que conecta nuestros modelos con infraestructura (servicios externos).</p>
+<p><strong>¿Por qué?</strong></p>
+<p>Buscamos la alta cohesión entre la conexión entre componentes de nuestro sistema, robustez antes los cambios y evitamos la duplicidad de código, ya que conseguiremos piezas más reutilizables.</p>
+<p><strong>¿Qué tener en cuenta?</strong></p>
+<ul>
+<li>Los nombres → Un nombre muy general como &ldquo;OrderProcessor&rdquo; da lugar a querer reutilizarlo para muchas cosas y acaba teniendo demasiadas funcionalidades, en su lugar busca un nombre más concreto.</li>
+</ul>
+<p>Cuando respetamos el principio de responsabilidad única, es más fácil introducir modularidad. Entiéndase modularidad como la propiedad que permite subdividir una aplicación en partes más pequeñas (llamadas módulos), cada una de las cuales debe ser tan independiente como sea posible de la aplicación en sí y de las restantes partes.</p>
+<h2 id="otros-ejemplos">Otros ejemplos</h2>
+<p><strong>Todo empieza en el controller</strong></p>
+<p>Con una aplicación basada en una API todo empieza con una petición a un endpoint. Es por ello que tenemos que empezar a cuidar los detalles desde ahí. Un controlador no necesita entender de contruir sentencias SQL, ni mucho menos de interactuar directamente con la base de datos. Un servicio es el encargado de realizar esto de ejecutar lógica de negocio usando infraestructura. Por ello, haz que tu controlador solo reciba llamadas y la redirecione a un servicio dedicado a la causa.</p>
+<p><strong>Cuando un servicio y cuando no</strong></p>
+<p>Cuando la lógica de negocio no tiene dependencias externas puede ir acoplada al modelo de dominio. Cuando ya existen esas dependencias es mejor tener un servicio externo que se encargue de inyectar por constructor las dependencias que necesite. Esto favorece las testabilidad y la cohesión.</p>
+<h1 id="o-open-closed-principle-ocp">O (Open-Closed Principle OCP)</h1>
+<p>El software debería estar abierto a extensión y cerrado a modificación</p>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled11-1024x501.png" >
+		<img src="/blog/images/Untitled11-1024x501.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>Nos acoplamos a la interfaz, no a la implementación específica, por lo que podremos cambiar en cualquier momento a que objeto &ldquo;medible&rdquo; nos referimos.</p>
+<p>Lo mismo podríamos hacer con una clase abstracta que desde un principio defina como se calcula el porcentaje, y sus implementaciones extiendan de alguna manera dicho cálculo.</p>
+<p>Una clase abstracta es útil cuando las implementaciones van a tener una parte común que siempre se repite, como un sistema de bonificaciones que tienen una general y otras específicas. Si esto no ocurre usaremos interfaces, que permiten desacoplar entre capas, el detalle aparecerá en las implementaciones.</p>
+<h1 id="l-liskov-substitution-principle---lsp">L (Liskov Substitution Principle - LSP)</h1>
+<blockquote>
+<p>Cualquier clase hija de otra, debería poder reemplazada sin alterar el sistema por otra clase hija de la misma clase</p>
+</blockquote>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 122; 
+			flex-basis: 293px"
+	>
+	<a href="/blog/p/principios-solid/images/Untitled_Diagram13.png" data-size="491x401">
+		<img src="/blog/p/principios-solid/images/Untitled_Diagram13.png"
+			width="491"
+			height="401"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h2 id="ejemplo-sencillo">Ejemplo sencillo</h2>
+<p>En este ejemplo el cuadrado extiende del rectángulo, porque a groso modo son lo mismo, pero a la hora de la verdad tienen comportamientos diferentes, por lo que cuando vamos a utilizar los métodos de la clase rectángulo en la clase cuadrado, tenemos que hacer unos apaños que aunque funcionen y el código actúe correctamente, no estamos respetando el LSP, ya que la clase hija (cuadrado) necesita una serie de modificaciones en cuanto a comportamiento para poder extender y así no será posible reemplazar fácilmente un cuadrado por otra figura geométrica que extienda del rectángulo.</p>
+<pre tabindex="0"><code>class Rectangle {
+
+    private Integer length;      
+    private Integer width;
+
+    Rectangle(Integer length, Integer width) {  
+        this.length = length;
+        this.width = width;
+    }
+
+    void setLength(Integer length) {
+        this.length = length;
+    }
+
+    void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    Integer getArea() {
+        return this.length * this.width;
+    }
+}
+
+final class Square extends Rectangle {
+    Square(Integer lengthAndWidth) {
+        super(lengthAndWidth, lengthAndWidth);
+    }
+
+    @Override
+    public void setLength(Integer length) {
+      super.setLength(length);
+      super.setWidth(length);
+    }
+    @Override
+    public void setWidth(Integer width) {
+      super.setLength(width);
+      super.setWidth(width);
+    }
+}
+
+final class SquareShould {
+    @Test
+    void not_respect_the_liskov_substitution_principle_breaking_the_rectangle_laws_while_modifying_its_length() {
+        Integer squareLengthAndWidth = 2;
+        Square square = new Square(squareLengthAndWidth);
+
+        Integer newSquareLength = 4;
+        square.setLength(newSquareLength);
+
+        Integer expectedAreaTakingIntoAccountRectangleLaws = 8;
+
+        assertNotEquals(expectedAreaTakingIntoAccountRectangleLaws, square.getArea());
+	  }
+}
+</code></pre><p>Que las subclases respeten el contrato definido en la clase padre es justamente lo que nos permite cumplir con este principio para mantener una correctitud funcional</p>
+<h1 id="i-interface-segregation-principle---isp">I (Interface Segregation Principle - ISP)</h1>
+<blockquote>
+<p>Ningún cliente debería verse forzado a depender de métodos que no usa</p>
+</blockquote>
+<p>Las interfaces se debe de desarrollar acorde a las necesidades del cliente que las usa, y no de sus implementaciones.</p>
+<p>⛔ <strong>Header Interfaces →</strong> Una interfaz que ha sido extraida o basada de una clase (por lo que ahora la interfaz es padre de la clase), y que se crea con todos los métodos que dicha clase tenía o necesitaba.</p>
+<p>✅ <strong>Role Interface →</strong> Una interfaz que ha sido creada a partir de la definición previa de un caso de uso del cliente.</p>
+<p>Conseguiremos un código con bajo acoplamiento estructural</p>
+<h1 id="d-dependency-inversion-principle---dip">D (Dependency inversion principle - DIP)</h1>
+<blockquote>
+<p>Módulos de alto nivel no deberían depender de los de bajo nivel. Ambos deberían depender de abstracciones.</p>
+</blockquote>
+<p>Módulo → Clases</p>
+<p>Ej.: Un caso de uso no debe depender de una implementación, sino que debería hacerlo de una abstracción como sería la interfaz.</p>
+<p>Este principio busca mucho la inyección de dependencias, que sería el acto de recibir parámetros en constructor.</p>
+<p>La finalidad es la substitución de implementaciones y mejorar la testabilidad de las clases.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/blog/p/clases-interfaces-y-gen%C3%A9ricos/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Clases, Interfaces y Genéricos</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Principios fundamentales de los tipos de datos en Java</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/value-object-vs-entity-object/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Value object VS Entity object</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#uml-con-intellij">UML con IntelliJ</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#otros-ejemplos">Otros ejemplos</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#ejemplo-sencillo">Ejemplo sencillo</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción ¿Que es una regex?
+Regex hace referencia a “expresión regular” y se trata de la técnica que nos permite hacer búsquedas de una secuencia de caracteres atendiendo a un patrón de búsqueda.
+El uso de expresiones regulares nos puede simplificar y acelerar el proceso de tener que reemplazar varios textos que entre sí cumplen un patrón coincidente. Veamos un ejemplo para que sea más sencillo, supongamos que tenemos un escrito en el que varias personas se están presentando, por ejemplo:'><title>Multi-reemplazo de texto usando Regex en IntelliJ</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Multi-reemplazo de texto usando Regex en IntelliJ'>
+<meta property='og:description' content='Introducción ¿Que es una regex?
+Regex hace referencia a “expresión regular” y se trata de la técnica que nos permite hacer búsquedas de una secuencia de caracteres atendiendo a un patrón de búsqueda.
+El uso de expresiones regulares nos puede simplificar y acelerar el proceso de tener que reemplazar varios textos que entre sí cumplen un patrón coincidente. Veamos un ejemplo para que sea más sencillo, supongamos que tenemos un escrito en el que varias personas se están presentando, por ejemplo:'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-07-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-07-01T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/intellij-idea.png' />
+<meta name="twitter:title" content="Multi-reemplazo de texto usando Regex en IntelliJ">
+<meta name="twitter:description" content="Introducción ¿Que es una regex?
+Regex hace referencia a “expresión regular” y se trata de la técnica que nos permite hacer búsquedas de una secuencia de caracteres atendiendo a un patrón de búsqueda.
+El uso de expresiones regulares nos puede simplificar y acelerar el proceso de tener que reemplazar varios textos que entre sí cumplen un patrón coincidente. Veamos un ejemplo para que sea más sencillo, supongamos que tenemos un escrito en el que varias personas se están presentando, por ejemplo:"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/intellij-idea.png' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/">
+                <img src="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/intellij-idea.png"
+                        
+                        width="256" 
+                        height="256" 
+                        loading="lazy"
+                        alt="Featured image of post Multi-reemplazo de texto usando Regex en IntelliJ" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/intellij/" >
+                intellij
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/">Multi-reemplazo de texto usando Regex en IntelliJ</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 01, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="introducción">Introducción</h1>
+<blockquote>
+<p><strong>¿Que es una regex?</strong><br>
+Regex hace referencia a “expresión regular” y se trata de la técnica que nos permite hacer búsquedas de una secuencia de caracteres atendiendo a un patrón de búsqueda.</p>
+</blockquote>
+<p>El uso de expresiones regulares nos puede simplificar y acelerar el proceso de tener que reemplazar varios textos que entre sí cumplen un patrón coincidente. Veamos un ejemplo para que sea más sencillo, supongamos que tenemos un escrito en el que varias personas se están presentando, por ejemplo:</p>
+<pre tabindex="0"><code>      Hola, soy Raúl y tengo 20 años
+      Hola, soy María y tengo 25 años
+      Hola, soy Marcos y tengo 1 años 
+</code></pre><p>Cuando una persona tenga un año de edad deberíamos usar el singular en la palabra “años”, por lo que con una expresión regular vamos a modificar esa palabra para que nos sirva en ambos casos.</p>
+<pre tabindex="0"><code>La expresión regular para buscar coincidencias
+[s]$
+
+Lo que coincide (entre *)
+Hola, soy Raúl y tengo 20 año**s**
+Hola, soy María y tengo 25 año**s**
+Hola, soy Marcos y tengo 1 año**s**
+
+La expresión regular para reemplazar texto
+($0)
+
+Lo que se reemplaza/añade/quita (entre *)
+Hola, soy Raúl y tengo 20 año**(s)**
+Hola, soy María y tengo 25 año**(s)**
+Hola, soy Marcos y tengo 1 año**(s)**
+</code></pre><p>O visto en formato GIF desde el IDE IntelliJ haciendo un reemplazo de texto usando el shortcut<br>
+Ctrl + r:</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 260; 
+			flex-basis: 625px"
+	>
+	<a href="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/c357b028eac2a1448d993bf279fff1363e5b1180.gif" data-size="805x309">
+		<img src="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/c357b028eac2a1448d993bf279fff1363e5b1180.gif"
+			width="805"
+			height="309"
+			
+			loading="lazy"
+			alt="https://grow.leanmind.es/uploads/default/original/1X/c357b028eac2a1448d993bf279fff1363e5b1180.gif">
+	</a>
+	
+	<figcaption><a class="link" href="https://grow.leanmind.es/uploads/default/original/1X/c357b028eac2a1448d993bf279fff1363e5b1180.gif"  target="_blank" rel="noopener"
+    >https://grow.leanmind.es/uploads/default/original/1X/c357b028eac2a1448d993bf279fff1363e5b1180.gif</a></figcaption>
+	
+</figure></p>
+<p>Antes de entrar en materia y ver como utilizar esta herramienta de reemplazo de texto, vamos a repasar los tipos de match que podemos usar para construir nuestras expresiones regulares.</p>
+<h1 id="tipos-de-match">Tipos de match</h1>
+<h2 id="caracteres">Caracteres</h2>
+<table>
+<thead>
+<tr>
+<th>Characters</th>
+<th>Legend</th>
+<th>Regex Example</th>
+<th>Coincidence Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\d</td>
+<td>Dígitos del uno al nueve</td>
+<td>file_\d\d</td>
+<td>file_25</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>Letra, dígito o barra baja</td>
+<td>\w-\w\w\w</td>
+<td>A-b_1</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>Espacios, tabuladores, saltos de línea.</td>
+<td>a\sb\sc</td>
+<td>a bc</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>Un caracter que no sea un número</td>
+<td>\D\D\D</td>
+<td>ABC</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>Un caracter que no sea un número ni una letra</td>
+<td>\W\W\W\W\W</td>
+<td>*-+=)</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>Un caracter que no sea un espacio</td>
+<td>\S\S\S\S</td>
+<td>Yoyo</td>
+</tr>
+<tr>
+<td>.</td>
+<td>Cualquier caracter excepto salto de línea</td>
+<td>.*</td>
+<td>whatever, man.</td>
+</tr>
+<tr>
+<td></td>
+<td>Escapes a special character</td>
+<td>.*+? $^/\</td>
+<td>.*+? $^/\</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>Tab</td>
+<td>T\t\w{2}</td>
+<td>T ab</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>Carriage return character</td>
+<td>see below</td>
+<td></td>
+</tr>
+<tr>
+<td>\n</td>
+<td>Line feed character</td>
+<td>see below</td>
+<td></td>
+</tr>
+<tr>
+<td>\r\n</td>
+<td>Line separator on Windows</td>
+<td>AB\r\nCD</td>
+<td>ABCD</td>
+</tr>
+<tr>
+<td>[ … ]</td>
+<td>Uno de los caracteres dentro de los corchetes</td>
+<td>[AEIOU]</td>
+<td>One uppercase vowel</td>
+</tr>
+<tr>
+<td>[ … ]</td>
+<td>Uno de los caracteres dentro de los corchetes</td>
+<td>T[ao]p</td>
+<td>Tap or Top</td>
+</tr>
+<tr>
+<td>[ … ]</td>
+<td>Uno de los caracteres dentro de los corchetes</td>
+<td>[AB1-5w-z]</td>
+<td>One of either: A,B,1,2,3,4,5,w,x,y,z</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Indicador de rango</td>
+<td>[a-z]</td>
+<td>One lowercase letter</td>
+</tr>
+<tr>
+<td>[x-y]</td>
+<td>Un caracter dentro del rango de x a y</td>
+<td>[A-Z]+</td>
+<td>GREAT</td>
+</tr>
+<tr>
+<td>[ -~]+</td>
+<td>Characters in the printable section of the ASCII table.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[^x]</td>
+<td>Un caracter que no es una x</td>
+<td>[^a-z]{3}</td>
+<td>A1!</td>
+</tr>
+<tr>
+<td>[^x-y]</td>
+<td>Un caracter que NO está dentro del rango de x a y</td>
+<td>[^ -~]+</td>
+<td>Characters that are not in the printable section of the ASCII table.</td>
+</tr>
+<tr>
+<td>[\d\D]</td>
+<td>Un caracter que es númerico o no numérico</td>
+<td>[\d\D]+</td>
+<td>Any characters, inc-luding new lines, which the regular dot doesn’t match</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cuantificadores">Cuantificadores</h2>
+<table>
+<thead>
+<tr>
+<th>Characters</th>
+<th>Legend</th>
+<th>Regex Example</th>
+<th>Coincidence Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>Uno o más veces</td>
+<td>Version \w-\w+</td>
+<td>Version A-b1_1</td>
+</tr>
+<tr>
+<td>{3}</td>
+<td>Exactamente tres veces</td>
+<td>\D{3}</td>
+<td>ABC</td>
+</tr>
+<tr>
+<td>{2,4}</td>
+<td>De dos a cuatro veces</td>
+<td>\d{2,4}</td>
+<td>156</td>
+</tr>
+<tr>
+<td>{3,}</td>
+<td>Tres o más veces</td>
+<td>\w{3,}</td>
+<td>regex_tutorial</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Cero o más veces</td>
+<td>A_B_C*</td>
+<td>AAACC</td>
+</tr>
+<tr>
+<td>?</td>
+<td>Una o ninguna vez</td>
+<td>plurals?</td>
+<td>plural</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lógica">Lógica</h2>
+<table>
+<thead>
+<tr>
+<th>Characters</th>
+<th>Legend</th>
+<th>Regex Example</th>
+<th>Coincidence Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>Alternación (tipicamente OR)</td>
+<td>22</td>
+</tr>
+<tr>
+<td>( … )</td>
+<td>Capturar grupos</td>
+<td>A(nt</td>
+<td>pple)</td>
+</tr>
+<tr>
+<td>\1</td>
+<td>Contenido del grupo 1</td>
+<td>r(\w)g\1x</td>
+<td>regex</td>
+</tr>
+<tr>
+<td>\2</td>
+<td>Contenido del grupo 2</td>
+<td>(\d\d)+(\d\d)=\2+\1</td>
+<td>12+65=65+12</td>
+</tr>
+<tr>
+<td>(?: … )</td>
+<td>Grupo que no coincide</td>
+<td>A(?:nt</td>
+<td>pple)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="anclajes-y-límites">Anclajes y límites</h2>
+<table>
+<thead>
+<tr>
+<th>Characters</th>
+<th>Legend</th>
+<th>Regex Example</th>
+<th>Coincidence Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>Inicio de una línea</td>
+<td>^abc .*</td>
+<td>abc (line start)</td>
+</tr>
+<tr>
+<td>$</td>
+<td>Final de una línea</td>
+<td>.*? the end$</td>
+<td>this is the end</td>
+</tr>
+</tbody>
+</table>
+<h2 id="modificadores-en-línea">Modificadores en línea</h2>
+<table>
+<thead>
+<tr>
+<th>Characters</th>
+<th>Legend</th>
+<th>Regex Example</th>
+<th>Coincidence Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(?i)</td>
+<td>no distingue entre mayúsculas y minúsculas</td>
+<td>(?i)Monday</td>
+<td>monDAY</td>
+</tr>
+<tr>
+<td>(?s)</td>
+<td>Con este modificador el . también reconocerá saltos de línea</td>
+<td>(?s)From A.*to Z</td>
+<td>From Ato Z</td>
+</tr>
+</tbody>
+</table>
+<h1 id="herramienta-de-reemplazo-de-texto-de-intellij">Herramienta de reemplazo de texto de IntelliJ</h1>
+<h2 id="vistazo-a-las-opciones">Vistazo a las opciones</h2>
+<p>En un fichero que contenga texto, combina <code>Ctrl + r</code> para abrir el menú de reemplazo:</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 1033; 
+			flex-basis: 2480px"
+	>
+	<a href="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/55fa5d8551fc81582e22982d86374ddb4bb8da49.png" data-size="558x54">
+		<img src="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/55fa5d8551fc81582e22982d86374ddb4bb8da49.png"
+			width="558"
+			height="54"
+			
+			loading="lazy"
+			alt="Untitled">
+	</a>
+	
+	<figcaption>Untitled</figcaption>
+	
+</figure></p>
+<p><strong>En la primera fila del menú podemos apreciar:</strong></p>
+<p><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/mag.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/mag.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":mag:">
+	</a>
+	
+	<figcaption>:mag:</figcaption>
+	
+</figure>: En primer lugar vemos el icono de una lupa en la que si pulsamos sobre ella veremos el historial de los patrones de búsqueda que hemos ido introduciendo</p>
+<p><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/ballot_box.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/ballot_box.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":ballot_box:">
+	</a>
+	
+	<figcaption>:ballot_box:</figcaption>
+	
+</figure>: Al lado de la lupa nos encontramos el campo donde introduciremos nuestro patrón de búsqueda</p>
+<p><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/leftwards_arrow_with_hook.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/leftwards_arrow_with_hook.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":leftwards_arrow_with_hook:">
+	</a>
+	
+	<figcaption>:leftwards_arrow_with_hook:</figcaption>
+	
+</figure>: Seguido tenemos una flecha que si pulsamos sobre ella introduciremos un salto de línea</p>
+<p><strong><code>Cc</code></strong>: Define si el patrón de búsqueda debe distinguir entre mayúsculas y minúsculas o no</p>
+<p><strong><code>W</code></strong>: ???</p>
+<p><strong><code>.*</code></strong>: Define si la búsqueda será utilizando expresiones regulares o texto normal</p>
+<p><code>x/x</code>: El contador de resultado de la búsqueda</p>
+<p><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/arrow_up.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/arrow_up.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":arrow_up:">
+	</a>
+	
+	<figcaption>:arrow_up:</figcaption>
+	
+</figure>: Mover al resultado superior</p>
+<p><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/arrow_down.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/arrow_down.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":arrow_down:">
+	</a>
+	
+	<figcaption>:arrow_down:</figcaption>
+	
+</figure>: Mover al resultado inferior</p>
+<p><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/stop_button.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/stop_button.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":stop_button:">
+	</a>
+	
+	<figcaption>:stop_button:</figcaption>
+	
+</figure>: Ver los resultado en una ventana de búsqueda aparte</p>
+<dl>
+<dt><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/ballot_box_with_check.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/ballot_box_with_check.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":ballot_box_with_check:">
+	</a>
+	
+	<figcaption>:ballot_box_with_check:</figcaption>
+	
+</figure>: Seleccionar el texto de todas las coincidencias y cerrar herramienta de reemplazo</dt>
+<dd>
+<p>Buscar solo en la selección de texto actual</p>
+</dd>
+<dd>
+<p>Buscar solo en la opción que elijamos (todo el texto, comentarios, etc)</p>
+</dd>
+</dl>
+<p><strong>En la segunda fila del menú podemos apreciar:</strong></p>
+<p><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/mag.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/mag.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":mag:">
+	</a>
+	
+	<figcaption>:mag:</figcaption>
+	
+</figure>: En primer lugar vemos el icono de una lupa en la que si pulsamos sobre ella veremos el historial de los patrones de reemplazo que hemos ido introduciendo</p>
+<p><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/ballot_box.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/ballot_box.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":ballot_box:">
+	</a>
+	
+	<figcaption>:ballot_box:</figcaption>
+	
+</figure>: Al lado de la lupa nos encontramos el campo donde introduciremos nuestro patrón de reemplazo</p>
+<p><figure 
+	>
+	<a href="https://grow.leanmind.es/images/emoji/google/leftwards_arrow_with_hook.png?v=9" >
+		<img src="https://grow.leanmind.es/images/emoji/google/leftwards_arrow_with_hook.png?v=9"
+			
+			
+			
+			loading="lazy"
+			alt=":leftwards_arrow_with_hook:">
+	</a>
+	
+	<figcaption>:leftwards_arrow_with_hook:</figcaption>
+	
+</figure>: Seguido tenemos una flecha que si pulsamos sobre ella introduciremos un salto de línea</p>
+<p><code>A'A</code>: La activamos si queremos reemplazar texto manteniendo las mayúsculas y minúsculas tal como las encontramos</p>
+<p><code>Replace</code>: Reemplazar la ocurrencia seleccionada</p>
+<p><code>Replace All</code>: Reemplazar todas las ocurrencias</p>
+<p><code>Exclude</code>: Excluir de ser reemplazada la ocurrencia seleccionada</p>
+<h2 id="reemplazar-texto-usando-regex">Reemplazar texto usando Regex</h2>
+<ul>
+<li><strong>Reemplazo directo</strong>: Se trata de introducir directamente el texto que queremos se reemplaze con el que tenemos en cada coincidencia.</li>
+</ul>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 260; 
+			flex-basis: 625px"
+	>
+	<a href="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/24dc9862f013d27cc7ed63081fe87a99b69f4974.gif" data-size="805x309">
+		<img src="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/24dc9862f013d27cc7ed63081fe87a99b69f4974.gif"
+			width="805"
+			height="309"
+			
+			loading="lazy"
+			alt="https://grow.leanmind.es/uploads/default/original/1X/24dc9862f013d27cc7ed63081fe87a99b69f4974.gif">
+	</a>
+	
+	<figcaption><a class="link" href="https://grow.leanmind.es/uploads/default/original/1X/24dc9862f013d27cc7ed63081fe87a99b69f4974.gif"  target="_blank" rel="noopener"
+    >https://grow.leanmind.es/uploads/default/original/1X/24dc9862f013d27cc7ed63081fe87a99b69f4974.gif</a></figcaption>
+	
+</figure></p>
+<ul>
+<li><strong>Reemplazo usando único grupo</strong>: Cuando escribimos expresiones regulares sin agruparlas, es decir, sin introducirlas dentro de unos parentesis. A pesar de que en este caso no hemos agrupado dentro de nuestra expresión regular, tenemos un grupo al que podemos referirnos ($0) y se trata de cada coincidencia entera.</li>
+</ul>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 260; 
+			flex-basis: 625px"
+	>
+	<a href="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/ab6ebcb9c14078a528e77d0ca5306f5adcd4ee92.gif" data-size="805x309">
+		<img src="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/ab6ebcb9c14078a528e77d0ca5306f5adcd4ee92.gif"
+			width="805"
+			height="309"
+			
+			loading="lazy"
+			alt="https://grow.leanmind.es/uploads/default/original/1X/ab6ebcb9c14078a528e77d0ca5306f5adcd4ee92.gif">
+	</a>
+	
+	<figcaption><a class="link" href="https://grow.leanmind.es/uploads/default/original/1X/ab6ebcb9c14078a528e77d0ca5306f5adcd4ee92.gif"  target="_blank" rel="noopener"
+    >https://grow.leanmind.es/uploads/default/original/1X/ab6ebcb9c14078a528e77d0ca5306f5adcd4ee92.gif</a></figcaption>
+	
+</figure></p>
+<ul>
+<li><strong>Reemplazo usando grupos definidos</strong>: Cuando agrupamos dentro de nuestra expresión regular podemos realizar reemplazos de textos más avanzados. Tendremos el grupo $0 que hace referencia a cada coincidencia entera, y después tendremos $1, $2…, así por cada grupo creado.</li>
+</ul>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 260; 
+			flex-basis: 625px"
+	>
+	<a href="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/603c4df89856471e0e58e64d7b48d0244cd8ae0f.gif" data-size="805x309">
+		<img src="/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/images/603c4df89856471e0e58e64d7b48d0244cd8ae0f.gif"
+			width="805"
+			height="309"
+			
+			loading="lazy"
+			alt="https://grow.leanmind.es/uploads/default/original/1X/603c4df89856471e0e58e64d7b48d0244cd8ae0f.gif">
+	</a>
+	
+	<figcaption><a class="link" href="https://grow.leanmind.es/uploads/default/original/1X/603c4df89856471e0e58e64d7b48d0244cd8ae0f.gif"  target="_blank" rel="noopener"
+    >https://grow.leanmind.es/uploads/default/original/1X/603c4df89856471e0e58e64d7b48d0244cd8ae0f.gif</a></figcaption>
+	
+</figure></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#caracteres">Caracteres</a></li>
+    <li><a href="#cuantificadores">Cuantificadores</a></li>
+    <li><a href="#lógica">Lógica</a></li>
+    <li><a href="#anclajes-y-límites">Anclajes y límites</a></li>
+    <li><a href="#modificadores-en-línea">Modificadores en línea</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#vistazo-a-las-opciones">Vistazo a las opciones</a></li>
+    <li><a href="#reemplazar-texto-usando-regex">Reemplazar texto usando Regex</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

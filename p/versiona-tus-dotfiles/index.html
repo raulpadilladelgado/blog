@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Durante mucho tiempo fui usuario de Windows, pero un día decidí probar Linux y terminé por elegirlo como mi sistema operativo para trabajar. Llegando a un mundo nuevo para mí, decidí probar distintas distribuciones Linux para encontrar cual era la que mejor se adaptaba al uso que que le daría. Tras ver un curso en CodelyTV, pude aprender que la configuración que tediosa que hacemos día tras día desde que iniciamos en una máquina se puede resumir en la simple ejecucción de un script, y puedo decir que ojalá haber conocido está prática tan simple pero que aporta y ayuda tanto a la configuración personal.'><title>Versiona tus dotfiles</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/versiona-tus-dotfiles/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Versiona tus dotfiles'>
+<meta property='og:description' content='Introducción Durante mucho tiempo fui usuario de Windows, pero un día decidí probar Linux y terminé por elegirlo como mi sistema operativo para trabajar. Llegando a un mundo nuevo para mí, decidí probar distintas distribuciones Linux para encontrar cual era la que mejor se adaptaba al uso que que le daría. Tras ver un curso en CodelyTV, pude aprender que la configuración que tediosa que hacemos día tras día desde que iniciamos en una máquina se puede resumir en la simple ejecucción de un script, y puedo decir que ojalá haber conocido está prática tan simple pero que aporta y ayuda tanto a la configuración personal.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/versiona-tus-dotfiles/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-01-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-09T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Versiona tus dotfiles">
+<meta name="twitter:description" content="Introducción Durante mucho tiempo fui usuario de Windows, pero un día decidí probar Linux y terminé por elegirlo como mi sistema operativo para trabajar. Llegando a un mundo nuevo para mí, decidí probar distintas distribuciones Linux para encontrar cual era la que mejor se adaptaba al uso que que le daría. Tras ver un curso en CodelyTV, pude aprender que la configuración que tediosa que hacemos día tras día desde que iniciamos en una máquina se puede resumir en la simple ejecucción de un script, y puedo decir que ojalá haber conocido está prática tan simple pero que aporta y ayuda tanto a la configuración personal.">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/sistema/" >
+                sistema
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/versiona-tus-dotfiles/">Versiona tus dotfiles</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 09, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="introducción">Introducción</h1>
+<p>Durante mucho tiempo fui usuario de Windows, pero un día decidí probar Linux y terminé por elegirlo como mi sistema operativo para trabajar. Llegando a un mundo nuevo para mí, decidí probar distintas distribuciones Linux para encontrar cual era la que mejor se adaptaba al uso que que le daría. Tras ver un curso en CodelyTV, pude aprender que la configuración que tediosa que hacemos día tras día desde que iniciamos en una máquina se puede resumir en la simple ejecucción de un script, y puedo decir que ojalá haber conocido está prática tan simple pero que aporta y ayuda tanto a la configuración personal.</p>
+<h1 id="qué-es-un-dotfile">¿Qué es un dotfile?</h1>
+<p>Las configuraciones específicas del usuario se almacenan tradicionalmente en los llamados <em>dotfiles</em> (archivos cuyo nombre comienza con un punto). Es una práctica común versionarlos con un sistema de control de versiones como Git para realizar un seguimiento de los cambios y sincronizarlos en varias máquinas. Es decir, gracias a esta práctica podremos pasar a una máquina nueva y configurarla a nuestro gusto, tal y como estaba la anterior de una forma muy rápida y con el mínimo esfuerzo.</p>
+<p>En este post estaré enseñando como tener nuestro repositorio centralizado de archivos de configuración de nuestra máquina. Veremos todas las cosas que podemos automatizar (que yo he descubierto y entendido por el momento) y entre todos aprenderemos como exprimir esta práctica.</p>
+<h1 id="la-guía">La guía</h1>
+<h2 id="entendiendo-el-workflow">Entendiendo el workflow</h2>
+<p>Como he dicho anteriormente, el objetivo es centralizar todos las configuraciones en un repositorio, así que el proceso que debemos realizar ahora es el siguiente:</p>
+<ol>
+<li>Identifica un archivo o carpeta de configuración que comienza por un punto en nuestra home y que queremos guardar (usa <code>ls -a</code> para listarlas)</li>
+<li>Mueve una carpeta o archivo desde la home a la carpeta &ldquo;.dotfiles&rdquo;</li>
+<li>Crea un enlace simbólico para que la configuración pueda ser accedida desde la home pero estando realmente alojada en la subcarpeta &ldquo;.dotfiles&rdquo; (ejemplo: <code>ln -s .dotfiles/.gitconfig $PWD/.gitconfig</code>)</li>
+</ol>
+<p><em>Ejemplo</em></p>
+<pre tabindex="0"><code>mv .bashrc .dotfiles
+ln -s .dotfiles/.bashrc $PWD/.bashrc
+
+Resultado
+.bashrc -&gt; .dotfiles/.bashrc
+</code></pre><p>Si necesitas borrar un enlace simbólico porque te has equivocado o la ruta donde lo almacenas ha cambiado, puedes usar el comando <strong><em>unlink</em></strong> : (<em>Ejemplo</em>) <code>unlink .bashrc</code></p>
+<h2 id="ahora-sí-automatizemos-esto">Ahora sí, automatizemos esto</h2>
+<h3 id="-el-repo">📦 <strong>El repo</strong></h3>
+<p>He creado un repositorio en Github llamado &ldquo;dotfiles&rdquo;, que posteriormente clonaré en local en la carpeta &ldquo;.dotfiles&rdquo; que se alojará en mi home (la carpeta principal de mi usuario).</p>
+<pre tabindex="0"><code>git clone git@github.com:raulpadilladelgado/dotfiles.git .dotfiles
+</code></pre><h3 id="-exclusión">🚫 Exclusión</h3>
+<p>Pongamos el caso de que en una carpeta queremos versionar varias carpetas, pero hay una que concretamente no queremos tener. Usemos el tan querido .gitignore. Ejemplo:</p>
+<p><strong><em>.gitignore</em></strong></p>
+<pre tabindex="0"><code>shell/zsh/**/**.zwc 
+shell/zsh/**/**.zwc.old 
+/**/**/private-*
+</code></pre><h3 id="-estructura">🏗️ <strong>Estructura</strong></h3>
+<p>Todo organizado se encuentra mejor y luce mejor. No hay un convenio de carpetas para los dotfiles (aunque puede usar <a class="link" href="https://github.com/CodelyTV/dotfiles"  target="_blank" rel="noopener"
+    >el de CodelyTV</a>) pero puedes aplicar tu habilidad de organización para crear las distintas carpetas para los distintos programas y que quede todo organizado.</p>
+<h3 id="-scripts">⚙️ <strong>Scripts</strong></h3>
+<p><strong>Para symlinks</strong></p>
+<p>Antes estuvimos haciendo uso de los symlinks para nuestro propósito de los dotfiles, pero era un trabajo un muy manual. Para mejorarlo y que se solo la tengamos que realizar una vez, podemos hacer un script que ejecutemos cada vez que cambiemos de máquina para poder tener los dotfiles linkeados a nuestra máquina de la forma más rápida y sencilla posible.</p>
+<p><strong>Para programas</strong></p>
+<p>Ya hemos visto como utilizar los dotfiles para guardar nuestros archivos de configuración y demás, pero podríamos ir un paso más allá, teniendo en nuestro proyecto de dotfiles una forma que nos permita instalar todos nuestros programas en un momento.</p>
+<p><em>Opción 1 - Importamos una lista de programas que teníamos instalados</em></p>
+<p>La idea es poder llevarnos la referencia de los programas que tenemos instalados para después importarlos.</p>
+<p><em>Exportación</em></p>
+<p>Primero vamos a sacar la lista de los programas instalados.</p>
+<pre tabindex="0"><code>#Para brew (gestor de paquetes de mac)
+brew bundle dump --file=&#34;$HOMEBREW_BUNDLE_FILE_PATH&#34; --force
+
+#Para apt (gestor de paquetes típico en debian y derivadas)
+sudo dpkg-query -l | awk &#39;{if ($1 == &#34;ii&#34;) print $2}&#39; &gt; packages_list.txt
+
+#Para pip (gestor de paquetes python)
+pip freeze &gt;&#34;$DOTFILES_PATH/langs/python/requirements.txt&#34;
+
+#Para npm (gestor de paquetes de node)
+ls -1 /usr/local/lib/node_modules | grep -v npm &gt;&#34;$DOTFILES_PATH/langs/js/global_modules.txt&#34;
+
+#Para composer
+Movemos el archivo ~/.composer/composer.json a nuestro proyecto de dotfiles
+</code></pre><p><em>Importación</em></p>
+<pre tabindex="0"><code>#Para brew (gestor de paquetes de mac)
+brew bundle --file=&#34;$HOMEBREW_BUNDLE_FILE_PATH&#34; --force
+
+#Para apt (gestor de paquetes típico en debian y derivadas)
+sudo xargs -a packages_list.txt apt install
+
+#Para pip (gestor de paquetes python)
+pip install -r &#34;$DOTFILES_PATH/langs/python/requirements.txt&#34;
+
+#Para npm (gestor de paquetes de node)
+xargs -I_ npm install -g &#34;_&#34; &lt;&#34;$DOTFILES_PATH/langs/js/global_modules.txt&#34;
+
+#Para composer
+Hacemos un symlink del ~/.composer/composer.json
+</code></pre><p>¿Usas paquetes snap?. Este gestor de paquetes que usan las distribuciones de canonical permite la exportación e importación de los datos de las aplicaciones instaladas. ¿Como?</p>
+<p>Vacia el directorio (para tener solo la última copia de seguridad de cada programa): <code>/var/lib/snapd/snapshots</code></p>
+<p>Exportación (nos dará un ZIP por programa): <code>snap save</code></p>
+<p>Mueve los archivos a tu proyecto: <code>mv /var/lib/snapd/snapshots .dotfiles/apps/snap</code></p>
+<p>Haz un symlink a la ruta <code>/var/lib/snapd/snapshots</code></p>
+<p>Instala los snap en la máquina nueva (recomendado script): <code>snap install app1 app2 app3</code></p>
+<p>Finalmente ejecuta la restauración (el id es el número por el que comienzan todos los archivos zip, debería ser sencillo porque problamente todos se te hayan exportado con el mismo ID haciendo referencia a que se exportaron en el mismo proceso): <code>snap restore &lt;id&gt;</code></p>
+<p>Algunas apps como spotify llegan a pesar 1GB que entiendo que puede ser por temas de caché y canciones descargadas, por lo que sería conveniente reducirlo primero antes de añadirlo al proyecto o no incluir algo así. Usar tu propio script de instalación es una solución pero no te llevaría configuración del snap.</p>
+<p><em>Opción 2 - Creamos nuestro propio script de instalación</em></p>
+<p>Además de crear tu propio script, también puedes hacer uso de algunos predeterminados como es <a class="link" href="https://ubunlog.com/alfred-script-instalacion-aplicaciones/"  target="_blank" rel="noopener"
+    >Alfred</a> o cualquier otro que encuentres y que te sea útil. Igualmente la manera de crear el nuestro propio es muy sencilla. Te ejemplifico uno:</p>
+<pre tabindex="0"><code>#!/bin/bash
+#Get ROOT access (only need to specify a password one time)
+echo &lt;paswword&gt; | sudo -S echo 
+echo &#34;Now you can use sudo without given password&#34;
+#Install via apt
+sudo apt install app1 app2 app3 -y
+#Fix failed installations
+sudo apt install -f -y
+#Install via snap
+sudo snap install app1 app2 app3
+</code></pre><p>Tras tener nuestro script solo nos queda darle permisos de ejecucción y ejecutarlo.</p>
+<p><strong>Me quiero llevar las bases de datos que tengo configuradas en IntelliJ</strong></p>
+<p>He este caso he optado por copiar en un archivo txt las conexiones y también el archivo donde IntelliJ almacena las claves que recuerda para la configuración de una conexión. ¿Como lo hice?, muy sencillo:</p>
+<p><em>Para copiar la configuración de una conexión</em></p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 145; 
+			flex-basis: 348px"
+	>
+	<a href="/blog/p/versiona-tus-dotfiles/images/ndice-1024x706.gif" data-size="1024x706">
+		<img src="/blog/p/versiona-tus-dotfiles/images/ndice-1024x706.gif"
+			width="1024"
+			height="706"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>Si tienes varios data sources que quieres guardar, simplemente selecciónalos todos a la vez y elige la misma opción que lo que hará será copiar todos a la vez.</p>
+<p><em>Para llevarte las contraseñas</em></p>
+<p>Vamos a cambiar como IntelliJ almacena las contraseñas para que lo haga en un archivo que incluyamos en nuestro dotfile. Nos vamos a:</p>
+<pre tabindex="0"><code>File | Settings | Appearance and behavior | System settings | Passwords
+</code></pre><p>y activamos la siguiente opción</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 260; 
+			flex-basis: 625px"
+	>
+	<a href="/blog/p/versiona-tus-dotfiles/images/Untitled14.png" data-size="753x289">
+		<img src="/blog/p/versiona-tus-dotfiles/images/Untitled14.png"
+			width="753"
+			height="289"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>ahora ya podemos añadir a nuestro dotfile el archivo que se muestra en el path.</p>
+<p><strong>Busca ejemplos comunes que se apliquen a ti</strong></p>
+<p>Cada uno puede tener sus casos personales en los que tiene que guardar unas cosas u otras, pero llegados a este punto hay muchos que son comunes para usuarios de Linux, MacOS o Windows. Las configuraciones de la shell que uses, la configuración de git, amazon wer services, scripts para agilizar los symlinks, etc. Seguro que por GitHub puedes encontrar muchos ejemplos como el de CodelyTV que te expliqué <a class="link" href="https://www.notion.so/Utiliza-dotfiles-b76123f2827246859b2ab8833395aaa3"  target="_blank" rel="noopener"
+    >más arriba</a>. Te puedo ejemplificar uno propio muy sencillo a medida que he ido comprendiendo como trabajar con estos archivos.</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 53; 
+			flex-basis: 128px"
+	>
+	<a href="/blog/p/versiona-tus-dotfiles/images/Untitled15.png" data-size="251x469">
+		<img src="/blog/p/versiona-tus-dotfiles/images/Untitled15.png"
+			width="251"
+			height="469"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h1 id="conclusión">Conclusión</h1>
+<p>Con mi propia experiencia te puedo decir que lo mejor es que el proyecto debe vaya evolucionando a tus necesidades haciendo que crezca a medida que lo necesitas, de esta manera tendrás el control y no se volverá un caos. No intentes añadir demasiado ya sea visto en otras plantillas o demás si no lo comprendes.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#entendiendo-el-workflow">Entendiendo el workflow</a></li>
+    <li><a href="#ahora-sí-automatizemos-esto">Ahora sí, automatizemos esto</a>
+      <ol>
+        <li><a href="#-el-repo">📦 <strong>El repo</strong></a></li>
+        <li><a href="#-exclusión">🚫 Exclusión</a></li>
+        <li><a href="#-estructura">🏗️ <strong>Estructura</strong></a></li>
+        <li><a href="#-scripts">⚙️ <strong>Scripts</strong></a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

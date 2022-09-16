@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pet-project on Raúl Padilla Delgado</title>
+    <link>https://raulpadilladelgado.github.io/blog/categories/pet-project/</link>
+    <description>Recent content in pet-project on Raúl Padilla Delgado</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Fri, 15 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/pet-project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Toolify</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/toolify/</link>
+      <pubDate>Fri, 15 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/toolify/</guid>
+      <description>Introducción Recientemente he estado trabajando en un proyecto personal que surge por la necesidad de una función específica en spotify, que no podía conseguir a través de la app oficial de la plataforma. Mi objetivo era poder organizar mis playlist por orden de fecha de estreno de la canción. Spotify te permite organizarlas por fecha en la que la añadiste a la playlist, pero no por el tipo de organización que yo quería.</description>
+    </item>
+    
+  </channel>
+</rss>

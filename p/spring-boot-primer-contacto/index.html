@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Inicio Arrancando con un proyecto Para crear un proyecto de una forma rápida y sencilla he encontrado Spring Initializr. Es muy simple, basta con elegir lenguaje, versión y otras configuraciones, como los metadatos del proyecto, y finalmente las dependencias del proyecto Spring que usaremos.
+Si elegimos &amp;ldquo;generar&amp;rdquo; nos descarga un archivo zip que cual contiene el proyecto creado ya preparado para empezar a trabajar con él.
+Estructura de un proyecto En el archivo pom.'><title>Spring boot, primer contacto</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/spring-boot-primer-contacto/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Spring boot, primer contacto'>
+<meta property='og:description' content='Inicio Arrancando con un proyecto Para crear un proyecto de una forma rápida y sencilla he encontrado Spring Initializr. Es muy simple, basta con elegir lenguaje, versión y otras configuraciones, como los metadatos del proyecto, y finalmente las dependencias del proyecto Spring que usaremos.
+Si elegimos &amp;ldquo;generar&amp;rdquo; nos descarga un archivo zip que cual contiene el proyecto creado ya preparado para empezar a trabajar con él.
+Estructura de un proyecto En el archivo pom.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/spring-boot-primer-contacto/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-04-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-04-17T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/spring-boot-primer-contacto/images/spring-icon.png' />
+<meta name="twitter:title" content="Spring boot, primer contacto">
+<meta name="twitter:description" content="Inicio Arrancando con un proyecto Para crear un proyecto de una forma rápida y sencilla he encontrado Spring Initializr. Es muy simple, basta con elegir lenguaje, versión y otras configuraciones, como los metadatos del proyecto, y finalmente las dependencias del proyecto Spring que usaremos.
+Si elegimos &amp;ldquo;generar&amp;rdquo; nos descarga un archivo zip que cual contiene el proyecto creado ya preparado para empezar a trabajar con él.
+Estructura de un proyecto En el archivo pom."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/spring-boot-primer-contacto/images/spring-icon.png' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/spring-boot-primer-contacto/">
+                <img src="/blog/p/spring-boot-primer-contacto/images/spring-icon.png"
+                        
+                        width="256" 
+                        height="256" 
+                        loading="lazy"
+                        alt="Featured image of post Spring boot, primer contacto" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/spring-boot/" >
+                spring-boot
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/spring-boot-primer-contacto/">Spring boot, primer contacto</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 17, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    9 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="inicio">Inicio</h1>
+<h2 id="arrancando-con-un-proyecto">Arrancando con un proyecto</h2>
+<p>Para crear un proyecto de una forma rápida y sencilla he encontrado <a class="link" href="https://start.spring.io/"  target="_blank" rel="noopener"
+    >Spring Initializr</a>. Es muy simple, basta con elegir lenguaje, versión y otras configuraciones, como los metadatos del proyecto, y finalmente las dependencias del proyecto Spring que usaremos.</p>
+<p>Si elegimos &ldquo;generar&rdquo; nos descarga un archivo zip que cual contiene el proyecto creado ya preparado para empezar a trabajar con él.</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 236; 
+			flex-basis: 568px"
+	>
+	<a href="/blog/p/spring-boot-primer-contacto/images/Untitled.png" data-size="400x169">
+		<img src="/blog/p/spring-boot-primer-contacto/images/Untitled.png"
+			width="400"
+			height="169"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h2 id="estructura-de-un-proyecto">Estructura de un proyecto</h2>
+<p>En el archivo pom.xml tenemos la configuración que realizamos en Spring Initializr.</p>
+<p>En src → main → Java → com.example.demo, tenemos una clase DemoApplication que tiene un método main con algo de código, que nos servirá para comprobar que todo está bien y que nuestro proyecto está preparado para ser usado.</p>
+<p>En src → main → Resources, tenemos dos carpetas para guardar archivos para nuestra aplicación web, como plantillas.</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 44; 
+			flex-basis: 107px"
+	>
+	<a href="/blog/p/spring-boot-primer-contacto/images/Untitled1.png" data-size="287x640">
+		<img src="/blog/p/spring-boot-primer-contacto/images/Untitled1.png"
+			width="287"
+			height="640"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h1 id="inyección-de-dependencias">Inyección de dependencias</h1>
+<h2 id="repositorios">Repositorios</h2>
+<p>Por convención para guardar datos se usan los repositorios. A la clase que definamos como repositorio le añadimos la anotación &ldquo;@Repository&rdquo; para que el framework entienda que se usara dicha clase como la capa de repositorio.</p>
+<pre tabindex="0"><code>@Repository
+public class PersonaRepositoryImpl implements PersonaRepository {
+    private static Logger LOG = LoggerFactory.getLogger(PruebaSpringBootApplication.class);
+    @Override
+    public void registrar(String nombre) {
+        LOG.info(&#34;SE REGISTRO A &#34;+ nombre);
+    }
+}
+</code></pre><h2 id="servicios">Servicios</h2>
+<p>Es la capa de lógica de negocio. La clase debe llevar la anotación &ldquo;@Service&rdquo; para indicar que funcionará como la capa de negocio. Si ponemos el ejemplo de que éste servicio actúa sobre un repositorio, podemos crear una instancia del repositorio con la etiqueta &ldquo;@Autowired&rdquo;, para que sea el propio Spring quien se encargue de crear una instancia de la clase.</p>
+<pre tabindex="0"><code>@Service
+public class PersonaServiceImpl implements PersonaService {
+    @Autowired
+    private PersonaRepository repo;
+    @Override
+    public void registrar(String nombre) {
+    repo.registrar(nombre);
+    }
+}
+</code></pre><h2 id="qualifier">Qualifier</h2>
+<p>Para tener varias implementaciones de una interfaz usaremos la etiqueta &ldquo;@Qualifier&rdquo;. En éste ejemplo tenemos dos tipos de personas (repositorios), y después desde un servicio accederemos a uno de los repos con la misma anotación.</p>
+<pre tabindex="0"><code>@Repository
+@Qualifier(&#34;persona1&#34;)
+public class PersonaRepositoryImpl implements PersonaRepository {
+    private static Logger LOG = LoggerFactory.getLogger(PruebaSpringBootApplication.class);
+    @Override
+    public void registrar(String nombre) {
+        LOG.info(&#34;SE REGISTRO A &#34;+ nombre);
+    }
+}
+/**************************************************************************************/
+@Repository
+@Qualifier(&#34;persona2&#34;)
+public class PersonaRepositoryImpl2 implements PersonaRepository {
+    private static Logger LOG = LoggerFactory.getLogger(PruebaSpringBootApplication.class);
+    @Override
+    public void registrar(String nombre) {
+        LOG.info(&#34;SE REGISTRO A &#34;+ nombre + &#34;(persona2)&#34;);
+    }
+}
+/**************************************************************************************/
+@Service
+public class PersonaServiceImpl implements PersonaService {
+    @Autowired
+    @Qualifier(&#34;persona2&#34;)
+    private PersonaRepository repo;
+    @Override
+    public void registrar(String nombre) {
+    repo.registrar(nombre);
+    }
+}
+</code></pre><h1 id="spring-data-jpa">Spring Data (JPA)</h1>
+<p>Vamos a crear una aplicación que se conecte a una base de datos usando JPA, un módulo que facilita la implementación de repositorios basados en JPA. Creamos una carpeta &ldquo;modelos&rdquo; y dentro una clase que definirá el modelo de nuestra tabla en la BD.</p>
+<p><strong><em>Persona.java</em></strong></p>
+<pre tabindex="0"><code>@Entity
+public class Persona {
+    @Id
+    private int idPersona;
+    @Column(name = &#34;nombre&#34;,length = 50)
+    private String nombre;
+
+    public int getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+}
+</code></pre><p>Después, creamos dentro de &ldquo;repositorios&rdquo; una interfaz que extienda de &ldquo;JpaRepository&rdquo;.</p>
+<p><strong><em>IPersonaRepositorio.java</em></strong></p>
+<pre tabindex="0"><code>public interface IPersonaRepositorio extends JpaRepository&lt;Persona,Integer&gt; {
+}
+</code></pre><p>Es necesario que el archivo <a class="link" href="http://application.properties/"  target="_blank" rel="noopener"
+    >application.properties</a> tenga configurado lo siguiente:</p>
+<pre tabindex="0"><code>spring.jpa.database=POSTGRESQL
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost/Welcome
+spring.datasource.username=postgresql
+spring.datasource.password=passwword
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+</code></pre><p>El siguiente paso es crear la base de datos desde pgAdmin 4 (Postgresql), y ejecutar la aplicación para que se nos cree la estructura de tablas.</p>
+<p>Para que se nos cree una tabla en la BD y meter datos dentro de ésta, definiremos nuestro método para insertar datos a la tabla.</p>
+<p><strong><em>WelcomeController.java</em></strong></p>
+<pre tabindex="0"><code>				@Autowired
+        private IPersonaRepositorio repositorio;
+        @GetMapping(&#34;/welcome&#34;)
+        public String welcome(@RequestParam(name=&#34;name&#34;,required = false,defaultValue = &#34;suso&#34;) String name, Model model) {
+            Persona p = new Persona();
+            p.setIdPersona((int) repositorio.count());
+            p.setNombre(name);
+            repositorio.save(p);
+            model.addAttribute(&#34;name&#34;, name);
+            return &#34;welcome&#34;;
+        }
+</code></pre><p>Tendremos otro método que listara todo el contenido de la tabla. Le crearemos una plantilla para mostrar los datos guardados en el modelo.</p>
+<p><strong><em>WelcomeController.java</em></strong></p>
+<pre tabindex="0"><code>		@GetMapping(&#34;/listar&#34;)
+    public String todasLasPersonas(Model model) {
+        model.addAttribute(&#34;personas&#34;,repositorio.findAll());
+        return &#34;personas&#34;;
+    }
+</code></pre><p>Ahora nos queda recorrer en la vista la lista de personas guardadas en el Model.</p>
+<p><strong><em>Personas.html</em></strong></p>
+<pre tabindex="0"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34; xmlns:th=&#34;&lt;http://www.thymeleaf.org&gt;&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table&gt;
+    &lt;th:block th:each=&#34;persona : ${personas}&#34;&gt;
+        &lt;tr&gt;
+            &lt;td th:text=&#34;${persona.idPersona}&#34;&gt;&lt;/td&gt;
+            &lt;td th:text=&#34;${persona.nombre}&#34;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/th:block&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h1 id="servicios-rest-crud">Servicios Rest (CRUD)</h1>
+<p>Se usa para describir cualquier interfaz entre sistemas que utilice directamente HTTP para obtener datos o indicar la ejecución de operaciones sobre los datos en cualquier formato (XML, JSON, etc).</p>
+<p>Para crear un controlador que utilice los servicios Rest utilizamos la anotación &ldquo;@RestController&rdquo;.</p>
+<h2 id="método-get"><strong>Método Get</strong></h2>
+<p>Si queremos definir la operación get, usaremos &ldquo;@GetMapping&rdquo;.</p>
+<h2 id="método-post"><strong>Método Post</strong></h2>
+<p>Si queremos definir la operación Post, usaremos &ldquo;@PostMapping&rdquo;. Es necesario pasar como parámetro &ldquo;@RequestBody Objeto o&rdquo;.</p>
+<h2 id="método-put"><strong>Método Put</strong></h2>
+<p>Si queremos definir la operación Put, usaremos &ldquo;@PutMapping&rdquo;. Funciona igual que el Post, pero con la diferencia de que si encuentra un id ya existente la operación será una actualización.</p>
+<h2 id="método-delete"><strong>Método Delete</strong></h2>
+<p>Si queremos definir la operación Delete, usaremos &ldquo;@DeleteMapping&rdquo;, que llevar como parámetro el valor (id) que se recoge en la ruta. En el argumento del método, recogemos el id mediante &ldquo;@PathVariable(id)&rdquo;</p>
+<p><strong><em>RestDemoController.java</em></strong></p>
+<pre tabindex="0"><code>@RestController
+public class RestDemoController {
+
+    @Autowired
+    private IPersonaRepositorio repositorio;
+
+    @GetMapping
+    public List&lt;Persona&gt; listar(){
+        return repositorio.findAll();
+    }
+
+  @PostMapping
+    public void insertar(@RequestBody Persona persona){
+       repositorio.save(persona);
+    }
+
+  @PutMapping
+    public void modificar(@RequestBody Persona persona){
+        repositorio.save(persona);
+    }
+
+    @DeleteMapping(value = &#34;/{id}&#34;)
+    public void eliminar(@PathVariable(&#34;id&#34;) Integer id){
+        repositorio.deleteById(id);
+    }
+}
+</code></pre><h1 id="mvc-thymeleaf">MVC Thymeleaf</h1>
+<h2 id="controladores">Controladores</h2>
+<p>Por un lado tenemos los controladores, anotamos la clase mediante &ldquo;@Controller&rdquo;. Los métodos que se desea que funcionen como ruta de nuestra aplicación web, debe tener la anotación &ldquo;@GetMapping(&lsquo;ruta_a_elegir&rsquo;)&rdquo;.</p>
+<pre tabindex="0"><code>@Controller
+public class MainController {
+    @GetMapping(&#34;/welcome&#34;)
+    public String welcome(@RequestParam(name=&#34;name&#34;,required = false,defaultValue = &#34;suso&#34;) String name, Model model){
+        model.addAttribute(&#34;name&#34;,name);
+        return &#34;Welcome&#34;;
+    }
+}
+</code></pre><p>Si se pasa parámetro en la ruta, se recoge mediante &ldquo;@RequestParam&rdquo; en éste caso en la variable name(String) y se guarda en la variable model(Model), la cual lo usamos para pasar datos a las vistas.</p>
+<h2 id="vistas">Vistas</h2>
+<p>Para crear las vistas añadimos nuestras páginas html en la carpeta &ldquo;Templates&rdquo;.</p>
+<p>El controlador debe indicar en el return el nombre de la vista a la que se dirige.</p>
+<p>Necesitamos referenciar en la etiqueta html el motor de plantillas de thymeleaf (xmlns:th=&quot;<a class="link" href="http://www.thymeleaf.org"  target="_blank" rel="noopener"
+    >http://www.thymeleaf.org</a>&quot;). Para incrustar texto en una etiqueta usando dicho motor, usamos &ldquo;th:text&rdquo;, al cual le podemos indicar una variable guardada en el objeto model con &ldquo;${variable}&rdquo;.</p>
+<pre tabindex="0"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34; xmlns:th=&#34;&lt;http://www.thymeleaf.org&gt;&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p th:text=&#34;&#39;Bienvenido, &#39;+${name}&#34;/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h1 id="spring-security">Spring security</h1>
+<p>Éstas dependencias nos crearán automáticamente un login para nuestra aplicación web, en el que podemos editar el usuario y contraseña de la siguiente manera en el archivo application.properties <a class="link" href="http://spring.security.user.name"  target="_blank" rel="noopener"
+    >spring.security.user.name</a> = pady spring.security.user.password= 1234 Es un ejemplo poco práctico, ya que lo óptimo sería comprobar los usuarios mediante una base de datos. Creamos la clase usuario y su repositorio.</p>
+<p><strong><em>Usuario.java</em></strong></p>
+<pre tabindex="0"><code>@Entity
+public class Usuario {
+    @Id
+    private int id;
+    private String nombre;
+    private String clave;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+}
+</code></pre><p><strong><em>IUsuarioRepositorio.java</em></strong></p>
+<pre tabindex="0"><code>public interface IUsuarioRepositorio extends JpaRepository&lt;Usuario,Integer&gt; {
+}
+</code></pre><p>Agregamos nuestro usuario a la tabla</p>
+<p><strong><em>SpringDataApplicationTests.java</em></strong></p>
+<pre tabindex="0"><code>@Autowired
+ private IUsuarioRepositorio repositorio_usuarios;
+ @Test
+ void crearUsuario() {
+  Usuario usuario = new Usuario();
+  usuario.setId(0);
+  usuario.setClave(&#34;1234&#34;);
+  usuario.setNombre(&#34;pady&#34;);
+  Usuario actual = repositorio_usuarios.save(usuario);
+  assertEquals(&#34;1234&#34;,actual.getClave());
+ }
+</code></pre><p>Vamos a crear una clase de configuración en nuestro proyecto, en la que usaremos un @Bean de Spring para cifrar las contraseñas que se guardan en la base datos.</p>
+<p><strong><em>SecurityConfig.java</em></strong></p>
+<pre tabindex="0"><code>@Configuration
+public class SecurityConfig {
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+}
+</code></pre><p>Finalmente lo instanciamos en la clase donde interese, y usamos su método encode.</p>
+<p><strong><em>SpringDataApplicationTests.java</em></strong></p>
+<pre tabindex="0"><code>@Autowired
+ private BCryptPasswordEncoder encoder;
+ @Test
+ void crearUsuario() {
+  Usuario usuario = new Usuario();
+  usuario.setId(1);
+  usuario.setClave(encoder.encode(&#34;1234&#34;));
+  String expected = usuario.getClave();
+  usuario.setNombre(&#34;pady&#34;);
+  Usuario actual = repositorio_usuarios.save(usuario);
+  assertEquals(expected,actual.getClave());
+ }
+</code></pre><p>Para habilitar @WebSecurity necesitamos que nuestra clase de configuración extienda de WebSecurityConfigureAdapter . Sobreescibrimos los métodos configure para indicar de donde sacaremos los usuarios a comparar. Pero primero debemos crear una clase UserService que extienda de UserDetailsService , en la cual instanciamos el repositorio de usuarios, y sobrescribimos el método de la clase extendida. Para configurar el método de la clase extendida, tenemos que tener un método que busque por un nombre de usuario, y no por un id, así que vamos a la interfaz repositorio de usuarios y creamos dicho método.</p>
+<p><strong><em>IUsuarioRepositorio.java</em></strong></p>
+<pre tabindex="0"><code>public interface IUsuarioRepositorio extends JpaRepository&lt;Usuario,Integer&gt; {
+    Usuario findByNombre(String nombre);
+}
+</code></pre><p><strong><em>UserService.java</em></strong></p>
+<pre tabindex="0"><code>@Service
+public class UserService implements UserDetailsService {
+    @Autowired
+    private IUsuarioRepositorio repositorio;
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario encontrado = repositorio.findByNombre(username);
+        List&lt;GrantedAuthority&gt; roles = new ArrayList&lt;&gt;();
+        roles.add(new SimpleGrantedAuthority(&#34;ADMIN&#34;));
+        UserDetails userDet = new User(encontrado.getNombre(),encontrado.getClave(),roles);
+        return userDet;
+    }
+}
+</code></pre><p><strong><em>SecurityConfig.java</em></strong></p>
+<pre tabindex="0"><code>@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UserService userServiceDetails;
+    @Autowired
+    private BCryptPasswordEncoder bcrypt;
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(userServiceDetails).passwordEncoder(bcrypt);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        super.configure(http);
+    }
+}
+</code></pre><p><strong><em>PROYECTO DE EJEMPLO</em></strong></p>
+<p>⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️</p>
+<p><strong><em><a class="link" href="https://github.com/raulpadilladelgado/PruebaSpringBoot"  target="_blank" rel="noopener"
+    >PruebaSpringBoot</a></em></strong></p>
+<p><strong><em>RESUMEN</em></strong></p>
+<p>Todo lo necesario para implementar un login mediante JPA, utilizando Postgresql como motor de base de datos.</p>
+<ol>
+<li>Definir un modelo</li>
+</ol>
+<pre tabindex="0"><code>@Entity
+public class Usuario {
+    @Id
+    private int id;
+    private String nombre;
+    private String clave;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+}
+</code></pre><ol start="2">
+<li>Crear un repositorio</li>
+</ol>
+<pre tabindex="0"><code>public interface UsuarioRepository extends JpaRepository&lt;Usuario,Integer&gt; {
+    Usuario findByNombre(String nombre);
+}
+</code></pre><ol start="3">
+<li>Servicio de usuarios</li>
+</ol>
+<pre tabindex="0"><code>@Service
+public class UsuarioService implements UserDetailsService {
+    @Autowired
+    private UsuarioRepository repositorio;
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
+    public void crearUsuario() {
+        Usuario usuario = new Usuario();
+        usuario.setId((int)repositorio.count()+1);
+        usuario.setClave(encoder.encode(&#34;1234&#34;));
+        usuario.setNombre(&#34;pady&#34;);
+        repositorio.save(usuario);
+    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario encontrado = repositorio.findByNombre(username);
+        List&lt;GrantedAuthority&gt; roles = new ArrayList&lt;&gt;();
+        roles.add(new SimpleGrantedAuthority(&#34;ADMIN&#34;));
+        UserDetails userDet = new User(encontrado.getNombre(),encontrado.getClave(),roles);
+        return userDet;
+    }
+
+}
+</code></pre><ol start="4">
+<li>Security Config</li>
+</ol>
+<pre tabindex="0"><code>@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UsuarioService userServiceDetails;
+    @Autowired
+    private BCryptPasswordEncoder bcrypt;
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userServiceDetails).passwordEncoder(bcrypt);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers(&#34;/&#34;).permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage(&#34;/login&#34;)
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll();
+    }
+}
+</code></pre><ol start="5">
+<li>Creación de usuarios</li>
+</ol>
+<pre tabindex="0"><code>@SpringBootTest
+class PracticaSpringBootApplicationTests {
+ @Autowired
+ private UsuarioService servicio;
+ @Test
+ void contextLoads() {
+  servicio.crearUsuario();
+ }
+}
+</code></pre>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/blog/p/jwt-auth-en-spring-boot/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">JWT Auth en Spring Boot</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/base-de-datos-local-con-docker/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Base de datos local con docker</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/lombok-annotations/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Lombok annotations</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#arrancando-con-un-proyecto">Arrancando con un proyecto</a></li>
+    <li><a href="#estructura-de-un-proyecto">Estructura de un proyecto</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#repositorios">Repositorios</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#qualifier">Qualifier</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#método-get"><strong>Método Get</strong></a></li>
+    <li><a href="#método-post"><strong>Método Post</strong></a></li>
+    <li><a href="#método-put"><strong>Método Put</strong></a></li>
+    <li><a href="#método-delete"><strong>Método Delete</strong></a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#controladores">Controladores</a></li>
+    <li><a href="#vistas">Vistas</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

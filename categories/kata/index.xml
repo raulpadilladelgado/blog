@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kata on Raúl Padilla Delgado</title>
+    <link>https://raulpadilladelgado.github.io/blog/categories/kata/</link>
+    <description>Recent content in kata on Raúl Padilla Delgado</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Mon, 06 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/kata/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kata El juego de la vida</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/kata-el-juego-de-la-vida/</link>
+      <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/kata-el-juego-de-la-vida/</guid>
+      <description>Mi implementación para este ejercicio de programación se basa en tener una clase &amp;ldquo;Cell&amp;rdquo;, que tendrá un atributo llamado &amp;ldquo;isAlive&amp;rdquo;(haciendo referencia a si la célula vive o no), y además otra clase llamada &amp;ldquo;World&amp;rdquo; que tiene un diccionario tipo clave(Integer) valor(Cell).
+En la clase &amp;ldquo;World&amp;rdquo; existe un método que cambia &amp;ldquo;de generación&amp;rdquo;, que comprueba que las células muertas que tengan exactamente tres células vecinas vivas(tres posiciones seguidas del diccionario con valor &amp;ldquo;isAlive&amp;rdquo; a true) revivan.</description>
+    </item>
+    
+    <item>
+      <title>Kata template engine</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/kata-template-engine/</link>
+      <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/kata-template-engine/</guid>
+      <description>Recientemente, he realizado una kata en Java, que consistía en implementar un parseador de plantillas.
+Existe un método que recibe como parámetros la plantilla (String) a parsear, y un diccionario (Map) con todas las claves que vamos a sustituir en la cadena anterior. Es éste método el encargado de cambiar cada variable en la cadena por cada variable en el diccionario.
+Para el desarrollo del ejercicio, seguí la metodología de TDD, por lo que primero expuse una serie de casos en los que se definen como se debería comportar éste parseador testando la salida que devuelve con lo que esperamos, y poco a poco, realizando un test y el código justo y necesario para cada caso, fui viendo como llevar casos muy específicos hasta casos muy generales, llegando hasta la iteración sólo en el momento necesario, para no tener a una solución muy complicada desde el principio por intentar precipitarse en generalizar cuando solo necesitamos cubrir un caso específico.</description>
+    </item>
+    
+    <item>
+      <title>Kata Word Wrap</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/kata-word-wrap/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/kata-word-wrap/</guid>
+      <description>Recientemente he estado realizando una kata que consistía en partir una palabra (salto de línea) acorde a un ancho de columna, algo así como el funcionamiento de los editores de texto cuando se establece el ajuste de línea. La idea consistía en ajustar la palabras, y a su vez tantas veces el resto de ésta palabra como para que la longitud del texto en cada línea no supere el ancho de columna.</description>
+    </item>
+    
+  </channel>
+</rss>

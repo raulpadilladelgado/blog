@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>testing on Raúl Padilla Delgado</title>
+    <link>https://raulpadilladelgado.github.io/blog/categories/testing/</link>
+    <description>Recent content in testing on Raúl Padilla Delgado</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Consumer Driven Contract Testing</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/</link>
+      <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/</guid>
+      <description>Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.
+Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje.</description>
+    </item>
+    
+    <item>
+      <title>Buenas prácticas en testing (Cap.1)</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/</link>
+      <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/</guid>
+      <description>Introducción Este post trata de exponer una serie de buenas prácticas o trucos a la hora de realizar testing de código, y forma parte de una serie de capítulos que pretenden seguir con el propósito.
+En esta primera iteración la idea es hablemos sobre TDD, programación funcional, patrones de diseño y estabilidad, todo esto orientado a los tests.
+Vamos al laboratorio! 🧪
+TDD en nuestros tests Test-Driven Development (TDD) es una práctica de programación que consiste en escribir primero las pruebas, después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.</description>
+    </item>
+    
+    <item>
+      <title>PHPUnit basics</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</guid>
+      <description>Introducción e instalación Este post surge por mi deseo de iniciar en el desarrollo de tests de código PHP mediante PHPUnit, un acercamiento que sirva para asimilar conceptos básicos. ¡Empezamos!.
+Lo primero que necesitamos es instalar PHPUnit en el proyecto, y ésto lo realizaremos gracias a composer.
+composer require --dev phpunit/phpunit ^latest Trás esto, en nuestra primera clase de test, debemos extender de TestCase, contenido en:
+vendor → phpunit → framework ahora es momento de hacer la primera aserción</description>
+    </item>
+    
+    <item>
+      <title>Análisis del libro &#34;Diseño ágil con TDD&#34;</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/</link>
+      <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/</guid>
+      <description>Portada libro INTRODUCCIÓN &amp;ldquo;Diseño Ágil con TDD&amp;rdquo;, por Carlos Ble, es un libro muy interesante que nos enseña como implementar Test-Driven Development en el desarrollo de código. Muestra como basar nuestro código en los Test que escribimos, y no al revés. A continuación comparto mis experiencias leyendo éste libro.
+¿QUE BENEFICIOS NOS APORTA? Se presentan grandes beneficios de codificar de ésta forma. Se habla de conseguir un código simple, que haga lo que necesitamos para cada momento, que cuando falle nos de un correcto y constante feedback de porqué eso está ocurriendo, así como un código legible y fácil de mantener.</description>
+    </item>
+    
+  </channel>
+</rss>

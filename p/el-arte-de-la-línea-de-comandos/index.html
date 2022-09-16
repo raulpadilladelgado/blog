@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='¿Por qué aprender bash? La respuesta corta es porque linux es realmente GNU/Linux. Sólo el kernel es linux, pero la colección base de utilidades que proporcionan el entorno Unix es proporcionada por GNU y el shell de GNU es bash. Es por esto que bash el shell por defecto que te encontrarás en cualquier distribución o servidor basado en linux.
+Hay muchas shells que se adaptan mejor a los propósitos o gustos individuales, como pueden ser zsh, pero creo que al ser un estandar es muy positivo dominar la herramienta para tener un desarrollo fluido, cómodo y productivo cuando necesites usarla o por si es tu shell de preferencia.'><title>El arte de la línea de comandos</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/el-arte-de-la-l%C3%ADnea-de-comandos/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='El arte de la línea de comandos'>
+<meta property='og:description' content='¿Por qué aprender bash? La respuesta corta es porque linux es realmente GNU/Linux. Sólo el kernel es linux, pero la colección base de utilidades que proporcionan el entorno Unix es proporcionada por GNU y el shell de GNU es bash. Es por esto que bash el shell por defecto que te encontrarás en cualquier distribución o servidor basado en linux.
+Hay muchas shells que se adaptan mejor a los propósitos o gustos individuales, como pueden ser zsh, pero creo que al ser un estandar es muy positivo dominar la herramienta para tener un desarrollo fluido, cómodo y productivo cuando necesites usarla o por si es tu shell de preferencia.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/el-arte-de-la-l%C3%ADnea-de-comandos/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-04-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-22T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="El arte de la línea de comandos">
+<meta name="twitter:description" content="¿Por qué aprender bash? La respuesta corta es porque linux es realmente GNU/Linux. Sólo el kernel es linux, pero la colección base de utilidades que proporcionan el entorno Unix es proporcionada por GNU y el shell de GNU es bash. Es por esto que bash el shell por defecto que te encontrarás en cualquier distribución o servidor basado en linux.
+Hay muchas shells que se adaptan mejor a los propósitos o gustos individuales, como pueden ser zsh, pero creo que al ser un estandar es muy positivo dominar la herramienta para tener un desarrollo fluido, cómodo y productivo cuando necesites usarla o por si es tu shell de preferencia.">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/bash/" >
+                bash
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/el-arte-de-la-l%C3%ADnea-de-comandos/">El arte de la línea de comandos</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 22, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="por-qué-aprender-bash">¿Por qué aprender bash?</h1>
+<p>La respuesta corta es porque linux es realmente GNU/Linux. Sólo el kernel es linux, pero la colección base de utilidades que proporcionan el entorno Unix es proporcionada por GNU y el shell de GNU es bash. Es por esto que bash el shell por defecto que te encontrarás en cualquier distribución o servidor basado en linux.</p>
+<p>Hay muchas shells que se adaptan mejor a los propósitos o gustos individuales, como pueden ser zsh, pero creo que al ser un estandar es muy positivo dominar la herramienta para tener un desarrollo fluido, cómodo y productivo cuando necesites usarla o por si es tu shell de preferencia.</p>
+<h1 id="que-dominar-de-bash">¿Que dominar de bash?</h1>
+<h2 id="shortcuts"><strong>Shortcuts</strong></h2>
+<p><code>Tab</code> ➡️ autocompletar comandos</p>
+<p><code>ctrl + r</code> ➡️ buscar en el historial de comandos. Pulsa <code>Enter</code> para ejecutar un comando o pulsa <code>flecha derecha</code> para editar</p>
+<p><code>ctrl + w</code> ➡️ borra la última palabra</p>
+<p><code>ctrl + u</code> ➡️ borra hasta inicio de línea</p>
+<p><code>ctrl + k</code> ➡️ borra hasta final de línea</p>
+<p><code>alt + b</code> ➡️ mover cursor a palabra anterior</p>
+<p><code>alt + f</code> ➡️ mover cursor a palabra posterior</p>
+<p><code>ctrl + a</code> ➡️ mover cursor a principio de línea</p>
+<p><code>ctrl + e</code> ➡️ mover cursor a final de línea</p>
+<p><code>ctrl + l</code> ➡️ vaciar terminal, limpiarla</p>
+<p><code>cd</code> ➡️ ir al directorio principal (tu usuario)</p>
+<p><code>~ == /home/usuario</code> ➡️ abreviación de directorio principal</p>
+<p><code>cd -</code> ➡️ volver al directorio de trabajo previo</p>
+<p><code>cd ..</code> ➡️ ir un directorio más arriba</p>
+<p>Puedes encontrar todos los que tienes asignado ejecutando en terminal:</p>
+<pre tabindex="0"><code>bind -p
+</code></pre><h2 id="trucos"><strong>Trucos</strong></h2>
+<h3 id="mi-comando-es-demasiado-largo-o-complejo"><strong>Mi comando es demasiado largo o complejo</strong></h3>
+<p>La solución es sencilla, abrirlo en un editor pero hay una forma muy rápida de realizarlo</p>
+<ol>
+<li>En primer lugar define tu editor si no lo habías hecho <code>export EDITOR=vim</code></li>
+<li>Comienza a escribir un comando <code>echo simpleTest</code></li>
+<li>Pulsa <code>ctrl + w</code> y después <code>ctrl + e</code> y automáticamente el comando se abrirá en tu editor</li>
+</ol>
+<h3 id="detener-procesos"><strong>Detener procesos</strong></h3>
+<p><em>Por nombre completo</em>: killall process</p>
+<p><em>Seleccionando ventana</em>: xkill</p>
+<h3 id="comandos-en-background"><strong>Comandos en background</strong></h3>
+<p>La sintaxis es añadir nohup al principio del comando y &amp; al final</p>
+<pre tabindex="0"><code>raul@raul-pc:~$ nohup sleep 10 &amp;
+[1] 4172
+raul@raul-pc:~$ nohup: ignoring input and appending output to &#39;nohup.out&#39;
+^C
+raul@raul-pc:~$ ps 
+    PID TTY          TIME CMD
+   3615 pts/1    00:00:00 bash
+   4172 pts/1    00:00:00 sleep
+   4173 pts/1    00:00:00 ps
+raul@raul-pc:~$ ps 
+    PID TTY          TIME CMD
+   3615 pts/1    00:00:00 bash
+   4174 pts/1    00:00:00 ps
+[1]+  Done                    nohup sleep 10
+</code></pre><h3 id="cuanto-tiempo-llevo-usando-el-pc"><strong>¿Cuanto tiempo llevo usando el PC?</strong></h3>
+<p>Utiliza <code>uptime</code> o <code>w</code> que proporciona más informacion que el anterior.</p>
+<h3 id="abrevia-con-los-alias"><strong>Abrevia con los alias</strong></h3>
+<pre tabindex="0"><code>raul@raul-pc:~$ alias hello=&#34;echo hello world&#34;
+raul@raul-pc:~$ hello
+hello world
+</code></pre><h3 id="el-uso-de-parentesis"><strong>El uso de parentesis</strong></h3>
+<p>Por ejemplo si estamos desarrollando un script y queremos movermos a otro directorio en una sola instrucción y tras esta seguir donde estabamos podemos añadir parentesis a la secuencia que se movia a otro directorio:</p>
+<pre tabindex="0"><code># do something in current dir
+(cd /some/other/dir &amp;&amp; other-command)
+# continue in original dir
+</code></pre><h3 id="evitar-reproducir-un-texto"><strong>Evitar reproducir un texto</strong></h3>
+<pre tabindex="0"><code>raul@raul-pc:~/Desktop$ touch hola.js
+raul@raul-pc:~/Desktop$ touch hola.html
+raul@raul-pc:~/Desktop$ mv hola.{js,html} ~/Downloads/
+</code></pre><h3 id="ver-diferencias-entre-dos-archivos"><strong>Ver diferencias entre dos archivos</strong></h3>
+<pre tabindex="0"><code>diff file1 file2
+</code></pre><h3 id="redirigir-resultados-de-un-comando"><strong>Redirigir resultados de un comando</strong></h3>
+<p><em>Guardar salida en archivo</em></p>
+<pre tabindex="0"><code>echo test &gt; afile.txt
+</code></pre><p><em>Guardar salida estándar en archivo</em></p>
+<pre tabindex="0"><code>echo test 1&gt; afile.txt
+</code></pre><p><em>Guardar error estándar en archivo</em></p>
+<pre tabindex="0"><code>echo test 2&gt; afile.txt
+</code></pre><pre tabindex="0"><code>echo test 2&gt;&amp;1
+</code></pre><h3 id="ejecutar-un-comando-con-los-argumentos-del-anterior"><strong>Ejecutar un comando con los argumentos del anterior</strong></h3>
+<pre tabindex="0"><code>raul@raul-pc:~$ touch 4.txt
+raul@raul-pc:~$ ls !$
+ls 4.txt
+4.txt
+raul@raul-pc:~$
+</code></pre><h3 id="ejecutar-scripts-al-inicio"><strong>Ejecutar scripts al inicio</strong></h3>
+<p><em>Con systemd</em></p>
+<p><a class="link" href="https://juncotic.com/systemd-ejecutando-un-script-al-inicio-de-gnu-linux/"  target="_blank" rel="noopener"
+    >https://juncotic.com/systemd-ejecutando-un-script-al-inicio-de-gnu-linux/</a></p>
+<p><em>Con crontab</em></p>
+<pre tabindex="0"><code>#Put into crontab
+@reboot /home/test/Documentos/scripts/mi-primer-script.sh
+
+#Check if crontab is enabled
+sudo systemctl status cron.service
+
+#Enable if is needed
+sudo systemctl enable cron.service
+</code></pre><p><em>More</em>: <a class="link" href="https://computernewage.com/2019/03/09/scripting-linux-bash-ejecutar-script-arranque/"  target="_blank" rel="noopener"
+    >https://computernewage.com/2019/03/09/scripting-linux-bash-ejecutar-script-arranque/</a></p>
+<h3 id="el-pc-no-se-congela-del-todo">El PC no se congela del todo</h3>
+<p>Si te pasa que el ordenador se congela al estar usandolo por la ejecucción de alguna aplicación o simplemente porque se ha congelado la sesión de escritorio actual, todavía existe una vía de escape que no es apagar el PC y volver a encenderlo. Si tienes suerte y el PC no se ha congelado del todo, es decir, solo se ha afectado la parte gráfica, puedes seguir estos pasos para restaurar la sesión en poco tiempo:</p>
+<p>En primer lugar abriremos la terminal que no está asociada a la sesión gráfica, es decir, el clásico Ctrl + Alt + T no nos vale en este caso. En su lugar usaremos Ctrl + Alt + F2 para abrir una terminal, y nos pedirá que introduzcamos el nombre y la contraseña del usuario</p>
+<p>Una vez dentro pasaremos a utilizar el comando <code>htop</code> para acabar con el problema. Si no lo tienes instalado podrás hacerlo de forma normal con APT:</p>
+<pre tabindex="0"><code>sudo apt install htop
+</code></pre><p>Escribimos htop y se nos abrirá una lista de procesos que están corriendo actualmente en el sistema. Si nuestro problema es una aplicación la localizamos y pulsamos F9 (kill) sobre ella. En el menú de la izquierda aparecen muchas opciones, destacaremos dos:</p>
+<p>15 (Sigterm) ⇒ La mayoría de procesos están escuchando por si el sistema les pide que paren su ejecucción, por lo que debería ser la primera opción que probemos</p>
+<p>09 (Sigkill) ⇒ En el caso de que el anterior opción no nos valga, usaremos esta opción para forzar el cierre del proceso</p>
+<p>Una vez realizado lo anterior, es momento de volver a la interfaz gráfica. Usaremos Ctrl + Alt + F1 para volver a ella.</p>
+<h3 id="reemplazar-texto">Reemplazar texto</h3>
+<p>Con el uso del comando sed podemos reemplazar texto sin la necesidad ni el trabajo manual de realizarlo en un editor de texto. Un ejemplo de como usarlo podría ser:</p>
+<p>Este ejemplo muestra el primer carácter de cada palabra en paréntesis:</p>
+<pre tabindex="0"><code>echo &#34;Bienvenidos al Mundo de los Bits y los Bytes&#34; | sed &#39;s/\\(\\b[A-Z]\\)/\\(\\1\\)/g&#39;
+</code></pre><p>Con el resultado:</p>
+<pre tabindex="0"><code>(B)ienvenidos(A)l(M)undo de los(B)its y los(B)ytes
+</code></pre><h3 id="si-no-se-lo-que-hace-un-comando"><strong>Si no se lo que hace un comando</strong></h3>
+<p>Tienes un comando con un par de opciones definidas y no sabes que es lo que hace con todas esas opciones, ejemplo: <code>ls -ltrh</code></p>
+<p>Los comandos sueles traer consigo una opción <code>--help</code> o <code>-help</code>o <code>-h</code> que te cuentan todo acerca del comando, también puedes recurrir a utilizar otro comando que se llama <code>tldr</code>, que te soltará ejemplos muy usados y con breve descripción para un comando. Pero si aun así necesitas algo más te voy a exponer una solución muy parecida a la opción <code>--help</code>, pero con una interfaz más atractiva y amigable. Es el caso de <em>explainshell</em>.</p>
+<p><a class="link" href="https://explainshell.com/"  target="_blank" rel="noopener"
+    >explainshell.com - match command-line arguments to their help text</a></p>
+<h2 id="todo-esto-y-mucho-más-en">Todo esto y mucho más en&hellip;</h2>
+<p>Recientemente me he encontrado un repositorio que contiene una serie de markdowns (mismo contenido, distintos idiomas) que tratan una serie de utilidades para aprender de la terminal, principalmente de Linux, aunque se tratan también aspectos MacOS y Windows. Lo recomiendo mucho porque está explicado de una forma sencilla y porque trata una cantidad de herramientas muy útiles que aprender.</p>
+<p><a class="link" href="https://github.com/jlevy/the-art-of-command-line/blob/master/README-es.md"  target="_blank" rel="noopener"
+    >jlevy/the-art-of-command-line</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#shortcuts"><strong>Shortcuts</strong></a></li>
+    <li><a href="#trucos"><strong>Trucos</strong></a>
+      <ol>
+        <li><a href="#mi-comando-es-demasiado-largo-o-complejo"><strong>Mi comando es demasiado largo o complejo</strong></a></li>
+        <li><a href="#detener-procesos"><strong>Detener procesos</strong></a></li>
+        <li><a href="#comandos-en-background"><strong>Comandos en background</strong></a></li>
+        <li><a href="#cuanto-tiempo-llevo-usando-el-pc"><strong>¿Cuanto tiempo llevo usando el PC?</strong></a></li>
+        <li><a href="#abrevia-con-los-alias"><strong>Abrevia con los alias</strong></a></li>
+        <li><a href="#el-uso-de-parentesis"><strong>El uso de parentesis</strong></a></li>
+        <li><a href="#evitar-reproducir-un-texto"><strong>Evitar reproducir un texto</strong></a></li>
+        <li><a href="#ver-diferencias-entre-dos-archivos"><strong>Ver diferencias entre dos archivos</strong></a></li>
+        <li><a href="#redirigir-resultados-de-un-comando"><strong>Redirigir resultados de un comando</strong></a></li>
+        <li><a href="#ejecutar-un-comando-con-los-argumentos-del-anterior"><strong>Ejecutar un comando con los argumentos del anterior</strong></a></li>
+        <li><a href="#ejecutar-scripts-al-inicio"><strong>Ejecutar scripts al inicio</strong></a></li>
+        <li><a href="#el-pc-no-se-congela-del-todo">El PC no se congela del todo</a></li>
+        <li><a href="#reemplazar-texto">Reemplazar texto</a></li>
+        <li><a href="#si-no-se-lo-que-hace-un-comando"><strong>Si no se lo que hace un comando</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#todo-esto-y-mucho-más-en">Todo esto y mucho más en&hellip;</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

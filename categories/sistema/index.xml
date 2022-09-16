@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sistema on Raúl Padilla Delgado</title>
+    <link>https://raulpadilladelgado.github.io/blog/categories/sistema/</link>
+    <description>Recent content in sistema on Raúl Padilla Delgado</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/sistema/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Versiona tus dotfiles</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/versiona-tus-dotfiles/</link>
+      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/versiona-tus-dotfiles/</guid>
+      <description>Introducción Durante mucho tiempo fui usuario de Windows, pero un día decidí probar Linux y terminé por elegirlo como mi sistema operativo para trabajar. Llegando a un mundo nuevo para mí, decidí probar distintas distribuciones Linux para encontrar cual era la que mejor se adaptaba al uso que que le daría. Tras ver un curso en CodelyTV, pude aprender que la configuración que tediosa que hacemos día tras día desde que iniciamos en una máquina se puede resumir en la simple ejecucción de un script, y puedo decir que ojalá haber conocido está prática tan simple pero que aporta y ayuda tanto a la configuración personal.</description>
+    </item>
+    
+  </channel>
+</rss>

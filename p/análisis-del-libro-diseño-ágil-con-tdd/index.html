@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Portada libro INTRODUCCIÓN &amp;ldquo;Diseño Ágil con TDD&amp;rdquo;, por Carlos Ble, es un libro muy interesante que nos enseña como implementar Test-Driven Development en el desarrollo de código. Muestra como basar nuestro código en los Test que escribimos, y no al revés. A continuación comparto mis experiencias leyendo éste libro.
+¿QUE BENEFICIOS NOS APORTA? Se presentan grandes beneficios de codificar de ésta forma. Se habla de conseguir un código simple, que haga lo que necesitamos para cada momento, que cuando falle nos de un correcto y constante feedback de porqué eso está ocurriendo, así como un código legible y fácil de mantener.'><title>Análisis del libro &#34;Diseño ágil con TDD&#34;</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Análisis del libro &#34;Diseño ágil con TDD&#34;'>
+<meta property='og:description' content='Portada libro INTRODUCCIÓN &amp;ldquo;Diseño Ágil con TDD&amp;rdquo;, por Carlos Ble, es un libro muy interesante que nos enseña como implementar Test-Driven Development en el desarrollo de código. Muestra como basar nuestro código en los Test que escribimos, y no al revés. A continuación comparto mis experiencias leyendo éste libro.
+¿QUE BENEFICIOS NOS APORTA? Se presentan grandes beneficios de codificar de ésta forma. Se habla de conseguir un código simple, que haga lo que necesitamos para cada momento, que cuando falle nos de un correcto y constante feedback de porqué eso está ocurriendo, así como un código legible y fácil de mantener.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-05-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-05-11T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Análisis del libro &#34;Diseño ágil con TDD&#34;">
+<meta name="twitter:description" content="Portada libro INTRODUCCIÓN &amp;ldquo;Diseño Ágil con TDD&amp;rdquo;, por Carlos Ble, es un libro muy interesante que nos enseña como implementar Test-Driven Development en el desarrollo de código. Muestra como basar nuestro código en los Test que escribimos, y no al revés. A continuación comparto mis experiencias leyendo éste libro.
+¿QUE BENEFICIOS NOS APORTA? Se presentan grandes beneficios de codificar de ésta forma. Se habla de conseguir un código simple, que haga lo que necesitamos para cada momento, que cuando falle nos de un correcto y constante feedback de porqué eso está ocurriendo, así como un código legible y fácil de mantener.">
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                
+                    
+
+                    
+                        
+                        <img src="/blog/images/Raul_huead6b70b2fb09e289983e3d0963afb2b_169758_300x0_resize_q75_box.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🥑</span>
+                
+            </figure>
+            
+        
+
+        <h1 class="site-name"><a href="/blog">Raúl Padilla Delgado</a></h1>
+        <h2 class="site-description">Bienvenid@ a mi blog sobre desarrollo de software</h2><ol class="social-menu">
+                
+                    <li>
+                        <a
+                            href='https://github.com/raulpadilladelgado'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="#1c73ff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+<!--
+Font Awesome Free 5.4.1 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a
+                            href='https://www.linkedin.com/in/raulpadilladelgado/'
+                            target="_blank"
+                            title="Linkedin"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448.1 512"><path fill="#1c73ff" d="M100.3 448H7.4V148.9h92.9V448zM53.8 108.1C24.1 108.1 0 83.5 0 53.8S24.1 0 53.8 0s53.8 24.1 53.8 53.8-24.1 54.3-53.8 54.3zM448 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448h-.1z"/></svg>
+<!--
+Font Awesome Free 5.4.1 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/blog/recursos/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#1c73ff" d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"/></svg>
+<!--
+Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                
+                <span>Recursos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/blog/sobre-m%C3%AD/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="#1c73ff" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm105.6-151.4c-25.9 8.3-64.4 13.1-105.6 13.1s-79.6-4.8-105.6-13.1c-9.8-3.1-19.4 5.3-17.7 15.3 7.9 47.2 71.3 80 123.3 80s115.3-32.9 123.3-80c1.6-9.8-7.7-18.4-17.7-15.3zm-227.9-57.5c-1 6.2 5.4 11 11 7.9l31.3-16.3 31.3 16.3c5.6 3.1 12-1.7 11-7.9l-6-34.9 25.4-24.6c4.5-4.5 1.9-12.2-4.3-13.2l-34.9-5-15.5-31.6c-2.9-5.8-11-5.8-13.9 0l-15.5 31.6-34.9 5c-6.2.9-8.9 8.6-4.3 13.2l25.4 24.6-6.1 34.9zm259.7-72.7l-34.9-5-15.5-31.6c-2.9-5.8-11-5.8-13.9 0l-15.5 31.6-34.9 5c-6.2.9-8.9 8.6-4.3 13.2l25.4 24.6-6 34.9c-1 6.2 5.4 11 11 7.9l31.3-16.3 31.3 16.3c5.6 3.1 12-1.7 11-7.9l-6-34.9 25.4-24.6c4.5-4.6 1.8-12.2-4.4-13.2z"/></svg>
+<!--
+Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                
+                <span>Sobre mí</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/blog/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#1c73ff" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+<!--
+Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                
+                <span>Búsqueda</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Modo oscuro</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/libro/" >
+                libro
+            </a>
+        
+            <a href="/blog/categories/testing/" >
+                testing
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/">Análisis del libro &#34;Diseño ágil con TDD&#34;</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 11, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    13 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p><figure 
+	>
+	<a href="https://d2sofvawe08yqg.cloudfront.net/tdd-en-castellano/hero?1576861322" >
+		<img src="https://d2sofvawe08yqg.cloudfront.net/tdd-en-castellano/hero?1576861322"
+			
+			
+			
+			loading="lazy"
+			alt="Portada libro">
+	</a>
+	
+	<figcaption>Portada libro</figcaption>
+	
+</figure></p>
+<h1 id="introducción"><strong>INTRODUCCIÓN</strong></h1>
+<p>&ldquo;Diseño Ágil con TDD&rdquo;, por Carlos Ble, es un libro muy interesante que nos enseña como implementar Test-Driven Development en el desarrollo de código. Muestra como basar nuestro código en los Test que escribimos, y no al revés. A continuación comparto mis experiencias leyendo éste libro.</p>
+<h1 id="que-beneficios-nos-aporta"><strong>¿QUE BENEFICIOS NOS APORTA?</strong></h1>
+<p>Se presentan grandes beneficios de codificar de ésta forma. Se habla de conseguir un código simple, que haga lo que necesitamos para cada momento, que cuando falle nos de un correcto y constante feedback de porqué eso está ocurriendo, así como un código legible y fácil de mantener. Obliga a los programadores a pensar primero en cual es la solución que quieren conseguir antes de comenzar a implementarla, y como consecuencia llegar a manejar diversas formas de conseguir lo que se desea teniendo en cuenta más casos de uso</p>
+<p>Un programador debería tener siempre el control del código, no tiene porque llevarse sorpresas. Cuando dedicamos tiempo a desarrollar pruebas nos estamos asegurando de que vamos a crear un código que implementa lo que cada caso de prueba requiere. Saber cuando va a fallar y por qué va a fallar nos da un control sobre el código que lo vuelve mantenible y mejorable. Incluso cuando nos esperamos un fallo en la aplicación, una prueba realizada con anterioridad nos puede estar diciendo que está fallando y por qué, por lo que nunca perdemos el sentido de lo que hace nuestra aplicación.</p>
+<p>El ciclo de crear un test aun sin implementar código para verlo fallar (rojo), desarrollar el código para ese caso de prueba, y finalmente verlo pasar la prueba (verde) nos hace tener ese control de que sabemos lo que están haciendo nuestros métodos en todo momento. Cuando sabemos aplicar ésto y entedemos el porqué añadir pruebas a nuestros proyectos, tenemos un código mantenible, ese que facilita de la vida al programador cuando tiene que arreglar fallos en la aplicación. Por otro lado implementar TDD también comprende los ciclos de refactorización. Tras ver nuestra prueba en verde, sabemos que tenemos un código correcto y funcional, por lo que es el momento perfecto para tratar de transformar el código a uno más simple y legible. No se trata de cambiar la funcionalidad del código, ya que hemos visto que es correcta, se trata de que haga lo mismo pero con una presentación más amigable, que cuando se lea parezca que cuenta una historia fácil de seguir.</p>
+<p>Un punto positivo de aplicar TDD es que vamos implementando sólo que necesitamos en cada momento, por lo que evitamos añadir funcionalidades &ldquo;extra&rdquo; que no son necesarios para el estado actual de la aplicación, una práctica que llegar a complicar mucho el código así como su compresión y el control sobre él.</p>
+<h1 id="como-debemos-testear"><strong>¿COMO DEBEMOS TESTEAR?</strong></h1>
+<p>Para nuestros test usamos BDD (Desarrollo guiado por el comportamiento), que nos dice que nuestro test debe seguir el patrón Given-When-Then(Preparación, ejecución y validación):</p>
+<ul>
+<li>Given → Dado unos elementos&hellip;</li>
+<li>When → &hellip;realiza ésto&hellip;</li>
+<li>Then → &hellip;y espero que ocurra lo siguiente.</li>
+</ul>
+<p>Gracias a BDD, nuestros test tienen una estructura clara, sencilla y concreta, cuentan una historia. Una persona que no sepa programar debería entender que pretende hacer el test, por lo que buscamos el menor numero de líneas posibles en cada bloque. Para lograr que nuestro bloque &lsquo;Then&rsquo; compruebe varios factores pero que aparezca en una sola línea, podemos crear nuestra propia aserción:</p>
+<pre tabindex="0"><code>/*Llamada*/
+assertThatList(list).isExactly(10, 20)
+
+/*Implementación*/
+fun assertThatList(list: List&lt;Number&gt;) : ListMatchers {
+   return ListMatchers(list)
+}
+
+class ListMatchers(val actualList: List&lt;Number&gt;) {
+  fun isExactly(vararg items: Number){
+  
+assertThat(items.size).isEqualTo(actualList.size)
+   for(i in items.indices){
+ assertThat(items[i]).isEqualTo(actualList[i])
+   }
+  }
+}
+</code></pre><p>Los nombres de los test deben tener un nombre significativo que puede formar un juego de palabras con el nombre de la clase para formar una frase con sentido y que aclare la intención del test. Deben ser más abstractos que su contenido, esto es no dar detalle de la implementación.</p>
+<p>Tenemos la opción de crear un método decorado con la anotación @Before, que significa que el framework ejecutará ese método justo antes de cada uno de los test. Si hay N test, se ejecutará</p>
+<p>N veces. Está pensado así para garantizar que los test no se afecten unos a los otros.Cuando recurrimos a debug para encontrar un error en nuestro test, estamos perdiendo el control del flujo del programa, por lo que la mejor solución es buscar una solución alternativa a lo que estamos haciendo que si comprendamos y que no de lugar a errores inesperados.En la misión de refactorizar nuestro gran aliado son los IDE, que realizan de forma automática las transformaciones como extraer variables, y que el punto fuerte de todo esto es evitar el error humano. No que es que sea una simple ayuda realizar refactorización automática, es que es lo aconsejable, ya que nos garantiza que un cambio realizado en una clase se efectuará en los demás sitios donde esté referenciado, algo fundamental para romper nuestro código.Por mucha cobertura de código que obtengamos realizando test a nuestras líneas de código, no nos garantiza una efectividad del 100%. Para solventar ésto, el testeo automático se debe complementar con testeo exploratorio, ese tipo de pruebas que realizamos manualmente y que prueban la aplicación por completo como si se tratase del usuario final. Cuando aplicamos TDD no buscamos reeemplazar las pruebas manuales, solo tratamos de tener que hacerlo lo menor posible cuando algo se puede automatizar facilmente para así no perder tiempo y dinero en algo repetitivo.</p>
+<p>Incluso en el testeo exploratorio se pueden automatizar algunas partes. Para lograr ésto tenemos los test basado en propiedades, que no definen datos concretos, si no que en su lugar se definen propiedades o casos que debe cumplir el código que se va a probar, como el caso de que el resultado de una suma debe ser mayor que cualquiera de sus sumandos. Las herramientas que ofrecen este tipo de automatización generan un gran número de combinaciones complejas con el fin de probar todos los posibles caminos llegando a casos extremos en los que un programador no puede estar pensando.</p>
+<h1 id="principios-necesarios"><strong>PRINCIPIOS NECESARIOS</strong></h1>
+<p>La premisa de la prioridad de transformación (TPP) es un factor fundamental para realizar TDD, y nos habla de implementar el código más sencillo para un test que está en rojo, escribir código solo para que dicho test pase, sin generalizar para otros casos. El porqué hacerlo así se debe a que te obliga a ir pensando todos los casos e ir implementando poco a poco lo que necesites, sin tener que añadir más de lo que puedes llegar a necesitar, o de añadir cosas que no comprendes porque todavía no has elaborado un caso de prueba para cierta funcionalidad. Cada test en verde debe producir una generalización en el código para otro caso de prueba nuevo. La clave para entender bien éste concepto es ver que un problema se descompone a su vez en muchos subproblemas que son los que vamos a ir resolviendo poco a poco, desde lo más sencillo, a lo más complicado.</p>
+<p>El principio de menor sorpresa, nos cuenta que el código debe hacer en todo momento lo que espera que haga, esto es, una función debe hacer lo que intuitivamente se espera al interpretar su nombre, parámetros, etc. Sin tener que entrar a ver como está implementada se debe tener la idea de que es lo que hace. Si una función hace lo que su nombre indica pero además otras cosas por detrás que no van a acorde con la misión de dicha función, es un código que genera sorpresas y que no deseamos tener. Para evitar que una función realice más cosas de las que le corresponden podemos recurrir a la separación de responsabilidades, llevando tal comportamiento a otra función que realice solo eso. Además, es importante tener el mismo nivel de abstracción en toda la función para que ningún bloque parezca mucho más complicado que otro visualmente.</p>
+<pre tabindex="0"><code>/*ANTES*/
+r.wrap();
+s.getText().concat(&#34;! is the best.&#34;);
+ 
+/*DESPUÉS*/
+r.wrap();
+s.append(&#34;! is the best.&#34;);
+</code></pre><p>Para aplicar TPP, nos sirven de ayuda las trasformaciones que propone Robert C. Martin:</p>
+<ol>
+<li>{} –&gt; nil: De no haber código a devolver nulo.</li>
+<li>nil -&gt; constant: De nulo a devolver un valor literal.</li>
+<li>constant -&gt; constant+: De un valor literal simple a uno más complejo.</li>
+<li>constant -&gt; scalar: De un valor literal a una variable.</li>
+<li>statement -&gt; statements: Añadir más líneas de código sin condicionales.</li>
+<li>unconditional -&gt; if: Introducir un condicional</li>
+<li>scalar -&gt; array: De variable simple a colección.</li>
+<li>array -&gt; container: De colección a contenedor.</li>
+<li>statement -&gt; recursion: Introducir recursión.</li>
+<li>if -&gt; while: Convertir condicional en bucle.</li>
+<li>expression -&gt; function: Reemplazar expresión con llamada a función.</li>
+<li>variable -&gt; assignment: Mutar el valor de una variable.</li>
+</ol>
+<p>Algo que puede llegar a resultar chocante para un programador es que le digan que para trabajar correctamente con TDD debe dejar de pensar primero como un programador. ¿Entonces como debe actuar?, es sencillo, anteriormente he explicado que TDD nos hace ir paso a paso en el desarrollo de código para que así podamos pensar al detalle cada posible caso de prueba de la aplicación, entonces podemos decir que el programador que aplica TDD en su modus operandi siempre piensa primero como un analista de negocio que interpreta primero los posibles casos o reglas de negocio, y no como un programador que solo busca codificar cuanto antes la solución sin atender a pensar un poco como llegará hasta ahí.</p>
+<p>Para ilustrar mejor como sería aplicar TDD desde 0 podemos ver un pequeño ejemplo de una función que comprueba si una contraseña dada se considera fuerte o segura.</p>
+<pre tabindex="0"><code>/*EL CASO MÁS SIMPLE*/
+describe(&#39;The password strength validator&#39;, () =&gt; {
+it(&#39;considers a password to be strong when all requirements are met&#39;, () =&gt; {
+expect(isStrongPassword(&#34;1234abcdABCD_&#34;)).toBe(true);
+});
+});
+
+/*Y SU SOLUCIÓN PARA LLEGAR AL VERDE*/
+function isStrongPassword(password){
+return true;
+}
+
+/******************************************************************************/
+
+/*UN CASO MÁS GENERAL*/
+it(&#39;fails when the password is too short&#39;, () =&gt; {
+expect(isStrongPassword(&#34;1aA_&#34;)).toBe(false);
+});
+
+/*Y SU SOLUCIÓN PARA LLEGAR AL VERDE*/
+function isStrongPassword(password){
+return password.length &gt;= 6;
+}
+</code></pre><p>Podemos ver como primero se contempló el caso más obvio el más simple, que no es otro que la contraseña cumpla todos los requisitos y no necesitamos más que devolver un true para que ésto sea verdad y pase. Más adelante ya se referencia un caso en el que la contraseña es muy corta y ya necesitamos hacer una comprobación para eso, por lo que aplicamos el mínimo código para comprobar si la contraseña pasada cumple la longitud requerida o no.</p>
+<h1 id="técnicas-de-testeo"><strong>TÉCNICAS DE TESTEO</strong></h1>
+<p>Pongamos el caso de que tenemos una función que queremos testear, pero ésta función llama a otra función. Nosotros queremos comprobar que la primera función funciona, por lo que la llamada a la segunda función simplemente está ahí porque forma parte de la implementación. En un caso en el que ambas funciones realizan algo sencillo no debería importar demasiado, pero si la segunda función realice un comportamiento complejo que requiera de un tiempo de ejecucción considerable no nos interesa que nuestro test gaste fuerzas en cosas que ya están testadas por otro lado. Cuando realizamos pruebas, podemos recurrir a simular objetos o funciones (Mocks), es decir, ese objeto lo tenemos disponible para usar en nuestro test pudiendo llamar a sus métodos, pero al ser una simulación no ejecutara los métodos realmente, por lo que si el método realizase llamadas a base de datos o interactuase con el sistema de archivos realmente no lo estaría haciendo. Además nos ofrece otras ventajas como son simular la entrada de parámetros, verificar que se llama una función, etc.</p>
+<p>Los frameworks de mocks son ideales para poder introducir test en un código legado sin caer en el intento. Cuando nos encontramos con ése código de una clase que tiene 20000 líneas y que llama a muchas otras clases o funciones, podemos ir haciendo mock de lo que no necesitamos testear por el momento, por lo que si en un momento determinado solo queremos probar una clase o sus métodos la mejor opción es mockear y ver que simplemente pasa lo correcto a llamadas externas que realiza.</p>
+<p>Para usar éstos Mocks en Java lo podemos realizar de la siguiente forma:</p>
+<p>Para que nuestra clase de los test pueda usar los métodos de Mockito tengo que extender de su clase.Para mockear un objeto basta con usar el método mock.Tenemos para usar método de mockitos como &lsquo;when&rsquo; con el cual podemos usar &lsquo;any()&rsquo; para simular que se le pasó lo que ese método necesita, y si combinamos el &lsquo;when&rsquo; con un &rsquo;thenReturn&rsquo; podemos comprobar que cuando se ejecuta devuelve lo que esperamos, o incluso un &rsquo;thenThrow&rsquo; para cuando lanza una excepción. Otro método interesante es &lsquo;verify&rsquo; que comprobará que se llama a la función de un objeto.</p>
+<pre tabindex="0"><code>@ExtendWith(MockitoExtension.class)
+class RegisterVolunteerActionShould {
+    
+    TemplateService templateService = mock(TemplateService.class);
+    
+    EmailService emailService = mock(EmailService.class);
+    @Test
+    void send_confirmation_email(){
+when(templateService.getEmailConfirmationTemplate(any())).thenReturn(new EmailTemplate(template));
+
+verify(emailService).sendEmail(any());
+    }
+}
+</code></pre><p>También tenemos otro tipo de dobles que son los fakes, que bien puede ser una base de datos en memoria, repositorio en memoria, un servidor de correo que realmente no envía correo. Todo para que tengamos la funcionalidad más parecida o igual al artefacto real pero facilitándonos la vida en los test simplificando la forma en que hace las validaciones.</p>
+<h1 id="errores-típicos-al-hacer-tdd"><strong>ERRORES TÍPICOS AL HACER TDD</strong></h1>
+<p>Infravalorar el nombre de los test es una muy mala decisión. Pensar un buen nombre para nuestro test nos da un mayor conocimiento de lo que estamos haciendo y esperamos, además de que un test con un buen nombre que nada más leerlo ya sabes que debería estar haciendo, se convierte en documentación viva del proyecto para que no nos perdamos ni nosotros ni futuros desarrolladores que vean nuestro código.</p>
+<p>Como tanto cuidamos sus nombres, debemos cuidar su presentación. Es fundamental ir aplicando refactor tras ver los verdes para tener test legibles y fáciles de mantener. El código de nuestros test es tan importante como el de producción.</p>
+<p>Si tenemos un test en rojo está en rojo, no intentemos desviarnos ignorando que eso está ahí para no perder la eficacia de nuestra colección de test. Debemos arreglar ésto antes de seguir en el desarrollo del proyecto para garantizar que seguimos cubiertos en lo mayormente posible.</p>
+<p>Nuestro test solo busca verificar que se cumple un solo comportamiento del sistema, por lo que intentar meter otro tipo de comportamiento es un error. Solo así entenderemos mejor cuando falle el por qué lo hace, y estaremos teniendo a la vez una documentación precisa de como va avanzando nuestro código.</p>
+<p>No necesitamos complejidad ciclomática introduciendo bucles o condicionales en nuestros test, no queremos que nuestro test corra el riesgo de fallar por factores ajenos al comportamiento que está testando, así como no queremos un aumento de su complejidad.</p>
+<h1 id="conclusión"><strong>CONCLUSIÓN</strong></h1>
+<p>TDD es una forma de codificar, cada cual es libre de seguir su metodología preferida, pero los beneficios están ahí. Cuando nos acostumbramos a trabajar de ésta forma y empezamos a ver su gran utilidad podemos desarrollar un código honesto, ese código que no pretende ser perfecto (porque eso no existe en la programación), si no que pretende tener un constante feedback con el desarrollador y ser lo más simple posible. Aprender a usarlo en un día no es posible, es la práctica quien hará de nosotros unos buenos analizadores de código que se plantean primero los problemas antes de saltar al estilo kamikaze a la acción. Para empezar, la mejor forma es realizarlo con katas (ejercicios cortos de programación) que nos obliguen a pensar en su solución, pudiendo así practicar desde lo más básico de TDD. El mob programming es perfecto para aprender más rápido, vemos las posibles soluciones de otros, sus puntos de vista y los contrastamos con los nuestros para determinar cual será la mejor solución o incluso darnos cuenta de a veces hay muchos casos que no se nos pasan por la cabeza.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/blog/p/consumer-driven-contract-testing/">
+        
+        
+            <div class="article-image">
+                <img src="/blog/p/consumer-driven-contract-testing/images/cdct-no-bg.675672fb5fede4094334b7f6fedc3b60_hucbba15bc5cd4a2106ae0a3f5e1d0c2c8_123513_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-Z1Zy&#43;1/t5AlDNLf2/tw7YA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Consumer Driven Contract Testing</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Buenas prácticas en testing (Cap.1)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/phpunit-basics/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PHPUnit basics</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Análisis del libro &#34;Implementation patterns&#34;</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Raúl Padilla Delgado</title>
+    <link>https://raulpadilladelgado.github.io/blog/categories/git/</link>
+    <description>Recent content in git on Raúl Padilla Delgado</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Sun, 06 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git autostash</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/git-autostash/</link>
+      <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/git-autostash/</guid>
+      <description>Problema Intentas hacer un pull pero tus cambios locales entran en conflicto con los del repo remoto. La solución que usaría sería hacer un stash de mis cambios locales, que sería algo así como dejarlos de lado por el momento, y después hacer el pull. Finalmente incluiríamos los cambios que habíamos dejado de lado.
+Existe una forma de automatizar esto, y lo podríamos hacer mediante la configuración de Git, para que cuando hagamos un pull, nos deje de lado nuestros cambios locales y después sea decisión nuestra incluirlos o no después del pull.</description>
+    </item>
+    
+    <item>
+      <title>Revertir commits en Git</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/revertir-commits-en-git/</link>
+      <pubDate>Sat, 05 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/revertir-commits-en-git/</guid>
+      <description>Revertir último commit Importante: Un --soft borrará el último commit pero mantendrá los cambios que has hecho. Un --hard borrará el último commit y desechará los cambios que has hecho
+Revertir último commit (local) Con este comando desaparecerá de tu rama el último commit que has hecho.
+git reset --hard HEAD~1 Revertir último commit (remoto) Si has llegado a subirlo al repositorio remoto, es tan sencillo como realizar el proceso en local y después actualizar el repo remoto (push).</description>
+    </item>
+    
+  </channel>
+</rss>

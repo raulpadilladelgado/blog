@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Implementations Patterns, de Kent Beck, es un libro sobre programación que define buenas prácticas a seguir en el desarrollo de código en Java, con el objetivo de tener un código legible y del que nos sintamos orgullosos. Se busca mejorar la perspectiva que tenga un programador sobre el sistema que va a tratar, para que entienda que cuando escriba código, éste debe hablar por si solo, debe ser la respuesta correcta y simple a una pregunta que se haga una persona cuando debe resolver un problema.'><title>Análisis del libro &#34;Implementation patterns&#34;</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Análisis del libro &#34;Implementation patterns&#34;'>
+<meta property='og:description' content='Implementations Patterns, de Kent Beck, es un libro sobre programación que define buenas prácticas a seguir en el desarrollo de código en Java, con el objetivo de tener un código legible y del que nos sintamos orgullosos. Se busca mejorar la perspectiva que tenga un programador sobre el sistema que va a tratar, para que entienda que cuando escriba código, éste debe hablar por si solo, debe ser la respuesta correcta y simple a una pregunta que se haga una persona cuando debe resolver un problema.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-06-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-06-24T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Análisis del libro &#34;Implementation patterns&#34;">
+<meta name="twitter:description" content="Implementations Patterns, de Kent Beck, es un libro sobre programación que define buenas prácticas a seguir en el desarrollo de código en Java, con el objetivo de tener un código legible y del que nos sintamos orgullosos. Se busca mejorar la perspectiva que tenga un programador sobre el sistema que va a tratar, para que entienda que cuando escriba código, éste debe hablar por si solo, debe ser la respuesta correcta y simple a una pregunta que se haga una persona cuando debe resolver un problema.">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/libro/" >
+                libro
+            </a>
+        
+            <a href="/blog/categories/patrones-de-software-2/" >
+                patrones-de-software-2
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/">Análisis del libro &#34;Implementation patterns&#34;</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 24, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    37 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>Implementations Patterns, de Kent Beck, es un libro sobre programación que define buenas prácticas a seguir en el desarrollo de código en Java, con el objetivo de tener un código legible y del que nos sintamos orgullosos. Se busca mejorar la perspectiva que tenga un programador sobre el sistema que va a tratar, para que entienda que cuando escriba código, éste debe hablar por si solo, debe ser la respuesta correcta y simple a una pregunta que se haga una persona cuando debe resolver un problema. Podemos decir entonces que el libro trata la responsabilidad que debe asumir un programador para tener un código satisfactorio.</p>
+<p>La programación va más allá de la comunicación del hombre con la máquina, el programador debe pensar que su trabajo lo van a ver otras personas que tendrán que interpretar su código, así mismo como puede ser el mismo quien vea su propio trabajo en un futuro. Para lograr que todo ésta interpretación no sea un tormento, deberíamos tener patrones que definan como desarrollamos código simple y eficaz.</p>
+<h1 id="patrones"><strong>PATRONES</strong></h1>
+<p>Todo programador debería conocer/seguir un conjunto de leyes que de cumplir sus programas como son:</p>
+<ul>
+<li>La mayor parte del tiempo se dedica a leer, más que a escribir.</li>
+<li>Nunca hay un &ldquo;terminé&rdquo;. Se invierte más en modificaciones que en el desarrollo inicial.</li>
+<li>Se estructuran utilizando un conjunto básico de conceptos de flujo de estado y control.</li>
+<li>Los lectores necesitan entender los programas en detalle y en concepto.</li>
+</ul>
+<p>Los patrones tienden un puente entre los principios abstractos y la práctica. Además buscan ahorrar tiempo y energía, ya que se establecen para simplificar enormemente una tarea. Nos ayudan a abordar la toma de decisiones en un problema real. Entonces, los patrones de implementación nos ayudan a escribir soluciones razonables para problemas comunes en la programación.</p>
+<p>Hay que entender que por muchos problemas que cubramos con patrones no podremos cubrir todas las situaciones que surjan en el desarrollo. Tener una lista de patrones es simplemente una teoría que se adapta a cada situación y necesidad.</p>
+<h1 id="una-teoría-de-la-programación"><strong>UNA TEORÍA DE LA PROGRAMACIÓN</strong></h1>
+<p>Los valores proporcionan motivación, los principios traducen esa motivación en acción, y finalmente son los patrones los que describen como se va a hacer. El estilo de desarrollo de cada programador viene definido a partir de sus valores personales y de los principios que expresen sus patrones de implementación.</p>
+<p>Tres valores fundamentales son la comunicación(un lector puede entenderlo), la simplicidad(eliminar el exceso de complejidad) y la flexibilidad(la forma en que cambian)</p>
+<p>Los principios son ideas más específicas de la programación, y son la base de los patrones, ya que son los que explican el por qué se ha desarrollado determinado patrón.</p>
+<p>Las consecuencias locales definen que si un cambio aquí puede causar un problema allá , entonces el costo del cambio aumenta dramáticamente. El código con consecuencias mayormente locales se comunica de manera efectiva.</p>
+<p>Cuando se tiene el mismo código en varios lugares, si se cambia una copia del código hay que decidir si se cambian o no todas las demás copias. Su cambio ya no es local. Cuantas más copias del código, más costará el cambio.</p>
+<p>Otro razonamiento del principio de las consecuencias locales es mantener la lógica y los datos juntos. Poner la lógica y los datos sobre los que opera cerca el uno del otro, en el mismo método si es posible, o en el mismo objeto, o al menos en el mismo paquete.</p>
+<p>La simetría en el código es donde la misma idea se expresa de la misma manera en todos los lugares donde aparece en el código. En el siguiente ejemplo la segunda afirmación es más concreta que las demás, por lo que debemos llevarla al mismo nivel de abstración.</p>
+<pre tabindex="0"><code>*/*BEFORE*/* 
+entrada();
+cuenta++;
+
+*/*AFTER*/*
+entrada();
+increment();
+</code></pre><p>Un último principio es poner juntos la lógica o los datos que cambian a la misma velocidad y separar la lógica o los datos que cambian a velocidades diferentes. Estas tasas de cambio son una forma de simetría temporal.</p>
+<h1 id="motivation"><strong>MOTIVATION</strong></h1>
+<p>El mantenimiento es caro porque entender el código existente lleva tiempo y es propenso a errores. Hacer cambios es generalmente fácil cuando se sabe lo que hay que cambiar. Aprender lo que hace el código actual es la parte más costosa. Una vez que los cambios se hacen, necesitan ser probados y desplegados.</p>
+<p>Para intentar reducir el costo general debemos encontrar la forma de obtener beneficios inmediatos al tiempo que se establece un código limpio para facilitar el desarrollo futuro, reduciendo así los gastos de mantenimiento.</p>
+<p>Es por ésto que podemos decir que es importante tener patrones de implementación que nos permitan realizar todo lo anterior de una manera rápida, que lo hagamos casi de forma automática.</p>
+<h1 id="clases"><strong>CLASES</strong></h1>
+<p>Los patrones de clase tienen mayor alcance que cualquier otro patrón de implementación. Los patrones de diseño nos hablan de las relaciones entre clases.</p>
+<p>Usamos clases para agrupar una serie de datos y asociar una lógica a ellos. En una clase, la lógica debe cambiar de forma más lenta que como lo hacen los datos sobre los que opera. Dichos datos cambian a velocidades similares y son operados por la lógica relacionada. Una programación efectiva con objetos comprende saber agrupar la lógica en clases y representar sus variaciones en función de los datos que usa. Otro aspecto a tener en cuenta es la herencia, para poder definir múltiples variaciones de una clase padre en varias subclases.</p>
+<p>Aunque usar clases presente grandes beneficios para la estructuración en nuestro código, debemos saber cuando usarlas y cuando no. Es decir, debemos reducir el número de clases para lograr reducir la dimensión del sistema, pero siempre y cuando se respete que las demás clases no se sobrecargan a raíz de realizar dicha reducción.</p>
+<p>¿Como podemos comunicar nuestras intecCiones correctamente declarando las clases?. A continuación se da una serie de principios que son la respuesta a ello:</p>
+<ul>
+<li><strong>Nombre simple de la superclase/interfaz:</strong> Un nombre correcto puede llegar a simplificar y mejorar mucho la situación. &ldquo;Las clases son el el anclaje central del diseño&rdquo;, lo que quiere decir que cuando creemos método lo haremos en función del nombre de la clase, por lo que ésta primera definición es crucial para las definiciones que le prosiguen. A veces necesitas seguir adelante con nuevas funciones, tiempo de confianza, frustración y tu subconsciente para proporcionar un nombre <a class="link" href="http://mejor.La"  target="_blank" rel="noopener"
+    >mejor.La</a> conversación es una herramienta que me ayuda constantemente a encontrar mejores nombres. Explicar el propósito de un objeto a otra persona te lleva a encontrar mejores nombres para lo que estás describiendo.</li>
+<li><strong>Nombre de la subclase:</strong> Los nombres de las subclases tienen dos trabajos. Necesitan comunicar cómo son de clase y en qué se diferencian. Una vez más, el equilibrio que se debe lograr es entre la longitud y la expresividad. Use esa superclase como base para el nombre de la subclase. Los nombres de clase que son demasiado cortos gravan la memoria a corto plazo del lector. Los grupos de clases cuyos nombres no se relacionan entre sí serán difíciles de comprender y recordar. Usen los nombres de las clases para contar la historia de su código.</li>
+<li><strong>Interfaz abstracta:</strong> Se busca codificar a las interfaces, no a las implementaciones. Esta es otra forma de sugerir que una decisión de diseño no debe ser visible en más lugares de los necesarios. Si la mayor parte de mi código sólo sabe que estoy tratando con una colección soy libre de cambiar la clase concreta más tarde. Puede ser representado en Java como una interfaz o como una superclase. Pague por las interfaces sólo cuando necesite la flexibilidad que ellas crean.Otro factor económico en la introducción de las interfaces es la imprevisibilidad de los programas informáticos. Nuestra industria parece adicta a la idea de que si diseñáramos bien el software no tendríamos que cambiar nuestros sistemas.</li>
+<li><strong>Interfaz</strong>: Una forma de decir &ldquo;Esto es lo que quiero lograr y más allá de eso hay detalles que no deberían preocuparme&rdquo; es declarar una interfaz de Java. Tienen algo de la flexibilidad de la herencia múltiple sin la complejidad y la ambigüedad. Las interfaces como clases sin implementaciones deben ser nombradas como si fueran clases. Por ejemplo, para dejar constancia de una interfaz, podríamos declarar la interfaz como &ldquo;IFile&rdquo;, y la clase que la implementa &ldquo;File&rdquo;. Abtenerse de nombres como &ldquo;FileImpl&rdquo;, ya que es una abreviatura.</li>
+<li><strong>Clase abstracta(superclase):</strong> La otra forma de expresar la distinción entre la interfaz abstracta y la implementación concreta en Java es usar una superclase. La superclase es abstracta en el sentido de que puede ser reemplazado en tiempo de ejecución con cualquier subclase. Las interfaces abstractas necesitan soportar dos tipos de cambio: cambio en la implementación y cambio de la propia interfaz. Las interfaces de Java no soportan bien esta última. Cada cambio en una interfaz requiere cambios en todas las implementaciones. Las clases abstractas no sufren esta limitación. Siempre que se pueda especificar una implementación por defecto, se pueden añadir nuevas operaciones a una clase abstracta sin interrumpir a los implementadores existentes. Una limitación de las clases abstractas (superclase) es que los implementadores sólo pueden declarar su lealtad a una superclase. Si son necesarias otras vistas de la misma clase, deben ser implementadas por interfaces Java.</li>
+</ul>
+<h2 id="interfaz-versionada"><strong>Interfaz versionada</strong></h2>
+<p>¿Qué haces cuando necesitas cambiar una interfaz pero no puedes? Típicamente esto sucede cuando quieres añadir operaciones. Ya que añadir una operación romperá todos los implementos existentes, no puedes hacer eso. Sin embargo, puedes declarar una nueva interfaz que amplíe la interfaz original y añadir la operación allí. Los usuarios que desean la nueva funcionalidad utilizan la interfaz ampliada mientras que los usuarios existentes permanecen ajenos a la existencia de la nueva interfaz.</p>
+<h2 id="value-object"><strong>Value Object</strong></h2>
+<p>Este estilo funcional de computación nunca cambia ningún estado, sólo crea nuevos valores. Cuando se tiene una situación estática (quizás momentáneamente) sobre la que se quiere hacer afirmaciones o sobre la que se quiere hacer preguntas, entonces el value object es apropiado. Cuando la situación cambia con el tiempo,entonces el estado es apropiado.</p>
+<h2 id="subclase"><strong>Subclase</strong></h2>
+<p>Declarar una subclase es una forma de decir, &ldquo;Estos objetos son como esos excepto&hellip;&rdquo; Si tienes la superclase correcta, crear una subclase puede ser una manera poderosa de programar. Con el método correcto para anular a la superclase, puedes introducir una variante de un cálculo existente con unas pocas líneas de código. Como también tiene desventajas: si descubres que</p>
+<p>algún conjunto de variaciones no está bien expresado como subclases, tienes que trabajar para desenmarañar el código antes de poder reestructurarlo; segundo, tienes que entender la superclase antes de que puedas entender la subclase; tercero, los cambios en una superclase son arriesgados, ya que las subclases pueden depender de propiedades sutiles de la implementación de la superclase.</p>
+<p>Una clave para lograr subclases útiles es implementar la lógica de la superclase en métodos que hagan un solo trabajo, para facilitar la reutilización o cambio en la subclases.</p>
+<h1 id="estado">ESTADO</h1>
+<p>Cuando hablamos de estado, nos referimos a esos valores que forman el estado del programa. Cuando usamos POO, éstos valores son pequeñas piezas encapsuladas en objetos, permitiéndonos así entender mejor que valor hizo cambiar el estado.</p>
+<p>A continuación se definen una serie de patrones que afectan al estado:</p>
+<ul>
+<li><strong>Acceso</strong>: Hay dos formas de acceder a los valores: acceso a valores almacenados e invocando cálculos. Acceder a la memoria es como invocar una función que devuelve los valores almacenados actualmente. Invocar una función es como leer un lugar de memoria, cuyo contenido simplemente se calcula y no simplemente se devuelve. Dos tipos de acceso: Acceso Directo → Cuando pasamos un dato concreto, lo cuál aporta una clara expresividad, pero pierde en flexibilidad. Acceso Indirecto → Cuando pasamos una variable y el método se encarga de realizar lo que sea necesario antes de asignar dicho dato, lo cual requiere conocer además el comportamiento de otro factor, pero ganamos en flexibilidad, pudiendo aplicar las operaciones que queramos.</li>
+<li><strong>Estado común:</strong> Muchos cálculos comparten los mismos elementos de datos aunque los valores sean diferentes. Cuando encuentre un cálculo de este tipo, comuníquelo declarando los campos de una clase.</li>
+<li><strong>Estado variante</strong>: Otras veces se deben tener diferentes elementos de datos, ya sea porque una clase necesita varias propiedades, en éste caso se deben declaran los campos intentando agrupar los comunes en un estado común.</li>
+<li><strong>Variables:</strong> Datos almacenados que son variantes con el tiempo. Variables locales → Accesibles desde donde se declaran hasta el final del bloque.</li>
+<li><strong>Recopilador</strong>: recolecta información para su uso posterior.</li>
+<li><strong>Contador</strong>: una especie de recopilador que recolecta la cuenta de otros objetos.</li>
+<li><strong>Explicativas</strong>: Las que su nombre son definidos para guiar al lector.</li>
+<li><strong>Reutilizador</strong>: Las que se definen para ahorrar al entorno de trabajo el calculo de una variable que siempre tienen el mismo valor.</li>
+<li><strong>Elementos</strong>: Las que usamos cuando queremos decir &ldquo;por cada objeto en ésta lista&hellip;&rdquo;.</li>
+<li><strong>Campo</strong>: Los atributos que pertenecen y se declaran a un objeto.</li>
+<li><strong>Ayudante</strong>: El campo definido para usar las referencias de otro objeto.</li>
+<li><strong>Bandera</strong>: Los que definen como se va a usar el objeto, y que si tienen método para alterar su estado además dicen que el uso puede variar a lo largo de la ejecucción.</li>
+<li><strong>Estrategia</strong>: Cuando almacenamos la parte variante que puedan tener los métodos, proporcionando métodos para que cambie.</li>
+<li><strong>Estado</strong>: Son como los estratégicos, pero los de estado van más ligados a la identidad del objeto y su funcionamiento general.</li>
+<li><strong>Componentes</strong>: estos campos contienen propiedades del objeto en cuestión que no buscan ser como los estratégicos.</li>
+<li><strong>Parámetro</strong>: es la forma de comunicar a un objeto con otro si no se tienen un campo del objeto en cuestión declarado. Mediante un método un objeto recibe información de otro objeto o el objeto en si.</li>
+<li><strong>Recopiladores</strong>: son pasados con el fin de ir añadiendo información en él.</li>
+<li><strong>Opcionales</strong>: Como cuando tenemos diferentes constructores que reciben distintos número de parámetros, con el fin de pasar solo los datos que queramos o todos.</li>
+<li><strong>Argumentos variables</strong>: Para poder pasar parámetros sin un número determinado de ellos, ya sea mediante una colección, o delegando a la función que cree una colección a partir de todo lo que se le pasa (Class&hellip; classes).</li>
+<li><strong>Objeto</strong>: cuando se pasa un objeto como parámetro con el fin de reusar código en la lógica.</li>
+<li><strong>Constantes</strong>: Datos que son accedidos en muchos sitios, pero que no cambian. Al declararlo así nos aseguramos que la variable está protegida ya que nunca debería cambiar. Por convención debería escribirse su nombre en mayúsculas.</li>
+<li><strong>Nombres de acuerdo a un rol</strong>: Definir las variables según el rol/función que vayan a cumplir. result → si guarda el objeto que retorna una función for(Person person: people) → llamamos a la variable &ldquo;person&rdquo; porque la lista &ldquo;people&rdquo; tiene un conjunto de &ldquo;person&rdquo;. count → guarda la cuenta de algo. etc&hellip;</li>
+</ul>
+<h1 id="comportamiento">COMPORTAMIENTO</h1>
+<p>Se describen una serie de patrones sobre como expresar el comportamiento de un programa:</p>
+<ol>
+<li>F<strong>lujo de control</strong>: Expresa los cálculos como una secuencia de pasos. Java es un miembro de la familia de lenguajes en los que la secuencia de control es un principio organizativo fundamental. Las declaraciones adyacentes se ejecutan una detrás de otra. Los condicionales, bucles, excepciones, etc, definen el flujo a seguir del programa. Teniendo ésto claro podemos decir que cada paso cuenta a la hora de tener un buen producto.</li>
+<li><strong>Flujo principal:</strong> Los programadores generalmente tienen en mente un flujo principal de control para sus programas. El procesamiento comienza aquí y termina allí. Puede haber decisiones y excepciones a lo largo el camino, pero el cómputo tiene un camino a seguir. Pensar desde donde y hacía donde queremos llegar, sumará a la hora de tener una mejor idea de como implementar funcionalidad.</li>
+<li><strong>Mensaje:</strong> La programación orientada a objetos enriquece el mensaje que transmitimos, ya que para una secuencia de instrucciones se define un mensaje (método) que abstrae al lector de conocer todos los detalles del funcionamiento, solo necesita aplicar la lógica común. No solo importa a la hora de leerlo, si no que será un factor fundamental a la hora de poder ampliar el comportamiento actual del programa.</li>
+<li><strong>Eligiendo el mensaje:</strong> Debemos tener cuidado con el nombre que elijamos para el mensaje que queremos transmitir, ya que un mal nombre hará una mala representación de la lógica que estamos abstrayendo. Nombres que sean el resumen o el factor clave de lo que hace la lógica.</li>
+<li><strong>Mensaje descompuesto:</strong> Cuando se tiene una serie de algoritmos complicados, podemos usar un nombre que descomponga cada tarea que cumpla el algoritmo y concatene cada una de ellas para formar un nombre descriptivo que permita al lector ignorar los detalles de implementación.</li>
+</ol>
+<p>6. <strong>Mensaje de reversión:</strong> No solo importa que sea un buen mensaje, además debería estar al mismo nivel de abstración que los demás mensajes de su ámbito, por lo que si nuestro mensaje es más complicado que otros mensaje que le proceden o preceden, deberíamos buscar la forma de que queden al mismo nivel abstración.</p>
+<pre tabindex="0"><code>void compute() { 
+input(); 
+helper.process(**this**); 
+output();}
+*/******************************************/*
+compute() { 
+	**new** Helper(**this**).compute();
+}
+Helper.compute() { 
+input(); 
+process(); 
+output();
+}
+</code></pre><ol start="7">
+<li><strong>Mensaje de invitación</strong>: Cuando queremos transmitir el mensaje de que una clase es solo una idea de funcionamiento y que requiere de especificaciones o subclases, indicamos que la clase es abstracta, por lo que no se puede instanciar, solo mejorar.</li>
+<li><strong>Mensaje explicativo</strong>: Transmitir la intención de la lógica en el mensaje mediante un comentario o el nombre de un método.</li>
+<li><strong>Flujo excepcional</strong>: Si es cierto que un programa siempre tienen un flujo principal, son las clausulas guardas o las excepciones las que crear un flujo alternativo.</li>
+<li><strong>Clausula guarda</strong>: Son condiciones que harán que nuestro método de un salto, ignorando la lógica que venga después, ya que con ésto damos a entender que se ha dado una condición en la que no necesitamos seguir operando.</li>
+<li><strong>Excepciones</strong>: Son condiciones que expresan que no se puede implementar cierta lógica pensada debido a algún fallo en la computación. Podemos crear nuestras propias excepciones para aportar mayor expresividad al código, y así poder manejar mejor éstas excepciones. Con manejar las excepciones nos referimos a recuperarnos del fallo de tal manera que si un bloque de código no se puede ejecutar, hay otro que tomará el relevo y que coge como contexto el fallo obtenido que provocó la excepción. Además, tener nuestra propia excepción, nos da un mayor feedback de porqué falla el código.</li>
+</ol>
+<h1 id="métodos">MÉTODOS</h1>
+<p>Nuestros programas pueden tener una lógica muy variante, ya que vamos desarrollando un bloque de código por función que el programa final deba tener. Perfectamente, toda la lógica podría contenerse en un solo método, pero para eso usamos métodos, para cumplir una tarea específica, evitando tener que un método cumpla más de una tarea. Los beneficios son claros, la legibilidad obtenida al separar la lógica en métodos es un gran punto a favor, pero además entra en juego la expresividad, ya que así distinguimos partes más importantes o menos importantes.</p>
+<p>Lo mejor de los métodos es que se entienden por separado, abstraen al lector de tener que leer otras implementaciones que no son necesarias para entender la tarea que está cumpliendo un método. Evitan la repitición de código, ya que varias llamadas a un método equivale a ejecutar tantas veces un bloque de código sin tener que haberlo escrito más que una vez para crear el método.</p>
+<p>Que nos aporten tantos beneficios no quiere decir que no puedan suponer una desventaja, ya que se debe cuidar su tamaño, nombre y propósito. Si haces demasiados métodos muy pequeños, los lectores tendrán dificultades para seguir su fragmentada expresión de ideas. Pocos métodos conducen a la duplicación y a la consiguiente pérdida de flexibilidad.</p>
+<p>A continuación se definen una serie de patrones relacionados con los métodos:</p>
+<h2 id="métodos-compuestos">MÉTODOS COMPUESTOS</h2>
+<p>Cuando se componen métodos a partir de llamadas a otros métodos, cada uno debe tener el mismo nivel de abstracción.</p>
+<pre tabindex="0"><code>void compute() {
+	input();
+	flags|= 0x0080; /*FIX: flags();*/
+	output();
+}
+</code></pre><p>Una objeción al uso de muchos pequeños métodos es la penalización por rendimiento impuesta por la invocación de todos esos métodos.</p>
+<p>Se suele recomendar desarrollar métodos estableciendo un límite de líneas de código que ronde entre 5 y 15. Aunque hay que tener en cuenta que no se debe sacrificar la legibilidad o expresividad por la longitud estándar de los métodos, ya que por ejemplo un simple espacio en blanco puede llegar a aportar mucho si separa dos estructuras de distinas complejididades, nos aporta expresividad. Un método se convierte en un obstáculo cuando me dedico a tratar de entender el código en detalle.</p>
+<p>El truco para elaborar un método está en reconocer cuando tengo conjuntos de detalles relativamente independientes que pueden ser movidos a métodos de apoyo.</p>
+<h2 id="revelar-la-intención-en-el-nombre-del-método">REVELAR LA INTENCIÓN EN EL NOMBRE DEL MÉTODO</h2>
+<p>Los métodos deben ser nombrados con el propósito de que un posible invocador pueda tener en mente porqué usa ese método. Nombre métodos para que ayuden a contar la historia.</p>
+<h2 id="visibilidad-del-método">VISIBILIDAD DEL MÉTODO</h2>
+<p>Los cuatro niveles de visibilidad -public, package, protected, private- cada uno dice algo diferente sobre sus intenciones para un método. Si no necesitamos que otros sitios conozcan un método, la mejor manera de expresarlo es declararlo private. En cuanto a la flexibilidad, debemos tener en cuenta que cuantos más métodos privados tengamos más fácil sera escalar, ya que no existe código más allá del de la propia clase que depende de él, pero si a raiz de ésto dificultamos demasiado que otras clases que lo necesiten puedan acceder al método, lo mejor sería declarar como tipo public, debemos encontrar en balance para cada situación.</p>
+<ul>
+<li><strong>Public</strong> → Accesible en cualquier paquete o clase. Hacer un método público significa que aceptas la responsabilidad de mantenerlo, ya sea dejándolo sin cambios, o arreglando todas las llamadas si cambia.</li>
+<li><strong>Protected</strong> → Sólo las clases que hereden de la superclase, podrán acceder a métodos declarados así.</li>
+<li><strong>Private</strong> → Sólo será accesible en la misma clase o paquete. Nos aporta una flexibilidad, ya que el cambio se realizará solo en éste punto y no tendremos que realizarlo en múltiples sitios como lo haríamos como un método público.</li>
+</ul>
+<p>Revelar lentamente los métodos, comenzando con la visibilidad más restrictiva que trabajar y revelarlos cuando sea necesario. Si un método ya no necesita ser visible, reducir su visibilidad. Declarar los métodos finales es similar a elegir su visibilidad. Declarar un método final establece que aunque no te importa que la gente use este método, tú no permitirás que nadie lo cambie, nos da la seguridad de que nadie romperá accidentalmente el objeto ya que su valor es invariante. Declarar un método estático lo hace visible incluso si la persona que llama no tiene el acceso a una instancia de la clase. Los métodos estáticos están limitados en el sentido de que no pueden depender de ninguna instancia por lo que no son un buen depósito para la lógica compleja. El buen uso de los métodos estáticos es como un reemplazo para los constructores.</p>
+<h2 id="objeto-de-método">OBJETO DE MÉTODO</h2>
+<p>Para crear un objeto de método, busque un método largo con muchos parámetros y variables temporales. Tratar de extraer cualquier parte del método resultaría en largas listas de parámetros en submétodos difíciles de nombrar.</p>
+<ol>
+<li>Crear una clase con el nombre del método. Por ejemplo, <code>complexCalculation()</code> se convierte en <code>ComplexCalculator</code>.</li>
+<li>Crear un campo en la nueva clase para cada parámetro, variable local y campo utilizado en el método. Dale a estos campos los mismos nombres que tienen en elmétodo original.</li>
+<li>Crear un constructor que tome como parámetros los parámetros del método de la método original y los campos del objeto original utilizados por el método.</li>
+<li>Copie el método en un nuevo método, <code>calculate()</code>, en la nueva clase.</li>
+<li>Sustituir el cuerpo del método original por un código que cree una instancia de la nueva clase. Por ejemplo:</li>
+</ol>
+<pre tabindex="0"><code>complexCalculation() {
+	new ComplexCalculator().calculate();
+}
+</code></pre><ol start="6">
+<li>Si los campos fueron establecidos en el método original, establézcalos después de los retornos del método:</li>
+</ol>
+<pre tabindex="0"><code>complexCalculation() {
+	ComplexCalculator calculator = new ComplexCalculator();
+	calculator.calculate();
+	mean = calculator.mean;
+	variance = calculator.variance;
+}
+</code></pre><p>Asegúrate de que el código refactorizado funcione como el antiguo código. El código de la nueva clase es fácil de refactorizar. Puedes extraer métodos y no tener que pasar nunca ningún parámetro porque todos los datos utilizados por el método se almacenan en campos. A menudo, una vez que se empiezan a extraer los métodos se descubre que algunas variables pueden ser degradadas de los campos a los locales.</p>
+<h2 id="método-anulado-o-sobrescrito">MÉTODO ANULADO O SOBRESCRITO</h2>
+<p>Los métodos anulados son una forma clara de expresar una variación. Los métodos declarados abstractos en un superclase son una clara invitación a especializar un cálculo, pero cualquier método no declarado final es un candidato para expresar una variación en un cálculo existente. Los métodos bien compuestos en la superclase proporcionan una multitud de potenciales ganchos en los que puedes colgar tu propio código. Si el código de la superclase está en pequeños trozos cohesivos, entonces serás capaz de anular métodos enteros. Anular un método no es ninguna de las dos cosas. Puedes ejecutar el código de la subclase y el código de la superclase invocando <code>super.method();</code> para invocar el método del mismo nombre.</p>
+<h2 id="método-sobrecargado">MÉTODO SOBRECARGADO</h2>
+<p>Cuando declaras el mismo método con diferentes tipos de parámetros, dices &ldquo;Aquí hay formatos alternativos para los parámetros de este método&rdquo;. Los métodos sobrecargados alivian al llamante de la responsabilidad de convertir los parámetros si hay varias formas legítimas de pasando los parámetros. Una variante de la sobrecarga es usar el mismo nombre de método con diferentes número de parámetros. El problema con este estilo de sobrecarga es que los lectores que quieran preguntar: &ldquo;¿Qué pasa cuando invoco este método?&rdquo; necesitan leer no sólo el nombre del método sino también la lista de parámetros antes de que saber lo suficiente para averiguar lo que sucede como resultado de la invocación del método. Si la sobrecarga es complicada, los lectores necesitan entender la sutil sobrecarga reglas de resolución para poder determinar estáticamente qué método se invocará para determinados tipos de argumentos. Los métodos sobrecargados deben servir todos para el mismo propósito, con la variación sólo en los tipos de parámetros. Diferentes tipos de retorno para diferentes sobrecarga dos los métodos hacen que la lectura del código sea demasiado difícil. Es mejor encontrar un nuevo nombre para la nueva intención. Darle a los diferentes cálculos diferentes nombres.</p>
+<h2 id="método-de-retorno">MÉTODO DE RETORNO</h2>
+<p>El tipo de retorno de un método señala primero si el método es un procedimiento que funciona por efecto secundario o una función que devuelve un tipo de objeto particular. El tipo de retorno void permite distinguir entre procedimientos y funciones.A veces tu intención es que el tipo de retorno sea específico, un tipo de objeto concretoo uno de los tipos primitivos. Sin embargo, le gustaría que sus métodos fueran tan lo más ampliamente posible, así que elige el tipo de retorno más abstracto que expresa su intención. Esto conserva la flexibilidad para que puedas cambiar la tipo de retorno concreto en caso de que sea necesario en el futuro. Generalizar el tipo de retorno también puede ser una forma de ocultar detalles de la implementación. Por ejemplo, la devolución de una colección en lugar deunalista puede animar a los usuarios a no asumir que los elementos están en un orden fijo.</p>
+<h2 id="método-de-comentario">MÉTODO DE COMENTARIO</h2>
+<p>Expresar la mayor cantidad de información posible a través de los nombres y la estructura de el código. Añade comentarios solo para expresar decisiones e información que no es obvia del código.Las pruebas automatizadas pueden comunicar información que no encaja de forma natural en comentarios de método. Automatizado las pruebas tienen muchas ventajas. Escribirlas es un valioso ejercicio de diseño, especialmente cuando se hace antes de la aplicación. Si las pruebas se realizan, son consistentes con el código. Las herramientas de refactorización automatizada pueden ayudar a mantener las pruebas actualizadas a un nivel bajo costo.</p>
+<h2 id="método-de-ayuda">MÉTODO DE AYUDA</h2>
+<p>Grandes métodos convertidos en varios más pequeños, los denominamos &lsquo;helpers&rsquo; son los ayudantes. Su propósito es hacer que los cálculos de mayor complejidad sean más leídos ocultar detalles irrelevantes y darle la oportunidad de expresar su intención a través del nombre del método.Los ayudantes son típicamente declarados private, pasando a protected si la clase está destinada a ser refinada por subclasificación. Son éstos helpers los que llama otro método que si sea accesible para otras clases, o puede que quizas solo sirvan para apoyar a otro método private de la clase.</p>
+<h2 id="método-para-prueba-con-impresion">MÉTODO PARA PRUEBA CON IMPRESION</h2>
+<p>Son métodos que definimos sin más funcionalidad que mostrar cierta información útil sobre un objeto, como puede ser untoString();para imprimir información sobre propiedades que sirva de debug de la aplicación entre otras cosas.</p>
+<h1 id="colecciones">COLECCIONES</h1>
+<p>El comportamiento de colección solía ser implementado proporcionando enlaces en la estructura de datos en sí misma: cada página de un documento tendría enlaces con la anterior y las siguientes páginas. Más recientemente, la moda ha cambiado a usar un objeto separado para la colección que relaciona los elementos. Esto permite la flexibilidad de poner el mismo objeto en varias colecciones diferentes sin modificar el objeto.</p>
+<h2 id="metáfora">Metáfora</h2>
+<p>Las colecciones mezclan diferentes metáforas. La primera es la de una variable de valor múltiple, una variable que se refiere a una colección es en realidad una variable que se refiere a varios objetos al mismo tiempo, pero dicha variable no se considera un objeto. Como con todas las variables, puede asignar a una variable de valor múltiple (añadir y quitar elementos), recuperar su valor, y enviar los mensajes variables (con el bucle for). La metáfora de la variable multivaluada se rompe en Java porque las colecciones son objetos separados con identidad. La segunda metáfora mezclada en las colecciones es la de los objetos - una colección es un objeto. Puedes recuperar una colección, pasarla alrededor, probarlo para la igualdad, y enviarle mensajes. Así que, así como las colecciones son variables de múltiples valores, también son objetos. Otra metáfora útil es pensar en las colecciones como conjuntos matemáticos. Una colección divide el mundo de los objetos en objetos que están en la colección y los objetos que no lo son. Dos operaciones básicas en los conjuntos matemáticos están encontrando su cardinalidad (el método size() de las colecciones) y probando la inclusión (representada por el método contains()).</p>
+<h2 id="conceptos">Conceptos</h2>
+<p>El primer concepto expresado por las colecciones es su tamaño. Los Arrays (que son colecciones primitivas) tienen un tamaño fijo, establecido cuando se crea el conjunto. La mayoría las colecciones pueden cambiar de tamaño después de ser creadas. Un segundo concepto expresado a través de las colecciones es si el orden de elementos es importante. El orden puede ser el orden en que los elementos se añadieron o puede ser proporcionada por alguna influencia externa como la lexicográfica comparación. Por último, las consideraciones sobre el rendimiento se comunican mediante la elección de colección. Si una búsqueda lineal es lo suficientemente rápida, una colección genérica es lo suficientemente buena. Si la colección crece demasiado grande, será importante poder probar o acceder elementos por una clave, sugiriendo un conjunto o mapa.</p>
+<h2 id="interfaces">Interfaces</h2>
+<p>La declaración de la interfaz dice al lector sobre la colección: si la colección está en un orden particular, si hay elementos duplicados, y si hay alguna manera de buscar elementos por clave o sólo por iteración. Los tipos de interfaces para colecciones se describen a continuación:</p>
+<p><strong>Arrays</strong>: Desafortunadamente, no tienen el mismo protocolo que otras colecciones, por lo que es más difícil cambiar de un array a una colección que de un tipo de colección a otro. A diferencia de la mayoría de las colecciones, el tamaño de un conjunto se fija cuando se crea. Los arrays son más eficientes en el tiempo y el espacio que otras colecciones de simples operaciones. El acceso que tienen los arrays (es decir, elementos[i]) es más de diez veces más rápido que el equivalente de ArrayList (elements.get(i)).</p>
+<p><strong>Iterable</strong>: Declarar una variable Iterable sólo dice que contiene múltiples valores. Iterable es la base para la construcción del bucle en Java 5. Cualquier objeto declarado como Iterable puede ser usado en un bucle. Esto se implementa llamando tranquilamente al método iterator(). Una de las cuestiones que hay que comunicar al utilizar las colecciones es si se espera que los clientes los modifiquen. Desafortunadamente, Iterable y su ayudante, Iterator, no proporcionan ninguna manera de declarar que una colección no debe ser modificada. Una vez que tienes un Iterator, puedes invocar su método remove(), que elimina un elemento del Iterable subyacente.</p>
+<p><strong>Collection</strong>: La colección hereda de Iterable, pero añade métodos para añadir, eliminar, buscar y contar los elementos. Declarar una variable o método como una colección deja muchas opciones para una clase de implementación. Dejando la declaración tan vagamente especificada como sea posible, usted mantiene la libertad de cambiar las clases de implementación más tarde sin que el cambio se extienda a través del código.</p>
+<p><strong>List</strong>: A la colección, la lista añade la idea de que los elementos están en un orden estable. Un elemento puede ser recuperado proporcionando su índice a la colección. Una secuencia estable es importante cuando los elementos de una colección interactúan entre sí.<strong>Set</strong>: Un conjunto es una colección que no contiene duplicados (elementos que informarían que son iguales() entre sí).</p>
+<p><strong>SortedSet(conjunto ordenado)</strong>: SortedSet almacena elementos ordenados pero únicos. A diferencia del orden de una Lista, que está relacionado con el orden en que los elementos fueron añadidos o por índices explícitos pasados a add(int, Object), el ordenamiento en un SortedSet es proporcionado por un Comparador. En ausencia de un orden explícito, se utiliza el &ldquo;orden natural&rdquo; de los elementos. Por ejemplo, los Strings se clasifican en orden lexicográfico.</p>
+<p><strong>Map</strong>: La última interfaz de recolección es Map, que es un híbrido de las otras interfaces. El mapa almacena los valores por clave, pero a diferencia de una lista, la clave puede ser cualquier objeto y no sólo un número entero. Las claves de un mapa deben ser únicas, aunque los valores puede contener duplicados. Los elementos de un Mapa no están en ningún orden particular. Debido a que Map no es completamente como cualquiera de las otras interfaces de la colección, se encuentra sola, sin heredar de ninguno de ellos. Los mapas son dos colecciones en el al mismo tiempo; una colección de llaves conectadas a una colección de valores.</p>
+<h2 id="implementaciones">Implementaciones</h2>
+<p><strong>Collection</strong></p>
+<p>La clase predeterminada es ArrayList, pero ésta puede no darnos el resultado esperado al realizar un contains(object) o un remove(object), ya que en éste tipo se permiten duplicados y solo borrará el primer resultado encontrado. Lo más seguro y eficaz es usar en su lugar HashSet.</p>
+<p><strong>List</strong></p>
+<p>Añade la idea de que los elementos están en un estable orden. Las dos implementaciones de la Lista de uso común son ArrayList y LinkedList. ArrayList es rápido para acceder a los elementos y lento para añadir y quitar elementos, mientras que LinkedList es lento para acceder a los elementos y rápido para añadir y eliminar elementos.</p>
+<p><strong>Set</strong></p>
+<p>Hay tres implementaciones principales de Set: HashSet, LinkedHashSet, y TreeSet (querealmente implementa SortedSet). HashSet es el más rápido pero sus elementos no están en orden garantizado. Un LinkedHashSet mantiene los elementos en el orden en que fueronañadió, pero a costa de una penalización extra del 30% de tiempo por añadir y quitarelementos. TreeSet mantiene sus elementos ordenados de acuerdo a un comparadorpero a costa de hacer que la adición y la eliminación de elementos o la prueba de un elemento lleve un tiempo proporcional a n, donde n es el tamaño de la colección.</p>
+<p><strong>Map</strong></p>
+<p>Las implementaciones de Map siguen un patrón similar a las implementaciones deSet. HashMap es el más rápido y simple. LinkedHashMap preserva el orden de los elementos,iterando sobre los elementos en el orden en que fueron insertados. TreeMap (en realidad una implementación de SortedMap) itera sobre las entradas basadas en el orden delclaves.</p>
+<h2 id="clase-collections">Clase Collections</h2>
+<p><strong>Búsqueda</strong></p>
+<p>La operación indexOf() toma un tiempo proporcional al tamaño de la lista. Llama a Collections.binarySearch(list, element) para devolver el índice de un elemento en ellista. Si el elemento no aparece en la lista, se devolverá un número negativo.</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 150; 
+			flex-basis: 360px"
+	>
+	<a href="/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/images/05E.gif" data-size="400x266">
+		<img src="/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/images/05E.gif"
+			width="400"
+			height="266"
+			
+			loading="lazy"
+			alt="https://1.bp.blogspot.com/-44M1-u1RI3I/XvJ7TMZRJFI/AAAAAAAAAOk/Ce_w6BmMBZMK4zUHime84nC22LgaA9W5wCK4BGAsYHg/w400-h266/05E.gif">
+	</a>
+	
+	<figcaption><a class="link" href="https://1.bp.blogspot.com/-44M1-u1RI3I/XvJ7TMZRJFI/AAAAAAAAAOk/Ce_w6BmMBZMK4zUHime84nC22LgaA9W5wCK4BGAsYHg/w400-h266/05E.gif"  target="_blank" rel="noopener"
+    >https://1.bp.blogspot.com/-44M1-u1RI3I/XvJ7TMZRJFI/AAAAAAAAAOk/Ce_w6BmMBZMK4zUHime84nC22LgaA9W5wCK4BGAsYHg/w400-h266/05E.gif</a></figcaption>
+	
+</figure></p>
+<p><strong>Ordenar</strong></p>
+<p>Las colecciones también proporcionan operaciones para cambiar el orden de los elementos de una lista. Reverse(list) invierte el orden de todos los elementos de la lista. Shuffle(list) coloca los elementos en orden aleatorio. Sort(list) y Sort(list, comparator) coloca los elementos enen orden ascendente.</p>
+<h1 id="desarrollo-de-frameworks">DESARROLLO DE FRAMEWORKS</h1>
+<p>En éste capítulo, se habla de como cambian los patrones de implementación, cuando el fin es desarrollar un framework.</p>
+<h2 id="cambiar-los-frameworks-sin-afectar-a-las-aplicaciones">CAMBIAR LOS FRAMEWORKS SIN AFECTAR A LAS APLICACIONES</h2>
+<p>El dilema fundamental en el desarrollo y mantenimiento de los frameworks es que necesitan evolucionar, pero hay un gran costo por romper el código de cliente existente. La actualización del framework perfecta, añade nuevas funciones sin cambiar ninguna de las existentes, aunque éstas actualizaciones compatibles no siempre son posibles.Cuando desarrollamos un framework la mentalidad debe ser totalmente distinta que cuando realizamos código de producto convencional, ya que con una herramienta de éste tipo, se debe tener en cuenta que en algunas ocasiones es preferible un bloque de código más complejo, pero que es mucho más mantenible y mejorable, sin romper código de cliente. A pesar de ésto, la simplicidad siempre debe estar presente, y considerada siempre que sea posible.</p>
+<h2 id="actualizaciones-incompatibles">ACTUALIZACIONES INCOMPATIBLES</h2>
+<p>Una actualización que se descompone en pasos más pequeños, avisa al cliente de que es lo nuevo que viene y el por qué debe actualizarse a la nueva API. Un ejemplo de esto son los métodos deprecados, funcionan pero avisan de que se espera eliminar en futuras versiones. Los paquetes pueden proporcionar una forma de ofrecer a los clientes un acceso incremental a las actualizaciones. Introduciendo nuevas clases en un nuevo paquete, puedes darles el mismo nombre como las viejas clases. Por ejemplo, si puedo actualizar <code>org.junit.Assert</code> en <code>org.junit.newandimproved.Assert</code> , entonces los clientes sólo tienen que cambiar las declaraciones de importación para usar el nueva clase. Cambiar las importaciones es menos arriesgado e intrusivo que cambiar el código. Otra estrategia incremental es cambiar la API o la implementación, pero no ambas en la misma versión. Ésta versión intermedia, asociaría la nueva interfaz con el viejo código, o la vieja interfaz con el nuevo código, lo que daría más tiempo para afrontar y adaptarse al cambio. IDEs como Eclipse, ofrecen herramientas automatizadas para actualizar el código de cliente, de tal forma que añade archivos y mueve funcionalidad, con el fin de adaptarse a la nueva versión. Puedes reducir el costo de cambiar el código si los clientes pueden cambiar a tu funcionalidad mejorada con una simple operación de búsqueda/reemplazo. El cambio del nombre de un método, será más barato para los clientes si dejas los argumentos en el el mismo orden.</p>
+<h2 id="formateando-un-cambio-compatible">FORMATEANDO UN CAMBIO COMPATIBLE</h2>
+<p>Lo ideal sería que el código de cliente depende lo menor posible del framework, y cuando esto no sea posible (para eso está el framework), se debe intentar que la funcionalidad de la que dependa no sea propensa a cambios, algo que se consigue mediante reducir el número de detalles visibles y mostrar detalles reveladores que son menos probables de cambiar y entregar funcionalidad útil, mientras se mantiene la libertad de cambiar el diseño.</p>
+<h2 id="clase-libreria">CLASE LIBRERIA</h2>
+<p>Un estilo simple y que considera bastante el futuro de la API es la clase de biblioteca. Representan toda su funcionalidad como llamadas de procedimiento con parámetros simples, entonces los clientes están bien aislados de futuros cambios. Cuando liberas un nuevo de su clase de biblioteca sólo necesita asegurarse de que todos los métodos existentes trabajan igual que antes. La nueva funcionalidad se representa como nueva o nuevas variantes de los procedimientos existentes. La clase Colecciones es un ejemplo de una API representada como una clase de biblioteca. Los clientes la utilizan invocando métodos estáticos, no instanciándola. Nuevas versiones de las clases de colección añaden nuevos métodos estáticos, dejando a los existentes funcionalidad sin cambios.</p>
+<h2 id="objetos"><strong>OBJETOS</strong></h2>
+<p>Asumiendo que vamos a representar nuestro framework como objeto, existe una tarea más dura que equilibra la simplicidad y la complejidad, la flexibilidad y la especificidad, así que el framework debe ser a la vez útil que útil, estable para los clientes y evolutivo para usted. El truco es, en la medida que puedas manejarlo, escribir el framework para que los clientes dependen sólo de detalles que no es probable que cambien.</p>
+<h2 id="estilo-de-uso">ESTILO DE USO</h2>
+<p>Los frameworks pueden soportar tres estilos principales de uso: instanciación, configuración,e implementación. Cada estilo ofrece diferentes combinaciones de usabilidad, flexibilidad y estabilidad. También puedes mezclar estos estilos en un solo frameworks para proveer un mejor equilibrio entre la libertad de diseño para los desarrolladores y el poder para los clientes. El estilo más simple de uso es la instanciación. Cuando quiero un socket de servidor escribo:</p>
+<p><code>new ServerSocket()</code></p>
+<p>Una vez instanciado, funciona invocando métodos en él. La instanciación funciona cuando la única forma de variación que los clientes necesitan es la variación de los datos, no la lógica. La configuración es un estilo de uso más complejo y flexible en el que el cliente crea objetos usando el framework, pero les pasa sus propios objetos para ser llamados en tiempos determinados. Un TreeSet , por ejemplo, puede ser llamado con un Comparator para permitir una clasificación arbitraria de los elementos. La configuración es más flexible que la instanciación porque puede acomodar las variaciones en la lógica así como en los datos. Sin embargo, ofrece menos libertad al programador, porque una vez que empiezas a llamar a un objeto del cliente, surge la necesidad de seguir llamando a ese objeto de la misma manera y al mismo tiempo o arriesgarse a romper el código del cliente. Cuando los clientes necesitan más formas de enganchar su propia lógica que las proporcionadas por configuración, entonces puede ofrecer el uso por implementación. En la implementación,los clientes crean sus propias clases que son utilizadas por el framework. Siempre y cuando la clase de cliente extienda de una clase del framework o implemente una interfaz, el cliente es libre de incluir cualquier lógica que le guste. JUnit mezcla los cuatro estilos de uso:</p>
+<p>JUnitCore es una clase de biblioteca con un método de ejecución estática(Class&hellip;) para ejecutar todas las pruebas en todas las clases. JUnitCore es también instancial, con instancias que proporcionan un control más fino sobre la prueba ejecutando y notificando. Las anotaciones @Test , @Before y @After son una forma de configuración donde la prueba los escritores pueden identificar bits de código para ser ejecutados en ciertos momentos. La anotación @RunWith es una forma de implementación, donde los escritores de pruebas que necesitan un comportamiento de prueba no estándar pueden implementar sus propios corredores.</p>
+<h2 id="abstracción">ABSTRACCIÓN</h2>
+<p>Sobre que forma es mejor para implementar el framework, introduce la cuestión de si representar las entidades abstractas como una interfaz o una superclase común. Cada enfoque tiene ventajas y desventajas para los desarrolladores y clientes. Los dos enfoques tampoco son mutuamente excluyentes. Un framework puede ofrecer a los clientes tanto una interfaz como una implementación predeterminada de esa interfaz.</p>
+<h2 id="interfaz">INTERFAZ</h2>
+<p>La gran ventaja de ofrecer a los clientes una interfaz es que las interfaces registran pocos detalles. Los clientes no pueden usar &ldquo;accidentalmente&rdquo; más del framework de lo previsto. Sin embargo, esta protección tiene un costo. Mientras las interfaces permanezcan sin cambios están bien, pero introducir un nuevo método en una interfaz rompen todas las implementaciones cliente de esa interfaz. Una variación de las interfaces que proporciona cierta flexibilidad adicional a costa de cierta complejidad son las interfaces versionadas. Si se añaden operaciones a un interfaz, rompes el código del cliente. Sin embargo, puedes crear una subinterfaz y poner las nuevas operaciones allí. Los clientes pueden pasar objetos que se ajusten a la nueva donde se espera la antigua interfaz, pero el código existente continúa trabajando como antes.</p>
+<h2 id="superclase">SUPERCLASE</h2>
+<p>Las ventajas de este estilo son las inversas a las de las interfaces: las clases pueden especificar más detalles que las interfaces, pero añadir una operación a una superclase no rompe el código existente. A diferencia de las interfaces, con la superclases, las clases de cliente sólo pueden extender una clase del framework. Reducir el máximo el numero de detalles visibles para el cliente, nos garantiza una menor limitación en un cambio de diseño futuro. Los campos en un framework siempre deben ser privados. Si los clientes necesitan acceso a los datos de los campos, facilítenlo a través de getters. Examine cuidadosamente sus métodos y haga públicos sólo los métodos esenciales o, mejor aún, protegido. Seguir estas reglas permite definir una superclase que expone sólo unos pocos detalles más que la interfaz equivalente pero permite los clientes más flexibilidad para engancharse a su propia lógica. La palabra clave abstract te da una forma de comunicarte con los clientes donde ellos se requieren para llenar la lógica. Proporcionar una aplicación razonable por defecto de métodos donde sea posible para los clientes la posibilidad de empezar fácilmente. La palabra clave final cuando se aplica a una clase evita que los clientes creen subclases, reforzando la instanciación o el estilo de configuración del uso del framework. Los marcos que se organizan en varios paquetes necesitan una declaración de visibilidad que diga, &ldquo;Visible dentro del marco pero no a los clientes&rdquo;. Una solución a este problema es separar los paquetes en publico e interno y comunicar la diferencia incluyendo al nombre &ldquo;internal&rdquo; en las rutas de paquetes internos. Los paquetes internos proporcionan un punto intermedio entre revelar y ocultar detalles del marco. Los clientes pueden elegir por sí mismos cuánta responsabilidad quieren aceptar para construir encima de partes potencialmente inestables del framework.</p>
+<h2 id="sin-creación">SIN CREACIÓN</h2>
+<p>La opción más simple y menos poderosa es prohibir a los clientes crear los objetos de la estructura directamente. Los operadores en un método de factoría pueden garantizar que los eventos están bien formados. La limitación de no permitir que los clientes creen instancias de marco es que impide los usos legítimos de las clases.</p>
+<h2 id="método-estático-factoría">MÉTODO ESTÁTICO (FACTORÍA)</h2>
+<p>Añaden cierta complejidad a la creación de objetos para los clientes, pero dejan al desarrollador más libertad para futuros cambios de diseño. Si un cliente creó una lista diciendo <code>ArrayList.create()</code> en lugar de usar un constructor, entonces la clase concreta del objeto devuelto podría ser cambiada sin que afecta al código de cliente. Otra ventaja de las factorías estáticas es que te dan la oportunidad de comunicar claramente a los clientes el significado de las variaciones en la construcción.</p>
+<h2 id="objeto-de-métodos-estáticos-factoría">OBJETO DE MÉTODOS ESTÁTICOS (FACTORÍA)</h2>
+<p>También puedes representar la creación de instancias enviando mensajes a una fábrica en lugar de invocar un método estático. Por ejemplo, un CollectionFactory podría proporcionan métodos para crear todos los diferentes tipos de colecciones. Podría ser usado así:</p>
+<p><code>Collections.factory().createArrayList()</code></p>
+<p>Un objeto de fábrica proporciona incluso más flexibilidad que una método estático pero es más complejo de leer. Necesitas rastrear la ejecución del código para ver cuando se crean ciertas clases. Mientras la fábrica sólo se acceda globalmente, un objeto de fábrica no proporcionan más flexibilidad que los métodos de fábrica estáticos.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/blog/p/patr%C3%B3n-decorator/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Patrón decorator</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Análisis del libro &#34;Diseño ágil con TDD&#34;</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/patrones-de-dise%C3%B1o-dao-y-dto/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Patrones de diseño (DAO y DTO)</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#interfaz-versionada"><strong>Interfaz versionada</strong></a></li>
+    <li><a href="#value-object"><strong>Value Object</strong></a></li>
+    <li><a href="#subclase"><strong>Subclase</strong></a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#métodos-compuestos">MÉTODOS COMPUESTOS</a></li>
+    <li><a href="#revelar-la-intención-en-el-nombre-del-método">REVELAR LA INTENCIÓN EN EL NOMBRE DEL MÉTODO</a></li>
+    <li><a href="#visibilidad-del-método">VISIBILIDAD DEL MÉTODO</a></li>
+    <li><a href="#objeto-de-método">OBJETO DE MÉTODO</a></li>
+    <li><a href="#método-anulado-o-sobrescrito">MÉTODO ANULADO O SOBRESCRITO</a></li>
+    <li><a href="#método-sobrecargado">MÉTODO SOBRECARGADO</a></li>
+    <li><a href="#método-de-retorno">MÉTODO DE RETORNO</a></li>
+    <li><a href="#método-de-comentario">MÉTODO DE COMENTARIO</a></li>
+    <li><a href="#método-de-ayuda">MÉTODO DE AYUDA</a></li>
+    <li><a href="#método-para-prueba-con-impresion">MÉTODO PARA PRUEBA CON IMPRESION</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#metáfora">Metáfora</a></li>
+    <li><a href="#conceptos">Conceptos</a></li>
+    <li><a href="#interfaces">Interfaces</a></li>
+    <li><a href="#implementaciones">Implementaciones</a></li>
+    <li><a href="#clase-collections">Clase Collections</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#cambiar-los-frameworks-sin-afectar-a-las-aplicaciones">CAMBIAR LOS FRAMEWORKS SIN AFECTAR A LAS APLICACIONES</a></li>
+    <li><a href="#actualizaciones-incompatibles">ACTUALIZACIONES INCOMPATIBLES</a></li>
+    <li><a href="#formateando-un-cambio-compatible">FORMATEANDO UN CAMBIO COMPATIBLE</a></li>
+    <li><a href="#clase-libreria">CLASE LIBRERIA</a></li>
+    <li><a href="#objetos"><strong>OBJETOS</strong></a></li>
+    <li><a href="#estilo-de-uso">ESTILO DE USO</a></li>
+    <li><a href="#abstracción">ABSTRACCIÓN</a></li>
+    <li><a href="#interfaz">INTERFAZ</a></li>
+    <li><a href="#superclase">SUPERCLASE</a></li>
+    <li><a href="#sin-creación">SIN CREACIÓN</a></li>
+    <li><a href="#método-estático-factoría">MÉTODO ESTÁTICO (FACTORÍA)</a></li>
+    <li><a href="#objeto-de-métodos-estáticos-factoría">OBJETO DE MÉTODOS ESTÁTICOS (FACTORÍA)</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción En nuestras aplicaciones Python solemos hacer uso de librerías, y las diferentes versiones de estas pueden llegar a ser un quebradero de cabeza cuando son usadas desde varias aplicaciones. Además de las librerías, la propia instalación de Python tiene un sistema de versionado, por lo que nos ocurre el mismo problema. Una aplicación A no funciona con Python 3.8 pero la aplicación B lo necesita.
+La solución a este problema es usar un entorno virtual, que es un árbol de directorios autónomo que contiene una instalación de Python con una versión concreta, además de una serie de paquetes adicionales que queramos instalar.'><title>Entornos virtuales en Python</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Entornos virtuales en Python'>
+<meta property='og:description' content='Introducción En nuestras aplicaciones Python solemos hacer uso de librerías, y las diferentes versiones de estas pueden llegar a ser un quebradero de cabeza cuando son usadas desde varias aplicaciones. Además de las librerías, la propia instalación de Python tiene un sistema de versionado, por lo que nos ocurre el mismo problema. Una aplicación A no funciona con Python 3.8 pero la aplicación B lo necesita.
+La solución a este problema es usar un entorno virtual, que es un árbol de directorios autónomo que contiene una instalación de Python con una versión concreta, además de una serie de paquetes adicionales que queramos instalar.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-11-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-11-13T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/images/cabecerapythonvirtualenv.jpg' />
+<meta name="twitter:title" content="Entornos virtuales en Python">
+<meta name="twitter:description" content="Introducción En nuestras aplicaciones Python solemos hacer uso de librerías, y las diferentes versiones de estas pueden llegar a ser un quebradero de cabeza cuando son usadas desde varias aplicaciones. Además de las librerías, la propia instalación de Python tiene un sistema de versionado, por lo que nos ocurre el mismo problema. Una aplicación A no funciona con Python 3.8 pero la aplicación B lo necesita.
+La solución a este problema es usar un entorno virtual, que es un árbol de directorios autónomo que contiene una instalación de Python con una versión concreta, además de una serie de paquetes adicionales que queramos instalar."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/images/cabecerapythonvirtualenv.jpg' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/entornos-virtuales-en-python/">
+                <img src="/blog/p/entornos-virtuales-en-python/images/cabecerapythonvirtualenv.jpg"
+                        
+                        width="1200" 
+                        height="675" 
+                        loading="lazy"
+                        alt="Featured image of post Entornos virtuales en Python" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/python/" >
+                python
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/entornos-virtuales-en-python/">Entornos virtuales en Python</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 13, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="introducción">Introducción</h1>
+<p>En nuestras aplicaciones Python solemos hacer uso de librerías, y las diferentes versiones de estas pueden llegar a ser un quebradero de cabeza cuando son usadas desde varias aplicaciones. Además de las librerías, la propia instalación de Python tiene un sistema de versionado, por lo que nos ocurre el mismo problema. Una aplicación A no funciona con Python 3.8 pero la aplicación B lo necesita.</p>
+<p>La solución a este problema es usar un entorno virtual, que es un árbol de directorios autónomo que contiene una instalación de Python con una versión concreta, además de una serie de paquetes adicionales que queramos instalar.</p>
+<p>Diferentes aplicaciones pueden usar diferentes entornos virtuales. Si una aplicación A necesita una versión 1.0 de un paquete y otra aplicación B la versión 2.0 no tendrán conflictos ya que dentro de cada aplicación habrá un entorno virtual (carpeta) que contenga sus propias instalaciones. Por lo que si dentro de una aplicación B se quiere usar la versión más nueva del paquete 3.0, la aplicación A seguirá usando la versión 1.0 y no se verá afectada. No es estrictamente necesario que el entorno virtual (carpeta) esté dentro del proyecto en cuestión, pero si suele ser una recomendación a la hora de buscar organización y no tener los entornos virtuales desperdigados por el sistema de archivos de nuestra máquina.</p>
+<p>Además de solucionar problemas entre las versiones de distintos proyectos, usar entornos virtuales nos permite poder aislar nuestro sistema (PC) de tener que instalar globalmente todas las dependencias que tiene un proyecto, por lo que cuando borremos el proyecto no tendremos todas esas dependencias instaladas en nuestra máquina.</p>
+<h1 id="entornos-virtuales-desde-terminal">Entornos virtuales desde terminal</h1>
+<h2 id="crear-entornos-virtuales">Crear entornos virtuales</h2>
+<p>El módulo de python que permite crear y manejar entornos virtuales se llama venv. Para crear un entorno virtual ejecuta dentro de un directorio:</p>
+<pre tabindex="0"><code>python3 -m venv tutorial-env
+</code></pre><ul>
+<li>python3: por defecto se instalara dentro del entorno virtual la misma versión de python que tengamos instalada en el sistema</li>
+<li>-m: Indicamos que vamos a introducir el nombre de un módulo de python</li>
+<li>venv: Es el módulo de python que nos permite crear y manejar entornos virtuales</li>
+<li>tutorial-env: Es el nombre que le queramos dar al entorno virtual</li>
+</ul>
+<p>Una vez creado el entorno virtual procederemos a activarlo, que hará que nuestra terminal tenga el contexto de ese entorno virtual y accederá a los paquetes instalados dentro en lugar de usar la de nuestro sistema.</p>
+<p>En windows ejecuta:</p>
+<pre tabindex="0"><code>tutorial-env\Scripts\activate.bat
+</code></pre><p>En Unix (Linux) o MacOS ejecuta:</p>
+<pre tabindex="0"><code>source tutorial-env/bin/activate
+</code></pre><p>💡 Si usas otra terminal distinta al bash tienes implementaciones distintas del script de activación como por ejemplo para csh (activate.csh) o fish (activate.fish)</p>
+<p>Activar el entorno virtual hará que cambie el prompt de tu terminal para que muetre que entorno virtual se está usando.</p>
+<pre tabindex="0"><code>raul@DESKTOP:~/env-example$ source tutorial-env/bin/activate
+
+(tutorial-env) raul@DESKTOP:~/env-example$ python3
+Python 3.8.10 (default, Sep 28 2021, 16:10:42)
+[GCC 9.3.0] on linux
+Type &#34;help&#34;, &#34;copyright&#34;, &#34;credits&#34; or &#34;license&#34; for more information.
+&gt;&gt;&gt;
+</code></pre><h2 id="instalar-paquetes-dentro-del-entorno-virtual">Instalar paquetes dentro del entorno virtual</h2>
+<p>Dentro de nuestro entorno virtual también podemos instalar, actualizar y eliminar paquetes usando el ejecutable pip.</p>
+<p>💡 Pip buscará los paquetes en la página <a class="link" href="https://pypi.org/"  target="_blank" rel="noopener"
+    >https://pypi.org</a></p>
+<p>Para instalar la última versión de un paquete ejecutaremos:</p>
+<pre tabindex="0"><code>(tutorial-env) raul@DESKTOP:~/env-example$ python3 -m pip install novas
+</code></pre><ul>
+<li>(tutorial-env) ⇒ nos muestra que el entorno virtual está activado. Para realizar la instalación de un paquete python dentro del entorno virtual es necesario que lo tengamos activado primero.</li>
+<li>python3 -m ⇒ Indicamos que vamos a introducir el nombre de un módulo de python, en este caso pip.</li>
+<li>install ⇒ Para instalar el paquete</li>
+<li>novas ⇒ nombre del paquete</li>
+</ul>
+<p>Y si quisieras instalar una versión específica de un paquete lo podemos realizar concatenando los signos == y la versión del paquete:</p>
+<pre tabindex="0"><code>(tutorial-env) raul@DESKTOP:~/env-example$ python3 -m pip install requests==2.6.0
+</code></pre><p>Para actualizar el paquete ejecutaríamos un install añadiendo el parámetro &ndash;upgrade al comando:</p>
+<pre tabindex="0"><code>(tutorial-env) raul@DESKTOP:~/env-example$ python3 -m pip install --upgrade requests
+</code></pre><p>Para instalar uno o varios paquetes pon sus nombres después de pip uninstall</p>
+<p>Para mostrar información sobre un paquete en particular pon su nombre después de pip show</p>
+<p>Para listar todos los paquetes instalados en el entorno virtual podemos ejecutar pip list</p>
+<p>Para listar todos los paquetes instalados y además guardar la salida del comando en un fichero de texto que tenga un formato preparado para que instalar todas las versiones a la vez desde pip ejecuta:</p>
+<pre tabindex="0"><code>(tutorial-env) raul@DESKTOP:~/env-example$ python3 -m pip freeze &gt; requirements.txt
+
+(tutorial-env) raul@DESKTOP:~/env-example$ cat requirements.txt
+novas==3.1.1.3
+numpy==1.9.2
+requests==2.7.0
+</code></pre><ul>
+<li>freeze ⇒ Similar al list pero expulsa la salida en un formato compatible con la instalación masiva de todos los paquetes que contiene</li>
+<li>requirements.txt ⇒ Redirigir la salida al archivo especificado. El nombre no tiene que ser exactamente el del ejemplo, pero suele ser un estándar usar ese nombre.</li>
+</ul>
+<p>Ejemplo de diferencias entre list y freeze</p>
+<pre tabindex="0"><code>LIST
+novas (3.1.1.3)
+numpy (1.9.2)
+requests (2.7.0)
+
+FREEZE
+novas==3.1.1.3
+numpy==1.9.2
+requests==2.7.0
+</code></pre><p>El fichero requirements.txt debe ser guardado mediante el control de versiones para que cualquier usuario que se baje el proyecto pueda instalar todas las dependencias necesarias utilizando:</p>
+<pre tabindex="0"><code>(tutorial-env) raul@DESKTOP:~/env-example$ python3 -m pip install -r requirements.txt
+</code></pre><ul>
+<li>-r ⇒ Indica que las dependencias están especificadas en un archivo que vamos a pasar</li>
+</ul>
+<h1 id="entornos-virtuales-desde-intellij-idea-ultimate-o-pycharm">Entornos virtuales desde IntelliJ IDEA Ultimate o PyCharm</h1>
+<p>Previamente hemos visto como manejar los entornos virtuales desde terminal, pero en algún momento tendríamos que abrir nuestro proyecto desde un IDE, y en este caso explicaré como manejar los entornos virtuales dentro de los IDEs de Jetbrains.</p>
+<p><strong>Requisitos:</strong></p>
+<ul>
+<li>Si vas a utilizar IntelliJ (Ultimate) en lugar de PyCharm es necesario que tengas instalado el plugin de Python. Lo puedes instalar desde los ajustes del IDE (Ctrl + Alt + S)</li>
+</ul>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 613; 
+			flex-basis: 1473px"
+	>
+	<a href="/blog/p/entornos-virtuales-en-python/images/Untitled-9.png" data-size="1019x166">
+		<img src="/blog/p/entornos-virtuales-en-python/images/Untitled-9.png"
+			width="1019"
+			height="166"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<ul>
+<li>Se recomienda instalar el plugin “Requirements” para poder manejar de una forma más cómoda y más asistida los requirimientos dentro del proyecto</li>
+</ul>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 351; 
+			flex-basis: 844px"
+	>
+	<a href="/blog/p/entornos-virtuales-en-python/images/Untitled-1-1-1024x291.png" data-size="1024x291">
+		<img src="/blog/p/entornos-virtuales-en-python/images/Untitled-1-1-1024x291.png"
+			width="1024"
+			height="291"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h2 id="crear-un-entorno-virtual">Crear un entorno virtual</h2>
+<p>Para crear un entorno virtual desde el IDE abriremos los ajustes de la estructura del proyecto (Ctrl + Shift + Alt + S) y añadiremos un nuevo SDK de Python</p>
+<ul>
+<li>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 163; 
+			flex-basis: 393px"
+	>
+	<a href="/blog/p/entornos-virtuales-en-python/images/Untitled-2-1.png" data-size="865x528">
+		<img src="/blog/p/entornos-virtuales-en-python/images/Untitled-2-1.png"
+			width="865"
+			height="528"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+</li>
+<li>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 150; 
+			flex-basis: 361px"
+	>
+	<a href="/blog/p/entornos-virtuales-en-python/images/Untitled-3-1.png" data-size="873x579">
+		<img src="/blog/p/entornos-virtuales-en-python/images/Untitled-3-1.png"
+			width="873"
+			height="579"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+</li>
+<li>
+<p>Base interpreter: En caso de que no tengamos Python instalado en nuestra máquina el IDE nos ofrecerá descargar una versión. Si ya lo tenemos instalado lo autodetectará, pero también podemos indicar una ruta donde esté Python instalado.</p>
+</li>
+<li>
+<p>Inherit global site-packages: Nos incluirá dentro del entorno virtual todos los paquetes que tengamos instalados. Se recomienda deshabilitar si globalmente tenemos muchas dependencias que no sean de necesidad para el proyecto. Corresponde con el parámetro -system-site-packages de virtualenv.</p>
+</li>
+<li>
+<p>Make available to all projects: El IDE guardará el entorno virtual para que pueda ser usado en otro proyectos. Actívalo si sabes que las dependencias de tu proyecto serán las mismas en algún otro proyecto.</p>
+</li>
+</ul>
+<h2 id="usar-un-entorno-virtual-existente">Usar un entorno virtual existente</h2>
+<p>Para usar un entorno virtual existente desde el IDE abriremos los ajustes de la estructura del proyecto (Ctrl + Shift + Alt + S) y añadiremos un SDK de Python</p>
+<ul>
+<li>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 163; 
+			flex-basis: 393px"
+	>
+	<a href="/blog/p/entornos-virtuales-en-python/images/Untitled-2-2.png" data-size="865x528">
+		<img src="/blog/p/entornos-virtuales-en-python/images/Untitled-2-2.png"
+			width="865"
+			height="528"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+</li>
+<li>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 150; 
+			flex-basis: 361px"
+	>
+	<a href="/blog/p/entornos-virtuales-en-python/images/Untitled-4-1.png" data-size="873x579">
+		<img src="/blog/p/entornos-virtuales-en-python/images/Untitled-4-1.png"
+			width="873"
+			height="579"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+</li>
+<li>
+<p>Interpreter: Indicaremos la ruta donde está instalado Python dentro del entorno virtual</p>
+</li>
+<li>
+<p>Make available to all projects: El IDE guardará el entorno virtual para que pueda ser usado en otro proyectos. Actívalo si sabes que las dependencias de tu proyecto serán las mismas en algún otro proyecto.</p>
+</li>
+</ul>
+<h2 id="incluir-las-dependencias-del-archivo-requirements">Incluir las dependencias del archivo requirements</h2>
+<p>Con el plugin “Requirements” instalado en pasos anteriores podremos instalar los paquetes necesarios dentro del archivo requirements.txt</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 1190; 
+			flex-basis: 2857px"
+	>
+	<a href="/blog/p/entornos-virtuales-en-python/images/Untitled-5-1-1024x86.png" data-size="1024x86">
+		<img src="/blog/p/entornos-virtuales-en-python/images/Untitled-5-1-1024x86.png"
+			width="1024"
+			height="86"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>Para sincronizar las dependencias que están instaladas en el entorno virtual y lo que tenemos definido en el archivo requirements.txt en la barra superior del IDE pulsamos sobre “Tools” y elegimos la opción “Sync Python Requirements…”</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 47; 
+			flex-basis: 114px"
+	>
+	<a href="/blog/p/entornos-virtuales-en-python/images/Untitled-6-1.png" data-size="277x581">
+		<img src="/blog/p/entornos-virtuales-en-python/images/Untitled-6-1.png"
+			width="277"
+			height="581"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 227; 
+			flex-basis: 545px"
+	>
+	<a href="/blog/p/entornos-virtuales-en-python/images/5690ae998ff3c807447abc07e0ba7e7b1c50daca.png" data-size="557x245">
+		<img src="/blog/p/entornos-virtuales-en-python/images/5690ae998ff3c807447abc07e0ba7e7b1c50daca.png"
+			width="557"
+			height="245"
+			
+			loading="lazy"
+			alt="Untitled 7">
+	</a>
+	
+	<figcaption>Untitled 7</figcaption>
+	
+</figure></p>
+<h1 id="entornos-virtuales-en-proyectos-versionados">Entornos virtuales en proyectos versionados</h1>
+<p>Un entorno virtual no se versiona junto con el proyecto, recordemos que esa carpeta tiene multitud de instalaciones de paquetes de Python y que estaríamos añadiendo una carpeta de mucho peso en el sistema de versionado. El proceso que debemos seguir para recrear el entorno virtual cuando nos bajamos un proyecto de Python es:</p>
+<ul>
+<li>Crear un entorno virtual nuevo</li>
+<li>Instalar las dependencias que están especificadas en el archivo requierements.txt del proyecto</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#crear-entornos-virtuales">Crear entornos virtuales</a></li>
+    <li><a href="#instalar-paquetes-dentro-del-entorno-virtual">Instalar paquetes dentro del entorno virtual</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#crear-un-entorno-virtual">Crear un entorno virtual</a></li>
+    <li><a href="#usar-un-entorno-virtual-existente">Usar un entorno virtual existente</a></li>
+    <li><a href="#incluir-las-dependencias-del-archivo-requirements">Incluir las dependencias del archivo requirements</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

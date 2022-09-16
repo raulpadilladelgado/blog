@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>patrones-de-software-2 on Raúl Padilla Delgado</title>
+    <link>https://raulpadilladelgado.github.io/blog/categories/patrones-de-software-2/</link>
+    <description>Recent content in patrones-de-software-2 on Raúl Padilla Delgado</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 24 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/patrones-de-software-2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Análisis del libro &#34;Implementation patterns&#34;</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/</link>
+      <pubDate>Wed, 24 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/</guid>
+      <description>Implementations Patterns, de Kent Beck, es un libro sobre programación que define buenas prácticas a seguir en el desarrollo de código en Java, con el objetivo de tener un código legible y del que nos sintamos orgullosos. Se busca mejorar la perspectiva que tenga un programador sobre el sistema que va a tratar, para que entienda que cuando escriba código, éste debe hablar por si solo, debe ser la respuesta correcta y simple a una pregunta que se haga una persona cuando debe resolver un problema.</description>
+    </item>
+    
+    <item>
+      <title>Patrón decorator</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/</link>
+      <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/</guid>
+      <description>https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png Es un patrón de diseño que nos va a permitir agregar funcionalidad a un objeto existente sin cambiar su estructura. Se busca poder añadir dinámicamente funcionalidad a un Objeto. Esto nos permite no tener que crear sucesivas clases que hereden de la primera incorporando la nueva funcionalidad, sino otras que la implementan y se asocian a la primera.
+Un gran momento para aplicarlo es cuando tenemos una clase que contiene métodos que realizan algo más que lógica de negocio.</description>
+    </item>
+    
+    <item>
+      <title>Patrones de diseño (DAO y DTO)</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/patrones-de-dise%C3%B1o-dao-y-dto/</link>
+      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/patrones-de-dise%C3%B1o-dao-y-dto/</guid>
+      <description>DAO DAO encapsula el acceso a la base de datos. Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo cuando la capa de lógica de negocio necesite guardar un dato en la base de datos, va a llamar a un método create().</description>
+    </item>
+    
+  </channel>
+</rss>

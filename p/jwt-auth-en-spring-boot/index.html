@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1. JWT Authentication 1.1. ¿Que es JWT? Dicho de forma sencilla, JWT, es una autenticación basada en tokens enviados a las peticiones por cabecera.
+Para más información: https://jwt.io/introduction/
+1.2. ¿Como funciona JWT? Para obtener el token de acceso, el cliente envía una solicitud de inicio de sesión al servidor de autenticación con el nombre de usuario y la contraseña en el cuerpo de la solicitud. El servidor valida el nombre de usuario y la contraseña, luego devuelve un token de acceso.'><title>JWT Auth en Spring Boot</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/jwt-auth-en-spring-boot/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='JWT Auth en Spring Boot'>
+<meta property='og:description' content='1. JWT Authentication 1.1. ¿Que es JWT? Dicho de forma sencilla, JWT, es una autenticación basada en tokens enviados a las peticiones por cabecera.
+Para más información: https://jwt.io/introduction/
+1.2. ¿Como funciona JWT? Para obtener el token de acceso, el cliente envía una solicitud de inicio de sesión al servidor de autenticación con el nombre de usuario y la contraseña en el cuerpo de la solicitud. El servidor valida el nombre de usuario y la contraseña, luego devuelve un token de acceso.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/jwt-auth-en-spring-boot/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-10-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-10-02T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="JWT Auth en Spring Boot">
+<meta name="twitter:description" content="1. JWT Authentication 1.1. ¿Que es JWT? Dicho de forma sencilla, JWT, es una autenticación basada en tokens enviados a las peticiones por cabecera.
+Para más información: https://jwt.io/introduction/
+1.2. ¿Como funciona JWT? Para obtener el token de acceso, el cliente envía una solicitud de inicio de sesión al servidor de autenticación con el nombre de usuario y la contraseña en el cuerpo de la solicitud. El servidor valida el nombre de usuario y la contraseña, luego devuelve un token de acceso.">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/spring-boot/" >
+                spring-boot
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/jwt-auth-en-spring-boot/">JWT Auth en Spring Boot</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 02, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="1-jwt-authentication">1. JWT Authentication</h1>
+<h2 id="11-que-es-jwt">1.1. ¿Que es JWT?</h2>
+<p>Dicho de forma sencilla, JWT, es una autenticación basada en tokens enviados a las peticiones por cabecera.</p>
+<p>Para más información: <a class="link" href="https://jwt.io/introduction/"  target="_blank" rel="noopener"
+    >https://jwt.io/introduction/</a></p>
+<h2 id="12-como-funciona-jwt">1.2. ¿Como funciona JWT?</h2>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 172; 
+			flex-basis: 415px"
+	>
+	<a href="/blog/p/jwt-auth-en-spring-boot/images/Untitled2.png" data-size="697x403">
+		<img src="/blog/p/jwt-auth-en-spring-boot/images/Untitled2.png"
+			width="697"
+			height="403"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<ol>
+<li>Para obtener el token de acceso, el cliente envía una solicitud de inicio de sesión al servidor de autenticación con el nombre de usuario y la contraseña en el cuerpo de la solicitud. El servidor valida el nombre de usuario y la contraseña, luego devuelve un token de acceso.</li>
+<li>El cliente debe almacenar el token de acceso en algún lugar y debe enviarlo con cada solicitud al servidor en el encabezado de <em>Autorización</em>.</li>
+<li>Luego, el servidor valida el token de acceso y, si es válido, atiende la solicitud al cliente.</li>
+</ol>
+<h2 id="13-como-se-implementa-jwt">1.3. ¿Como se implementa JWT?</h2>
+<h3 id="applicationuserjava">ApplicationUser.java</h3>
+<p>En primer definiremos el modelo</p>
+<pre tabindex="0"><code>package com.raulpadilla.domain;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = &#34;credentials&#34;)
+public class ApplicationUser {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String username;
+	private String password;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+}
+</code></pre><h3 id="applicationuserrepositoryjava">ApplicationUserRepository.java</h3>
+<p>Definimos un repositorio para el modelo creado anteriormente</p>
+<pre tabindex="0"><code>package com.raulpadilla.infrastructure.repository;
+
+import com.raulpadilla.domain.ApplicationUser;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ApplicationUserRepository extends JpaRepository&lt;ApplicationUser, Integer&gt; {
+    ApplicationUser findByUsername(String username);
+}
+</code></pre><h3 id="applicationuserservicejava">ApplicationUserService.java</h3>
+<p>Definimos un servicio con opere con el repositorio</p>
+<pre tabindex="0"><code>package com.raulpadilla.infrastructure.service;
+
+import com.raulpadilla.domain.ApplicationUser;
+import com.raulpadilla.infrastructure.repository.ApplicationUserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ApplicationUserService {
+    private ApplicationUserRepository applicationUserRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public ApplicationUserService(ApplicationUserRepository applicationUserRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.applicationUserRepository = applicationUserRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
+    public void save(ApplicationUser applicationUser) {
+        applicationUser.setPassword(bCryptPasswordEncoder.encode(applicationUser.getPassword()));
+        applicationUserRepository.save(applicationUser);
+    }
+}
+</code></pre><h3 id="securityconstantsjava">SecurityConstants.java</h3>
+<p>Una serie de constantes que usaremos más adelante cuando configuremos Spring Security y el posterior login JWT.</p>
+<pre tabindex="0"><code>package com.raulpadilla.infrastructure.security;
+
+public class SecurityConstants {
+    public static final String SECRET = &#34;SecretKeyToGenJWTs&#34;;
+    public static final long EXPIRATION_TIME = 864_000_000; // 10 days
+    public static final String TOKEN_PREFIX = &#34;Bearer &#34;;
+    public static final String HEADER_STRING = &#34;Authorization&#34;;
+    public static final String SIGN_UP_URL = &#34;/users/sign-up&#34;;
+    public static final String LOGIN_URL = &#34;/login&#34;;
+}
+</code></pre><h3 id="applicationuserdetailsservicejava">ApplicationUserDetailsService.java</h3>
+<p>Servicio que implementa que el que usa Spring por defecto con el objetivo de definir como se debe comportar el método que tras verificar que el usuario existe lo pone en el contexto que conoce Spring para saber que el usuario tiene una sesión iniciada.</p>
+<pre tabindex="0"><code>package com.raulpadilla.infrastructure.service;
+
+import com.raulpadilla.domain.ApplicationUser;
+import com.raulpadilla.infrastructure.repository.ApplicationUserRepository;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import static java.util.Collections.emptyList;
+
+@Service
+public class ApplicationUserDetailsService implements UserDetailsService {
+	private ApplicationUserRepository applicationUserRepository;
+
+	public ApplicationUserDetailsService(ApplicationUserRepository applicationUserRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.applicationUserRepository = applicationUserRepository;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		ApplicationUser applicationUser = applicationUserRepository.findByUsername(username);
+		if (applicationUser == null) {
+			throw new UsernameNotFoundException(username);
+		}
+		return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
+	}
+}
+</code></pre><h3 id="jwtauthenticationfilterjava">JWTAuthenticationFilter.java</h3>
+<p>El filtro que se encarga de autenticar al usuario tras recibir unas credenciales. El filtro será usado en un archivo de configuración de seguridad que definiremos más adelante.</p>
+<pre tabindex="0"><code>package com.raulpadilla.infrastructure.security;
+
+import com.auth0.jwt.JWT;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.raulpadilla.domain.ApplicationUser;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+
+import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
+import static com.raulpadilla.infrastructure.security.SecurityConstants.*;
+
+public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+    private AuthenticationManager authenticationManager;
+
+    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
+
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest req,
+                                                HttpServletResponse res) throws AuthenticationException {
+        try {
+            ApplicationUser creds = new ObjectMapper()
+                    .readValue(req.getInputStream(), ApplicationUser.class);
+
+            return authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            creds.getUsername(),
+                            creds.getPassword(),
+                            new ArrayList&lt;&gt;())
+            );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void successfulAuthentication(HttpServletRequest req,
+                                            HttpServletResponse res,
+                                            FilterChain chain,
+                                            Authentication auth) throws IOException, ServletException {
+
+        String token = JWT.create()
+                .withSubject(((User) auth.getPrincipal()).getUsername())
+                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .sign(HMAC512(SECRET.getBytes()));
+        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+    }
+}
+</code></pre><h3 id="jwtauthorizationfilterjava">JWTAuthorizationFilter.java</h3>
+<p>Cuando el usuario se ha autenticado correctamente es hora de ver si tiene autorización para acceder a determinados recursos, aquí entra en juego este filtro. También se usará en el archivo de configuración definido anteriormente.</p>
+<pre tabindex="0"><code>package com.raulpadilla.infrastructure.security;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static com.raulpadilla.infrastructure.security.SecurityConstants.HEADER_STRING;
+import static com.raulpadilla.infrastructure.security.SecurityConstants.SECRET;
+import static com.raulpadilla.infrastructure.security.SecurityConstants.TOKEN_PREFIX;
+
+public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
+
+    public JWTAuthorizationFilter(AuthenticationManager authManager) {
+        super(authManager);
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest req,
+                                    HttpServletResponse res,
+                                    FilterChain chain) throws IOException, ServletException {
+        String header = req.getHeader(HEADER_STRING);
+
+        if (header == null || !header.startsWith(TOKEN_PREFIX)) {
+            chain.doFilter(req, res);
+            return;
+        }
+
+        UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        chain.doFilter(req, res);
+    }
+
+    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
+        String token = request.getHeader(HEADER_STRING);
+        if (token != null) {
+            // parse the token.
+            String user = JWT.require(Algorithm.HMAC512(SECRET.getBytes()))
+                    .build()
+                    .verify(token.replace(TOKEN_PREFIX, &#34;&#34;))
+                    .getSubject();
+
+            if (user != null) {
+                return new UsernamePasswordAuthenticationToken(user, null, new ArrayList&lt;&gt;());
+            }
+            return null;
+        }
+        return null;
+    }
+}
+</code></pre><h3 id="websecurityjava">WebSecurity.java</h3>
+<p>Finalmente configuramos la seguridad que afecten a nuestras APIs agregándole los filtro creados anteriormente.</p>
+<pre tabindex="0"><code>package com.raulpadilla.infrastructure.security;
+
+import com.raulpadilla.infrastructure.service.ApplicationUserDetailsService;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.context.annotation.Bean;
+
+import java.util.Arrays;
+
+import static com.raulpadilla.infrastructure.security.SecurityConstants.LOGIN_URL;
+import static com.raulpadilla.infrastructure.security.SecurityConstants.SIGN_UP_URL;
+
+@EnableWebSecurity
+public class WebSecurity extends WebSecurityConfigurerAdapter {
+    private ApplicationUserDetailsService userDetailsService;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public WebSecurity(ApplicationUserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userDetailsService = userDetailsService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable().authorizeRequests()
+                .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
+                .antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+                .addFilter(new JWTAuthorizationFilter(authenticationManager()))
+                // this disables session creation on Spring Security
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    }
+
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList(&#34;*&#34;));
+        configuration.setAllowedMethods(Arrays.asList(&#34;*&#34;));
+        configuration.setAllowedHeaders(Arrays.asList(&#34;*&#34;));
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration(&#34;/**&#34;, configuration);
+        return source;
+    }
+}
+</code></pre><h3 id="applicationusercontrollerjava">ApplicationUserController.java</h3>
+<p>Para probar que todo funciona correctamente creamos el controlador que interactúe con el servicio de usuarios</p>
+<pre tabindex="0"><code>package com.raulpadilla.application;
+
+import com.raulpadilla.domain.ApplicationUser;
+import com.raulpadilla.infrastructure.service.ApplicationUserService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
+
+@RestController
+@RequestMapping(&#34;/users&#34;)
+public class ApplicationUserController {
+    private final ApplicationUserService applicationUserService;
+
+    public ApplicationUserController(ApplicationUserService applicationUserService) {
+        this.applicationUserService = applicationUserService;
+    }
+
+    @PostMapping(&#34;/sign-up&#34;)
+    public void signUp(@RequestBody ApplicationUser applicationUser) throws IOException, InterruptedException {
+        applicationUserService.save(applicationUser);
+    }
+}
+</code></pre><p>Se definió el método para crear un usuario, para hacer login usaremos <code>/login</code> que está controlado por Spring Security y por eso no tenemos que configurarlo nosotros. Dicha request devolverá el token JWT que necesitamos enviar a otras peticiones que hagamos para que podamos ser autenticados y autorizados correctamente.</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 287; 
+			flex-basis: 689px"
+	>
+	<a href="/blog/p/jwt-auth-en-spring-boot/images/Untitled3.png" data-size="956x333">
+		<img src="/blog/p/jwt-auth-en-spring-boot/images/Untitled3.png"
+			width="956"
+			height="333"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/blog/p/base-de-datos-local-con-docker/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Base de datos local con docker</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/lombok-annotations/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Lombok annotations</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/blog/p/spring-boot-primer-contacto/">
+        
+        
+            <div class="article-image">
+                <img src="/blog/p/spring-boot-primer-contacto/images/spring-icon.ee5eeea8c805797c63bf21592f9aff8f_huadbf2f0049d515f95c854e2c70f5b2e1_40083_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-7l7uqMgFeXxjvyFZL5r/jw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring boot, primer contacto</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#11-que-es-jwt">1.1. ¿Que es JWT?</a></li>
+    <li><a href="#12-como-funciona-jwt">1.2. ¿Como funciona JWT?</a></li>
+    <li><a href="#13-como-se-implementa-jwt">1.3. ¿Como se implementa JWT?</a>
+      <ol>
+        <li><a href="#applicationuserjava">ApplicationUser.java</a></li>
+        <li><a href="#applicationuserrepositoryjava">ApplicationUserRepository.java</a></li>
+        <li><a href="#applicationuserservicejava">ApplicationUserService.java</a></li>
+        <li><a href="#securityconstantsjava">SecurityConstants.java</a></li>
+        <li><a href="#applicationuserdetailsservicejava">ApplicationUserDetailsService.java</a></li>
+        <li><a href="#jwtauthenticationfilterjava">JWTAuthenticationFilter.java</a></li>
+        <li><a href="#jwtauthorizationfilterjava">JWTAuthorizationFilter.java</a></li>
+        <li><a href="#websecurityjava">WebSecurity.java</a></li>
+        <li><a href="#applicationusercontrollerjava">ApplicationUserController.java</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

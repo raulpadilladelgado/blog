@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Este post trata de exponer una serie de buenas prácticas o trucos a la hora de realizar testing de código, y forma parte de una serie de capítulos que pretenden seguir con el propósito.
+En esta primera iteración la idea es hablemos sobre TDD, programación funcional, patrones de diseño y estabilidad, todo esto orientado a los tests.
+Vamos al laboratorio! 🧪
+TDD en nuestros tests Test-Driven Development (TDD) es una práctica de programación que consiste en escribir primero las pruebas, después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.'><title>Buenas prácticas en testing (Cap.1)</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Buenas prácticas en testing (Cap.1)'>
+<meta property='og:description' content='Introducción Este post trata de exponer una serie de buenas prácticas o trucos a la hora de realizar testing de código, y forma parte de una serie de capítulos que pretenden seguir con el propósito.
+En esta primera iteración la idea es hablemos sobre TDD, programación funcional, patrones de diseño y estabilidad, todo esto orientado a los tests.
+Vamos al laboratorio! 🧪
+TDD en nuestros tests Test-Driven Development (TDD) es una práctica de programación que consiste en escribir primero las pruebas, después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-10-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-10-09T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Buenas prácticas en testing (Cap.1)">
+<meta name="twitter:description" content="Introducción Este post trata de exponer una serie de buenas prácticas o trucos a la hora de realizar testing de código, y forma parte de una serie de capítulos que pretenden seguir con el propósito.
+En esta primera iteración la idea es hablemos sobre TDD, programación funcional, patrones de diseño y estabilidad, todo esto orientado a los tests.
+Vamos al laboratorio! 🧪
+TDD en nuestros tests Test-Driven Development (TDD) es una práctica de programación que consiste en escribir primero las pruebas, después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/testing/" >
+                testing
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/">Buenas prácticas en testing (Cap.1)</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 09, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    14 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="introducción">Introducción</h1>
+<p>Este post trata de exponer una serie de buenas prácticas o trucos a la hora de realizar testing de código, y forma parte de una serie de capítulos que pretenden seguir con el propósito.</p>
+<p>En esta primera iteración la idea es hablemos sobre TDD, programación funcional, patrones de diseño y estabilidad, todo esto orientado a los tests.</p>
+<p>Vamos al laboratorio! 🧪</p>
+<h1 id="tdd-en-nuestros-tests">TDD en nuestros tests</h1>
+<p>Test-Driven Development (TDD) es una práctica de programación que consiste en escribir primero las pruebas, después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.</p>
+<p>Con esta práctica se consigue entre otras cosas: un código más robusto, más seguro, más mantenible y una mayor rapidez en el desarrollo. Además, logramos realizar pruebas más sencillas, ya que escribimos código productivo para nuestros tests, y no al revés. Ganamos en código simple y fácil de testear.</p>
+<p>Para ver como el TDD mejora nuestros tests veamos un ejemplo siguiendo la práctica:</p>
+<h2 id="kata-fizzbuzz">Kata fizzbuzz</h2>
+<p>Enlace a la kata: <a class="link" href="https://www.hackerrank.com/challenges/fizzbuzz/problem"  target="_blank" rel="noopener"
+    ></a><a class="link" href="https://www.hackerrank.com/challenges/fizzbuzz/problem"  target="_blank" rel="noopener"
+    >https://www.hackerrank.com/challenges/fizzbuzz/problem</a></p>
+<p>Recomiendo que el siguiente ejercicio se haga siguiendo la metodología TDD.</p>
+<ol>
+<li>Todo comienza por un test que falla porque aún no tenemos implementado que hará la función a testear.</li>
+<li>Le escribes el mínimo código para que cumplamos nuestro test.</li>
+<li>Refactorizamos con la tranquilidad de que sabremos si estamos cambiando comportamiento en el código gracias a la ejecución de nuestro test</li>
+</ol>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 212; 
+			flex-basis: 509px"
+	>
+	<a href="/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/images/Untitled20.png" data-size="688x324">
+		<img src="/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/images/Untitled20.png"
+			width="688"
+			height="324"
+			
+			loading="lazy"
+			alt="https://raulpadilladelgado.com/wp-content/uploads/2021/07/Untitled20.png">
+	</a>
+	
+	<figcaption><a class="link" href="https://raulpadilladelgado.com/wp-content/uploads/2021/07/Untitled20.png"  target="_blank" rel="noopener"
+    >https://raulpadilladelgado.com/wp-content/uploads/2021/07/Untitled20.png</a></figcaption>
+	
+</figure></p>
+<p>Básicamente, el problema nos propone lo siguiente:</p>
+<pre tabindex="0"><code>Pasamos un número, y puede ocurrir lo siguiente:
+	- Que sea divisible por tres y devuelva &#34;fizz&#34;
+	- Que sea dividible por cinco y devuelva &#34;buzz&#34;
+	- Que no sea dividible por ninguno de los anteriores
+	y devuelva el mismo número
+	- Que sea dividible por tres y por cinco y devuelva &#34;fizzbuzz&#34;
+</code></pre><p>Manos a la obra! 👷🏻</p>
+<p><strong>Caso</strong>: Que no sea dividible por ninguno de los anteriores y devuelva el mismo número</p>
+<p>Test</p>
+<pre tabindex="0"><code>@Test
+public void return_the_same_number_as_passed(){
+    assertThat(Fizzbuzz.fizzbuzz(1)).isEqualTo(&#34;1&#34;);
+}
+</code></pre><p>Code</p>
+<pre tabindex="0"><code>class Fizzbuzz{
+    public static String fizzbuzz(int number){
+        return String.valueOf(number);
+}
+</code></pre><p>De momento solo tenemos un caso de uso, asi que nos ceñimos a desarrollar lo mínimo</p>
+<p><strong>Caso</strong>: Que sea dividible por tres y devuelva &ldquo;fizz&rdquo;</p>
+<p>Test</p>
+<pre tabindex="0"><code>@Test
+    public void return_the_same_number_as_passed(){
+        assertThat(Fizzbuzz.fizzbuzz(1)).isEqualTo(&#34;1&#34;);
+    }
+
+    @Test
+    public void return_fizz_if_is_divisible_by_3(){
+        assertThat(Fizzbuzz.fizzbuzz(3)).isEqualTo(&#34;fizz&#34;);
+    }
+</code></pre><p>Code</p>
+<pre tabindex="0"><code>class Fizzbuzz{
+    public static String fizzbuzz(int number){
+        if(number % 3 == 0){
+            return &#34;fizz&#34;;
+        }
+        return String.valueOf(number);
+    }
+}
+</code></pre><p>Progresivamente vamos añadiendo lógica para los nuevos casos de uso sin romper los anteriores</p>
+<p><strong>Caso</strong>: Que sea dividible por cinco y devuelva &ldquo;buzz&rdquo;</p>
+<p>Test</p>
+<pre tabindex="0"><code>@Test
+    public void return_the_same_number_as_passed(){
+        assertThat(Fizzbuzz.fizzbuzz(1)).isEqualTo(&#34;1&#34;);
+    }
+
+    @Test
+    public void return_fizz_if_is_divisible_by_3(){
+        assertThat(Fizzbuzz.fizzbuzz(3)).isEqualTo(&#34;fizz&#34;);
+    }
+
+    @Test
+    public void return_buzz_if_is_divisible_by_5(){
+        assertThat(Fizzbuzz.fizzbuzz(5)).isEqualTo(&#34;buzz&#34;);
+    }
+</code></pre><p>Code</p>
+<pre tabindex="0"><code>class Fizzbuzz{
+    public static String fizzbuzz(int number){
+        if(number % 3 == 0){
+            return &#34;fizz&#34;;
+        }
+        if(number % 5 == 0){
+            return &#34;buzz&#34;;
+        }
+        return String.valueOf(number);
+    }
+}
+</code></pre><p>Progresivamente vamos añadiendo lógica para los nuevos casos de uso sin romper los anteriores</p>
+<p><strong>Caso</strong>: Que sea dividible por tres y por cinco y devuelva &ldquo;fizzbuzz&rdquo;</p>
+<p>Test</p>
+<pre tabindex="0"><code>
+@Test
+    public void return_the_same_number_as_passed(){
+        assertThat(Fizzbuzz.fizzbuzz(1)).isEqualTo(&#34;1&#34;);
+    }
+
+    @Test
+    public void return_fizz_if_is_divisible_by_3(){
+        assertThat(Fizzbuzz.fizzbuzz(3)).isEqualTo(&#34;fizz&#34;);
+    }
+
+    @Test
+    public void return_buzz_if_is_divisible_by_5(){
+        assertThat(Fizzbuzz.fizzbuzz(5)).isEqualTo(&#34;buzz&#34;);
+    }
+
+    @Test
+    public void return_fizzbuzz_if_is_divisible_by_3_and_5(){
+        assertThat(Fizzbuzz.fizzbuzz(15)).isEqualTo(&#34;fizzbuzz&#34;);
+    }
+</code></pre><p>Code</p>
+<pre tabindex="0"><code>class Fizzbuzz{
+    public static String fizzbuzz(int number){
+        if (number % 3 == 0 &amp;&amp; number % 5 == 0){
+            return &#34;fizzbuzz&#34;;
+        }
+        if(number % 3 == 0){
+            return &#34;fizz&#34;;
+        }
+        if(number % 5 == 0){
+            return &#34;buzz&#34;;
+        }
+        return String.valueOf(number);
+    }
+}
+</code></pre><p>El ir implementando cada caso poco a poco con la lógica necesario para superar solo ese caso, ha hecho que lleguemos a una solución sencilla, y que escala a medida que necesitamos más casos de uso.</p>
+<h1 id="test-más-legible-test-más-comestible-">Test más legible, test más comestible 🍽</h1>
+<h2 id="programación-declarativa-frente-a-imperativa">Programación declarativa frente a imperativa</h2>
+<p>Cuando hacemos uso de programación declarativa le estamos diciendo al código que haga algo, pero no el cómo lo tiene que ser, nosotros solo le pedimos una misión. Un ejemplo de este tipo de comportamiento es el lenguaje SQL, que por defecto funciona de tal manera. Si queremos buscar un cliente haríamos lo siguiente:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">clients</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;name&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>Se ve muy fácil de leer, sobre todo porque no le indicamos como tiene que conseguir el propósito, eso son aspectos internos del propio de lenguaje.</p>
+<p>Por el contrario, con programación imperativa no le decimos que queremos obtener, sino que nosotros mismo implementamos esa funcionalidad usando un lenguaje como pueda ser java. Siguiendo el ejemplo anterior para buscar un cliente dentro una lista tendríamos lo siguiente usando programación imperativa:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">clients</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Client</span> <span class="n">client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">client</span><span class="o">.</span><span class="na">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">clientToBeFind</span><span class="o">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">client</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><p>O extrapolado a hacerte un café sería:</p>
+<p><em>Programación declarativa</em></p>
+<ul>
+<li>Prepara un café</li>
+</ul>
+<p><em>Programación imperativa</em></p>
+<ul>
+<li>Ve a la cocina</li>
+<li>Échale agua a la cafetera, cafe y ponla al fuego</li>
+<li>Espera a que salga el café y tráelo</li>
+</ul>
+<p>El gran pro de usar la programación declarativa es la transparencia que te da de lo que está ocurriendo, te estás abstrayendo de toda complejidad existente. Además, no solo sabes que está pasando en todo momento de una forma más clara, sino que ganas en código impoluto, ya que mandar instrucciones a la aplicación será como leer un cuento.</p>
+<h2 id="el-paradigma-de-la-programación-funcional-con-la-declarativa">El paradigma de la programación funcional con la declarativa</h2>
+<p>Como mencioné anteriormente, SQL funciona de tal forma que es declarativo, pero también tenemos otros lenguajes como Javascript que aunque no es declarativo, tiene muchas funciones predefinidas que llaman a utilizar la programación funcional. En Javascript el modo de iterar listas o arrays puede ser un proceso que sin terminar de ser declarativo del todo, es mucho más amigable que en otros lenguajes. Por ejemplo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">53</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">selectedAges</span> <span class="o">=</span> <span class="nx">ages</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">age</span> <span class="p">=&gt;</span> <span class="nx">age</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">age</span> <span class="p">=&gt;</span> <span class="nx">age</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">);</span>
+</span></span></code></pre></div><p>Como vemos tiene mucho parecido con la programación declarativa, ya que seguimos pidiendo cosas sin importar como las haga, como pueda ser el uso de map o filter, pero en el caso de map le tenemos que indicar que realizar con cada elemento de la lista, y en el caso de filter que elementos debe escoger y cuáles no. No termina de ser declarativo, pero nos permite tener esa limpieza abstrayéndonos de bucles complicados.</p>
+<p>Este comportamiento de las funciones de javascript responde a que son funciones inmutables, es decir, que no alteran ningún aspecto de la aplicación como pueda ser el estado de un atributo de un objeto, una variable global, o lo que sea. Son funciones puras, por lo que siempre que pongamos la misma entrada saldrá la misma salida. Siempre devuelven el resultado de llamarlas por eso es por lo que funcionan como la programación funcional.</p>
+<h2 id="patrones-de-diseño-aplicados-a-testing">Patrones de diseño aplicados a testing</h2>
+<p>El uso de patrones de diseño en código productivo se hace con la finalidad de que nuestro código sea más mantenible, escalable, siga unas reglas de diseño que busquen organización y otros fines similares. Pero cuando se trata de test, estos no son una excepción. Nuestras pruebas automatizadas también pueden seguir unos patrones de diseño con el fin de mejorar la mantenibilidad y legibilidad.</p>
+<p>Ahora veremos algunos ejemplos escritos en Kotlin sobre como mejorar la legibilidad y mantenibilidad de nuestros test mediante el uso de build pattern, object mother o named arguments. Vamos a poner en contexto una clase llamada User, en la que tenemos una regla de negocio que para apostar se debe tener una edad mínima.</p>
+<h3 id="tradicional">Tradicional</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">val</span> <span class="py">minimumAgeToBet</span> <span class="p">=</span> <span class="m">18</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">canBet</span><span class="p">():</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">userAge</span> <span class="o">&gt;=</span> <span class="n">minimumAgeToBet</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">`user can bet with the minimum age`</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">userAge</span> <span class="p">=</span> <span class="m">22</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&#34;some name&#34;</span><span class="p">,</span> <span class="n">userAge</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">assertTrue</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">canBet</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>En este primer caso hemos creado directamente una instancia de la clase en nuestros test, por lo que cada uno tendrá la responsabilidad de mantenerse actualizado si la firma de la clase cambia, como por ejemplo que se añada un parámetro.</p>
+<h3 id="builder-pattern">Builder Pattern</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">withAge</span><span class="p">(</span><span class="n">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">):</span> <span class="n">UserBuilder</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">userAge</span> <span class="p">=</span> <span class="n">age</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">build</span><span class="p">():</span> <span class="n">User</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">User</span><span class="p">(</span><span class="n">userName</span><span class="p">,</span> <span class="n">userAge</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">`user can bet with the minimum age`</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">userAge</span> <span class="p">=</span> <span class="m">22</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">UserBuilder</span><span class="p">().</span><span class="n">withAge</span><span class="p">(</span><span class="m">20</span><span class="p">).</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">assertTrue</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">canBet</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>En este caso hemos hecho uso del patrón builder, que implicar tener un Builder encargado de construir nuestra clase e inicializarla a través de un build().</p>
+<p>En el constructor habrá definidos unos valores por defecto para todos los atributos, y proporcionarnos unos setters que sirven para aportar semántica al test, ya que a la hora de establecer valores solo lo haremos en aquellos atributos que tiene importancia en el test.</p>
+<p>Usando el patrón builder hemos sacado fuera de los test la responsabilidad de crear instancias de las clases, hemos ganado semántica y hemos hecho más declarativos nuestros tests, ahora muestran de una forma más clara que les interesa.</p>
+<p>El patrón builder gana al método tradicional, pero tiene un problema, cuando tengamos muchos atributos a los que definirles un valor vamos a pasarlo un poco mal, veamos otro patrón que nos será aún más útil.</p>
+<h3 id="object-mother">Object mother</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">companion</span> <span class="k">object</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">userWithMinimumAgeToBet</span><span class="p">():</span> <span class="n">User</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">User</span><span class="p">(</span><span class="s2">&#34;name&#34;</span><span class="p">,</span> <span class="m">22</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">`user can bet with the minimum age`</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">UserFixtures</span><span class="p">.</span><span class="n">userWithMinimumAgeToBet</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">assertTrue</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">canBet</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>En el ámbito de test hacemos uso del ObjectMother, que no es más que una clase de factoría que contiene una serie de
+métodos estáticos que nos permiten crear una instancia de la clase con mayor semántica. Hemos indicado el tipo de caso que
+queremos, sin entrar en detalles de cuál tiene que ser el valor exacto, por lo que hemos ganado en semántica y además
+tenemos un factor a nuestro favor y es que si mañana cambia la edad mínima o la forma en la que y en varios de nuestros test llamamos al método userWithMinimumAgeToBet,
+solo tendremos que cambiar o añadir variables o lo que haga falta en el UserFixtures, nuestro test no necesita ser modificado.</p>
+<h2 id="programación-funcional-en-nuestros-test">Programación funcional en nuestros test</h2>
+<p>Ahora voy a exponer un ejemplo real escrito en Kotlin de como el uso de programación declarativa junto con el patrón builder han sido una gran ventaja a la hora de desarrollar test que necesitaban realizar muchas aserciones para verificar el estado de registros persistidos en la base de datos.</p>
+<p>Pongamos en contexto un contrato que tiene como propiedades:</p>
+<ul>
+<li>Estado</li>
+<li>Fecha de alta</li>
+<li>Fecha de baja</li>
+<li>Servicio contratado</li>
+</ul>
+<p>Teniendo lo anterior presente, vamos a crear una clase que nos permita construir paso a paso lo que queremos comprobar.
+Lo que queremos verificar son las columnas de ciertas filas en base de datos, o lo que es lo mismo, queremos revisar la
+información almacenada para un pedido, por lo que cuando produzcamos una instancia de la clase que nos hará las aserciones
+le pasaremos el ID en cuestión. Por otro lado, iniciaremos un mapa en el que la clave del mapa será la columna
+en la tabla de base de datos y el valor del mapa será el valor en la tabla de base de datos para dicha columna.</p>
+<p>Tendremos múltiples métodos para añadir columnas a comprobar, y cada uno de estos métodos devuelve la misma instancia de
+la clase para que podamos ir concatenando llamadas y agregar más columna que comprobar.</p>
+<p>Finalmente, la última llamada que realizaremos será al método que hará las aserciones.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">OrderAssertion</span><span class="p">(</span><span class="k">private</span> <span class="k">val</span> <span class="py">orderId</span><span class="p">:</span> <span class="n">Long</span><span class="p">,</span> <span class="k">private</span> <span class="k">val</span> <span class="py">connection</span><span class="p">:</span> <span class="n">DBConnection</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">fieldsValuesMap</span><span class="p">:</span> <span class="n">MutableMap</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">mutableMapOf</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">hasStatus</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">OrderAssertion</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fieldsValuesMap</span><span class="p">[</span><span class="s2">&#34;status&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="n">status</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">this</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">hasOrderDate</span><span class="p">(</span><span class="n">date</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">OrderAssertion</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fieldsValuesMap</span><span class="p">[</span><span class="s2">&#34;order_date&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="n">date</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">this</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">hasProducts</span><span class="p">(</span><span class="n">products</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">OrderAssertion</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fieldsValuesMap</span><span class="p">[</span><span class="s2">&#34;products&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="n">products</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">this</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">doAssert</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">assertOrder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">assertionError</span><span class="p">:</span> <span class="n">AssertionError</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="n">assertionError</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">unexpectedError</span><span class="p">:</span> <span class="n">Exception</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="n">AssertionError</span><span class="p">(</span><span class="s2">&#34;Unexpected Error inside order assert&#34;</span><span class="p">,</span> <span class="n">unexpectedError</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Throws</span><span class="p">(</span><span class="n">Exception</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">assertOrder</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">sql</span> <span class="p">=</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sql</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;SELECT id&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="k">field</span> <span class="k">in</span> <span class="n">fieldsValuesMap</span><span class="p">.</span><span class="n">keys</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sql</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;, &#34;</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="k">field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sql</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34; FROM orders&#34;</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34; WHERE id = &#34;</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="n">orderId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">connection</span><span class="p">.</span><span class="n">executeSQL</span><span class="p">(</span><span class="n">sql</span><span class="p">.</span><span class="n">toString</span><span class="p">()).</span><span class="n">use</span> <span class="p">{</span> <span class="n">results</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">results</span><span class="p">.</span><span class="n">moveNext</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="p">((</span><span class="k">field</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span> <span class="k">in</span> <span class="n">fieldsValuesMap</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">val</span> <span class="py">value</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="n">results</span><span class="p">.</span><span class="n">getString</span><span class="p">(</span><span class="k">field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">assertThat</span><span class="p">(</span><span class="k">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">.</span><span class="n">withFailMessage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                            <span class="s2">&#34;Wrong value for field &#39;%s&#39;. Expected is &#39;%s&#39; but actual was &#39;%s&#39;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">field</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">expected</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">value</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">).</span><span class="n">isEqualTo</span><span class="p">(</span><span class="n">expected</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">fail</span><span class="p">(</span><span class="s2">&#34;Order with ID &#39;%s&#39; not found&#34;</span><span class="p">,</span> <span class="n">orderId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Nuestro test quedará muy claro y limpio, gracias al trabajo que hemos hecho en esta clase de aserciones que quita toda
+complejidad innecesaria para nuestro test.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">`create a order`</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">orderId</span> <span class="p">=</span> <span class="s2">&#34;1234&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">status</span> <span class="p">=</span> <span class="s2">&#34;in arrival&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">orderDate</span> <span class="p">=</span> <span class="s2">&#34;2021-05-31 00:00:00&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">products</span> <span class="p">=</span> <span class="s2">&#34;some products&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">orderService</span><span class="p">.</span><span class="n">makeOrder</span><span class="p">(</span><span class="n">orderId</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">products</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">assertThatOrderWithId</span><span class="p">(</span><span class="n">orderId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">hasStatus</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">hasOrderDate</span><span class="p">(</span><span class="n">orderDate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">hasProducts</span><span class="p">(</span><span class="n">products</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">doAssert</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Como si de un framework se tratara, hemos simplificado y abstraído del test la complejidad de hacer aserciones a la base
+de datos, y ha quedado un test muy fácil de leer. Así es, test legible, test más comestible.</p>
+<h2 id="estabilidad-en-nuestros-test">Estabilidad en nuestros test</h2>
+<h3 id="como-solucionar-test-que-fallan-aleatoriamente">Como solucionar test que fallan aleatoriamente</h3>
+<p>Un problema que nos podemos encontrar a la hora de hacer test, es que tenemos algunos tests que algunas veces pasan y otras no. Esto se puede deber a que tenemos una batería de test en la que el orden de ejecución influye en el resultado de los mismos. El ejemplo más claro sería un test que persiste un registro y otro test que intenta recuperar ese mismo registro. Un test no debería depender de otros para poder funcionar correctamente, por lo que cada test debería comenzar desde cero y levantar o preparar todo lo que necesite para el caso de uso que esté probando, sin esperar que sea otro test el que prepare el escenario.</p>
+<p>Por lo que tengo entendido, en JUnit (framework de unit test para JVM) la primera ejecución de los test en una máquina (tu pc) se hace forma aleatoria, pero después ejecutará los mismos test siempre en el mismo orden. Eso quiere decir que si otra máquina ejecuta esos mismos test por primera vez también será de manera aleatoria, pero solo una vez, el resto de veces se ejecutarán en el mismo orden. Tenemos un modo de indicar usando JUnit que queremos que la ejecución de nuestros test sea de modo aleatorio, y así asegurarnos que ninguno de nuestros test depende de otro. Simplemente, lograremos esta aleatoriedad estableciendo una etiqueta encima del nombre de la clase de test:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="line"><span class="cl"><span class="nd">@TestMethodOrder</span><span class="p">(</span><span class="n">MethodOrderer</span><span class="p">.</span><span class="n">Random</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">internal</span> <span class="k">class</span> <span class="nc">SomeTest</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">aTest</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">aTest</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">aTest</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="como-forzar-tests-deterministas">Como forzar tests deterministas</h3>
+<p>Otro punto de error que puede surgir a la hora que realizamos test, es tener aserciones que dependen de variables y que además tienen mucha tendencia a cambiar. Es decir, si en un test estamos comprobando el retorno de una función contra una variable el test pasará en ocasiones si y en otras no. Esto se debe a que comparar el resultado contra dicha variable no es la mejor idea, ya que dicha variable estará cambiando su valor constantemente y, por tanto, no tendremos un test consistente y estará lanzándonos un error cuando puede ser que en realidad la función que estamos testeando está perfecta. Vamos a ver un ejemplo en Kotlin muy sencillo con una función que tiene que comprobar si en este momento actual es de día:</p>
+<p>Por un lado, el método check() de la clase MorningChecker que devuelve true o false dependiendo de si es por la mañana o no.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MorningChecker</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">isMorning</span><span class="p">():</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">hour</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="n">now</span><span class="p">().</span><span class="n">hour</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">startOfMorning</span> <span class="p">=</span> <span class="m">6</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">endOfMorning</span> <span class="p">=</span> <span class="m">12</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hour</span> <span class="k">in</span> <span class="n">startOfMorning</span><span class="o">..</span><span class="n">endOfMorning</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Por otro lado, el test que comprueba que cuando es por la mañana debería devolver true</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MorningCheckerShould</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">`check if is morning`</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">morningChecker</span> <span class="p">=</span> <span class="n">MorningChecker</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">assertTrue</span><span class="p">(</span><span class="n">morningChecker</span><span class="p">.</span><span class="n">isMorning</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Si estamos lanzando el test entre las 6 y las 12 nos dará un resultado correcto, pero en cualquier otro horario este test no pasaría. Nuestro método isMorning() está sacando la variable que determina que hora del día es usando una librería que te la proporciona en tiempo real, por lo que cuando vamos al test también se usa la fecha real. Vamos a cambiar un poco el panorama para que en vez de usar una variable calculada basándose en el tiempo real, usemos un parámetro:</p>
+<p>Extraemos a un parámetro la hora del día</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MorningChecker</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">isMorning</span><span class="p">(</span><span class="n">hour</span><span class="p">:</span> <span class="n">Int</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">startOfMorning</span> <span class="p">=</span> <span class="m">6</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">endOfMorning</span> <span class="p">=</span> <span class="m">12</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hour</span> <span class="k">in</span> <span class="n">startOfMorning</span><span class="o">..</span><span class="n">endOfMorning</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Y finalmente en el test le pasamos la hora que queremos comprobar para ese test</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MorningCheckerShould</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">`check if is morning`</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">morningChecker</span> <span class="p">=</span> <span class="n">MorningChecker</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">actualHour</span> <span class="p">=</span> <span class="m">8</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">assertTrue</span><span class="p">(</span><span class="n">morningChecker</span><span class="p">.</span><span class="n">isMorning</span><span class="p">(</span><span class="n">actualHour</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Ahora que el test tiene siempre la misma entrada, por ende tendrá siempre la misma salida. Sin sorpresas, solo lo que esperamos.
+Puede parecer un caso simple, pero la idea es plasmar que nuestro test no debería depender nunca de factores variables,
+que hacen que perdamos el control de lo que pasa y que en ocasiones provoquen que nuestro test no tenga siempre el mismo resultado
+para la misma entrada.</p>
+<h3 id="estructura-de-los-test">Estructura de los test</h3>
+<p>Cuando hablamos de entender un test no solo está sobre la mesa su contenido, sino que su contexto también no es de utilidad
+y muy importante que esté en su lugar correcto. Una buena organización y estructura de los archivos del proyecto es
+fundamental, pero si aplicamos arquitectura hexagonal vamos un paso más allá, ya que estaremos separando responsabilidades
+por capas y estaremos mejorando la mantenibilidad y escalabilidad de nuestro código. Pero la arquitectura hexagonal no
+exclusivamente la podemos aplicar a nuestro source code (código productivo), deberíamos seguir la misma idea para nuestro test,
+separándolos entre test que comprueban aspectos de la aplicación, el dominio o la infraestructura. Para aprender maś sobre
+arquitectura hexagonal puede ver un post realizado por mí:</p>
+<p><a class="link" href="https://raulpadilladelgado.github.io/blog/p/arquitectura-hexagonal/"  target="_blank" rel="noopener"
+    >https://raulpadilladelgado.github.io/blog/p/arquitectura-hexagonal/</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/blog/p/consumer-driven-contract-testing/">
+        
+        
+            <div class="article-image">
+                <img src="/blog/p/consumer-driven-contract-testing/images/cdct-no-bg.675672fb5fede4094334b7f6fedc3b60_hucbba15bc5cd4a2106ae0a3f5e1d0c2c8_123513_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-Z1Zy&#43;1/t5AlDNLf2/tw7YA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Consumer Driven Contract Testing</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/phpunit-basics/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PHPUnit basics</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Análisis del libro &#34;Diseño ágil con TDD&#34;</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#kata-fizzbuzz">Kata fizzbuzz</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#programación-declarativa-frente-a-imperativa">Programación declarativa frente a imperativa</a></li>
+    <li><a href="#el-paradigma-de-la-programación-funcional-con-la-declarativa">El paradigma de la programación funcional con la declarativa</a></li>
+    <li><a href="#patrones-de-diseño-aplicados-a-testing">Patrones de diseño aplicados a testing</a>
+      <ol>
+        <li><a href="#tradicional">Tradicional</a></li>
+        <li><a href="#builder-pattern">Builder Pattern</a></li>
+        <li><a href="#object-mother">Object mother</a></li>
+      </ol>
+    </li>
+    <li><a href="#programación-funcional-en-nuestros-test">Programación funcional en nuestros test</a></li>
+    <li><a href="#estabilidad-en-nuestros-test">Estabilidad en nuestros test</a>
+      <ol>
+        <li><a href="#como-solucionar-test-que-fallan-aleatoriamente">Como solucionar test que fallan aleatoriamente</a></li>
+        <li><a href="#como-forzar-tests-deterministas">Como forzar tests deterministas</a></li>
+        <li><a href="#estructura-de-los-test">Estructura de los test</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

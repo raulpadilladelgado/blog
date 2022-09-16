@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Primitivos y wrappers de primitivos en Java Asignar una variable primitiva usando otra variable primitiva Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.
+public class Main { public static void main(String[] args) { int x = 0; int y = x; y=5; System.'><title>Principios fundamentales de los tipos de datos en Java</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Principios fundamentales de los tipos de datos en Java'>
+<meta property='og:description' content='Primitivos y wrappers de primitivos en Java Asignar una variable primitiva usando otra variable primitiva Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.
+public class Main { public static void main(String[] args) { int x = 0; int y = x; y=5; System.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-06-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-06-26T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Principios fundamentales de los tipos de datos en Java">
+<meta name="twitter:description" content="Primitivos y wrappers de primitivos en Java Asignar una variable primitiva usando otra variable primitiva Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.
+public class Main { public static void main(String[] args) { int x = 0; int y = x; y=5; System.">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/backend/" >
+                backend
+            </a>
+        
+            <a href="/blog/categories/java/" >
+                Java
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/">Principios fundamentales de los tipos de datos en Java</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 26, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="primitivos-y-wrappers-de-primitivos-en-java">Primitivos y wrappers de primitivos en Java</h1>
+<h2 id="asignar-una-variable-primitiva-usando-otra-variable-primitiva">Asignar una variable primitiva usando otra variable primitiva</h2>
+<p>Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.</p>
+<pre tabindex="0"><code>public class Main {
+    public static void main(String[] args) {
+        int x = 0;
+        int y = x;
+        y=5;
+        System.out.println(x);//x sigue valiendo 0
+    }
+}
+</code></pre><h2 id="funciones-que-operan-primitivos">Funciones que operan primitivos</h2>
+<p>Algo similar ocurre cuando se pasa por parámetro a una función un tipo primitivo, pasa a ser una copia, por lo que es una variable nueva dentro de dicho scope.</p>
+<pre tabindex="0"><code>public class Main {
+    public static void main(String[] args) {
+        int x = 0;
+        Numbers numbers = new Numbers();
+        numbers.integers(x);
+        System.out.println(x);//x sigue valiendo 0
+    }
+    
+}
+class Numbers{
+    public static void integers(int number){
+	    number = 5;
+    }
+}
+</code></pre><h2 id="asignar-una-variable-tipo-wrapper-primitivo-usando-otra-variable-del-mismo-tipo">Asignar una variable tipo wrapper primitivo usando otra variable del mismo tipo</h2>
+<p>Con los no primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.</p>
+<pre tabindex="0"><code>public class Main {
+    public static void main(String[] args) {
+        Integer x = 0;
+        Integer y = x;
+        y = 10;
+        System.out.println(x);//x sigue valiendo 0
+    }
+    
+}
+</code></pre><h2 id="comparando-objetos-wrappers-que-envuelven-primitivos">Comparando objetos wrappers (que envuelven primitivos)</h2>
+<p>Comparar los primitivos mediante un simple &ldquo;==&rdquo; es seguro, se va a comportar siempre como esperamos.</p>
+<pre tabindex="0"><code>public class Main {
+    public static void main(String[] args) {
+        int x = 0;
+        int y = x;
+        System.out.println(x == y);
+        //el resultado es true
+    }
+}
+</code></pre><p>El problema surge cuando en lugar de usar los primitivos, usamos la clase correspondiente que lo envuelve y que ofrece métodos para operar con él. En el siguiente <a class="link" href="https://www.blogger.com/u/1/blog/post/edit/3160943841242931334/7326708113573585312#"  target="_blank" rel="noopener"
+    >ejemplo</a>, vemos como diferentes creaciones de un String dan diferentes resultados a la hora de comparar.</p>
+<pre tabindex="0"><code>public class Main {
+    public static void main(String[] args) {
+        String s1 = new String(&#34;campusMVP&#34;);
+        String s2 = new String(&#34;campusMVP&#34;);
+        System.out.println(s1 == s2);   //Devuelve false
+    /*----------------------------------------------------*/
+        String s3 = &#34;campusMVP&#34;;
+        String s4 = new String(&#34;campusMVP&#34;);
+        System.out.println(s3 == s4);   //Devuelve false
+    /*----------------------------------------------------*/
+        String s5 = &#34;campusMVP&#34;;
+        String s6 = &#34;campusMVP&#34;;
+        System.out.println(s5 == s6);   //Devuelve true
+    }
+}
+</code></pre><p>La comparación mediante &ldquo;==&rdquo; no siempre funciona como esperamos, por lo que lo mejor sería usar en su lugar &ldquo;equals()&rdquo;.</p>
+<pre tabindex="0"><code>public class Main {
+    public static void main(String[] args) {
+        String s1 = new String(&#34;campusMVP&#34;);
+        String s2 = new String(&#34;campusMVP&#34;);
+        System.out.println(s1.equals(s2));   //Devuelve true
+    /*----------------------------------------------------*/
+        String s3 = &#34;campusMVP&#34;;
+        String s4 = new String(&#34;campusMVP&#34;);
+        System.out.println(s3.equals(s4));   //Devuelve true
+    /*----------------------------------------------------*/
+        String s5 = &#34;campusMVP&#34;;
+        String s6 = &#34;campusMVP&#34;;
+        System.out.println(s5.equals(s6));   //Devuelve true
+    }
+}
+</code></pre><p>No solo cuenta que es más seguro realizarlo de ésta forma, además dejas más clara la intención de estar haciendo una comparación por el valor del objeto.</p>
+<h1 id="objetos-propios">Objetos propios</h1>
+<h2 id="funciones-que-operan-nuestros-objetos">Funciones que operan nuestros objetos</h2>
+<p>Anteriormente, vimos que los primitivos, o las clases que los usan mejor dicho, ejecutan métodos que devuelven copias modificadas del original. Cuando tenemos nuestros propios objetos la historia cambia. Según como desarrollemos sus métodos, podrá alterar su estado inicial, o simplemente devolver copias tal que lo hacen los primitivos.</p>
+<p>En el siguiente ejemplo, podemos ver ciertos métodos que cambian el estado original del objeto, porque nuestro propio método en este caso si muta el estado original.</p>
+<pre tabindex="0"><code>public class Main {
+    public static void main(String args[]) {
+      SomeType someType = new SomeType();
+      SomeType another = new SomeType();
+      someType.firstMethod(another); // another{ num:5, text:null }
+      System.out.println(another.toString());
+    }
+}
+class SomeType{
+    public int num;
+    public String text;
+    public void firstMethod(SomeType someType){
+	        someType.num=5; // hace referencia al mismo objeto recibido por parámetro
+    }
+    @Override
+    public String toString(){
+        return &#34;{num:&#34; + num + &#34;, &#34; + &#34;text:&#34; + text + &#34;}&#34;;
+    }
+}
+</code></pre><p>En cambio podemos provocar que ocurra algo similar que con los primitivos.</p>
+<pre tabindex="0"><code>public class Main {
+    public static void main(String args[]) {
+      SomeType someType = new SomeType();
+      SomeType another = new SomeType();
+      someType.firstMethod(another); // another{ num:0, text:null }
+      System.out.println(another.toString());
+    }
+}
+class SomeType{
+    public int num;
+    public String text;
+    public void firstMethod(SomeType someType){
+            someType = new SomeType(); // ya NO hace referencia al mismo objeto recibido por parámetro
+	        someType.num=5; 
+    }
+    @Override
+    public String toString(){
+        return &#34;{num:&#34; + num + &#34;, &#34; + &#34;text:&#34; + text + &#34;}&#34;;
+    }
+}
+</code></pre><h2 id="funciones-que-operan-colecciones-o-arrays-de-nuestros-objetos">Funciones que operan colecciones o arrays de nuestros objetos</h2>
+<p>Otro caso más específico que debemos tener en cuenta, sería el hecho de que los arrays de primitivos, si mutan su valor.</p>
+<pre tabindex="0"><code>public class Main {
+    public static void main(String args[]) {
+      SomeType someType = new SomeType();
+      SomeType another = new SomeType();
+      someType.firstMethod(another.num);
+      System.out.println(another.num[0]); // 5
+    }
+}
+class SomeType{
+    public int [] num = new int[5];
+    public String text;
+    public void firstMethod(int[] num){
+        num[0] = 5;
+    }
+}
+</code></pre><h1 id="tipos-de-funciones">Tipos de funciones</h1>
+<h2 id="command-query-separator-cqs">command query separator (cqs)</h2>
+<p>Es un principio que nos dice que debemos de diferenciar entre dos tipos de funciones: por un lado, tenemos las &ldquo;querys&rdquo;, que no alteran el estado del sistema</p>
+<p><code>c = sum(a,b); *//realiza una &quot;pregunta&quot; y asigna la respuesta a una variable.*</code></p>
+<p>; por otro lado, tenemos las &ldquo;command&rdquo;, que sí alteran el estado del sistema</p>
+<p><code>sum(a,b); *//internamente, está asignando el resultado de la operación a algún campo, por lo que sería una &quot;orden&quot;.*</code></p>
+<p>Una vez conocida la diferencia, cabe recordar evitar la mezcla de éstos dos tipos de funciones, de tal modo que, ni una &ldquo;query&rdquo; debe alterar el estado del sistema, y una &ldquo;command&rdquo; se limita a operar con datos del sistema. Por ejemplo, un value object contiene solo funciones tipo command.</p>
+<h2 id="funciones-puras">Funciones puras</h2>
+<p>Son esas funciones que no dependen de información externa para su ejecución. Realizar funciones los mas puras posibles, nos garantiza flexibilidad, además de que esa función puede estar en cualquier sitio, y que por cambiarla no romperemos nada. Aquí vemos un ejemplo, en el que por más que llamemos a la función, si siempre es el mismo parámetro, el resultado será el mismo.</p>
+<p>**<code>class** **SomeType**{ **public** double raizCuadrada(int n){ **return** Math.sqrt(n); }}</code></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/blog/p/java-virtual-machine/">
+        
+        
+            <div class="article-image">
+                <img src="/blog/p/java-virtual-machine/images/jvm.88ad4415a9a08faa633afba144e10534_hua61f249ce1be457cade7cef47930f9fb_54217_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-iK1EFamgj6pjOvuhROEFNA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java Virtual Machine</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/principios-solid/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Principios SOLID</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/clases-interfaces-y-gen%C3%A9ricos/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Clases, Interfaces y Genéricos</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/value-object-vs-entity-object/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Value object VS Entity object</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#asignar-una-variable-primitiva-usando-otra-variable-primitiva">Asignar una variable primitiva usando otra variable primitiva</a></li>
+    <li><a href="#funciones-que-operan-primitivos">Funciones que operan primitivos</a></li>
+    <li><a href="#asignar-una-variable-tipo-wrapper-primitivo-usando-otra-variable-del-mismo-tipo">Asignar una variable tipo wrapper primitivo usando otra variable del mismo tipo</a></li>
+    <li><a href="#comparando-objetos-wrappers-que-envuelven-primitivos">Comparando objetos wrappers (que envuelven primitivos)</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#funciones-que-operan-nuestros-objetos">Funciones que operan nuestros objetos</a></li>
+    <li><a href="#funciones-que-operan-colecciones-o-arrays-de-nuestros-objetos">Funciones que operan colecciones o arrays de nuestros objetos</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#command-query-separator-cqs">command query separator (cqs)</a></li>
+    <li><a href="#funciones-puras">Funciones puras</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

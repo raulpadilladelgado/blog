@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Java Virtual Machine (JVM) ¿Que es? La Máquina Virtual de Java, en inglés Java Virtual Machine (JVM), es un componente dentro de JRE (Java Runtime Environment) necesario para la ejecución del código desarrollado en Java, es decir, es la máquina virtual la que permite ejecutar código Java en cualquier sistema operativo o arquitectura. De aquí que se conozca Java como un lenguaje multiplataforma. JVM interpreta y ejecuta instrucciones expresadas en un código máquina especial (bytecode), el cual es generado por el compilador de Java (también ocurre con los generados por los compiladores de lenguajes como Kotlin y Scala).'><title>Java Virtual Machine</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/java-virtual-machine/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Java Virtual Machine'>
+<meta property='og:description' content='Java Virtual Machine (JVM) ¿Que es? La Máquina Virtual de Java, en inglés Java Virtual Machine (JVM), es un componente dentro de JRE (Java Runtime Environment) necesario para la ejecución del código desarrollado en Java, es decir, es la máquina virtual la que permite ejecutar código Java en cualquier sistema operativo o arquitectura. De aquí que se conozca Java como un lenguaje multiplataforma. JVM interpreta y ejecuta instrucciones expresadas en un código máquina especial (bytecode), el cual es generado por el compilador de Java (también ocurre con los generados por los compiladores de lenguajes como Kotlin y Scala).'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/java-virtual-machine/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-10-29T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-10-29T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/java-virtual-machine/images/jvm.jpg' />
+<meta name="twitter:title" content="Java Virtual Machine">
+<meta name="twitter:description" content="Java Virtual Machine (JVM) ¿Que es? La Máquina Virtual de Java, en inglés Java Virtual Machine (JVM), es un componente dentro de JRE (Java Runtime Environment) necesario para la ejecución del código desarrollado en Java, es decir, es la máquina virtual la que permite ejecutar código Java en cualquier sistema operativo o arquitectura. De aquí que se conozca Java como un lenguaje multiplataforma. JVM interpreta y ejecuta instrucciones expresadas en un código máquina especial (bytecode), el cual es generado por el compilador de Java (también ocurre con los generados por los compiladores de lenguajes como Kotlin y Scala)."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/java-virtual-machine/images/jvm.jpg' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/java-virtual-machine/">
+                <img src="/blog/p/java-virtual-machine/images/jvm.jpg"
+                        
+                        width="1280" 
+                        height="720" 
+                        loading="lazy"
+                        alt="Featured image of post Java Virtual Machine" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/java/" >
+                Java
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/java-virtual-machine/">Java Virtual Machine</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 29, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="java-virtual-machine-jvm">Java Virtual Machine (JVM)</h1>
+<h2 id="que-es">¿Que es?</h2>
+<p>La Máquina Virtual de Java, en inglés Java Virtual Machine (JVM), es un componente dentro de JRE (Java Runtime Environment) necesario para la ejecución del código desarrollado en Java, es decir, es la máquina virtual la que permite ejecutar código Java en cualquier sistema operativo o arquitectura. De aquí que se conozca Java como un lenguaje multiplataforma. JVM interpreta y ejecuta instrucciones expresadas en un código máquina especial (bytecode), el cual es generado por el compilador de Java (también ocurre con los generados por los compiladores de lenguajes como Kotlin y Scala). Dicho de otra forma, es un proceso escrito en C o C++ que se encarga de interpretar el bytecode generado por el compilador y hacerlo funcionar sobre la infraestructura de ejecución. Como hay una versión de la JVM para cada entorno que sí conoce los detalles de ejecución de cada sistema, puede utilizar el código máquina equivalente para cada una de las instrucciones bytecode.</p>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled.png" >
+		<img src="/blog/images/Untitled.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>Java tiene dos componentes principales:</p>
+<ul>
+<li>Java Runtime Environment (JRE): es el entorno de ejecucción de Java. Incluye la máquina virtual (JVM), las librerías básicas del lenguaje y otras herramientas relacionadas.</li>
+<li>Java Delopment Kit (JDK); además del JRE, incluye el compilador, el debugger, el empaquetador JAR, herramientas para generar documentación, etc</li>
+</ul>
+<p>Por lo que cuando queremos ejecutar un fichero java ocurre lo siguiente:</p>
+<ol>
+<li>Un fichero example.java se compilar (gracias al compilador del JDK) y se genera un fichero example.class que contiene el bytecode capaz de ser interpretado por la JVM.</li>
+<li>Durante la ejecución del código, Class Loader se encarga de llevar los ficheros .class a las JVM que reside en la RAM del ordenador y ByteCode Verifier se encarga de verificar que el código en bytecode procede de una compilación válida</li>
+<li>El compilador just in time compila el bytecode a código nativo de la máquina y se ejecuta directamente</li>
+</ol>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled1.png" >
+		<img src="/blog/images/Untitled1.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>En el siguiente apartado veremos más a fondo la definición de cada uno de estos subsistemas de la JVM.</p>
+<h2 id="estructura">Estructura</h2>
+<p>La JVM se descompone en 3 subsistemas:</p>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled2.png" >
+		<img src="/blog/images/Untitled2.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h3 id="class-loader-subsystem">Class loader subsystem</h3>
+<p>Cuando una clase Java necesita ser ejecutada, existe un componente llamado Java Class Loader Subsystem que se encarga de cargar, vincular e inicializar de forma dinámica y en tiempo de ejecución las distintas clases en la JVM. Se dice que el proceso es dinámico porque la carga de los ficheros se hace gradualmente, según se necesiten.</p>
+<p><strong>Carga</strong></p>
+<p>Existen a su vez tres tipos de Loaders y cada uno tiene una ruta predefinida desde donde cargar las clases.</p>
+<ol>
+<li>Bootstrap/Primordial ClassLoader: es el padre de los loaders y su función es cargar las clases principales desde jre/lib/rt.jar, fichero que contiene las clases esenciales del lenguaje</li>
+<li>Extensión ClassLoader: delega la carga de clases a su padre (bootstrap) y, en caso fallido, las carga el mismo desde los directorios de extensión de JRE (jre/lib/ext)</li>
+<li>System/Application ClassLoader: es responsable de cargar clases específicas desde la variable de entorno CLASSPATH o desde la opción por línea de comandos -cp.</li>
+</ol>
+<p><strong>Vínculo</strong></p>
+<p>Linking es el proceso de añadir los bytecodes cargados de una clase en el Java Runtime System para que pueda ser usado por la JVM. Existen tres paso en el proceso de Linking, aunque el último es opcional.</p>
+<ol>
+<li>Verify: Bytecode Verifier comprueba que el bytecode generado es correcto. En caso de no serlo, se devuelve un errror.</li>
+<li>Prepare: una vez se ha verificado, se procede a asignar memoria a las variables de las clases y se inicializan con valores por defecto dependiendo de su tipo. Las variables de clases no toman su valor inicial correcto hasta la fase de Initialization. Valores por defecto de variables primitivas:<br>
+➡️ int = 0<br>
+➡️ long = 0L<br>
+➡️ short = (short) 0<br>
+➡️ char = &ldquo;\u0000&rdquo;<br>
+➡️ byte = (byte) 0<br>
+➡️ boolean = false<br>
+➡️ reference = null<br>
+➡️ float = 0.0f<br>
+➡️ double = 0.0d</li>
+<li>Resolve: JVM localiza las clases, interfaces, campos y métodos referenciados en una tabla llamada constant pool (CP) y determina los valores concretos a partir de su referencia simbólica. Cuando se compila una clase Java, todas las referencias a variables y métodos se almacenan en el CP como referencia simbólica. Una referencia simbólica, de forma muy breve, es un string que puede usarse para devolver el objeto actual. El CP es un área de memoria con valores únicos que se almacenan para reducir la redundancia. Para el siguiente ejemplo:<br>
+<code>System.err.println(&quot;Test&quot;);</code><br>
+<code>System.out.println(&quot;Test&quot;);</code><br>
+en el CP solo habría un objeto, String &ldquo;Test&rdquo;</li>
+</ol>
+<p><strong>Inicialización</strong></p>
+<p>Se encarga de que las variables de clase se inicialicen correctamente, con los valores que el desallorador especificó en el código.</p>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled3.png" >
+		<img src="/blog/images/Untitled3.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h3 id="runtime-data-areas">Runtime Data Areas</h3>
+<p>JVM define varias áreas de datos que se utilizan durante la ejecución de un programa y que se podrían dividir en dos grupos. Algunas de estas áreas se crean al inicializarse la JVM y se destruyen una vez la JVM finaliza (compartidas por todos los hilos). Otras se inicializan cuando el hilo se crea y se destruyen cuando el hilo se ha completado (una por hilo).</p>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled4.png" >
+		<img src="/blog/images/Untitled4.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<ul>
+<li>Method area: es parte de Heap Area. Contiene el esqueleto de la clase (métodos, constantes, variables, atributos, constructor, etc)</li>
+<li>Heap area: fragmento de memoria donde se almacenan los objetos creados (todo lo que se inicialice con el operador new). Si el objeto se borra, el Garbage Collector se encarga de liberar su espacio. Solo hay un Heap Area por JVM, por lo que es un recurso compartido (igual que Method Area)</li>
+<li>Stack area: fragmento de memoria donde se almacenan las variables locales, parámetros, resultados intermedios y otros datos. Cada hilo tiene una private JVM stack, creada al mismo tiempo que el hilo.</li>
+<li>PC register: contiene la dirección actual de la instrucción que se está ejecutando (una por hilo)</li>
+<li>Native Method Stack: igual que Stack, pero para métodos nativos, normalmente escritor en C o C++.</li>
+</ul>
+<h3 id="execution-engine">Execution Engine</h3>
+<p>El bytecode que es asignado a las áreas de datos en la JVM es ejecutado por el Execution Engine, ya que este puede comunicarse con distintas áreas de memoria de la JVM. El Execution Engine tiene los siguientes componentes.</p>
+<ul>
+<li>Interpreter: es el encargado de ir leyendo el bytecode y ejecutar el código nativo correspondiente. Esto afecta considerablemente al rendimiento de la aplicación.</li>
+<li>JIT Compiler: interactúa en tiempo de ejecucción con la JVM para compilar el bytecode a código nativo y optimizarlo. Esto permite mejorar el rendimiento del programa. Esto se hace a través del HotSpot compiler.</li>
+</ul>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled5.png" >
+		<img src="/blog/images/Untitled5.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<ul>
+<li>Garbage Collector: libera zonas de memoria que han dejado de ser referenciadas por un objeto</li>
+</ul>
+<h1 id="empaquetar-y-ejecutar-aplicación-java">Empaquetar y ejecutar aplicación Java</h1>
+<p>Ya hemos visto la parte teórica de como funciona la JVM y ahora toca realizar un ejemplo práctico.</p>
+<p>Para compilar una app usaremos el javac dentro del directorio bin de nuestra instalación</p>
+<pre tabindex="0"><code>javac MyApp.java
+</code></pre><p>Esto generar archivos .class a partir de nuestro archivo fuente .java. Estos son los archivos que puede ejecutar la máquina virtual de Java.</p>
+<p>Para ejecutar una aplicación usaremos java que lo podemos encontrar en el directorio bin del JRE o JDK. Para ello, debemos hacer referencia a una clase que contenga un método estático main, el principal punto de entrada de las aplicaciones en Java. Además, si forma parte de un paquete debemos escribir la ruta completa desde la base del árbol.</p>
+<pre tabindex="0"><code>java com.example.myApp.MyApp
+</code></pre><p>Java permite empaquetar las aplicaciones y librerías en archivos comprimidos. De esta forma es más sencillo poder reutilizar el código a través de distintas aplicaciones o desplegar nuevas versiones de la aplicación. Estos archivos pueden ser:</p>
+<ul>
+<li>JAR: librerías o aplicaciones de escritorio</li>
+<li>WAR: aplicaciones web</li>
+</ul>
+<pre tabindex="0"><code>jar cf jar-file files-to-package
+</code></pre><p>La opción c indica que se desea crear el archivo y la opción f especifica el nombre del archivo. Este comando genera un comprimido .jar que contiene todas las clases que indiquemos, incluyendo directorios de forma recursiva. Además, genera un archivo de manifiesto. Si el archivo de manifiesto especifica el header Main-Class, podremos ejecutar la aplicación desde el archivo JAR de la siguiente forma:</p>
+<pre tabindex="0"><code>java -jar jar-file
+</code></pre><p>Los archivos JAR también pueden ser agregados al classpath, de forma que las aplicaciones puedan obtener sus dependencias al explorar dentro de su contenido. Es la principal forma de distribución de librerías. Normalmente, cuando descargamos una aplicación Java, esta trae sus propios JAR además de las dependencias.</p>
+<h1 id="graalvm">GraalVM</h1>
+<p>Hablamos de una Virtual Machine que es una extensión de la JVM tradicional que permite ejecutar cualquier lenguaje en una única VM (JavaScript, R, Ruby, Python&hellip;). Soporta modos de ejecucción tales como la compilación ahead-of-time que permite un tiempo de arranque más rápido en aplicaciones Java, resultado en ejecutables que ocupan menos memoria.</p>
+<p>🎯 Objetivos</p>
+<ul>
+<li>Mejorar el rendimiento de los lenguajes basados en la máquina virtual de Java haciendo que tengan un rendimiento similar a los lenguajes nativos</li>
+<li>Reducir el tiempo de arranque de las aplicaciones de la JVM mediante la compilación ahead-of-time (antes de tiempo) con GraalVM Native image</li>
+<li>Permitir la integración de GraalVM en Oracle Database, Node.js, Android/iOS y otros</li>
+</ul>
+<p>📰 Lenguajes y runtimes</p>
+<ul>
+<li>GraalVM JavaScript: runtime de JavaScript (ECMAScript 2019), con soporte para Node.js</li>
+<li>TruffleRuby: implementación de Ruby</li>
+<li>FastR: implementación del lenguaje R</li>
+</ul>
+<p>🔩 Componentes</p>
+<ul>
+<li>GraaVM Compiler: se trata de un compilador JIT para Java</li>
+<li>GraalVM Native Image: permite la compilcación ahead-of-time</li>
+<li>Truffle Language Implementation Framework: depende de GraalVM SDK y permite implementar otros lenguajes en GraalVM</li>
+<li>Instrumentation-based Tool Support: soporte para instrumentación dinámica, que es agnóstica del lenguaje</li>
+</ul>
+<p>Una opción que puede ser interesante, llegando a posibilidad de tener varios lenguajes dentro de un mismo proyecto, y que tiene el suficiente cuerpo como para que sea comentada en otro post del blog.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Principios fundamentales de los tipos de datos en Java</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#que-es">¿Que es?</a></li>
+    <li><a href="#estructura">Estructura</a>
+      <ol>
+        <li><a href="#class-loader-subsystem">Class loader subsystem</a></li>
+        <li><a href="#runtime-data-areas">Runtime Data Areas</a></li>
+        <li><a href="#execution-engine">Execution Engine</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

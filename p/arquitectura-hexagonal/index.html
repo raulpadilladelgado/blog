@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Arquitectura de software
+Reglas autoimpuestas al definir como diseñamos software
+¿Que ganamos entonces imponiéndonos este tipo de reglas?
+Buscamos la mantenibilidad: Somos capaces de mantener mejor el código gracias a como formamos la arquitectura Buscamos la variabilidad: Somos capaces de reemplazar piezas de nuestra arquitectura sin aparentemente un costo muy grande Buscamos el testing: Somos capaces de testear nuestro código de una forma rápida, sencilla y eficaz. Buscamos la simplicidad: Somos capaces de tener un código simétrico, que sea fácil de entender.'><title>Arquitectura hexagonal</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/arquitectura-hexagonal/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Arquitectura hexagonal'>
+<meta property='og:description' content='Introducción Arquitectura de software
+Reglas autoimpuestas al definir como diseñamos software
+¿Que ganamos entonces imponiéndonos este tipo de reglas?
+Buscamos la mantenibilidad: Somos capaces de mantener mejor el código gracias a como formamos la arquitectura Buscamos la variabilidad: Somos capaces de reemplazar piezas de nuestra arquitectura sin aparentemente un costo muy grande Buscamos el testing: Somos capaces de testear nuestro código de una forma rápida, sencilla y eficaz. Buscamos la simplicidad: Somos capaces de tener un código simétrico, que sea fácil de entender.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/arquitectura-hexagonal/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-04-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/images/Untitled18.png' />
+<meta name="twitter:title" content="Arquitectura hexagonal">
+<meta name="twitter:description" content="Introducción Arquitectura de software
+Reglas autoimpuestas al definir como diseñamos software
+¿Que ganamos entonces imponiéndonos este tipo de reglas?
+Buscamos la mantenibilidad: Somos capaces de mantener mejor el código gracias a como formamos la arquitectura Buscamos la variabilidad: Somos capaces de reemplazar piezas de nuestra arquitectura sin aparentemente un costo muy grande Buscamos el testing: Somos capaces de testear nuestro código de una forma rápida, sencilla y eficaz. Buscamos la simplicidad: Somos capaces de tener un código simétrico, que sea fácil de entender."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/images/Untitled18.png' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/arquitectura-hexagonal/">
+                
+                    <img src="/blog/images/Untitled18.png" loading="lazy" alt="Featured image of post Arquitectura hexagonal" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/arquitectura-de-software/" >
+                arquitectura-de-software
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/arquitectura-hexagonal/">Arquitectura hexagonal</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 30, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h2 id="introducción">Introducción</h2>
+<blockquote>
+<p><strong>Arquitectura de software</strong></p>
+<p>Reglas autoimpuestas al definir como diseñamos software</p>
+</blockquote>
+<p>¿Que ganamos entonces imponiéndonos este tipo de reglas?</p>
+<ul>
+<li>Buscamos la mantenibilidad: Somos capaces de mantener mejor el código gracias a como formamos la arquitectura</li>
+<li>Buscamos la variabilidad: Somos capaces de reemplazar piezas de nuestra arquitectura sin aparentemente un costo muy grande</li>
+<li>Buscamos el testing: Somos capaces de testear nuestro código de una forma rápida, sencilla y eficaz.</li>
+<li>Buscamos la simplicidad: Somos capaces de tener un código simétrico, que sea fácil de entender. Si entiende un caso de uso, serás capaz de entender cualquier otro, nuestro código se vuelve predecible.</li>
+</ul>
+<p>Esto también nos aleja de errores que no queremos cometer:</p>
+<ul>
+<li>Evitar la complejidad accidental: Evitamos la complejidad accidental al no introducir con nuestros desarrollos más complejidad de la que el sistema ya tiene</li>
+</ul>
+<h2 id="la-estructura-de-directorios-en-arquitectura-hexagonal">La estructura de directorios en arquitectura hexagonal</h2>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled18.png" >
+		<img src="/blog/images/Untitled18.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 140; 
+			flex-basis: 337px"
+	>
+	<a href="/blog/p/arquitectura-hexagonal/images/img.png" data-size="931x663">
+		<img src="/blog/p/arquitectura-hexagonal/images/img.png"
+			width="931"
+			height="663"
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>Las capas superiores conocen las capas inferiores y no al revés:</p>
+<p>Nuestro dominio no conoce detalles de implementación de la capa de infraestructura, solo define el contrato para que sea la infraestructura quien implemente dicho funcionamiento.</p>
+<p>La aplicación conoce el dominio a modo de poder presentar la información para que otros la consuman, en este caso, sera la capa de infraestructura quien use la aplicación para realizar las operaciones pertinentes.</p>
+<p>La infraestructura son detalles de implementación, como puede ser una base de datos, y debería poder cambiarse un tipo de infraestructura por otra sin afectar al funcionamiento base de la aplicación y el dominio.</p>
+<h2 id="application-service-vs-domain-service">Application service vs Domain service</h2>
+<h3 id="servicios-de-aplicación">Servicios de aplicación</h3>
+<p><figure 
+	>
+	<a href="/blog/images/Untitled19-1-1024x562.png" >
+		<img src="/blog/images/Untitled19-1-1024x562.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>Como podemos ver en la imagen, los servicios de aplicación son el punto de entrada de nuestra aplicación. Desde el controlador ya sea de tipo API o línea de comandos, se llama al servición de aplicación para que este se encarge de realizar las operaciones pertinentes, como pueda ser:</p>
+<ul>
+<li>Solicita operaciones al sistema de persistencia. Dichas operaciones comienzan y finalizan en los servicios de aplicación.</li>
+<li>Publicar eventos de dominio</li>
+</ul>
+<p>Son el inicio de un caso de uso de nuestro aplicación.</p>
+<p>Un Servicio de aplicación instancia un Servicio de dominio para evitar la duplicidad de código.</p>
+<h3 id="servicios-de-dominio">Servicios de dominio</h3>
+<p>Son el resultado de agrupar lógica de negocio que podremos reutilizar desde los servicios de aplicación. Imaginemos que tenemos dos casos de uso en nuestra aplicación:</p>
+<ul>
+<li>Obtener una playlist en base a su identificador</li>
+<li>Modificar el nombre de una playlist</li>
+</ul>
+<p>¿Que comparten ambos casos?</p>
+<ul>
+<li>Necesitan ir al repositorio de playlists a buscar la playlist dado un identificador</li>
+<li>Lanzar una excepción de dominio tipo PlaylistNotFound en el caso de que no encuentre la playlist</li>
+<li>Retornar la playlist en caso de encontrarla</li>
+</ul>
+<p>Entonces extraeremos a un Servicio de dominio dicho compartimiento común que tendrían nuestros dos casos de uso (dos servicios de aplicación).</p>
+<h2 id="sevicios-de-infraestructura">Sevicios de infraestructura</h2>
+<p>❌ <strong>No acoplar la estructura de un contrato con su implementación</strong></p>
+<p>Un error muy común sería modelar el dominio de tal forma que aunque no esté acoplado a la infraestructura, si esté pensando para tener la estructura para alguna implementación específica. Por ejemplo, en nuestro aplicación tenemos un servicio de notificaciones, y desde un principio tenemos claro que en la infraestructura inicial estará slack como ese servicio, el error sería modelar el dominio para que cumpla los requisitos que pide tal implementación.</p>
+<p>💉 <strong>Inyectar las dependencias de los adaptores/implementaciones por constructor</strong></p>
+<p>Para poder solventar esto, debemos modelar el dominio pensando en que sea lo más abstracto posible, sin influirle con nada, y en el caso de necesitar parámetros específicos para la implementación, lo haríamos mediante su constructor. El contructor nunca lo definiremos en la interface, irá en sus implementaciones, y entonces será la infraestructura la que se encarge de conocer el dominio y de como acoplarse a el.</p>
+<p>🧪 <strong>Usamos implementaciones fake de servicios para nuestros test</strong></p>
+<p>Usaremos implementaciones fake para poder testear sin tener que ejecutar el código real que tenemos en la infraestructura. Estaríamos evitando también tener que falsear el comportamiento de un servicio existente, algo que se puede complicar al tratar de mockear las dependencias y funcionamiento de esa implementación.</p>
+<h2 id="testing-en-arquitectura-hexagonal">Testing en arquitectura hexagonal</h2>
+<h3 id="testing-capa-de-aplicación-y-dominio-test-unitario">Testing capa de aplicación y dominio (test unitario)</h3>
+<p>Los test unitarios son los que usaremos para comprobar que la lógica de negocio de nuestros casos de uso (capa de aplicación) y modelos o servicios de dominio se comportan como esperamos. Características principales:</p>
+<ul>
+<li>El objetivo de estos tests es el de <strong>validar que la implementación de nuestra lógica de negocio es correcta</strong>.</li>
+<li><strong>Son los test más rápidos de ejecutar</strong>. En estos tests falsearemos la implementación a usar de todo componente de infraestructura. Es decir, allá donde definamos un puerto en nuestros casos de uso, inyectaremos un doble de test para que no hagan operaciones de entrada/salida pero poder validar la interacción del dominio con estos componentes. Importante falsear la interface de dominio y no el cliente final para evitar incurrir en <a class="link" href="https://www.youtube.com/watch?v=XbkjUz20pOk"  target="_blank" rel="noopener"
+    >el anti-patrón de Infrastructure Mocking.</a></li>
+<li><strong>El test unitario será independiente del punto de entrada</strong>. Desde el momento en el que encapsulamos nuestros casos de uso en servicios de aplicación para poderlos reaprovechar desde múltiples puntos de entrada (controlador API HTTP o CLI), el test unitario invocará directamente al caso de uso para desacoplarse también del controlador.</li>
+<li>Al ser los más rápidos de ejecutar y estar centrados en la lógica de negocio, es en estos test donde ubicamos las <strong>comprobaciones más exhaustivas</strong> en cuanto a las distintas ramificaciones de nuestros casos de uso.</li>
+</ul>
+<p>Gracias a que nuestro dominio no conoce detalles de implementación de la capa de infraestructura, solo define el contrato para que sea la infraestructura quien implemente dicho funcionamiento, tenemos la posibilidad de crear implementaciones específicas para nuestros test. Supongamos que tenemos un servicio que necesita un repositorio para persistir en base de datos, dado que no estamos acoplados a una implementación específica, en nuestros test podrías definir una nueva implementación que permita testear solo el comportamiento de la capa de aplicación y de dominio, ya que en este caso no necesitaríamos testear infraestructura en este tipo de test unitario.</p>
+<p><figure 
+	>
+	<a href="/blog/images/ApplicationService.png" >
+		<img src="/blog/images/ApplicationService.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h3 id="testing-capa-de-infraestructura">Testing capa de infraestructura</h3>
+<p>Un tipo de test donde <strong>el objeto de test es alguna implementación de uno de nuestros puertos</strong>. Es decir, en el caso del test unitario, habríamos falseado mediante un doble (<code>PlaylistRepositoryFake</code>) de test la interface de dominio <code>PlaylistRepository</code>, mientras que en el test de integración lo que haremos será justamente testear la implementación de <code>PlaylistRepositoryPgsql</code> para validar que se comporta como esperamos.</p>
+<pre tabindex="0"><code>		@Test
+    public void it_should_save_a_playlist()
+    {
+        repository().save(&#34;Hello, I am a playlist&#34;);
+    }
+
+    @Test
+    public function it_should_check_if_exists_a_playlist()
+    {
+        String playlist = &#34;Hello, I am a playlist&#34;;
+
+        repository().save(playlist);
+        
+        assertThat(repository().search($playlist)).isTrue();
+    }
+</code></pre><h3 id="test-de-aceptación">Test de aceptación</h3>
+<p><strong>Simulan ser un cliente de nuestra aplicación</strong>. Entrarán en juego todas las implementaciones reales para comprobar que todo el flujo y la integración con la infraestructura se producen satisfactoriamente. Con lo cuál, las características principales serían:</p>
+<ul>
+<li>El objetivo de estos tests es el de <strong>asegurar que la aplicación funciona correctamente</strong> y el flujo completo de las peticiones se puede realizar satisfactoriamente.</li>
+<li><strong>Son los test más lentos</strong> de ejecutar ya que tienen un alcance mayor y sí ejecutan operaciones de entrada/salida como inserts en base de datos ya que usan las implementaciones reales de estos componentes.</li>
+<li><strong>Aportan mayor valor</strong> debido al alcance que tienen (nos asegura que absolutamente todo está ejecutandose como esperamos)</li>
+<li>En nuestro caso, al implementar una API HTTP, <strong>simularemos peticiones HTTP</strong> y comprobaremos que las respuestas tienen el código HTTP y el contenido del cuerpo esperados.</li>
+<li>Al ser los test más lentos de ejecutar, <strong>sólo implementaremos una pequeña muestra de las distintas ramificaciones</strong> que pueden tomar nuestros casos de uso. Dejando para los test unitarios la responsabilidad de probar cada una de las casuísticas. Así evitaremos incurrir en el <a class="link" href="https://www.youtube.com/watch?v=kXhXBzvxUsM"  target="_blank" rel="noopener"
+    >anti-patrón de test del cono de helado</a>.</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introducción">Introducción</a></li>
+    <li><a href="#la-estructura-de-directorios-en-arquitectura-hexagonal">La estructura de directorios en arquitectura hexagonal</a></li>
+    <li><a href="#application-service-vs-domain-service">Application service vs Domain service</a>
+      <ol>
+        <li><a href="#servicios-de-aplicación">Servicios de aplicación</a></li>
+        <li><a href="#servicios-de-dominio">Servicios de dominio</a></li>
+      </ol>
+    </li>
+    <li><a href="#sevicios-de-infraestructura">Sevicios de infraestructura</a></li>
+    <li><a href="#testing-en-arquitectura-hexagonal">Testing en arquitectura hexagonal</a>
+      <ol>
+        <li><a href="#testing-capa-de-aplicación-y-dominio-test-unitario">Testing capa de aplicación y dominio (test unitario)</a></li>
+        <li><a href="#testing-capa-de-infraestructura">Testing capa de infraestructura</a></li>
+        <li><a href="#test-de-aceptación">Test de aceptación</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

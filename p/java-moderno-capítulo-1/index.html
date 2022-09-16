@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Este post tiene como objetivo mostrar una serie de trucos o tips sobre Java que no son más que nuevan funcionalidades que han ido saliendo con el paso de los años y que hoy recojo aquí con la intención de mostrar las más útiles y ejemplos de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes buscar en blog los demás post.
+Try with resources Desde Java 7 existe la fórmula try-with-resources que permite vincular el cerrado de recursos a la conclusión del try, de modo que no se nos olvide hacerlo manualmente.'><title>Java Moderno (Capítulo 1)</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Java Moderno (Capítulo 1)'>
+<meta property='og:description' content='Introducción Este post tiene como objetivo mostrar una serie de trucos o tips sobre Java que no son más que nuevan funcionalidades que han ido saliendo con el paso de los años y que hoy recojo aquí con la intención de mostrar las más útiles y ejemplos de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes buscar en blog los demás post.
+Try with resources Desde Java 7 existe la fórmula try-with-resources que permite vincular el cerrado de recursos a la conclusión del try, de modo que no se nos olvide hacerlo manualmente.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-11-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-11-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/images/java.png' />
+<meta name="twitter:title" content="Java Moderno (Capítulo 1)">
+<meta name="twitter:description" content="Introducción Este post tiene como objetivo mostrar una serie de trucos o tips sobre Java que no son más que nuevan funcionalidades que han ido saliendo con el paso de los años y que hoy recojo aquí con la intención de mostrar las más útiles y ejemplos de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes buscar en blog los demás post.
+Try with resources Desde Java 7 existe la fórmula try-with-resources que permite vincular el cerrado de recursos a la conclusión del try, de modo que no se nos olvide hacerlo manualmente."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/images/java.png' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/java-moderno-cap%C3%ADtulo-1/">
+                <img src="/blog/p/java-moderno-cap%C3%ADtulo-1/images/java.png"
+                        
+                        width="786" 
+                        height="324" 
+                        loading="lazy"
+                        alt="Featured image of post Java Moderno (Capítulo 1)" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/java/" >
+                Java
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/java-moderno-cap%C3%ADtulo-1/">Java Moderno (Capítulo 1)</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 19, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h2 id="introducción">Introducción</h2>
+<p>Este post tiene como objetivo mostrar una serie de trucos o tips sobre Java que no son más que nuevan funcionalidades
+que han ido saliendo con el paso de los años y que hoy recojo aquí con la intención de mostrar las más útiles y ejemplos
+de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes buscar en blog los demás post.</p>
+<h2 id="try-with-resources">Try with resources</h2>
+<p>Desde Java 7 existe la fórmula try-with-resources que permite vincular el cerrado de recursos a la conclusión del try, de modo que no se nos olvide hacerlo manualmente.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Con finally
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&#34;myfile&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">line</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="o">(</span><span class="n">br</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Con try-with-resources
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">(</span><span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&#34;myfile&#34;</span><span class="o">)))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">line</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Como se puede observar, definimos los recursos que deben ser cerrados automáticamente después del try y entre paréntesis. Podemos incluir varios recursos separándolos por punto y coma. Al escribirse de esta forma se llamará al método close del BufferedReader al acabar la ejecución del bloque, se produzcan errores o no.</p>
+<p>Todos los recursos que se utilicen dentro de un try-with-resources deben implementar la interfaz AutoCloseable, la cual tiene un único método close que define cómo se debe cerrar el recurso.</p>
+<h2 id="fechas">Fechas</h2>
+<h3 id="localdatetime-localtime-localdate-timepoint">LocalDateTime, LocalTime, LocalDate, TimePoint</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDateTime</span> <span class="n">timepoint</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span> <span class="c1">// Fecha y hora actual
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2020</span><span class="o">,</span> <span class="n">Month</span><span class="o">.</span><span class="na">JULY</span><span class="o">,</span> <span class="n">27</span><span class="o">);</span> <span class="c1">// Obtenemos la fecha indicada
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">17</span><span class="o">,</span> <span class="n">30</span><span class="o">);</span> <span class="c1">// Obtenemos la hora indicada
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalTime</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;17:30:00&#34;</span><span class="o">);</span> <span class="c1">// Otra forma para la hora
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Month</span> <span class="n">month</span> <span class="o">=</span> <span class="n">timepoint</span><span class="o">.</span><span class="na">getMonth</span><span class="o">();</span> <span class="c1">//Obtener el mes actual
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="n">timepoint</span><span class="o">.</span><span class="na">getDayOfMonth</span><span class="o">();</span> <span class="c1">//Obtener el número de día de actual
+</span></span></span><span class="line"><span class="cl"><span class="c1">// TimePoint es inmutable, así que cambiar el valor retorna un nuevo objeto y podemos realizar un desarrollo más funcional
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalDateTime</span> <span class="n">happyTwenties</span> <span class="o">=</span> <span class="n">timepoint</span><span class="o">.</span><span class="na">withYear</span><span class="o">(</span><span class="n">1920</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">withMonth</span><span class="o">(</span><span class="n">Month</span><span class="o">.</span><span class="na">January</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">withDayOfMonth</span><span class="o">(</span><span class="n">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">plusWeeks</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+</span></span></code></pre></div><h3 id="formateado-de-fechas">Formateado de fechas</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span> <span class="c1">// Fecha actual
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">SimpleDateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;dd-MM-yyyy&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">);</span> <span class="c1">//Formato final de la fecha en String
+</span></span></span></code></pre></div><h2 id="genéricos">Genéricos</h2>
+<p>El término “Generic” viene a ser como un tipo parametrizado, es un tipo de dato especial del lenguaje que permite centrarnos en el algoritmo sin importar el tipo de dato específico que finalmente se utilice en él. Muchos algoritmos son los mismos, independientemente del tipo de dato que maneje. Por ejemplo, un algoritmo de ordenación.</p>
+<p>Se llaman parametrizados porque el tipo de dato con el que opera la funcionalidad se pasa como parámetro. Pueden usarse en clases, interfaces y métodos, denominándose clases, interfaces o métodos genéricos respectivamente. En Java, la declaración de un tipo genérico se hace entre símbolos &lt;&gt;, pudiendo definir uno o más parámetros, por ejemplo: <T>, &lt;K, V&gt;. Existe una convención a la hora de nombrarlos:</p>
+<ul>
+<li>E – Element (usado bastante por Java Collections Framework).</li>
+<li>K – Key (usado en mapas).</li>
+<li>N – Number (para números).</li>
+<li>T – Type (representa un tipo, es decir, una clase).</li>
+<li>V – Value (representa el valor, también se usa en mapas).</li>
+<li>S, U, V etc. – usado para representar otros tipos</li>
+</ul>
+<p><strong>Ejemplo de clase genérica</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// GenericClass.java file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericClass</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">K</span><span class="o">&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">T</span> <span class="n">g1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">K</span> <span class="n">g2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="nf">GenericClass</span><span class="o">(</span><span class="n">T</span> <span class="n">g1</span><span class="o">,</span> <span class="n">K</span> <span class="n">g2</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">this</span><span class="o">.</span><span class="na">g1</span> <span class="o">=</span> <span class="n">g1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">this</span><span class="o">.</span><span class="na">g2</span> <span class="o">=</span> <span class="n">g2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">T</span> <span class="nf">getGenericOne</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">g1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">K</span> <span class="nf">getGenericTwo</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">g2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Main.java file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">GenericClass</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GenericClass</span><span class="o">&lt;&gt;(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;generic&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Integer</span> <span class="n">param1</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getGenericOne</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">		<span class="n">String</span> <span class="n">param2</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getGenericTwo</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;Param1 %d - Param2 %s&#34;</span><span class="o">,</span> <span class="n">param1</span><span class="o">,</span> <span class="n">param2</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p><strong>Ejemplo de método genérico</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// WhiteBoard.java file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WhiteBoard</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">draw</span><span class="o">(</span><span class="n">T</span> <span class="n">figure</span> <span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="o">...</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Main.java file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WhiteBoard</span> <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WhiteBoard</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Figure</span> <span class="n">circle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Circle</span><span class="o">(</span><span class="n">1</span><span class="o">.</span><span class="na">5</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">board</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">circle</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="interfaces-funcionales">Interfaces funcionales</h2>
+<p>En Java, se considera interfaz funcional a toda interfaz que contenga un único método abstracto.
+Es decir, interfaces que tienen métodos estáticos o por defecto (default) seguirán siendo funcionales si solo
+tienen un único método abstracto.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@FunctionalInterface</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SalaryToPrettyStringMapper</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">default</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">map</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Salary</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">this</span><span class="o">::</span><span class="n">map</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">String</span> <span class="nf">map</span><span class="o">(</span><span class="n">Salary</span> <span class="n">salary</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>La anotación @FunctionalInterface denota que es una interfaz funcional, pero es opcional y, aunque no
+estuviese, la interfaz seguiría siendo funcional. Sería buena práctica mantenerla para recordar que se trata de
+una interfaz funcional (no de una clase abstracta), y que en caso de añadir más métodos nos lanzaría un error
+de compilación.</p>
+<h2 id="lambdas">Lambdas</h2>
+<p>Las lambdas fueron introducidas a partir de Java 8. No son más que funciones anónimas que nos permiten programar en Java con un estilo más funcional y, en ocasiones, declarativo.</p>
+<p>La sintaxis de una lambda es la siguiente:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">(</span> <span class="n">tipo1</span> <span class="n">param1</span><span class="o">,</span> <span class="n">tipoN</span> <span class="n">paramN</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">cuerpo</span> <span class="n">de</span> <span class="n">la</span> <span class="n">lambda</span> <span class="o">}</span>
+</span></span></code></pre></div><p>El operador flecha (-&gt;), es característico de las lambda y separa los parámetros del cuerpo de la función. No es necesario incluir el tipo ya que este puede ser inferido. El paréntesis de los parámetros puede omitirse cuando sólo existe un parámetro y no incluimos el tipo. Si no hay parámetros los paréntesis son necesarios.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">(</span><span class="n">param1</span><span class="o">,</span> <span class="n">param2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">cuerpo</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">param1</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">cuerpo</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">cuerpo</span> <span class="o">}</span>
+</span></span></code></pre></div><p>En el caso del cuerpo, si solo tenemos una sentencia, podremos omitir las llaves y el return, por ejemplo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">numero</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">numero</span><span class="o">)</span>
+</span></span></code></pre></div><p>Si tenemos más de una, las llaves serán necesarias:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">numero</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">String</span> <span class="n">cadena</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">numero</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">cadena</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="donde-usar-las-lambdas">¿Donde usar las lambdas?</h3>
+<p>Las lambdas se pueden usar en cualquier parte que acepte una interfaz funcional. La lambda tendrá que corresponder con la firma del método abstracto de la interfaz funcional.</p>
+<p><strong>Se pueden asignar a variables tipadas:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">isOdd</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="o">%</span> <span class="n">2</span> <span class="o">!=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">isOdd</span><span class="o">.</span><span class="na">test</span><span class="o">(</span><span class="n">2</span><span class="o">);</span> <span class="c1">// false
+</span></span></span></code></pre></div><p><strong>Pueden ser parte del return de un método:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">Predicate</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">isOddPredicate</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="o">%</span> <span class="n">2</span> <span class="o">!=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p><strong>En llamadas a métodos:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">2</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">entero</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;entero = %s&#34;</span><span class="o">,</span> <span class="n">entero</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">cadena</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cadena</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Salida:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// entero = 0
+</span></span></span><span class="line"><span class="cl"><span class="c1">// entero = 1
+</span></span></span></code></pre></div><h3 id="referencias-a-métodos">Referencias a métodos</h3>
+<p>Cuando un método coincida con la firma de una interfaz funcional, podremos usar una referencia al método en vez de la sintaxis habitual de las lambdas</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">2</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">entero</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;entero = %s&#34;</span><span class="o">,</span> <span class="n">entero</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span> <span class="c1">// &lt;- Referencia a método
+</span></span></span></code></pre></div><p>Para usar referencias a métodos, ponemos (::) justo antes del método, en vez de un punto, e ignoramos los paréntesis. Así pues, estas podrían ser referencias válidas a métodos:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span>
+</span></span><span class="line"><span class="cl"><span class="k">this</span><span class="o">::</span><span class="n">miMetodo</span>
+</span></span><span class="line"><span class="cl"><span class="kd">super</span><span class="o">::</span><span class="n">metodoDeSuper</span>
+</span></span><span class="line"><span class="cl"><span class="nl">unObjeto:</span><span class="o">:</span><span class="n">suMetodo</span>
+</span></span></code></pre></div><h2 id="data-processing-streams">Data processing Streams</h2>
+<p>Desde Java 8 podemos hacer uso de estas herramientas para simplificar la forma en la que interactuamos con las colecciones, evitando que tengamos que realizar bucles complejos. Nos permiten hacer operaciones paralelizables, concatenando instrucciones con un estilo declarativo.</p>
+<p>Para utilizarlas sera necesario llamar a stream() o parallelStream(), en función de si queremos paralelizar las operaciones o no.</p>
+<p>Un stream simplemente recibe los datos de una colección y genera un resultado tras el procesado de las operaciones intermedias. Estas operaciones intermedias devuelven un stream, por lo que será necesario ejecutar una operación terminal para que las intermedias se ejecuten y poder obtener un resultado.</p>
+<p>Un ejemplo para verlo más claro:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Other</span><span class="o">&gt;</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">elem</span> <span class="o">-&gt;</span> <span class="n">elem</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;</span> <span class="n">65</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">sorted</span><span class="o">()</span> <span class="c1">// Ordena según la implementación de Comparable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">elem</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">Other</span><span class="o">(</span><span class="n">elem</span><span class="o">.</span><span class="na">getName</span><span class="o">,()</span> <span class="n">elem</span><span class="o">.</span><span class="na">getAge</span><span class="o">()))</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">toList</span><span class="o">());</span>
+</span></span></code></pre></div><p>En el ejemplo anterior hemos visto algunas operaciones intermedias como son filter(), entre otras, y a demás el bloque de instrucciones termina con un collect(), que se trata de una operación terminal que nos permite pasarle un parámetro de tipo Collector, y que en este caso con el toList() conseguimos que se nos devuelva una lista como teníamos al principio.</p>
+<p>Las operaciones intermedias se pueden clasificar en:</p>
+<ul>
+<li>FIltrado</li>
+<li>Búsqueda</li>
+<li>Mapeado</li>
+<li>Matching</li>
+<li>Reducción</li>
+<li>Iteración</li>
+</ul>
+<p>Los streams pueden ser utilizados para más propósitos, como pueda ser un array:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">array</span><span class="o">).</span><span class="na">sum</span><span class="o">();</span>
+</span></span></code></pre></div><p>O para convertir un fichero en un stream de líneas:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">long</span> <span class="n">numberOfLines</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">lines</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;yourFile.txt&#34;</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Charset</span><span class="o">.</span><span class="na">defaultCharset</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">).</span><span class="na">count</span><span class="o">();</span>
+</span></span></code></pre></div><p>También se pueden crear Stream a partir de valores usando <code>Stream.of</code></p>
+<h2 id="optional">Optional</h2>
+<p>A partir de Java 8 tenemos implementado en Java el patrón option. Se basa en indicar que se puede devolver o no el valor esperado obligando a que tengamos contemplados ambos escenarios.</p>
+<p>La clase Optional en Java nos dispone de constructor, en su lugar usaremos sus métodos de factoría estáticos para crear los optional. Veamos:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">empty</span><span class="o">()</span> <span class="c1">//Devuelve objeto opcional vacío
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">ofNullable</span><span class="o">(</span><span class="n">T</span> <span class="n">value</span><span class="o">)</span> <span class="c1">//Devuelve objeto con valor o si es null un objeto vacío
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">of</span><span class="o">(</span><span class="n">T</span> <span class="n">value</span><span class="o">)</span> <span class="c1">//Devuelve objeto con valor o si es null retorna NullPointerException
+</span></span></span></code></pre></div><p>La clase Optional nos proporciona una serie de métodos:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isPresent</span><span class="o">()</span> <span class="c1">//Indica si el objeto tiene o no valor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="n">T</span> <span class="nf">get</span><span class="o">()</span> <span class="c1">//Retorna el valor almacenado. Si no hay valor retorna excepción
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">filter</span><span class="o">(</span><span class="n">Function</span> <span class="n">f</span><span class="o">)</span> <span class="c1">//Comportamiento como con los streams
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span> <span class="nf">map</span><span class="o">(</span><span class="n">Function</span> <span class="n">f</span><span class="o">)</span> <span class="c1">//Comportamiento como con los streams
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span> <span class="nf">flatMap</span><span class="o">(</span><span class="n">Function</span> <span class="n">f</span><span class="o">)</span> <span class="c1">//Comportamiento como con los streams
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="n">T</span> <span class="nf">orElse</span><span class="o">(</span><span class="n">T</span> <span class="n">other</span><span class="o">)</span> <span class="c1">//Nos retorna el valor original. Si es nulo, retorna el valor que pasamos por parámetro
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="n">T</span> <span class="nf">orElseGet</span><span class="o">(</span><span class="n">Function</span> <span class="n">f</span><span class="o">)</span> <span class="c1">//Igual que el anterior pero el parámetro es una función
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="o">&lt;</span><span class="n">X</span> <span class="kd">extends</span> <span class="n">Throwable</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">orElseThrow</span><span class="o">(</span><span class="n">Function</span> <span class="n">f</span><span class="o">)</span> <span class="c1">//Retorna el valor original. Si es nulo, retorna la excepción que devuelva la función pasada como parámetro
+</span></span></span></code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introducción">Introducción</a></li>
+    <li><a href="#try-with-resources">Try with resources</a></li>
+    <li><a href="#fechas">Fechas</a>
+      <ol>
+        <li><a href="#localdatetime-localtime-localdate-timepoint">LocalDateTime, LocalTime, LocalDate, TimePoint</a></li>
+        <li><a href="#formateado-de-fechas">Formateado de fechas</a></li>
+      </ol>
+    </li>
+    <li><a href="#genéricos">Genéricos</a></li>
+    <li><a href="#interfaces-funcionales">Interfaces funcionales</a></li>
+    <li><a href="#lambdas">Lambdas</a>
+      <ol>
+        <li><a href="#donde-usar-las-lambdas">¿Donde usar las lambdas?</a></li>
+        <li><a href="#referencias-a-métodos">Referencias a métodos</a></li>
+      </ol>
+    </li>
+    <li><a href="#data-processing-streams">Data processing Streams</a></li>
+    <li><a href="#optional">Optional</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

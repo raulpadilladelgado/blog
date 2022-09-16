@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Contexto CQRS son las siglas de Command and Query Responsibility Segregation, un patrón que separa las operaciones de lectura y actualización para un almacén de datos. La flexibilidad creada por la migración a CQRS permite que un sistema evolucione mejor con el tiempo y evita que los comandos de actualización causen conflictos de fusión a nivel de dominio. Perfecto para aplicar en aplicaciones con gran carga de rendimiento.
+Gracias a CQRS somo capaces de desacoplar la lógica de nuestro sistema por acciones, y en los siguientes puntos veremos como trata de realizarlo.'><title>Command Query Responsibility Segregation</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/command-query-responsibility-segregation/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Command Query Responsibility Segregation'>
+<meta property='og:description' content='Contexto CQRS son las siglas de Command and Query Responsibility Segregation, un patrón que separa las operaciones de lectura y actualización para un almacén de datos. La flexibilidad creada por la migración a CQRS permite que un sistema evolucione mejor con el tiempo y evita que los comandos de actualización causen conflictos de fusión a nivel de dominio. Perfecto para aplicar en aplicaciones con gran carga de rendimiento.
+Gracias a CQRS somo capaces de desacoplar la lógica de nuestro sistema por acciones, y en los siguientes puntos veremos como trata de realizarlo.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/command-query-responsibility-segregation/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-12-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-12-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/command-query-responsibility-segregation/images/CQRS.png' />
+<meta name="twitter:title" content="Command Query Responsibility Segregation">
+<meta name="twitter:description" content="Contexto CQRS son las siglas de Command and Query Responsibility Segregation, un patrón que separa las operaciones de lectura y actualización para un almacén de datos. La flexibilidad creada por la migración a CQRS permite que un sistema evolucione mejor con el tiempo y evita que los comandos de actualización causen conflictos de fusión a nivel de dominio. Perfecto para aplicar en aplicaciones con gran carga de rendimiento.
+Gracias a CQRS somo capaces de desacoplar la lógica de nuestro sistema por acciones, y en los siguientes puntos veremos como trata de realizarlo."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/command-query-responsibility-segregation/images/CQRS.png' />
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                
+                    
+
+                    
+                        
+                        <img src="/blog/images/Raul_huead6b70b2fb09e289983e3d0963afb2b_169758_300x0_resize_q75_box.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🥑</span>
+                
+            </figure>
+            
+        
+
+        <h1 class="site-name"><a href="/blog">Raúl Padilla Delgado</a></h1>
+        <h2 class="site-description">Bienvenid@ a mi blog sobre desarrollo de software</h2><ol class="social-menu">
+                
+                    <li>
+                        <a
+                            href='https://github.com/raulpadilladelgado'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="#1c73ff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+<!--
+Font Awesome Free 5.4.1 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a
+                            href='https://www.linkedin.com/in/raulpadilladelgado/'
+                            target="_blank"
+                            title="Linkedin"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448.1 512"><path fill="#1c73ff" d="M100.3 448H7.4V148.9h92.9V448zM53.8 108.1C24.1 108.1 0 83.5 0 53.8S24.1 0 53.8 0s53.8 24.1 53.8 53.8-24.1 54.3-53.8 54.3zM448 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448h-.1z"/></svg>
+<!--
+Font Awesome Free 5.4.1 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/blog/recursos/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#1c73ff" d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"/></svg>
+<!--
+Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                
+                <span>Recursos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/blog/sobre-m%C3%AD/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="#1c73ff" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm105.6-151.4c-25.9 8.3-64.4 13.1-105.6 13.1s-79.6-4.8-105.6-13.1c-9.8-3.1-19.4 5.3-17.7 15.3 7.9 47.2 71.3 80 123.3 80s115.3-32.9 123.3-80c1.6-9.8-7.7-18.4-17.7-15.3zm-227.9-57.5c-1 6.2 5.4 11 11 7.9l31.3-16.3 31.3 16.3c5.6 3.1 12-1.7 11-7.9l-6-34.9 25.4-24.6c4.5-4.5 1.9-12.2-4.3-13.2l-34.9-5-15.5-31.6c-2.9-5.8-11-5.8-13.9 0l-15.5 31.6-34.9 5c-6.2.9-8.9 8.6-4.3 13.2l25.4 24.6-6.1 34.9zm259.7-72.7l-34.9-5-15.5-31.6c-2.9-5.8-11-5.8-13.9 0l-15.5 31.6-34.9 5c-6.2.9-8.9 8.6-4.3 13.2l25.4 24.6-6 34.9c-1 6.2 5.4 11 11 7.9l31.3-16.3 31.3 16.3c5.6 3.1 12-1.7 11-7.9l-6-34.9 25.4-24.6c4.5-4.6 1.8-12.2-4.4-13.2z"/></svg>
+<!--
+Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                
+                <span>Sobre mí</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/blog/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#1c73ff" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+<!--
+Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
+License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+-->
+
+                
+                <span>Búsqueda</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Modo oscuro</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/command-query-responsibility-segregation/">
+                <img src="/blog/p/command-query-responsibility-segregation/images/CQRS.png"
+                        
+                        width="1200" 
+                        height="483" 
+                        loading="lazy"
+                        alt="Featured image of post Command Query Responsibility Segregation" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/arquitectura-de-software/" >
+                arquitectura-de-software
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/command-query-responsibility-segregation/">Command Query Responsibility Segregation</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 03, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="contexto">Contexto</h1>
+<p>CQRS son las siglas de Command and Query Responsibility Segregation, un patrón que separa las operaciones de lectura y actualización para un almacén de datos. La flexibilidad creada por la migración a CQRS permite que un sistema evolucione mejor con el tiempo y evita que los comandos de actualización causen conflictos de fusión a nivel de dominio. Perfecto para aplicar en aplicaciones con gran carga de rendimiento.</p>
+<p>Gracias a CQRS somo capaces de desacoplar la lógica de nuestro sistema por acciones, y en los siguientes puntos veremos como trata de realizarlo.</p>
+<h1 id="command">Command</h1>
+<blockquote>
+<p>En CQRS un command no es un comando de CLI aunque la palabra nos lleve a ello</p>
+</blockquote>
+<p>En CQRS, un Command representa la intención de realizar una operación en nuestro sistema que acabe modificando el estado de tal. Mediante un command enviamos información a nuestro sistema para que este sea alterado.</p>
+<p>Los commands son DTO (Data Transfer Object) encargados de pedir modificaciones en el sistema mediante operaciones conocidas como Post, Put, Path, Delete. Un command no devuelve nada, por lo que el body de la respuesta estará vacío.</p>
+<p>Un command es inmutable, y la razón es que si desde un controlador nos pasan un DTO (command) con una determinada información, y no tendría sentido que alteremos el objeto ya que sería modificar la tarea que nos han pedido.</p>
+<p>Podemos tener commands síncronos, para operaciones pocos costosos en tiempo de ejecucción y commands asíncronos para las muy costosas.</p>
+<p>El command acaba en un CommandHandler que tratará los datos como pueda ser crear Value Objects para poder realizar validaciones y asegurar que el command cumple con los requisitos del dominio, y seguidamente el CommandHandler enviaría estos datos al caso de uso para que se encargue de ir al repositorio para modificar los registros pertinentes.</p>
+<h1 id="queries">Queries</h1>
+<blockquote>
+<p>Una query en CQRS no es la tradicional query SQL a la que estamos acostumbrados.</p>
+</blockquote>
+<p>Una Query representa la intención de pedir unos datos a nuestro sistema sin que ello acabe alterando el estado de tal.</p>
+<p>Las queries son DTO encargados de pedir información al sistema y que por consiguiente hacen que una respuesta vuelva a nosotros mediante la operación conocida como Get.</p>
+<p>La query acaba en un QueryHandler que tratará los datos como pueda ser crear Value Objects para poder realizar validaciones y asegurar que el command cumple con los requisitos del dominio, y seguidamente el QueryHandler enviaría estos datos al caso de uso (servicio de aplicación) para que se encarge de ir al repositorio para recuperar el vídeo, devolverlo y transformarlo en la respuesta esperada.</p>
+<h1 id="commands-and-queries-bus">Commands and Queries Bus</h1>
+<p>Estos bus son las interfaces que actúan de intermediario entre los commands/queries y los Handler correspondiente. Saben a que Handler tienen que llevar según el command o query que esté llegando.</p>
+<p>Su misión principal es quitarle la responsabilidad al controlador de tener que saber a que handler tiene que enviar una command o query determinado.</p>
+<p>Para ver que ganamos mediante el uso de los buses vamos a ver la evolución de una arquitectura más tradicional a una que utiliza estos buses.</p>
+<p><strong>Etapa 1) Post ➡ Controller</strong>: En este caso realizamos una petición http tipo post al controlador, y este será el encargado de realizar toda la lógica. Es el caso tradicional más extremo pero iremos iterando para ver las diferencias. En este caso si quisiéramos añadir otro tipo de punto de entrada a nuestra aplicación distinto al controller (http), tendríamos que copiar la lógica de dicho controlador a el nuevo punto de entrada (ejemplo, un comando de terminal).</p>
+<p><strong>Etapa 2) Post ➡ Controller ➡ Caso de uso</strong>: En este caso realizamos una petición http tipo post al controlador, y esté conoce a que caso de uso (un servicio de nuestra aplicación) debe dirigirse para que sea ejecutada la lógica. En este caso si quisiéramos añadir otro tipo de punto de entrada a nuestra aplicación distinto al controller (http), tendríamos que apuntar al mismo caso de uso que utilizaba el controller desde el nuevo punto de entrada (ejemplo, un comando de terminal). Gracias a que tenemos la lógica separada del controlador logramos reutilización de código.</p>
+<p><strong>Etapa final) Post ➡ Controller ➡ Instancia command (DTO)  ➡ CommandBus (interface) ➡ CommandHandler</strong> <strong>➡</strong> <strong>Caso de uso</strong>: En este caso realizamos una petición http tipo post al controlador, el cual instancia un command (DTO) que será enviado al CommandBus, que es una interface de dominio que será posteriormente implementada. El CommandBus sabe según que tipo de command está recibiendo a que CommandHandler debe destinarse. En este caso si quisieramos añadir otro tipo de punto de entrada a nuestra aplicación distinto del controller (http), tendríamos instanciar del mismo modo el command deseado, y enviarlo al CommandBus para que este se destine al CommandHandler que toque. Además de ganar en reutilización de código como hacíamos en el paso b, también estamos desacoplando al controlador de conocer a que caso de uso debe dirigirse, simplemente pedirá commands al CommandQuery, hacemos que los controladores que son algo que naturalmente son de infraestructura no conozcan como funciona nuestro dominio. Entonces si el día de mañana queremos cambiar que se debe hacer con un tipo de command determinado, simplemente tendremos que cambiar la lógica en el CommandHandler y así los N puntos de entrada a la aplicación (controladores, comandos de terminal, etc) no necesitarán cambiar nada de su comportamiento. Previamente hemos comentado que el CommandBus es una interfaz que debe ser implementada, y esto nos da la posibilidad de crear una implementación asíncrona del CommandBus para que las peticiones no tengan que ser resultas en el mismo momento en el que se realizan, si no que se irán procesando y se pasará la respuesta cuando esté disponible.</p>
+<blockquote>
+<p>💡 En esta comparación de diseño hemos hablado solo de los Command Bus, pero se aplica exactamente el mismo funcionamiento cuando se trate de una Query y su determinado Query Bus</p>
+</blockquote>
+<h1 id="cqrs--event-sourcing">CQRS + Event Sourcing</h1>
+<p>CQRS complementa la idea tradicional del Event sourcing de desacoplar nuestro código lanzando eventos y
+que otro módulos de nuestra aplicación se suscriban a tales eventos para interactuar con ellos. Por lo que vamos
+a ver como se acoplan estos dos patrones de diseños y nos brindan los mejor de ambos con el siguiente esquema:</p>
+<p><strong>Before (Only CQRS)</strong>
+<figure 
+	>
+	<a href="/blog/p/command-query-responsibility-segregation/images/grafo.svg" >
+		<img src="/blog/p/command-query-responsibility-segregation/images/grafo.svg"
+			
+			
+			
+			loading="lazy"
+			alt="cqrs">
+	</a>
+	
+	<figcaption>cqrs</figcaption>
+	
+</figure>
+<strong>After (CQRS + Event Sourcing)</strong>
+<figure 
+	>
+	<a href="/blog/p/command-query-responsibility-segregation/images/grafo2.svg" >
+		<img src="/blog/p/command-query-responsibility-segregation/images/grafo2.svg"
+			
+			
+			
+			loading="lazy"
+			alt="cqrs and eventsourcing">
+	</a>
+	
+	<figcaption>cqrs and eventsourcing</figcaption>
+	
+</figure></p>
+<h1 id="mitos-y-otras-dudas">Mitos y otras dudas</h1>
+<p>Cuando estuve aprendiendo que era el CQRS me hice la pregunta de que si iba a necesitar dos bases de datos, una para
+el modelo de escritura y otro para el de lectura. En parte los contenidos que leia me llevaban a pensar eso, pero
+si lo pensamos bien, tendría sentido usar dos bases de datos que se sincronicen entre sí solo si nuestra aplicación
+lo requiere, es decir, que vayamos a tener que manejar un gran volumen de datos, y/o que sepamos que la consulta
+y modificación puedan interferir entre sí, pero lo dicho, no es la regla general.</p>
+<p>Para más dudas sobre CQRS dejo un enlace que me ha sido de gran ayuda:
+<a class="link" href="https://event-driven.io/en/cqrs_facts_and_myths_explained/"  target="_blank" rel="noopener"
+    >https://event-driven.io/en/cqrs_facts_and_myths_explained/</a></p>
+<h1 id="ejemplo-práctico">Ejemplo práctico</h1>
+<p>Navegando por Github me encontré un buen ejemplo de la implementación de CQRS + Event Sourcing utilizando Java, ver el
+siguiente enlace:</p>
+<p><a class="link" href="https://github.com/citerus/bookstore-cqrs-example"  target="_blank" rel="noopener"
+    >Java-CQRS-Introducción</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
