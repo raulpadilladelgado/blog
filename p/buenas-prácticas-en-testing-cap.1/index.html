@@ -277,7 +277,7 @@ public void return_the_same_number_as_passed(){
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">clients</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;name&#39;</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><p>Se ve muy fácil de leer, sobre todo porque no le indicamos como tiene que conseguir el propósito, eso son aspectos internos del propio de lenguaje.</p>
 <p>Por el contrario, con programación imperativa no le decimos que queremos obtener, sino que nosotros mismo implementamos esa funcionalidad usando un lenguaje como pueda ser java. Siguiendo el ejemplo anterior para buscar un cliente dentro una lista tendríamos lo siguiente usando programación imperativa:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">clients</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">clients</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Client</span> <span class="n">client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">client</span><span class="o">.</span><span class="na">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">clientToBeFind</span><span class="o">)){</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">client</span><span class="o">;</span>
@@ -345,7 +345,7 @@ public void return_the_same_number_as_passed(){
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">`user can bet with the minimum age`</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">UserFixtures</span><span class="p">.</span><span class="n">userWithMinimumAgeToBet</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="nc">UserFixtures</span><span class="p">.</span><span class="n">userWithMinimumAgeToBet</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">assertTrue</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">canBet</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -447,7 +447,7 @@ de datos, y ha quedado un test muy fácil de leer. Así es, test legible, test m
 <h3 id="como-solucionar-test-que-fallan-aleatoriamente">Como solucionar test que fallan aleatoriamente</h3>
 <p>Un problema que nos podemos encontrar a la hora de hacer test, es que tenemos algunos tests que algunas veces pasan y otras no. Esto se puede deber a que tenemos una batería de test en la que el orden de ejecución influye en el resultado de los mismos. El ejemplo más claro sería un test que persiste un registro y otro test que intenta recuperar ese mismo registro. Un test no debería depender de otros para poder funcionar correctamente, por lo que cada test debería comenzar desde cero y levantar o preparar todo lo que necesite para el caso de uso que esté probando, sin esperar que sea otro test el que prepare el escenario.</p>
 <p>Por lo que tengo entendido, en JUnit (framework de unit test para JVM) la primera ejecución de los test en una máquina (tu pc) se hace forma aleatoria, pero después ejecutará los mismos test siempre en el mismo orden. Eso quiere decir que si otra máquina ejecuta esos mismos test por primera vez también será de manera aleatoria, pero solo una vez, el resto de veces se ejecutarán en el mismo orden. Tenemos un modo de indicar usando JUnit que queremos que la ejecución de nuestros test sea de modo aleatorio, y así asegurarnos que ninguno de nuestros test depende de otro. Simplemente, lograremos esta aleatoriedad estableciendo una etiqueta encima del nombre de la clase de test:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="line"><span class="cl"><span class="nd">@TestMethodOrder</span><span class="p">(</span><span class="n">MethodOrderer</span><span class="p">.</span><span class="n">Random</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="line"><span class="cl"><span class="nd">@TestMethodOrder</span><span class="p">(</span><span class="nc">MethodOrderer</span><span class="p">.</span><span class="n">Random</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">internal</span> <span class="k">class</span> <span class="nc">SomeTest</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">aTest</span><span class="p">()</span> <span class="p">{</span>
@@ -520,18 +520,6 @@ arquitectura hexagonal puede ver un post realizado por mí:</p>
     <footer class="article-footer">
     
 
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
     </footer>
 
 
@@ -607,7 +595,7 @@ arquitectura hexagonal puede ver un post realizado por mí:</p>
         
             2020 - 
         
-        2022 Raúl Padilla Delgado
+        2023 Raúl Padilla Delgado
     </section>
     
     <section class="powerby">

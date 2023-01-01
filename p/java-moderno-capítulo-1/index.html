@@ -161,16 +161,16 @@ de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes busca
 <h2 id="fechas">Fechas</h2>
 <h3 id="localdatetime-localtime-localdate-timepoint">LocalDateTime, LocalTime, LocalDate, TimePoint</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDateTime</span> <span class="n">timepoint</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span> <span class="c1">// Fecha y hora actual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2020</span><span class="o">,</span> <span class="n">Month</span><span class="o">.</span><span class="na">JULY</span><span class="o">,</span> <span class="n">27</span><span class="o">);</span> <span class="c1">// Obtenemos la fecha indicada
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">17</span><span class="o">,</span> <span class="n">30</span><span class="o">);</span> <span class="c1">// Obtenemos la hora indicada
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2020</span><span class="o">,</span> <span class="n">Month</span><span class="o">.</span><span class="na">JULY</span><span class="o">,</span> <span class="mi">27</span><span class="o">);</span> <span class="c1">// Obtenemos la fecha indicada
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">17</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span> <span class="c1">// Obtenemos la hora indicada
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalTime</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;17:30:00&#34;</span><span class="o">);</span> <span class="c1">// Otra forma para la hora
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Month</span> <span class="n">month</span> <span class="o">=</span> <span class="n">timepoint</span><span class="o">.</span><span class="na">getMonth</span><span class="o">();</span> <span class="c1">//Obtener el mes actual
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="n">timepoint</span><span class="o">.</span><span class="na">getDayOfMonth</span><span class="o">();</span> <span class="c1">//Obtener el número de día de actual
 </span></span></span><span class="line"><span class="cl"><span class="c1">// TimePoint es inmutable, así que cambiar el valor retorna un nuevo objeto y podemos realizar un desarrollo más funcional
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalDateTime</span> <span class="n">happyTwenties</span> <span class="o">=</span> <span class="n">timepoint</span><span class="o">.</span><span class="na">withYear</span><span class="o">(</span><span class="n">1920</span><span class="o">)</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalDateTime</span> <span class="n">happyTwenties</span> <span class="o">=</span> <span class="n">timepoint</span><span class="o">.</span><span class="na">withYear</span><span class="o">(</span><span class="mi">1920</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">withMonth</span><span class="o">(</span><span class="n">Month</span><span class="o">.</span><span class="na">January</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">withDayOfMonth</span><span class="o">(</span><span class="n">1</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">plusWeeks</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">withDayOfMonth</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">plusWeeks</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
 </span></span></code></pre></div><h3 id="formateado-de-fechas">Formateado de fechas</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span> <span class="c1">// Fecha actual
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">SimpleDateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;dd-MM-yyyy&#34;</span><span class="o">);</span>
@@ -209,7 +209,7 @@ de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes busca
 </span></span><span class="line"><span class="cl"><span class="c1">// Main.java file
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">GenericClass</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GenericClass</span><span class="o">&lt;&gt;(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;generic&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">GenericClass</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GenericClass</span><span class="o">&lt;&gt;(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&#34;generic&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">		<span class="n">Integer</span> <span class="n">param1</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getGenericOne</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">		<span class="n">String</span> <span class="n">param2</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getGenericTwo</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;Param1 %d - Param2 %s&#34;</span><span class="o">,</span> <span class="n">param1</span><span class="o">,</span> <span class="n">param2</span><span class="o">));</span>
@@ -226,7 +226,7 @@ de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes busca
 </span></span><span class="line"><span class="cl"><span class="c1">// Main.java file
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">	<span class="n">WhiteBoard</span> <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WhiteBoard</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">	<span class="n">Figure</span> <span class="n">circle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Circle</span><span class="o">(</span><span class="n">1</span><span class="o">.</span><span class="na">5</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Figure</span> <span class="n">circle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Circle</span><span class="o">(</span><span class="mf">1.5</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">board</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">circle</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><h2 id="interfaces-funcionales">Interfaces funcionales</h2>
@@ -266,14 +266,14 @@ de compilación.</p>
 </span></span></code></pre></div><h3 id="donde-usar-las-lambdas">¿Donde usar las lambdas?</h3>
 <p>Las lambdas se pueden usar en cualquier parte que acepte una interfaz funcional. La lambda tendrá que corresponder con la firma del método abstracto de la interfaz funcional.</p>
 <p><strong>Se pueden asignar a variables tipadas:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">isOdd</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="o">%</span> <span class="n">2</span> <span class="o">!=</span> <span class="n">0</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">	<span class="n">isOdd</span><span class="o">.</span><span class="na">test</span><span class="o">(</span><span class="n">2</span><span class="o">);</span> <span class="c1">// false
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">isOdd</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">isOdd</span><span class="o">.</span><span class="na">test</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span> <span class="c1">// false
 </span></span></span></code></pre></div><p><strong>Pueden ser parte del return de un método:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">Predicate</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">isOddPredicate</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="o">%</span> <span class="n">2</span> <span class="o">!=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p><strong>En llamadas a métodos:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">2</span><span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">entero</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;entero = %s&#34;</span><span class="o">,</span> <span class="n">entero</span><span class="o">))</span>
 </span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">cadena</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cadena</span><span class="o">));</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// Salida:
@@ -281,7 +281,7 @@ de compilación.</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1">// entero = 1
 </span></span></span></code></pre></div><h3 id="referencias-a-métodos">Referencias a métodos</h3>
 <p>Cuando un método coincida con la firma de una interfaz funcional, podremos usar una referencia al método en vez de la sintaxis habitual de las lambdas</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">2</span><span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">entero</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;entero = %s&#34;</span><span class="o">,</span> <span class="n">entero</span><span class="o">))</span>
 </span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span> <span class="c1">// &lt;- Referencia a método
 </span></span></span></code></pre></div><p>Para usar referencias a métodos, ponemos (::) justo antes del método, en vez de un punto, e ignoramos los paréntesis. Así pues, estas podrían ser referencias válidas a métodos:</p>
@@ -295,7 +295,7 @@ de compilación.</p>
 <p>Un stream simplemente recibe los datos de una colección y genera un resultado tras el procesado de las operaciones intermedias. Estas operaciones intermedias devuelven un stream, por lo que será necesario ejecutar una operación terminal para que las intermedias se ejecuten y poder obtener un resultado.</p>
 <p>Un ejemplo para verlo más claro:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Other</span><span class="o">&gt;</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">elem</span> <span class="o">-&gt;</span> <span class="n">elem</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;</span> <span class="n">65</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">elem</span> <span class="o">-&gt;</span> <span class="n">elem</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">65</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">sorted</span><span class="o">()</span> <span class="c1">// Ordena según la implementación de Comparable
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">elem</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">Other</span><span class="o">(</span><span class="n">elem</span><span class="o">.</span><span class="na">getName</span><span class="o">,()</span> <span class="n">elem</span><span class="o">.</span><span class="na">getAge</span><span class="o">()))</span>
 </span></span><span class="line"><span class="cl"><span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">toList</span><span class="o">());</span>
@@ -310,7 +310,7 @@ de compilación.</p>
 <li>Iteración</li>
 </ul>
 <p>Los streams pueden ser utilizados para más propósitos, como pueda ser un array:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">};</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">array</span><span class="o">).</span><span class="na">sum</span><span class="o">();</span>
 </span></span></code></pre></div><p>O para convertir un fichero en un stream de líneas:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">long</span> <span class="n">numberOfLines</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">lines</span><span class="o">(</span>
@@ -340,18 +340,6 @@ de compilación.</p>
     <footer class="article-footer">
     
 
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
     </footer>
 
 
@@ -374,7 +362,7 @@ de compilación.</p>
         
             2020 - 
         
-        2022 Raúl Padilla Delgado
+        2023 Raúl Padilla Delgado
     </section>
     
     <section class="powerby">
