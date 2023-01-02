@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 07 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comprobar versiones de dependencias de Gradle en las Pull Request</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/</guid>
+      <description>Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.</description>
+    </item>
+    
     <item>
       <title>Código sostenible</title>
       <link>https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/</link>

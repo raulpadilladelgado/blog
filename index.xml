@@ -6,7 +6,162 @@
         <description>Recent content on Raúl Padilla Delgado</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>es</language>
-        <lastBuildDate>Thu, 07 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Comprobar versiones de dependencias de Gradle en las Pull Request</title>
+        <link>https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/</link>
+        <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/</guid>
+        <description>&lt;img src="https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/ghactionsgradle.png" alt="Featured image of post Comprobar versiones de dependencias de Gradle en las Pull Request" /&gt;&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;
+&lt;p&gt;Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de
+librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde
+ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de
+incorporar.
+Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un
+auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han
+ocurrido cambios que rompen con lo que actualmente usábamos.&lt;/p&gt;
+&lt;p&gt;Partiendo de esta premisa, en la que no le estoy abriendo los ojos a nadie, me gustaría compartir una herramienta en la
+que he trabajado para solventar una necesidad que tenía en el día a día con mi equipo de trabajo y
+que puede ser útil para cualquier proyecto que busque una solución similar.&lt;/p&gt;
+&lt;p&gt;Todos nuestros proyectos están escritos en Java o Kotlin usando como &lt;em&gt;framework&lt;/em&gt; Spring Boot y Gradle como
+herramientas de compilación. En Gradle las dependencias se definen con un archivo build.gradle, que puede tener una
+estructura como la siguiente:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-groovy&#34; data-lang=&#34;groovy&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plugins&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;org.springframework.boot&amp;#39;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;version&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;2.7.4&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;io.spring.dependency-management&amp;#39;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;version&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;1.0.14.RELEASE&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;java&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;com.github.ben-manes.versions&amp;#34;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;version&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0.43.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;group&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;com.example&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;version&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;0.0.1-SNAPSHOT&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;sourceCompatibility&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;17&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;repositories&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;mavenCentral&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dependencies&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;testImplementation&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;org.junit.jupiter:junit-jupiter-api:5.8.2&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;testImplementation&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;org.junit.jupiter:junit-jupiter-params:5.8.2&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;testImplementation&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;org.assertj:assertj-core:3.22.0&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;testImplementation&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;org.mockito:mockito-core:4.5.1&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;testRuntimeOnly&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;org.junit.jupiter:junit-jupiter-engine:5.8.2&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;tasks&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;named&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;useJUnitPlatform&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;problemática&#34;&gt;Problemática&lt;/h2&gt;
+&lt;p&gt;Para mantener nuestras dependencias actualizadas recurrimos a un &lt;em&gt;plugin&lt;/em&gt; que tanto por consola como en un fichero de
+texto plano nos muestra las nuevas versiones a las que podemos actualizar las nuestras. Dicho &lt;em&gt;plugin&lt;/em&gt; lo hemos visto en
+el anterior bloque de código &lt;code&gt;id &amp;quot;com.github.ben-manes.versions&amp;quot; version &amp;quot;0.43.0&amp;quot;&lt;/code&gt; y este nos permite ejecutar el
+comando desde la consola &lt;code&gt;./gradlew dependencyUpdates&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Es aquí donde surge nuestro «problema», y es que como hemos visto, debemos puntualizar o precisar el lanzamiento de
+dicho comando en local para saber si tenemos que actualizar algo y a qué versión en concreto, por lo que depende de la
+buena memoria de los &lt;em&gt;developers&lt;/em&gt; a la hora de lanzar esto periódicamente y realizar los cambios pertinentes. Es
+entonces cuando se me ocurre que quizá esto se pueda automatizar aprovechando el CI/CD, por lo que me puse a buscar
+soluciones ya existentes. Para mi asombro, fue realmente simple encontrarlas en el &lt;em&gt;marketplace&lt;/em&gt; de Github Actions para
+este propósito, pero no terminaban de convencerme. Resulta que todo lo que encontré eran soluciones en las que
+automáticamente se abría una Pull Request en el proyecto con las dependencias actualizadas para que los &lt;em&gt;developers&lt;/em&gt;
+puedan mergearla, e incluso otras soluciones eran auto-mergeable ¿Suena bien verdad? Ahora bien, planteándome la
+situación en profundidad descubrí que esto no terminaba de ajustarse a nuestra forma de trabajo, ya que implicaría una
+revisión constante, estar pendiente de la sección de PR en los proyectos, por lo que si contamos con un sistema de
+microservicios este razonamiento nos suponía que era inviable. En ocasiones, los grandes cambios entre versiones de las
+dependencias puede conllevar que nuestros test no pasen en verde, lo que requiere de un trabajo extra, así que tuve que
+descartar las soluciones auto-mergeable. Mi impresión era que nos sería más sencillo y flexible a todos decidir en las
+&lt;em&gt;Pull Request&lt;/em&gt; que haríamos con las actualizaciones pendientes que teníamos, teniendo la posibilidad de no
+actualizar algunas porque harían que algunos &lt;em&gt;test&lt;/em&gt; no pasaran en verde o por cualquier otro factor que nos pudiese
+suponer un bloqueo para sacar la Pull Request adelante en un momento en el que quizá no podíamos permitirnos dedicarle
+demasiado tiempo.&lt;/p&gt;
+&lt;h2 id=&#34;solución&#34;&gt;Solución&lt;/h2&gt;
+&lt;p&gt;Una vez identificada la problemática, me gustaría contaros la resolución a la que llegué. Básicamente, he desarrollado
+una Github Action que he publicado en
+el &lt;a class=&#34;link&#34; href=&#34;https://github.com/marketplace/actions/check-dependencies-in-pull-request&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Marketplace de Github&lt;/a&gt;, donde te comenta
+las PR que abras con las dependencias que necesitas actualizar, o en su defecto con un comentario de que todo está
+actualizado. El código fuente de la &lt;em&gt;action&lt;/em&gt; lo podéis
+encontrar &lt;a class=&#34;link&#34; href=&#34;https://github.com/raulpadilladelgado/check-dependencies-in-pr-action&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;aquí&lt;/a&gt;. Os pongo también dos GIF sobre
+como funciona:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cuando tienes dependencias que actualizar:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 177; 
+			flex-basis: 426px&#34;
+	&gt;
+	&lt;a href=&#34;https://raulpadilladelgado.github.io/blog/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/faltaActualizar.gif&#34; data-size=&#34;600x338&#34;&gt;
+		&lt;img src=&#34;https://raulpadilladelgado.github.io/blog/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/faltaActualizar.gif&#34;
+			width=&#34;600&#34;
+			height=&#34;338&#34;
+			
+			loading=&#34;lazy&#34;
+			alt=&#34;Animación con dependencias por actualizar&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Animación con dependencias por actualizar&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cuando todas tus dependencias están actualizadas:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 177; 
+			flex-basis: 426px&#34;
+	&gt;
+	&lt;a href=&#34;https://raulpadilladelgado.github.io/blog/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/todoActualizado.gif&#34; data-size=&#34;600x338&#34;&gt;
+		&lt;img src=&#34;https://raulpadilladelgado.github.io/blog/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/todoActualizado.gif&#34;
+			width=&#34;600&#34;
+			height=&#34;338&#34;
+			
+			loading=&#34;lazy&#34;
+			alt=&#34;Animación con todo actualizado&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Animación con todo actualizado&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;un-poco-más-de-github-actions&#34;&gt;Un poco más de Github Actions&lt;/h2&gt;
+&lt;p&gt;Además de compartir esta herramienta, me gustaría haceros una breve introducción para animaros a desarrollar vuestra
+propia Github Action alguna vez. Lo primero de todo es consultar la información más extendida en
+la &lt;a class=&#34;link&#34; href=&#34;https://docs.github.com/en/actions/creating-actions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;documentación oficial de Github&lt;/a&gt;, sin embargo, trataré de
+resumir lo básico que necesité para crear la mía.&lt;/p&gt;
+&lt;p&gt;Existen tres formas de crear GitHub Actions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Usando Javascript&lt;/li&gt;
+&lt;li&gt;Usando Docker&lt;/li&gt;
+&lt;li&gt;Compuestas&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En mi caso he optado por crear una acción que funciona dentro de un contenedor de Docker. El proyecto se compone de:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/raulpadilladelgado/check-dependencies-in-pr-action/blob/main/Dockerfile&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Un archivo Dockerfile&lt;/a&gt; en
+el cual se define la imagen sobre la que se ejecutará el &lt;em&gt;script bash&lt;/em&gt; que declaramos en el &lt;em&gt;entrypoint&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/raulpadilladelgado/check-dependencies-in-pr-action/blob/main/action.yml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Un archivo de metadatos&lt;/a&gt;
+en el que se definen las entradas y salidas de la &lt;em&gt;action&lt;/em&gt; así como otra información relevante para el &lt;em&gt;marketplace&lt;/em&gt;
+de Github.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/raulpadilladelgado/check-dependencies-in-pr-action/blob/main/entrypoint.sh&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;El &lt;em&gt;script&lt;/em&gt; de &lt;em&gt;bash&lt;/em&gt;&lt;/a&gt;
+en el que se encuentra el core de nuestra &lt;em&gt;action&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;En un mundo ideal no debería ser necesario esta «manualidad» de tener que actualizar a mano las dependencias, pero hasta
+que conozca una solución cómoda y simple creo que esta forma de recordar que existen actualizaciones pendientes en las
+PR es una buena forma de no descuidar las dependencias de un proyecto Gradle.&lt;/p&gt;
+&lt;p&gt;Espero que este &lt;em&gt;post&lt;/em&gt; haya sido claro y preciso, a la vez que útil e informativo. ¡Gracias por dedicar una parte de
+vuestro tiempo a la lectura de este artículo!&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Código sostenible</title>
         <link>https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/</link>
         <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
