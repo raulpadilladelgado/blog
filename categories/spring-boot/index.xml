@@ -6,7 +6,16 @@
     <description>Recent content in spring-boot on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Fri, 02 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programación reactiva, que es y como usarla en Spring Boot</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/</guid>
+      <description>Introducción Los lenguajes de programación y los frameworks evolucionan con el tiempo para ofrecer a los desarrolladores una forma más simple y eficaz de resolver los problemas del mundo real y conseguir una solución adecuada según el contexto. Por ejemplo, cuando nació la programación orientada a objetos se pudo romper la barrera entre desarrollador y experto de producto plasmando la problemática en objetos de dominio que actuaban como lenguaje común para ambas partes.</description>
+    </item>
+    
     <item>
       <title>JWT Auth en Spring Boot</title>
       <link>https://raulpadilladelgado.github.io/blog/p/jwt-auth-en-spring-boot/</link>

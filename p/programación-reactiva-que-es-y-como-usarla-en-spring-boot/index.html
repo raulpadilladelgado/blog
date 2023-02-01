@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Los lenguajes de programación y los frameworks evolucionan con el tiempo para ofrecer a los desarrolladores una forma más simple y eficaz de resolver los problemas del mundo real y conseguir una solución adecuada según el contexto. Por ejemplo, cuando nació la programación orientada a objetos se pudo romper la barrera entre desarrollador y experto de producto plasmando la problemática en objetos de dominio que actuaban como lenguaje común para ambas partes.'><title>Programación reactiva, que es y como usarla en Spring Boot</title>
+
+<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Programación reactiva, que es y como usarla en Spring Boot'>
+<meta property='og:description' content='Introducción Los lenguajes de programación y los frameworks evolucionan con el tiempo para ofrecer a los desarrolladores una forma más simple y eficaz de resolver los problemas del mundo real y conseguir una solución adecuada según el contexto. Por ejemplo, cuando nació la programación orientada a objetos se pudo romper la barrera entre desarrollador y experto de producto plasmando la problemática en objetos de dominio que actuaban como lenguaje común para ambas partes.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-02-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-02-01T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/images/programacion_reactiva.png' />
+<meta name="twitter:title" content="Programación reactiva, que es y como usarla en Spring Boot">
+<meta name="twitter:description" content="Introducción Los lenguajes de programación y los frameworks evolucionan con el tiempo para ofrecer a los desarrolladores una forma más simple y eficaz de resolver los problemas del mundo real y conseguir una solución adecuada según el contexto. Por ejemplo, cuando nació la programación orientada a objetos se pudo romper la barrera entre desarrollador y experto de producto plasmando la problemática en objetos de dominio que actuaban como lenguaje común para ambas partes."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/images/programacion_reactiva.png' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/">
+                <img src="/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/images/programacion_reactiva.png"
+                        
+                        width="560" 
+                        height="300" 
+                        loading="lazy"
+                        alt="Featured image of post Programación reactiva, que es y como usarla en Spring Boot" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/spring-boot/" >
+                spring-boot
+            </a>
+        
+            <a href="/blog/categories/programacion-reactiva/" >
+                programacion-reactiva
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/">Programación reactiva, que es y como usarla en Spring Boot</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 01, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h2 id="introducción">Introducción</h2>
+<p>Los lenguajes de programación y los <em>frameworks</em> evolucionan con el tiempo para ofrecer a los desarrolladores una forma
+más simple y eficaz de resolver los problemas del mundo real y conseguir una solución adecuada según el contexto. Por
+ejemplo, cuando nació la programación orientada a objetos se pudo romper la barrera entre desarrollador y experto de
+producto plasmando la problemática en objetos de dominio que actuaban como lenguaje común para ambas partes.</p>
+<p>Otra gran necesidad que surgió fue la de no utilizar
+el clásico modelo de programación «instrucción por instrucción», donde es necesario que para poder pasar a la siguiente
+instrucción, la anterior haya finalizado su propósito. En su lugar, se busca un planteamiento asíncrono que permita
+aprovechar al máximo los hilos de ejecución de nuestra aplicación para brindarle al usuario una experiencia más rápida y
+flexible. Es aquí donde aparece el concepto de Programación Reactiva.</p>
+<p>Cabe destacar que se originó en la década de 1990 con el concepto de programación funcional
+reactiva. Científicos de la computación como David Pearce, Conal Elliott y Paul Hudak, trabajaron en el
+desarrollo de lenguajes y teorías que dieron lugar a la programación reactiva tal como la conocemos hoy en día.</p>
+<p>En 2003, un grupo de desarrolladores liderados por Anders Hejlsberg en Microsoft, crearon Reactive Extensions (Rx),
+una biblioteca para programación reactiva en .NET. Fue ahí que comenzó a ganar mucha popularidad y fue siendo adoptada
+en muchos otros lenguajes y frameworks.</p>
+<h2 id="qué-es-la-programación-reactiva">¿Qué es la programación reactiva?</h2>
+<p>La programación reactiva es un paradigma de programación que se centra en la gestión de datos que cambian a lo largo del
+tiempo. En lugar de tratar los datos como valores estáticos, se tratan como flujos de datos que cambian en el tiempo.</p>
+<p>Un programa reactivo se basa en la idea de que los datos pueden ser tratados como un flujo continuo de eventos que se
+pueden procesar de forma asíncrona. Los programas reactivos pueden manejar grandes cantidades de datos y son adecuados
+para aplicaciones que necesitan procesar grandes cantidades de información de manera eficiente, como aplicaciones en
+tiempo real o aplicaciones que manejan mucho tráfico de red.</p>
+<p>Un bloque de código se subscribe a un flujo de datos continuo definido por otro código para comenzar a recibir
+notificaciones (datos) cuando se producen cambios en los datos. Gracias a esto, nuestro código se vuelve asíncrono y no
+bloqueante, permitiendo que un hilo de ejecución no se bloquee por estar ejecutando una instrucción que depende de
+recibir una serie de datos y que delegue el trabajo a otro hilo para poder seguir procesando otras instrucciones, y este
+hilo a su vez no depende de recibir los datos en el momento, si no que es capaz de subscribirse a la entrada de esos
+datos para ir recibiéndolos a medida que están listos.</p>
+<p>Además de la asincronía, otra gran ventaja que nos brinda este paradigma es la posibilidad de ser más resiliente a los
+fallos, o diferentes enfoques para evitarlos. Por ejemplo, si tenemos que consumir una gran cantidad de datos desde una
+fuente pero sabemos que si cargamos todos de golpe nuestro sistema se va a sobrecargar y por tanto dejará de funcionar,
+podemos poner límites ya sea por lotes en los que consumimos poco a poco todos los datos, o incluso controlando la carga
+por tiempo, cargando solo durante un tiempo y reanudando después. Hay muchas posibilidades disponibles para usar según
+sea el problema que tengamos que resolver.</p>
+<h2 id="ejemplo-spring-boot--kotlin">Ejemplo (Spring Boot + Kotlin)</h2>
+<p>El código fuente de los siguientes ejemplos lo puedes encontrar alojado en Github visitando el siguiente enlace:</p>
+<p><a class="link" href="https://github.com/raulpadilladelgado/reactive-springboot"  target="_blank" rel="noopener"
+    >https://github.com/raulpadilladelgado/reactive-springboot</a></p>
+<h3 id="publicar-api-rest-reactiva">Publicar API Rest Reactiva</h3>
+<p>Nuestra aplicación Spring Boot será reactiva gracias al uso de la librería <code>spring-boot-starter-webflux</code>, ya que nos
+permite escribir y leer REST APIs reactivas. Para que podamos relacionar el concepto con algo más tangible vamos a ver
+un ejemplo de programación reactiva usando Spring Boot y Kotlin.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">import</span> <span class="nn">org.springframework.http.MediaType.TEXT_EVENT_STREAM_VALUE</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="nn">reactor.core.publisher.Flux</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="nn">reactor.core.publisher.Mono</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="nn">java.time.Duration.ofSeconds</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SongController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">lateinit</span> <span class="k">var</span> <span class="py">songRepository</span><span class="p">:</span> <span class="n">SongRepository</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@GetMapping</span><span class="p">(</span><span class="k">value</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;/song&#34;</span><span class="p">],</span> <span class="n">produces</span> <span class="p">=</span> <span class="p">[</span><span class="n">TEXT_EVENT_STREAM_VALUE</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">findSongs</span><span class="p">():</span> <span class="n">Flux</span><span class="p">&lt;</span><span class="n">Song</span><span class="p">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">songRepository</span><span class="p">.</span><span class="n">findAll</span><span class="p">().</span><span class="n">delayElements</span><span class="p">(</span><span class="n">ofSeconds</span><span class="p">(</span><span class="m">3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@PostMapping</span><span class="p">(</span><span class="k">value</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;/song&#34;</span><span class="p">],</span> <span class="n">produces</span> <span class="p">=</span> <span class="p">[</span><span class="n">TEXT_EVENT_STREAM_VALUE</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">saveSong</span><span class="p">(</span><span class="nd">@RequestBody</span> <span class="n">song</span><span class="p">:</span> <span class="n">Song</span><span class="p">):</span> <span class="n">Mono</span><span class="p">&lt;</span><span class="n">Song</span><span class="p">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">songRepository</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Para habilitar la programación reactiva en el primer <em>endpoint</em>, hemos usado el tipo de retorno <strong><code>Flux</code></strong> de la
+biblioteca Reactor de Spring. Este tipo representa un flujo de datos asincrónico que puede emitir varios valores a lo
+largo del tiempo. Además, hemos especificado que la API debe producir un tipo de contenido <strong><code>text/event-stream</code></strong>, lo
+que indica que se trata de un flujo de eventos en tiempo real. Para simular que nuestra API está tratando de consumir
+datos desde una fuente que puede tardar más tiempo del deseado, hemos usado <code>delayElements</code> para retrasar un poco el
+envío de datos desde nuestro <em>endpoint</em>.</p>
+<p>Para que nuestra API sea totalmente reactiva, cabe destacar que hemos usado la librería R2DBC, más concretamente en su
+implementación para PostgreSQL, la cual nos permite operar con la base de datos de una forma reactiva trabajando con los
+ya comentados flujos de datos. La ventaja frente a JDBC (librería más común para persistencia en el mundillo de Spring
+Boot) es que los métodos que nos ofrece para operar con la base de datos no son bloqueantes y nos facilita la
+integración con nuestra API reactiva ya que trabaja usando los tipos de datos asíncronos como Flux o Mono. Vamos a ver
+la implementación del repositorio:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//R2DBC PostgreSQL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">import</span> <span class="nn">org</span> <span class="p">.</span> <span class="n">springframework</span> <span class="p">.</span> <span class="k">data</span> <span class="p">.</span> <span class="n">r2dbc</span> <span class="p">.</span> <span class="n">repository</span> <span class="p">.</span> <span class="n">R2dbcRepository</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nd">@Repository</span>
+</span></span><span class="line"><span class="cl">        <span class="k">interface</span> <span class="nc">SongRepository</span> <span class="p">:</span> <span class="n">R2dbcRepository</span><span class="p">&lt;</span><span class="n">Song</span><span class="p">,</span> <span class="n">Int</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>Al extender de ReactiveCrudRepository ya tenemos disponibles una gran cantidad de métodos como <em>find</em>, <em>findAll</em>,
+<em>Save</em>… (véase el ejemplo en el código del controlador más arriba).</p>
+<p>En el segundo <em>endpoint</em>, hemos usado el tipo Mono, que solo contiene un valor y que usamos para retornar el elemento
+que guardamos en la base de datos.</p>
+<p>Otro aspecto importante a tener en cuenta es cómo configuramos SpringBoot para que pueda conectarse a nuestra base de
+datos. Tenemos que especificar qué URL tiene que usar R2DBC para conectarse:</p>
+<p>Inserta este código en tu application.yml o application.properties:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">r2dbc</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">r2dbc:postgresql://postgres:5432/admin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">admin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">password</span><span class="w">
+</span></span></span></code></pre></div><p>Esta configuración será variable dependiendo de como tengas desplegada tu base de datos. En el ejemplo que proporciono,
+la base de datos se arranca en local junto con la aplicación utilizando Docker.</p>
+<h3 id="consumir-api-rest-reactiva">Consumir API Rest Reactiva</h3>
+<p>Aquí te presento un ejemplo de cómo consumir de forma reactiva esta API desde una aplicación cliente usando la
+biblioteca Reactor de Spring:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="nn">org</span> <span class="p">.</span> <span class="n">springframework</span> <span class="p">.</span> <span class="n">web</span> <span class="p">.</span> <span class="n">reactive</span> <span class="p">.</span> <span class="n">function</span> <span class="p">.</span> <span class="n">client</span> <span class="p">.</span> <span class="n">WebClient</span>
+</span></span><span class="line"><span class="cl">        <span class="k">import</span> <span class="nn">java</span> <span class="p">.</span> <span class="n">time</span> <span class="p">.</span> <span class="n">Duration</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nd">@RestController</span>
+</span></span><span class="line"><span class="cl">        <span class="k">class</span> <span class="nc">ConsumeSongController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nd">@GetMapping</span><span class="p">(</span><span class="s2">&#34;/consume&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">fun</span> <span class="nf">consumeAll</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">val</span> <span class="py">response</span> <span class="p">=</span> <span class="nc">WebClient</span><span class="p">.</span><span class="n">builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">baseUrl</span><span class="p">(</span><span class="n">SONGS_URL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="k">get</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">retrieve</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">bodyToFlux</span><span class="p">(</span><span class="n">Map</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">response</span><span class="p">.</span><span class="n">subscribe</span> <span class="p">{</span> <span class="n">song</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">println</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nd">@GetMapping</span><span class="p">(</span><span class="s2">&#34;/consume-only-two&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">fun</span> <span class="nf">consumeOnlyTwo</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">val</span> <span class="py">response</span> <span class="p">=</span> <span class="nc">WebClient</span><span class="p">.</span><span class="n">builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">baseUrl</span><span class="p">(</span><span class="n">SONGS_URL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="k">get</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">retrieve</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">bodyToFlux</span><span class="p">(</span><span class="n">Map</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">response</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="m">2</span><span class="p">).</span><span class="n">subscribe</span> <span class="p">{</span> <span class="n">song</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">println</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nd">@GetMapping</span><span class="p">(</span><span class="s2">&#34;/consume-for-five-seconds&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">fun</span> <span class="nf">consumeForFiveSeconds</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">val</span> <span class="py">response</span> <span class="p">=</span> <span class="nc">WebClient</span><span class="p">.</span><span class="n">builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">baseUrl</span><span class="p">(</span><span class="n">SONGS_URL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="k">get</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">retrieve</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">bodyToFlux</span><span class="p">(</span><span class="n">Map</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">response</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="nc">Duration</span><span class="p">.</span><span class="n">ofSeconds</span><span class="p">(</span><span class="m">5</span><span class="p">)).</span><span class="n">subscribe</span> <span class="p">{</span> <span class="n">song</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">println</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="k">val</span> <span class="py">SONGS</span><span class="n">_URL</span> <span class="p">=</span> <span class="s2">&#34;http://127.0.0.1:8080/song&#34;</span>
+</span></span></code></pre></div><p>Para recibir la respuesta como un flujo de eventos, hemos usado el método <strong><code>bodyToFlux</code></strong> de la clase WebClient (
+librería reactiva para consumir APIs), que nos permite almacenar los datos a medida que llegan en la variable.
+Finalmente, hemos suscrito un manejador al flujo de eventos, que simplemente imprime cada evento recibido por consola.
+Al ejecutar este código, la aplicación cliente comenzará a consumir el flujo de eventos de forma reactiva y se imprimirá
+un mensaje por cada evento recibido.</p>
+<p>Como comentamos anteriormente, tenemos muchas posibilidades para evitar la sobrecarga en nuestra aplicación
+especificando cada cuanto tiempo queremos coger datos o cuanta cantidad, etc.</p>
+<h1 id="webgrafía">Webgrafía</h1>
+<p>Jacquot, A. (8 de julio del 2021). <em>Programación reactiva con Spring Data R2DBC</em>. Blog de Pictet
+Technologies: <a class="link" href="https://medium.com/pictet-technologies-blog/reactive-programming-with-spring-data-r2dbc-ee9f1c24848b"  target="_blank" rel="noopener"
+    >https://medium.com/pictet-technologies-blog/reactive-programming-with-spring-data-r2dbc-ee9f1c24848b</a></p>
+<p>Paluch, M. (7 de diciembre de 2018). <em>Programación Reactiva y Bases de Datos Relacionales</em>. Blog de
+primavera: <a class="link" href="https://spring.io/blog/2018/12/07/reactive-programming-and-relational-databases"  target="_blank" rel="noopener"
+    >https://spring.io/blog/2018/12/07/reactive-programming-and-relational-databases</a></p>
+<p>Vijay, Srj. (10 de junio del 2022). <em>¿Cómo implementar la programación reactiva en Spring Boot?</em>. El desarrollador de la
+pila
+completa: <a class="link" href="https://fullstackdeveloper.guru/2022/06/10/how-to-implement-reactive-programming-in-spring-boot/"  target="_blank" rel="noopener"
+    >https://fullstackdeveloper.guru/2022/06/10/how-to-implement-reactive-programming-in-spring-boot/</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/blog/p/jwt-auth-en-spring-boot/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">JWT Auth en Spring Boot</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/base-de-datos-local-con-docker/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Base de datos local con docker</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/lombok-annotations/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Lombok annotations</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/blog/p/spring-boot-primer-contacto/">
+        
+        
+            <div class="article-image">
+                <img src="/blog/p/spring-boot-primer-contacto/images/spring-icon.ee5eeea8c805797c63bf21592f9aff8f_huadbf2f0049d515f95c854e2c70f5b2e1_40083_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-7l7uqMgFeXxjvyFZL5r/jw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring boot, primer contacto</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="raulpadilladelgado/blog"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introducción">Introducción</a></li>
+    <li><a href="#qué-es-la-programación-reactiva">¿Qué es la programación reactiva?</a></li>
+    <li><a href="#ejemplo-spring-boot--kotlin">Ejemplo (Spring Boot + Kotlin)</a>
+      <ol>
+        <li><a href="#publicar-api-rest-reactiva">Publicar API Rest Reactiva</a></li>
+        <li><a href="#consumir-api-rest-reactiva">Consumir API Rest Reactiva</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
