@@ -4,7 +4,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Pongamos el ejemplo de que creamos una clase &amp;ldquo;Texto&amp;rdquo; y queremos admitir para su atributo &amp;ldquo;texto&amp;rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:
 public Texto(String texto){ if(texto==null){texto=&amp;#34;&amp;#34;;} this.texto=texto; } Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.'><title>Reemplazar constructores por métodos de factoría</title>
 
+
 <link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/reemplazar-constructores-por-m%C3%A9todos-de-factor%C3%ADa/'>
+
 
 <link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Reemplazar constructores por métodos de factoría'>
 <meta property='og:description' content='Pongamos el ejemplo de que creamos una clase &amp;ldquo;Texto&amp;rdquo; y queremos admitir para su atributo &amp;ldquo;texto&amp;rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:

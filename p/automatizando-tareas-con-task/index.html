@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Típicamente, cuando estamos desarrollando código, hacemos mucho uso de la terminal para ejecutar distintos comandos que nos permiten, por ejemplo, comprobar que nuestros test pasan, descargar dependencias, arrancar la aplicación en local&amp;hellip; Estos comandos suelen ser largos y nos puede resultar difícil recordarlos o simplemente tenemos que ejecutar varios porque encadenan una función que queremos realizar sobre nuestro código.
+Es aquí donde nos preguntamos si existía alguna herramienta que nos simplificara esta tarea y que fuera fácil de implementar y usar.'><title>Automatizando tareas con Task</title>
+
+
+<link rel="canonical" href="https://leanmind.es/es/blog/automatizando-tareas-con-task/">
+
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Automatizando tareas con Task'>
+<meta property='og:description' content='Introducción Típicamente, cuando estamos desarrollando código, hacemos mucho uso de la terminal para ejecutar distintos comandos que nos permiten, por ejemplo, comprobar que nuestros test pasan, descargar dependencias, arrancar la aplicación en local&amp;hellip; Estos comandos suelen ser largos y nos puede resultar difícil recordarlos o simplemente tenemos que ejecutar varios porque encadenan una función que queremos realizar sobre nuestro código.
+Es aquí donde nos preguntamos si existía alguna herramienta que nos simplificara esta tarea y que fuera fácil de implementar y usar.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/automatizando-tareas-con-task/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-10-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-16T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/automatizando-tareas-con-task/images/make-vs-task.jpg' />
+<meta name="twitter:title" content="Automatizando tareas con Task">
+<meta name="twitter:description" content="Introducción Típicamente, cuando estamos desarrollando código, hacemos mucho uso de la terminal para ejecutar distintos comandos que nos permiten, por ejemplo, comprobar que nuestros test pasan, descargar dependencias, arrancar la aplicación en local&amp;hellip; Estos comandos suelen ser largos y nos puede resultar difícil recordarlos o simplemente tenemos que ejecutar varios porque encadenan una función que queremos realizar sobre nuestro código.
+Es aquí donde nos preguntamos si existía alguna herramienta que nos simplificara esta tarea y que fuera fácil de implementar y usar."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/automatizando-tareas-con-task/images/make-vs-task.jpg' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/automatizando-tareas-con-task/">
+                <img src="/blog/p/automatizando-tareas-con-task/images/make-vs-task.jpg"
+                        
+                        width="2203" 
+                        height="630" 
+                        loading="lazy"
+                        alt="Featured image of post Automatizando tareas con Task" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/herramientas/" >
+                herramientas
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/automatizando-tareas-con-task/">Automatizando tareas con Task</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 16, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h2 id="introducción">Introducción</h2>
+<p>Típicamente, cuando estamos desarrollando código, hacemos mucho uso de la terminal para ejecutar distintos comandos que nos permiten, por ejemplo, comprobar que nuestros <em>test</em> pasan, descargar dependencias, arrancar la aplicación en local&hellip; Estos comandos suelen ser largos y nos puede resultar difícil recordarlos o simplemente tenemos que ejecutar varios porque encadenan una función que queremos realizar sobre nuestro código.</p>
+<p>Es aquí donde nos preguntamos si existía alguna herramienta que nos simplificara esta tarea y que fuera fácil de implementar y usar. La primera que se nos ocurrió debido a su popularidad fue Makefile. Indagando un poco más sobre qué es esta tecnología y para qué fue creada, llegamos a la conclusión de que su propósito principal es describir las dependencias entre los archivos fuente de un proyecto y las reglas para compilarlos, así como generar ejecutables. Esta definición no cuadraba mucho con el tipo de herramienta que estábamos buscando, por lo que decidimos descartarla.</p>
+<p>Tras el punto anterior, seguimos con nuestra investigación y consultamos a compañeros. Varios nos recomendaron una herramienta llamada Task que por ahora suplía todas nuestras necesidades.</p>
+<h2 id="qué-es-task">¿Qué es Task?</h2>
+<p>La herramienta se describe a sí misma como un <em>runner</em> de tareas o una herramienta de construcción que busca ser más simple y fácil de usar que GNU Make. Como principales ventajas frente a la herramienta con la que se comparan, tenemos que:</p>
+<ul>
+<li>Es una herramienta multiplataforma. Make funciona completamente en las máquinas Unix, pero en Windows hay que hacer algún cambalache como usar Cygwin o WSL para poder usarlo. Para Task, con la instalación ya es totalmente compatible con tu sistema operativo.</li>
+<li>Tiene una sintaxis más simple. Por lo tanto, es más sencillo entenderlo y aplicarlo que Make. Además, los IDE modernos, como IntelliJ o Visual Studio Code, tienen soporte para sugerirte qué sintaxis puedes usar con su debida documentación embebida.</li>
+<li>Tiene muchas más funcionalidades. Como comentamos anteriormente, Make no se pensó como un <em>runner</em> de tareas, por lo que entendemos que no se buscaba tener tantas funcionalidades como tiene Task a la hora de encadenar tareas, definir sus descripciones, entre otras.</li>
+</ul>
+<p>Task por defecto buscará en tu proyecto un archivo llamado Taskfile.yml que podría tener una estructura como esta:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hello</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cmds</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">echo &#39;Hello World from Task!&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">silent</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><p>Algo a remarcar es que no busca un Taskfile.yml en la ruta raíz de tu proyecto, aunque típicamente el archivo se suela ubicar ahí. En su lugar, es capaz de buscar recursivamente por las carpetas de tu proyecto por ese archivo. Gracias a esto no te tienes que preocupar de en qué localización de tu proyecto te encuentras para lanzar una tarea con Task.</p>
+<h2 id="ejemplo">Ejemplo</h2>
+<p>Les mostramos un breve ejemplo propio sobre como se puede usar la herramienta:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">silent</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">test</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;🧪 Run tests&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cmds</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">flutter test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;🔨 Build application executable&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">preconditions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">sh</span><span class="p">:</span><span class="w"> </span><span class="l">ls {{ .TASKFILE_DIR }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{.PRECONDITION_MESSAGE}}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cmds</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l">my-plugin:generate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l">build-to-macos</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build-to-macos</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">internal</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">platforms</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">darwin ]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cmds</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">flutter build macos --release</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cmds</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">task -l</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">vars</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">PRECONDITION_MESSAGE</span><span class="p">:</span><span class="w"> </span><span class="l">🤷‍♀️You need to have a valid Taskfile in your myplugin project</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">MY_PLUGIN_DIR</span><span class="p">:</span><span class="w"> </span><span class="l">../my-plugin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">TASKFILE_DIR</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ .MY_PLUGIN_DIR }}/Taskfile.yml&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">includes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">my-plugin</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">taskfile</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ .MY_PLUGIN_DIR }}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ .MY_PLUGIN_DIR }}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">internal</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><p>La tarea <em>build</em> construye el ejecutable de una aplicación y se apoya en una tarea de otro Taskfile, estableciendo una precondición que verifica que exista el fichero, y luego utiliza una tarea interna que solo se ejecuta en caso de que tu sistema operativo sea MacOS.</p>
+<p>Como se puede ver, se extraen variables para simplificar y reducir la cantidad de texto literal, ya sea rutas u otros textos complejos.</p>
+<p>La tarea <em>default</em> es un truco que hemos hecho para que simplemente con ejecutar el comando <code>task</code> sin ningún argumento, te liste las tareas disponibles, lo que normalmente tendrías que hacer ejecutando <code>task -l</code>.  Esta seria su salida:</p>
+<pre tabindex="0"><code>❯ task
+task: Available tasks for this project:
+* build:          🔨 Build application executable
+* test:           🧪 Run tests
+</code></pre><p>Por defecto, cuando ejecutamos <code>task -l</code> se usa una ordenación alfanumérica, por lo que si quieres que se muestren por orden de tu preferencia podrías cambiar la tarea <em>default</em> para que use el comando <code>task -l -sort none</code>. Esto provoca que a la hora de mostrarlos sigan el mismo orden que definiste en el Taskfile.</p>
+<h2 id="nuestra-experiencia">Nuestra experiencia</h2>
+<p>En apenas unas pocas horas logramos implementarlo en un proyecto real. Una de las primeras cosas que notamos fue su gran escalabilidad. Con Task, puedes cubrir el espectro completo de las tareas, desde las más simples, como definir un alias para un comando largo, hasta las más complejas, como encadenar diversas operaciones y ejecutarlas según tu sistema operativo.</p>
+<p>Un elemento muy simple, pero que nos resulta muy útil, es la posibilidad de ejecutar un comando que muestra todas las tareas configuradas junto con su descripción. Esto agrega una capa de organización y claridad a nuestro flujo de trabajo que simplemente no estaba presente antes.</p>
+<p>En el uso que hemos dado a la herramienta, hay varias características poderosas que queremos destacar:</p>
+<ul>
+<li>Taskfile te permite especificar que ciertas tareas se ejecuten en un directorio en particular. Esto es extremadamente útil para mantener separadas las tareas y los contextos en los que se ejecutan.</li>
+<li>Las precondiciones, que verifican si la tarea necesita ser ejecutada o no, han resultado ser una herramienta valiosa para prevenir la redundancia y optimizar el tiempo de trabajo.</li>
+<li>La habilidad de conectar múltiples Taskfiles es otra función que hemos explotado bastante. Puedes importar un Taskfile dentro de otro y usar sus tareas, lo que facilita enormemente la reutilización de código y la organización.</li>
+<li>Nos ha sido muy útil tener tareas que se definen como internas, que no se ejecutan desde fuera, sino que son llamadas por otras tareas que sí son públicas. Esta funcionalidad facilita la extracción de métodos, de la misma manera que lo harías en un lenguaje de programación.</li>
+<li>La opción de definir varios alias para la misma tarea es otra función que hemos disfrutado. Cada persona puede invocar la tarea con el nombre de su elección, lo que ayuda a la personalización y la comodidad del usuario.</li>
+<li>Finalmente, la gestión de errores en Task es sólida y eficiente, permitiéndonos identificar y solucionar problemas con mayor rapidez.</li>
+</ul>
+<p>En resumen, nuestra experiencia con Taskfile ha sido muy positiva. Ha mejorado nuestra eficiencia, organización, y nos ha proporcionado un conjunto de herramientas poderosas para manejar nuestras tareas de desarrollo. Sin duda, lo recomendamos a otros equipos de desarrollo que busquen una herramienta de gestión de tareas sólida y flexible.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="raulpadilladelgado/blog"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introducción">Introducción</a></li>
+    <li><a href="#qué-es-task">¿Qué es Task?</a></li>
+    <li><a href="#ejemplo">Ejemplo</a></li>
+    <li><a href="#nuestra-experiencia">Nuestra experiencia</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

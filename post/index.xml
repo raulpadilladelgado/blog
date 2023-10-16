@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automatizando tareas con Task</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/automatizando-tareas-con-task/</link>
+      <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://raulpadilladelgado.github.io/blog/p/automatizando-tareas-con-task/</guid>
+      <description>Introducción Típicamente, cuando estamos desarrollando código, hacemos mucho uso de la terminal para ejecutar distintos comandos que nos permiten, por ejemplo, comprobar que nuestros test pasan, descargar dependencias, arrancar la aplicación en local&amp;hellip; Estos comandos suelen ser largos y nos puede resultar difícil recordarlos o simplemente tenemos que ejecutar varios porque encadenan una función que queremos realizar sobre nuestro código.
+Es aquí donde nos preguntamos si existía alguna herramienta que nos simplificara esta tarea y que fuera fácil de implementar y usar.</description>
+    </item>
+    
     <item>
       <title>Programación reactiva, que es y como usarla en Spring Boot</title>
       <link>https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/</link>
