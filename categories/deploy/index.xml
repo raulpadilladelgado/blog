@@ -6,12 +6,12 @@
     <description>Recent content in deploy on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Fri, 17 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/deploy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://raulpadilladelgado.github.io/blog/categories/deploy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deploy básico usando Heroku y Git</title>
       <link>https://raulpadilladelgado.github.io/blog/p/deploy-b%C3%A1sico-usando-heroku-y-git/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/deploy-b%C3%A1sico-usando-heroku-y-git/</guid>
       <description>Heroku nos va a permitir alojar nuestras aplicaciones en sus servidores, y acceder a éstas desde un enlace que nos proporcione.
 Tras crear una cuenta y descargar la línea de comandos de Heroku, nos dirigimos a la carpeta donde tengamos nuestro proyecto y ejecutamos lo siguiente:
@@ -21,6 +21,5 @@ git add .
 git commit -m &amp;quot;primer commit&amp;quot;
 Crear espacio para nuestra app en servidor de heroku -&amp;gt; automáticamente añade un repositorio remoto &amp;ldquo;heroku&amp;rdquo; el que haremos push para subir nuestro proyecto a ese espacio.</description>
     </item>
-    
   </channel>
 </rss>

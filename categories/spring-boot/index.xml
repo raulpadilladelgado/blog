@@ -6,32 +6,28 @@
     <description>Recent content in spring-boot on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://raulpadilladelgado.github.io/blog/categories/spring-boot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Programación reactiva, que es y como usarla en Spring Boot</title>
       <link>https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/</guid>
       <description>Introducción Los lenguajes de programación y los frameworks evolucionan con el tiempo para ofrecer a los desarrolladores una forma más simple y eficaz de resolver los problemas del mundo real y conseguir una solución adecuada según el contexto. Por ejemplo, cuando nació la programación orientada a objetos se pudo romper la barrera entre desarrollador y experto de producto plasmando la problemática en objetos de dominio que actuaban como lenguaje común para ambas partes.</description>
     </item>
-    
     <item>
       <title>JWT Auth en Spring Boot</title>
       <link>https://raulpadilladelgado.github.io/blog/p/jwt-auth-en-spring-boot/</link>
       <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/jwt-auth-en-spring-boot/</guid>
       <description>1. JWT Authentication 1.1. ¿Que es JWT? Dicho de forma sencilla, JWT, es una autenticación basada en tokens enviados a las peticiones por cabecera.
 Para más información: https://jwt.io/introduction/
 1.2. ¿Como funciona JWT? Para obtener el token de acceso, el cliente envía una solicitud de inicio de sesión al servidor de autenticación con el nombre de usuario y la contraseña en el cuerpo de la solicitud. El servidor valida el nombre de usuario y la contraseña, luego devuelve un token de acceso.</description>
     </item>
-    
     <item>
       <title>Base de datos local con docker</title>
       <link>https://raulpadilladelgado.github.io/blog/p/base-de-datos-local-con-docker/</link>
       <pubDate>Wed, 12 Aug 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/base-de-datos-local-con-docker/</guid>
       <description>El siguiente ejemplo se ha desarrollado con Spring Boot.
 Hacemos ciertos ajustes en applicacion.properties para configurar la conexión a la DB.
@@ -39,28 +35,23 @@ spring.jpa.database=POSTGRESQL spring.datasource.platform=postgres spring.dataso
 docker run --name my_postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres Listo, ya podemos trabajar con nuestra base de datos en local 🥳
 Para cualquier duda el proyecto se puede consultar aquí: https://github.</description>
     </item>
-    
     <item>
       <title>Lombok annotations</title>
       <link>https://raulpadilladelgado.github.io/blog/p/lombok-annotations/</link>
       <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/lombok-annotations/</guid>
       <description>Lombok es una biblioteca Java que nos permite reemplazar las líneas de código que creamos para los constructores, getter y setter, entre otros, por unas simple anotaciones, por lo que cuando creamos una clase solo definimos las propiedades y ésta librería hace el resto.
 Con una simple anotación(@Data), Lombok inyectará los métodos getter y setter para cada propiedad, además de un equals, hashCode y toString.
 https://1.bp.blogspot.com/&amp;ndash;CYarvynlTU/Xp24u-wh6zI/AAAAAAAAAKE/-pW3SGJ7qokEtPL93HgN911_hjvzZCnnQCLcBGAsYHQ/s400/28ae0b5bfcf57c9972db8ecc6f9df091_f652.png @Getter y Setter Se usan para generar un getter y setter para un atributo específico.</description>
     </item>
-    
     <item>
       <title>Spring boot, primer contacto</title>
       <link>https://raulpadilladelgado.github.io/blog/p/spring-boot-primer-contacto/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/spring-boot-primer-contacto/</guid>
       <description>Inicio Arrancando con un proyecto Para crear un proyecto de una forma rápida y sencilla he encontrado Spring Initializr. Es muy simple, basta con elegir lenguaje, versión y otras configuraciones, como los metadatos del proyecto, y finalmente las dependencias del proyecto Spring que usaremos.
 Si elegimos &amp;ldquo;generar&amp;rdquo; nos descarga un archivo zip que cual contiene el proyecto creado ya preparado para empezar a trabajar con él.
 Estructura de un proyecto En el archivo pom.</description>
     </item>
-    
   </channel>
 </rss>

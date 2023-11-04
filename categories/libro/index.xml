@@ -6,25 +6,22 @@
     <description>Recent content in libro on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Wed, 24 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/libro/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://raulpadilladelgado.github.io/blog/categories/libro/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Análisis del libro &#34;Implementation patterns&#34;</title>
       <link>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/</link>
       <pubDate>Wed, 24 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/</guid>
       <description>Implementations Patterns, de Kent Beck, es un libro sobre programación que define buenas prácticas a seguir en el desarrollo de código en Java, con el objetivo de tener un código legible y del que nos sintamos orgullosos. Se busca mejorar la perspectiva que tenga un programador sobre el sistema que va a tratar, para que entienda que cuando escriba código, éste debe hablar por si solo, debe ser la respuesta correcta y simple a una pregunta que se haga una persona cuando debe resolver un problema.</description>
     </item>
-    
     <item>
       <title>Análisis del libro &#34;Diseño ágil con TDD&#34;</title>
       <link>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/</link>
       <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/</guid>
       <description>Portada libro INTRODUCCIÓN &amp;ldquo;Diseño Ágil con TDD&amp;rdquo;, por Carlos Ble, es un libro muy interesante que nos enseña como implementar Test-Driven Development en el desarrollo de código. Muestra como basar nuestro código en los Test que escribimos, y no al revés. A continuación comparto mis experiencias leyendo éste libro.
 ¿QUE BENEFICIOS NOS APORTA? Se presentan grandes beneficios de codificar de ésta forma. Se habla de conseguir un código simple, que haga lo que necesitamos para cada momento, que cuando falle nos de un correcto y constante feedback de porqué eso está ocurriendo, así como un código legible y fácil de mantener.</description>
     </item>
-    
   </channel>
 </rss>

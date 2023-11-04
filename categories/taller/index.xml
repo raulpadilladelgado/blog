@@ -6,16 +6,15 @@
     <description>Recent content in taller on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Sun, 27 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/taller/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://raulpadilladelgado.github.io/blog/categories/taller/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Taller refactor Java &#43; IntelliJ</title>
       <link>https://raulpadilladelgado.github.io/blog/p/taller-refactor-java--intellij/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/taller-refactor-java--intellij/</guid>
       <description>Recientemente estuve realizando una formación que impartía Carlos Ble. Dicha formación consistía en aprender trucos y consejos para aplicar a la hora de hacer refactor. Lejos de ser solo una charla, los alumnos estuvimos gran parte del tiempo practicando lo que íbamos aprendiendo con cada ejercicio, y ahora yo quiero hablar un poco acerca de ello.
 Tras concluir esta formación mi perspectiva acerca del refactor cambió mucho. Generalmente, tendemos a buscar los refactors más complicados, esos que simplifican 20 líneas de código en la mitad o casos por el estilo.</description>
     </item>
-    
   </channel>
 </rss>

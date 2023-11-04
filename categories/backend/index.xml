@@ -6,47 +6,40 @@
     <description>Recent content in backend on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Sat, 28 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/backend/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://raulpadilladelgado.github.io/blog/categories/backend/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Principios SOLID</title>
       <link>https://raulpadilladelgado.github.io/blog/p/principios-solid/</link>
       <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/principios-solid/</guid>
       <description>Introducción Los principio SOLID son convenciones en cuanto a diseño de software que ayudan a conseguir un código más mantenible, tolerante a cambios, y testeable.
 Todos los desarrolladores de un equipo deberían tener nociones de diseño de software para fomentar la autonomía y agilidad del equipo
 Huir de STUPID, el enemigo de SOLID S → Singleton: Hay un objeto que lo contiene todo. No necesita inyección de dependencias. Y se encuentra por todo el programa.</description>
     </item>
-    
     <item>
       <title>Clases, Interfaces y Genéricos</title>
       <link>https://raulpadilladelgado.github.io/blog/p/clases-interfaces-y-gen%C3%A9ricos/</link>
       <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/clases-interfaces-y-gen%C3%A9ricos/</guid>
       <description>Interfaces Es una colección de métodos abstractos y propiedades constantes. En las interfaces se especifica qué se debe hacer pero no su implementación. Serán las clases que implementen estas interfaces las que describen la lógica del comportamiento de los métodos. Las clases que hereden de la interfaz solo podrán hacerlo de ella.
 Un momento muy útil en el que declarar una interfaz, puede ser cuando vemos que dos clases tienen el mismo contrato, por ejemplo, tenemos una clase coche y una clase moto, que implementan los mismos métodos de formas distintas.</description>
     </item>
-    
     <item>
       <title>Principios fundamentales de los tipos de datos en Java</title>
       <link>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</link>
       <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</guid>
       <description>Primitivos y wrappers de primitivos en Java Asignar una variable primitiva usando otra variable primitiva Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.
 public class Main { public static void main(String[] args) { int x = 0; int y = x; y=5; System.</description>
     </item>
-    
     <item>
       <title>Value object VS Entity object</title>
       <link>https://raulpadilladelgado.github.io/blog/p/value-object-vs-entity-object/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/value-object-vs-entity-object/</guid>
       <description>Value object En el modelo Value Object, un objeto se diferencia de otro por su contenido, no por su identidad propia.
 Podemos entender el concepto de Value Object con el ejemplo de las monedas. Aunque cada moneda de 1 euro tiene su propia identidad (un número de serie), la economía funciona porque entiende que una moneda de 1 euro es igual que otra moneda de un euro, ambas valen lo mismo y a efectos prácticos son iguales.</description>
     </item>
-    
   </channel>
 </rss>

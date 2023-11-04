@@ -6,16 +6,15 @@
     <description>Recent content in python on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Sat, 13 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://raulpadilladelgado.github.io/blog/categories/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Entornos virtuales en Python</title>
       <link>https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/</link>
       <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/</guid>
       <description>Introducción En nuestras aplicaciones Python solemos hacer uso de librerías, y las diferentes versiones de estas pueden llegar a ser un quebradero de cabeza cuando son usadas desde varias aplicaciones. Además de las librerías, la propia instalación de Python tiene un sistema de versionado, por lo que nos ocurre el mismo problema. Una aplicación A no funciona con Python 3.8 pero la aplicación B lo necesita.
 La solución a este problema es usar un entorno virtual, que es un árbol de directorios autónomo que contiene una instalación de Python con una versión concreta, además de una serie de paquetes adicionales que queramos instalar.</description>
     </item>
-    
   </channel>
 </rss>

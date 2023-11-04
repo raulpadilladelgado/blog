@@ -6,265 +6,215 @@
     <description>Recent content in Posts on Raúl Padilla Delgado</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 16 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://raulpadilladelgado.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://raulpadilladelgado.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Automatizando tareas con Task</title>
       <link>https://raulpadilladelgado.github.io/blog/p/automatizando-tareas-con-task/</link>
       <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/automatizando-tareas-con-task/</guid>
       <description>Introducción Típicamente, cuando estamos desarrollando código, hacemos mucho uso de la terminal para ejecutar distintos comandos que nos permiten, por ejemplo, comprobar que nuestros test pasan, descargar dependencias, arrancar la aplicación en local&amp;hellip; Estos comandos suelen ser largos y nos puede resultar difícil recordarlos o simplemente tenemos que ejecutar varios porque encadenan una función que queremos realizar sobre nuestro código.
 Es aquí donde nos preguntamos si existía alguna herramienta que nos simplificara esta tarea y que fuera fácil de implementar y usar.</description>
     </item>
-    
     <item>
       <title>Programación reactiva, que es y como usarla en Spring Boot</title>
       <link>https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/</guid>
       <description>Introducción Los lenguajes de programación y los frameworks evolucionan con el tiempo para ofrecer a los desarrolladores una forma más simple y eficaz de resolver los problemas del mundo real y conseguir una solución adecuada según el contexto. Por ejemplo, cuando nació la programación orientada a objetos se pudo romper la barrera entre desarrollador y experto de producto plasmando la problemática en objetos de dominio que actuaban como lenguaje común para ambas partes.</description>
     </item>
-    
     <item>
       <title>Comprobar versiones de dependencias de Gradle en las Pull Request</title>
       <link>https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/</guid>
       <description>Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.</description>
     </item>
-    
     <item>
       <title>Código sostenible</title>
       <link>https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/</link>
       <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/</guid>
       <description>Introducción Toda la información que encontrarás aquí está basada en el libro de Carlos Blé &amp;ldquo;Código sostenible&amp;rdquo;. En este post hablaré sobre lo que he aprendido con la lectura de este libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía para realizar código limpio y fácil de mantener.</description>
     </item>
-    
     <item>
       <title>Consumer Driven Contract Testing</title>
       <link>https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/</link>
       <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/</guid>
       <description>Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.
 Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje.</description>
     </item>
-    
     <item>
       <title>Command Query Responsibility Segregation</title>
       <link>https://raulpadilladelgado.github.io/blog/p/command-query-responsibility-segregation/</link>
       <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/command-query-responsibility-segregation/</guid>
       <description>Contexto CQRS son las siglas de Command and Query Responsibility Segregation, un patrón que separa las operaciones de lectura y actualización para un almacén de datos. La flexibilidad creada por la migración a CQRS permite que un sistema evolucione mejor con el tiempo y evita que los comandos de actualización causen conflictos de fusión a nivel de dominio. Perfecto para aplicar en aplicaciones con gran carga de rendimiento.
 Gracias a CQRS somo capaces de desacoplar la lógica de nuestro sistema por acciones, y en los siguientes puntos veremos como trata de realizarlo.</description>
     </item>
-    
     <item>
       <title>Java Moderno (Capítulo 1)</title>
       <link>https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/</link>
       <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/</guid>
       <description>Introducción Este post tiene como objetivo mostrar una serie de trucos o tips sobre Java que no son más que nuevan funcionalidades que han ido saliendo con el paso de los años y que hoy recojo aquí con la intención de mostrar las más útiles y ejemplos de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes buscar en blog los demás post.
 Try with resources Desde Java 7 existe la fórmula try-with-resources que permite vincular el cerrado de recursos a la conclusión del try, de modo que no se nos olvide hacerlo manualmente.</description>
     </item>
-    
     <item>
       <title>Entornos virtuales en Python</title>
       <link>https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/</link>
       <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/</guid>
       <description>Introducción En nuestras aplicaciones Python solemos hacer uso de librerías, y las diferentes versiones de estas pueden llegar a ser un quebradero de cabeza cuando son usadas desde varias aplicaciones. Además de las librerías, la propia instalación de Python tiene un sistema de versionado, por lo que nos ocurre el mismo problema. Una aplicación A no funciona con Python 3.8 pero la aplicación B lo necesita.
 La solución a este problema es usar un entorno virtual, que es un árbol de directorios autónomo que contiene una instalación de Python con una versión concreta, además de una serie de paquetes adicionales que queramos instalar.</description>
     </item>
-    
     <item>
       <title>SSH para el día a día</title>
       <link>https://raulpadilladelgado.github.io/blog/p/ssh-para-el-d%C3%ADa-a-d%C3%ADa/</link>
       <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/ssh-para-el-d%C3%ADa-a-d%C3%ADa/</guid>
       <description>Introducción SSH o Secure Shell Protocol, es un protocolo de comunicación así como pueda serlo los muy conocidos HTTP, HTTPS o FTP.
 En el caso de SSH nos permite la comunicación entre dispositivos dentro de la red, así como controlar o modificar ordenadores remotos.
 ¿Que ofrece de nuevo entonces frente a otros protocolos de comunicación? Pues básicamente es un protocolo orientado a mejorar la seguridad de la comunicaciones encriptando los datos de modo que intrusos no puedan ver contenido protegido bajo el protocolo.</description>
     </item>
-    
     <item>
       <title>Java Virtual Machine</title>
       <link>https://raulpadilladelgado.github.io/blog/p/java-virtual-machine/</link>
       <pubDate>Fri, 29 Oct 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/java-virtual-machine/</guid>
       <description>Java Virtual Machine (JVM) ¿Que es? La Máquina Virtual de Java, en inglés Java Virtual Machine (JVM), es un componente dentro de JRE (Java Runtime Environment) necesario para la ejecución del código desarrollado en Java, es decir, es la máquina virtual la que permite ejecutar código Java en cualquier sistema operativo o arquitectura. De aquí que se conozca Java como un lenguaje multiplataforma. JVM interpreta y ejecuta instrucciones expresadas en un código máquina especial (bytecode), el cual es generado por el compilador de Java (también ocurre con los generados por los compiladores de lenguajes como Kotlin y Scala).</description>
     </item>
-    
     <item>
       <title>Toolify</title>
       <link>https://raulpadilladelgado.github.io/blog/p/toolify/</link>
       <pubDate>Fri, 15 Oct 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/toolify/</guid>
       <description>Introducción Recientemente he estado trabajando en un proyecto personal que surge por la necesidad de una función específica en spotify, que no podía conseguir a través de la app oficial de la plataforma. Mi objetivo era poder organizar mis playlist por orden de fecha de estreno de la canción. Spotify te permite organizarlas por fecha en la que la añadiste a la playlist, pero no por el tipo de organización que yo quería.</description>
     </item>
-    
     <item>
       <title>Buenas prácticas en testing (Cap.1)</title>
       <link>https://raulpadilladelgado.github.io/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/</link>
       <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/</guid>
       <description>Introducción Este post trata de exponer una serie de buenas prácticas o trucos a la hora de realizar testing de código, y forma parte de una serie de capítulos que pretenden seguir con el propósito.
 En esta primera iteración la idea es hablemos sobre TDD, programación funcional, patrones de diseño y estabilidad, todo esto orientado a los tests.
 Vamos al laboratorio! 🧪
 TDD en nuestros tests Test-Driven Development (TDD) es una práctica de programación que consiste en escribir primero las pruebas, después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.</description>
     </item>
-    
     <item>
       <title>Multi-reemplazo de texto usando Regex en IntelliJ</title>
       <link>https://raulpadilladelgado.github.io/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/</guid>
       <description>Introducción ¿Que es una regex?
 Regex hace referencia a “expresión regular” y se trata de la técnica que nos permite hacer búsquedas de una secuencia de caracteres atendiendo a un patrón de búsqueda.
 El uso de expresiones regulares nos puede simplificar y acelerar el proceso de tener que reemplazar varios textos que entre sí cumplen un patrón coincidente. Veamos un ejemplo para que sea más sencillo, supongamos que tenemos un escrito en el que varias personas se están presentando, por ejemplo:</description>
     </item>
-    
     <item>
       <title>Arquitectura hexagonal</title>
       <link>https://raulpadilladelgado.github.io/blog/p/arquitectura-hexagonal/</link>
       <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/arquitectura-hexagonal/</guid>
       <description>Introducción Arquitectura de software
 Reglas autoimpuestas al definir como diseñamos software
 ¿Que ganamos entonces imponiéndonos este tipo de reglas?
 Buscamos la mantenibilidad: Somos capaces de mantener mejor el código gracias a como formamos la arquitectura Buscamos la variabilidad: Somos capaces de reemplazar piezas de nuestra arquitectura sin aparentemente un costo muy grande Buscamos el testing: Somos capaces de testear nuestro código de una forma rápida, sencilla y eficaz. Buscamos la simplicidad: Somos capaces de tener un código simétrico, que sea fácil de entender.</description>
     </item>
-    
     <item>
       <title>El arte de la línea de comandos</title>
       <link>https://raulpadilladelgado.github.io/blog/p/el-arte-de-la-l%C3%ADnea-de-comandos/</link>
       <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/el-arte-de-la-l%C3%ADnea-de-comandos/</guid>
       <description>¿Por qué aprender bash? La respuesta corta es porque linux es realmente GNU/Linux. Sólo el kernel es linux, pero la colección base de utilidades que proporcionan el entorno Unix es proporcionada por GNU y el shell de GNU es bash. Es por esto que bash el shell por defecto que te encontrarás en cualquier distribución o servidor basado en linux.
 Hay muchas shells que se adaptan mejor a los propósitos o gustos individuales, como pueden ser zsh, pero creo que al ser un estandar es muy positivo dominar la herramienta para tener un desarrollo fluido, cómodo y productivo cuando necesites usarla o por si es tu shell de preferencia.</description>
     </item>
-    
     <item>
       <title>¿Como funciona async await?</title>
       <link>https://raulpadilladelgado.github.io/blog/p/como-funciona-async-await/</link>
       <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/como-funciona-async-await/</guid>
       <description>Asíncrono &amp;ldquo;Que no tiene lugar en completa correspondencia temporal con otro proceso o con la causa que lo produce.&amp;rdquo;
 Recientemente he estado desarrollando un proyecto basado en Node JS que usaba una librería externa en la que sus métodos devolvían promesas. Sin tener mucha experiencia con lo asíncrono en javascript, para mi la forma más simple de entenderlo y aplicarlo correctamente fue la siguiente:
 Supongamos que tienes una promesa como por ejemplo:</description>
     </item>
-    
     <item>
       <title>La personalidad en un aprendiz</title>
       <link>https://raulpadilladelgado.github.io/blog/p/la-personalidad-en-un-aprendiz/</link>
       <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/la-personalidad-en-un-aprendiz/</guid>
       <description>Cuando me incorporé en el proyecto de uno de nuestros colaboradores, sentía que mis conocimientos estaban limitados y ejercía un rol de principiante, donde mi misión erradicaba en el papel de una esponja, si se me permite la comparación. Debía absorber toda la sabiduría de los compañeros con mayor experiencia laboral. Creo que esta sensación es algo natural, ya que, para cultivar los conceptos necesarios, se debe estudiar y practicar. En esta fase de asimilación de conceptos, cualquier consejo, feedback o enseñanza es de agradecimiento.</description>
     </item>
-    
     <item>
       <title>Versiona tus dotfiles</title>
       <link>https://raulpadilladelgado.github.io/blog/p/versiona-tus-dotfiles/</link>
       <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/versiona-tus-dotfiles/</guid>
-      <description>Introducción Durante mucho tiempo fui usuario de Windows, pero un día decidí probar Linux y terminé por elegirlo como mi sistema operativo para trabajar. Llegando a un mundo nuevo para mí, decidí probar distintas distribuciones Linux para encontrar cual era la que mejor se adaptaba al uso que que le daría. Tras ver un curso en CodelyTV, pude aprender que la configuración que tediosa que hacemos día tras día desde que iniciamos en una máquina se puede resumir en la simple ejecucción de un script, y puedo decir que ojalá haber conocido está prática tan simple pero que aporta y ayuda tanto a la configuración personal.</description>
+      <description>Introducción Durante mucho tiempo fui usuario de Windows, pero un día decidí probar Linux y terminé por elegirlo como mi sistema operativo para trabajar. Depende de cuando leas esto quizá el cambio haya sido al revés. Pero lo dicho, llegando a un mundo nuevo para mí, decidí probar distintas distribuciones Linux para encontrar cuál era la que mejor se adaptaba al uso que le daría. Tras ver un curso en CodelyTV, pude aprender que la configuración tediosa que hacemos día tras día desde que iniciamos en una máquina se puede resumir en la simple ejecución de un script, y puedo decir que ojalá haber conocido está práctica tan simple, pero que aporta y ayuda tanto a la configuración personal.</description>
     </item>
-    
     <item>
       <title>Principios SOLID</title>
       <link>https://raulpadilladelgado.github.io/blog/p/principios-solid/</link>
       <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/principios-solid/</guid>
       <description>Introducción Los principio SOLID son convenciones en cuanto a diseño de software que ayudan a conseguir un código más mantenible, tolerante a cambios, y testeable.
 Todos los desarrolladores de un equipo deberían tener nociones de diseño de software para fomentar la autonomía y agilidad del equipo
 Huir de STUPID, el enemigo de SOLID S → Singleton: Hay un objeto que lo contiene todo. No necesita inyección de dependencias. Y se encuentra por todo el programa.</description>
     </item>
-    
     <item>
       <title>JWT Auth en Spring Boot</title>
       <link>https://raulpadilladelgado.github.io/blog/p/jwt-auth-en-spring-boot/</link>
       <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/jwt-auth-en-spring-boot/</guid>
       <description>1. JWT Authentication 1.1. ¿Que es JWT? Dicho de forma sencilla, JWT, es una autenticación basada en tokens enviados a las peticiones por cabecera.
 Para más información: https://jwt.io/introduction/
 1.2. ¿Como funciona JWT? Para obtener el token de acceso, el cliente envía una solicitud de inicio de sesión al servidor de autenticación con el nombre de usuario y la contraseña en el cuerpo de la solicitud. El servidor valida el nombre de usuario y la contraseña, luego devuelve un token de acceso.</description>
     </item>
-    
     <item>
       <title>Scrum vs Kanban</title>
       <link>https://raulpadilladelgado.github.io/blog/p/scrum-vs-kanban/</link>
       <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/scrum-vs-kanban/</guid>
       <description>Diferencias Scrum: Iteraciones de tiempo fijo (Sprints). La pila del producto (conjunto de tareas) tiene que tener al menos el tamaño de un Sprint. Limita el WIP (WorkInProgress) por iteración. No se permiten cambiar las tareas del Sprint, solo el Sprint. Roles de Scrum Master, de Product Owner y del equipo
 Kanban:Trabajo continuo. Se arrastran las nuevas tareas por el panel hasta que lleguen a su estado final. Limita el WIP por el flujo de trabajo.</description>
     </item>
-    
     <item>
       <title>Taller refactor Java &#43; IntelliJ</title>
       <link>https://raulpadilladelgado.github.io/blog/p/taller-refactor-java--intellij/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/taller-refactor-java--intellij/</guid>
       <description>Recientemente estuve realizando una formación que impartía Carlos Ble. Dicha formación consistía en aprender trucos y consejos para aplicar a la hora de hacer refactor. Lejos de ser solo una charla, los alumnos estuvimos gran parte del tiempo practicando lo que íbamos aprendiendo con cada ejercicio, y ahora yo quiero hablar un poco acerca de ello.
 Tras concluir esta formación mi perspectiva acerca del refactor cambió mucho. Generalmente, tendemos a buscar los refactors más complicados, esos que simplifican 20 líneas de código en la mitad o casos por el estilo.</description>
     </item>
-    
     <item>
       <title>Debloat Android</title>
       <link>https://raulpadilladelgado.github.io/blog/p/debloat-android/</link>
       <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/debloat-android/</guid>
       <description>Hoy en día es fácil adquirir a un precio asequible un dispositivo con suficiente memoria de almacenamiento como para que no lo llenemos con un uso normal. Pero aún así, es perfectamente comprensible que llegues al punto de necesitar sacar unos megabytes de almacenamiento por algún lado.
 Hoy ofrezco una solución que no solo te ayudará a lograr más almacenamiento para tu Android, lograrás un mejor rendimiento, y lo mejor de todo es que lo amarás porque tendrás el control sobre lo que está instalado en tu dispositivo, solo tú eliges que está y que no.</description>
     </item>
-    
     <item>
       <title>Git autostash</title>
       <link>https://raulpadilladelgado.github.io/blog/p/git-autostash/</link>
       <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/git-autostash/</guid>
       <description>Problema Intentas hacer un pull pero tus cambios locales entran en conflicto con los del repo remoto. La solución que usaría sería hacer un stash de mis cambios locales, que sería algo así como dejarlos de lado por el momento, y después hacer el pull. Finalmente incluiríamos los cambios que habíamos dejado de lado.
 Existe una forma de automatizar esto, y lo podríamos hacer mediante la configuración de Git, para que cuando hagamos un pull, nos deje de lado nuestros cambios locales y después sea decisión nuestra incluirlos o no después del pull.</description>
     </item>
-    
     <item>
       <title>Revertir commits en Git</title>
       <link>https://raulpadilladelgado.github.io/blog/p/revertir-commits-en-git/</link>
       <pubDate>Sat, 05 Sep 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/revertir-commits-en-git/</guid>
       <description>Revertir último commit Importante: Un --soft borrará el último commit pero mantendrá los cambios que has hecho. Un --hard borrará el último commit y desechará los cambios que has hecho
 Revertir último commit (local) Con este comando desaparecerá de tu rama el último commit que has hecho.
 git reset --hard HEAD~1 Revertir último commit (remoto) Si has llegado a subirlo al repositorio remoto, es tan sencillo como realizar el proceso en local y después actualizar el repo remoto (push).</description>
     </item>
-    
     <item>
       <title>Base de datos local con docker</title>
       <link>https://raulpadilladelgado.github.io/blog/p/base-de-datos-local-con-docker/</link>
       <pubDate>Wed, 12 Aug 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/base-de-datos-local-con-docker/</guid>
       <description>El siguiente ejemplo se ha desarrollado con Spring Boot.
 Hacemos ciertos ajustes en applicacion.properties para configurar la conexión a la DB.
@@ -272,135 +222,109 @@ spring.jpa.database=POSTGRESQL spring.datasource.platform=postgres spring.dataso
 docker run --name my_postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres Listo, ya podemos trabajar con nuestra base de datos en local 🥳
 Para cualquier duda el proyecto se puede consultar aquí: https://github.</description>
     </item>
-    
     <item>
       <title>PHPUnit basics</title>
       <link>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</link>
       <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</guid>
       <description>Introducción e instalación Este post surge por mi deseo de iniciar en el desarrollo de tests de código PHP mediante PHPUnit, un acercamiento que sirva para asimilar conceptos básicos. ¡Empezamos!.
 Lo primero que necesitamos es instalar PHPUnit en el proyecto, y ésto lo realizaremos gracias a composer.
 composer require --dev phpunit/phpunit ^latest Trás esto, en nuestra primera clase de test, debemos extender de TestCase, contenido en:
 vendor → phpunit → framework ahora es momento de hacer la primera aserción</description>
     </item>
-    
     <item>
       <title>Kata El juego de la vida</title>
       <link>https://raulpadilladelgado.github.io/blog/p/kata-el-juego-de-la-vida/</link>
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/kata-el-juego-de-la-vida/</guid>
       <description>Mi implementación para este ejercicio de programación se basa en tener una clase &amp;ldquo;Cell&amp;rdquo;, que tendrá un atributo llamado &amp;ldquo;isAlive&amp;rdquo;(haciendo referencia a si la célula vive o no), y además otra clase llamada &amp;ldquo;World&amp;rdquo; que tiene un diccionario tipo clave(Integer) valor(Cell).
 En la clase &amp;ldquo;World&amp;rdquo; existe un método que cambia &amp;ldquo;de generación&amp;rdquo;, que comprueba que las células muertas que tengan exactamente tres células vecinas vivas(tres posiciones seguidas del diccionario con valor &amp;ldquo;isAlive&amp;rdquo; a true) revivan.</description>
     </item>
-    
     <item>
       <title>Clases, Interfaces y Genéricos</title>
       <link>https://raulpadilladelgado.github.io/blog/p/clases-interfaces-y-gen%C3%A9ricos/</link>
       <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/clases-interfaces-y-gen%C3%A9ricos/</guid>
       <description>Interfaces Es una colección de métodos abstractos y propiedades constantes. En las interfaces se especifica qué se debe hacer pero no su implementación. Serán las clases que implementen estas interfaces las que describen la lógica del comportamiento de los métodos. Las clases que hereden de la interfaz solo podrán hacerlo de ella.
 Un momento muy útil en el que declarar una interfaz, puede ser cuando vemos que dos clases tienen el mismo contrato, por ejemplo, tenemos una clase coche y una clase moto, que implementan los mismos métodos de formas distintas.</description>
     </item>
-    
     <item>
       <title>Principios fundamentales de los tipos de datos en Java</title>
       <link>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</link>
       <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</guid>
       <description>Primitivos y wrappers de primitivos en Java Asignar una variable primitiva usando otra variable primitiva Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.
 public class Main { public static void main(String[] args) { int x = 0; int y = x; y=5; System.</description>
     </item>
-    
     <item>
       <title>Análisis del libro &#34;Implementation patterns&#34;</title>
       <link>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/</link>
       <pubDate>Wed, 24 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/</guid>
       <description>Implementations Patterns, de Kent Beck, es un libro sobre programación que define buenas prácticas a seguir en el desarrollo de código en Java, con el objetivo de tener un código legible y del que nos sintamos orgullosos. Se busca mejorar la perspectiva que tenga un programador sobre el sistema que va a tratar, para que entienda que cuando escriba código, éste debe hablar por si solo, debe ser la respuesta correcta y simple a una pregunta que se haga una persona cuando debe resolver un problema.</description>
     </item>
-    
     <item>
       <title>Patrón decorator</title>
       <link>https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/</link>
       <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/</guid>
       <description>https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png Es un patrón de diseño que nos va a permitir agregar funcionalidad a un objeto existente sin cambiar su estructura. Se busca poder añadir dinámicamente funcionalidad a un Objeto. Esto nos permite no tener que crear sucesivas clases que hereden de la primera incorporando la nueva funcionalidad, sino otras que la implementan y se asocian a la primera.
 Un gran momento para aplicarlo es cuando tenemos una clase que contiene métodos que realizan algo más que lógica de negocio.</description>
     </item>
-    
     <item>
       <title>Domina los JSON con GSON</title>
       <link>https://raulpadilladelgado.github.io/blog/p/domina-los-json-con-gson/</link>
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/domina-los-json-con-gson/</guid>
       <description>Puede darse la situación de que en nuestra aplicación Java, necesitemos atender peticiones representadas en JSON, transformarlas a objetos, tratar los datos y devolver una respuesta en JSON. Los servicios REST o los Websockets son un buen ejemplo de esto.
 Para resolver este problema podemos implementar &amp;ldquo;a mano&amp;rdquo; la lógica de negocio para serializar y deserializar nuestro JSON, lo que supodrá un esfuerzo considerable. O podríamos hacer uso de alguna libería diseñada para este propósito como puede ser Gson.</description>
     </item>
-    
     <item>
       <title>Docker basics</title>
       <link>https://raulpadilladelgado.github.io/blog/p/docker-basics/</link>
       <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/docker-basics/</guid>
       <description>Imágenes vs Contenedores Para entender claramente ambos conceptos, me ayuda asemejarlos a la programación habitual, entendiendo que las imágenes son como clases y los contenedores como los objetos instanciados de las clases.
 La imagen contiene la base para crear un contenedor, y éste carga la imagen para empezar a funcionar. Una imagen puede ser cargada en todos los contenedores que queramos, igual que un contenedor puede cargar varias imágenes. Cualquier cambio realizado en sistema de archivos del contenedor no afecta a la imagen, pues la imagen solo se usa para la creación del contenedor.</description>
     </item>
-    
     <item>
       <title>Kata template engine</title>
       <link>https://raulpadilladelgado.github.io/blog/p/kata-template-engine/</link>
       <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/kata-template-engine/</guid>
       <description>Recientemente, he realizado una kata en Java, que consistía en implementar un parseador de plantillas.
 Existe un método que recibe como parámetros la plantilla (String) a parsear, y un diccionario (Map) con todas las claves que vamos a sustituir en la cadena anterior. Es éste método el encargado de cambiar cada variable en la cadena por cada variable en el diccionario.
 Para el desarrollo del ejercicio, seguí la metodología de TDD, por lo que primero expuse una serie de casos en los que se definen como se debería comportar éste parseador testando la salida que devuelve con lo que esperamos, y poco a poco, realizando un test y el código justo y necesario para cada caso, fui viendo como llevar casos muy específicos hasta casos muy generales, llegando hasta la iteración sólo en el momento necesario, para no tener a una solución muy complicada desde el principio por intentar precipitarse en generalizar cuando solo necesitamos cubrir un caso específico.</description>
     </item>
-    
     <item>
       <title>Análisis del libro &#34;Diseño ágil con TDD&#34;</title>
       <link>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/</link>
       <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/</guid>
       <description>Portada libro INTRODUCCIÓN &amp;ldquo;Diseño Ágil con TDD&amp;rdquo;, por Carlos Ble, es un libro muy interesante que nos enseña como implementar Test-Driven Development en el desarrollo de código. Muestra como basar nuestro código en los Test que escribimos, y no al revés. A continuación comparto mis experiencias leyendo éste libro.
 ¿QUE BENEFICIOS NOS APORTA? Se presentan grandes beneficios de codificar de ésta forma. Se habla de conseguir un código simple, que haga lo que necesitamos para cada momento, que cuando falle nos de un correcto y constante feedback de porqué eso está ocurriendo, así como un código legible y fácil de mantener.</description>
     </item>
-    
     <item>
       <title>Evita primitive obsession</title>
       <link>https://raulpadilladelgado.github.io/blog/p/evita-primitive-obsession/</link>
       <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/evita-primitive-obsession/</guid>
       <description>En la capa de lógica de nuestra aplicación se encuentra el código más personal del programador, ese código que no necesita basarse en primitivos para cumplir tipos de datos en transferencias porque es otra capa quien lo hará por ésta.
 Anteriormente he definido &amp;ldquo;el código más personal del trabajador&amp;rdquo;, y me refiero a que la estructura y legibilidad del código en ésta capa depende de como se implemente. Si no se nos exigen primitivos, podemos crear nuestros propios tipos para que cuando se lea el código mejoremos la expresividad y legibilidad, en una capa como la que menciono en la que se encuentra el núcleo de la aplicación y a su vez el código que más desarrollo y razonamiento necesita.</description>
     </item>
-    
     <item>
       <title>Lombok annotations</title>
       <link>https://raulpadilladelgado.github.io/blog/p/lombok-annotations/</link>
       <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/lombok-annotations/</guid>
       <description>Lombok es una biblioteca Java que nos permite reemplazar las líneas de código que creamos para los constructores, getter y setter, entre otros, por unas simple anotaciones, por lo que cuando creamos una clase solo definimos las propiedades y ésta librería hace el resto.
 Con una simple anotación(@Data), Lombok inyectará los métodos getter y setter para cada propiedad, además de un equals, hashCode y toString.
 https://1.bp.blogspot.com/&amp;ndash;CYarvynlTU/Xp24u-wh6zI/AAAAAAAAAKE/-pW3SGJ7qokEtPL93HgN911_hjvzZCnnQCLcBGAsYHQ/s400/28ae0b5bfcf57c9972db8ecc6f9df091_f652.png @Getter y Setter Se usan para generar un getter y setter para un atributo específico.</description>
     </item>
-    
     <item>
       <title>Deploy básico usando Heroku y Git</title>
       <link>https://raulpadilladelgado.github.io/blog/p/deploy-b%C3%A1sico-usando-heroku-y-git/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/deploy-b%C3%A1sico-usando-heroku-y-git/</guid>
       <description>Heroku nos va a permitir alojar nuestras aplicaciones en sus servidores, y acceder a éstas desde un enlace que nos proporcione.
 Tras crear una cuenta y descargar la línea de comandos de Heroku, nos dirigimos a la carpeta donde tengamos nuestro proyecto y ejecutamos lo siguiente:
@@ -410,55 +334,44 @@ git add .
 git commit -m &amp;quot;primer commit&amp;quot;
 Crear espacio para nuestra app en servidor de heroku -&amp;gt; automáticamente añade un repositorio remoto &amp;ldquo;heroku&amp;rdquo; el que haremos push para subir nuestro proyecto a ese espacio.</description>
     </item>
-    
     <item>
       <title>Kata Word Wrap</title>
       <link>https://raulpadilladelgado.github.io/blog/p/kata-word-wrap/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/kata-word-wrap/</guid>
       <description>Recientemente he estado realizando una kata que consistía en partir una palabra (salto de línea) acorde a un ancho de columna, algo así como el funcionamiento de los editores de texto cuando se establece el ajuste de línea. La idea consistía en ajustar la palabras, y a su vez tantas veces el resto de ésta palabra como para que la longitud del texto en cada línea no supere el ancho de columna.</description>
     </item>
-    
     <item>
       <title>Reemplazar constructores por métodos de factoría</title>
       <link>https://raulpadilladelgado.github.io/blog/p/reemplazar-constructores-por-m%C3%A9todos-de-factor%C3%ADa/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/reemplazar-constructores-por-m%C3%A9todos-de-factor%C3%ADa/</guid>
       <description>Pongamos el ejemplo de que creamos una clase &amp;ldquo;Texto&amp;rdquo; y queremos admitir para su atributo &amp;ldquo;texto&amp;rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:
 public Texto(String texto){ if(texto==null){texto=&amp;#34;&amp;#34;;} this.texto=texto; } Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.</description>
     </item>
-    
     <item>
       <title>Spring boot, primer contacto</title>
       <link>https://raulpadilladelgado.github.io/blog/p/spring-boot-primer-contacto/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/spring-boot-primer-contacto/</guid>
       <description>Inicio Arrancando con un proyecto Para crear un proyecto de una forma rápida y sencilla he encontrado Spring Initializr. Es muy simple, basta con elegir lenguaje, versión y otras configuraciones, como los metadatos del proyecto, y finalmente las dependencias del proyecto Spring que usaremos.
 Si elegimos &amp;ldquo;generar&amp;rdquo; nos descarga un archivo zip que cual contiene el proyecto creado ya preparado para empezar a trabajar con él.
 Estructura de un proyecto En el archivo pom.</description>
     </item>
-    
     <item>
       <title>Value object VS Entity object</title>
       <link>https://raulpadilladelgado.github.io/blog/p/value-object-vs-entity-object/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/value-object-vs-entity-object/</guid>
       <description>Value object En el modelo Value Object, un objeto se diferencia de otro por su contenido, no por su identidad propia.
 Podemos entender el concepto de Value Object con el ejemplo de las monedas. Aunque cada moneda de 1 euro tiene su propia identidad (un número de serie), la economía funciona porque entiende que una moneda de 1 euro es igual que otra moneda de un euro, ambas valen lo mismo y a efectos prácticos son iguales.</description>
     </item>
-    
     <item>
       <title>Patrones de diseño (DAO y DTO)</title>
       <link>https://raulpadilladelgado.github.io/blog/p/patrones-de-dise%C3%B1o-dao-y-dto/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://raulpadilladelgado.github.io/blog/p/patrones-de-dise%C3%B1o-dao-y-dto/</guid>
       <description>DAO DAO encapsula el acceso a la base de datos. Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo cuando la capa de lógica de negocio necesite guardar un dato en la base de datos, va a llamar a un método create().</description>
     </item>
-    
   </channel>
 </rss>
