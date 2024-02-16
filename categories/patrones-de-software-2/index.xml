@@ -20,8 +20,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/</link>
       <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/</guid>
-      <description>https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png Es un patrón de diseño que nos va a permitir agregar funcionalidad a un objeto existente sin cambiar su estructura. Se busca poder añadir dinámicamente funcionalidad a un Objeto. Esto nos permite no tener que crear sucesivas clases que hereden de la primera incorporando la nueva funcionalidad, sino otras que la implementan y se asocian a la primera.
-Un gran momento para aplicarlo es cuando tenemos una clase que contiene métodos que realizan algo más que lógica de negocio.</description>
+      <description>https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png Es un patrón de diseño que nos va a permitir agregar funcionalidad a un objeto existente sin cambiar su estructura. Se busca poder añadir dinámicamente funcionalidad a un Objeto. Esto nos permite no tener que crear sucesivas clases que hereden de la primera incorporando la nueva funcionalidad, sino otras que la implementan y se asocian a la primera.&#xA;Un gran momento para aplicarlo es cuando tenemos una clase que contiene métodos que realizan algo más que lógica de negocio.</description>
     </item>
     <item>
       <title>Patrones de diseño (DAO y DTO)</title>

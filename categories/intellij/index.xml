@@ -13,9 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/multi-reemplazo-de-texto-usando-regex-en-intellij/</guid>
-      <description>Introducción ¿Que es una regex?
-Regex hace referencia a “expresión regular” y se trata de la técnica que nos permite hacer búsquedas de una secuencia de caracteres atendiendo a un patrón de búsqueda.
-El uso de expresiones regulares nos puede simplificar y acelerar el proceso de tener que reemplazar varios textos que entre sí cumplen un patrón coincidente. Veamos un ejemplo para que sea más sencillo, supongamos que tenemos un escrito en el que varias personas se están presentando, por ejemplo:</description>
+      <description>Introducción ¿Que es una regex?&#xA;Regex hace referencia a “expresión regular” y se trata de la técnica que nos permite hacer búsquedas de una secuencia de caracteres atendiendo a un patrón de búsqueda.&#xA;El uso de expresiones regulares nos puede simplificar y acelerar el proceso de tener que reemplazar varios textos que entre sí cumplen un patrón coincidente. Veamos un ejemplo para que sea más sencillo, supongamos que tenemos un escrito en el que varias personas se están presentando, por ejemplo:</description>
     </item>
   </channel>
 </rss>

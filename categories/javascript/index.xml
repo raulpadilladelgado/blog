@@ -13,9 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/como-funciona-async-await/</link>
       <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/como-funciona-async-await/</guid>
-      <description>Asíncrono &amp;ldquo;Que no tiene lugar en completa correspondencia temporal con otro proceso o con la causa que lo produce.&amp;rdquo;
-Recientemente he estado desarrollando un proyecto basado en Node JS que usaba una librería externa en la que sus métodos devolvían promesas. Sin tener mucha experiencia con lo asíncrono en javascript, para mi la forma más simple de entenderlo y aplicarlo correctamente fue la siguiente:
-Supongamos que tienes una promesa como por ejemplo:</description>
+      <description>Asíncrono &amp;ldquo;Que no tiene lugar en completa correspondencia temporal con otro proceso o con la causa que lo produce.&amp;rdquo;&#xA;Recientemente he estado desarrollando un proyecto basado en Node JS que usaba una librería externa en la que sus métodos devolvían promesas. Sin tener mucha experiencia con lo asíncrono en javascript, para mi la forma más simple de entenderlo y aplicarlo correctamente fue la siguiente:&#xA;Supongamos que tienes una promesa como por ejemplo:</description>
     </item>
   </channel>
 </rss>

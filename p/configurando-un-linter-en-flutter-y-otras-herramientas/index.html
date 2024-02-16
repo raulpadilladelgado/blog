@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido.'><title>Configurando un linter en flutter y otras herramientas</title>
+
+
+<link rel="canonical" href="https://leanmind.es/es/blog/configurando-un-linter-y-otras-herramientas-en-flutter/">
+
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Configurando un linter en flutter y otras herramientas'>
+<meta property='og:description' content='¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido.'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-02-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-02-16T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/images/linter.png' />
+<meta name="twitter:title" content="Configurando un linter en flutter y otras herramientas">
+<meta name="twitter:description" content="¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/images/linter.png' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/">
+                <img src="/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/images/linter.png"
+                        
+                        width="1200" 
+                        height="630" 
+                        loading="lazy"
+                        alt="Featured image of post Configurando un linter en flutter y otras herramientas" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/herramientas/" >
+                herramientas
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/">Configurando un linter en flutter y otras herramientas</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 16, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h2 id="qué-es-un-_linter_">¿Qué es un <em>linter</em>?</h2>
+<p>Los <em>linter</em> son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de <em>linter</em>, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido. Con la capacidad de aplicar convenciones de codificación, identificar posibles errores y mejorar la legibilidad del código, una herramienta de <em>linter</em> es un activo valioso para cualquier proyecto de código. Al mantener un código consistente y de alta calidad, se facilita la colaboración entre los miembros del equipo, se reducen los conflictos y se mejora la eficiencia en el desarrollo.</p>
+<p>Cuando hablamos de <em>linter</em>, nos encontramos con opciones muy populares y extendidas. Podríamos destacar <a class="link" href="https://eslint.org/"  target="_blank" rel="noopener"
+    >ESLint</a> en JavaScript, entre muchas otras que existan. En este <em>post</em> vengo a contar un caso muy particular, en el cual integro un <em>linter</em> muy completo en una aplicación <em>flutter</em>.</p>
+<h2 id="_linter_-para-_flutter_"><em>Linter</em> para <em>flutter</em></h2>
+<p>En el caso particular de que estés usando <em>Flutter</em> en tu proyecto, tenemos la opción de usar el analizador de código que viene por defecto con <em>flutter</em>. Con este, podemos configurar una serie de reglas en el archivo <em>analysis_options</em>.<em>yaml</em> que serán interpretadas cuando ejecutemos el comando <code>flutter analyze</code>. Nos las mencionaré todas porque hay una gran cantidad, pero puedes consultarlas en <a class="link" href="https://dart.dev/tools/linter-rules"  target="_blank" rel="noopener"
+    >este enlace</a>. Muchas tienen asociado un <em>Quick fix</em>, lo que viene a ser que pulsando un botón se aplica una sugerencia automática para el problema que nos detecta el <em>linter</em>. En sí la capacidad de ejecutar el <em>linter</em> viene por defecto con <em>flutter</em>, pero para importar una serie de reglas recomendadas por el equipo de <em>flutter</em> añadiremos como dependencia el paquete &lsquo;flutter_lints&rsquo; a nuestro proyecto y lo usaremos de la siguiente forma:</p>
+<p><em>analysis_options</em>.<em>yaml</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">include</span><span class="p">:</span><span class="w"> </span><span class="l">package:flutter_lints/flutter.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">analyzer</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">exclude</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">test/**/*.mocks.dart</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">lib/config/firebase_options.dart</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">linter</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">rules</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">prefer_relative_imports</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">avoid_slow_async_io</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">cancel_subscriptions</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">close_sinks</span><span class="w">
+</span></span></span></code></pre></div><p>La línea del <em>include</em> es la que nos importa las opciones recomendadas por <em>flutter</em>, y sería a partir de la sección <em>linter</em> donde aparece la que en adición añadimos nosotros.</p>
+<p>Para que nos aplique los cambios de aquellas reglas que sí que tienen asociada un <em>quick fix</em>, podemos ejecutar el comando <code>dart fix --apply &lt;nombre_de_archivo&gt;</code>.</p>
+<h2 id="_linter_-para-_editorconfig_"><em>Linter</em> para <em>.editorconfig</em></h2>
+<p>El archivo &ldquo;.editorconfig&rdquo; es una herramienta que se utiliza en proyectos de código para establecer y mantener la consistencia en la configuración del editor. Permite definir reglas y configuraciones específicas, como el estilo de sangrado, la indentación, la codificación de caracteres y las preferencias de final de línea. Al emplearlo, se mejora la legibilidad del código, se reduce el conflicto en el control de versiones y se facilita la colaboración entre los miembros del equipo.</p>
+<p>Quisimos aplicarlo en adición al <em>linter</em>, ya que la cantidad de indentación o el ancho de línea eran cosas que no podíamos tener con el <em>linter</em> por defecto de <em>Flutter</em>.</p>
+<p>En el título de este apartado he indicado “linter para el editorconfig” aunque como hemos visto, el <em>editorconfig</em> en sí no es un <em>linter</em>. Pero encontré una forma de que se comportara como tal. Gracias al uso de la herramienta <a class="link" href="https://github.com/editorconfig-checker/editorconfig-checker"  target="_blank" rel="noopener"
+    >editorconfig-checker</a>, podía ejecutar el comando <em>ec</em> y este me arrojaría por consola el resultado de comprobar si se están cumpliendo las reglas del <em>editorconfig</em> en el proyecto.</p>
+<h2 id="cambiemos-solo-lo-necesario">Cambiemos solo lo necesario</h2>
+<p>Ahora sabemos aplicar el <em>linter</em> de <em>flutter</em> y además usamos la herramienta <em>editorconfig-checker</em> para garantizar que nuestro código cumple los estándares que esperamos, pero… si ahora pretendemos añadirlo en nuestro proyecto tendrá que recorrer muchos archivos, nos arrojará muchas propuestas de cambios y será un poco dolor de cabeza que una sola persona tenga que arreglar eso, algo que le llevará mucho tiempo. Para solventar esto, lo que vamos a hacer es que solo tenga en cuenta lo que consideramos que son archivos en los que hemos trabajado. En nuestro caso, serían esos archivos que se van a incorporar al repositorio remoto y que están a la espera de ser subidos. Usando <em>git</em> lo haríamos tal que así:</p>
+<p><em>Primero añadimos los archivos modificados al VCS</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add -u
+</span></span></code></pre></div><p><em>flutter analyze + only changes</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;🔃 Running flutter analyze...&#34;</span>
+</span></span><span class="line"><span class="cl">flutter analyze <span class="k">$(</span>git diff --cached --name-only<span class="k">)</span>
+</span></span></code></pre></div><p><em>ec-checker + only changes</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\n🔃 Running .editorconfig check...&#34;</span>
+</span></span><span class="line"><span class="cl">ec <span class="k">$(</span>git diff --cached --name-only<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\n✅ .editorconfig check passed&#34;</span>
+</span></span></code></pre></div><p><em>auto-fix the output of flutter analyze + only changes</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff --cached --name-only <span class="p">|</span> xargs -I <span class="o">{}</span> dart fix --apply <span class="s2">&#34;{}&#34;</span>
+</span></span></code></pre></div><h2 id="como-automatizarlo">¿Como automatizarlo?</h2>
+<p>La gracia de definir unas herramientas que buscan conseguir que el equipo siga un estilo de código común, es utilizar la herramienta, por lo que no nos sirve que a veces si la usemos y otras no. A veces estamos pensando en muchas cosas, nos olvidamos del <em>linter</em> y es ahí donde empiezan las inconsistencias. Además de querer que se emplee la herramienta, también debemos creer que cuando añadimos herramientas a nuestro flujo de trabajo es importante que no supongan una carga para el equipo, en su lugar solo nos debería beneficiar.</p>
+<p>Por estas razones, lo mejor es tratar de automatizar la ejecución de las herramientas para que los desarrolladores nos podamos concentrar en la tarea que nos ocupa.</p>
+<h3 id="_hooks_-de-git"><em>Hooks</em> de Git</h3>
+<p>Los <em>hooks</em> de Git son <em>scripts</em> personalizables que se pueden ejecutar automáticamente en ciertos puntos clave del ciclo de vida de Git. Estos <em>scripts</em> se encuentran en la carpeta &ldquo;.git/hooks&rdquo; de un repositorio de Git y se activan en respuesta a eventos específicos, como confirmar cambios, fusionar ramas, empujar cambios, entre otros.</p>
+<p>Para simplificarnos el proceso de ejecutar los <em>linter</em>, nos apoyaremos en dos <em>hooks</em> de Git. Primero usaremos el <em>pre-commit</em> para que antes de hacer <em>commit</em> dé los cambios:</p>
+<p><em>pre-commit</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">MODIFIED_FILES</span><span class="o">=(</span><span class="k">$(</span>git diff --cached --name-only --diff-filter<span class="o">=</span>d<span class="k">)</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">MODIFIED_FILES</span><span class="p">[@]</span><span class="si">}</span> <span class="o">=</span>~ .dart$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">DART_FILES</span><span class="o">=(</span><span class="k">$(</span>git diff --cached --name-only --diff-filter<span class="o">=</span>d <span class="p">|</span> grep .dart<span class="k">)</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  dart format --line-length <span class="m">150</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DART_FILES</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">git add <span class="s2">&#34;</span><span class="si">${</span><span class="nv">MODIFIED_FILES</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span> <span class="m">0</span>
+</span></span></code></pre></div><p>Esto nos garantiza que se cumple un ancho de línea determinado y que el código sigue unos estándares de formato definidos por Dart. Finalmente, usaremos el <em>pre-push</em>, para que antes de hacer <em>push</em> de los cambios al repositorio remoto, se realicen las comprobaciones de los <em>linter</em> pertinentes.</p>
+<p><em>pre-push</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">IS_SCRIPT_PASSED</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CURRENT_BRANCH</span><span class="o">=</span><span class="k">$(</span>git branch --show-current<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MODIFIED_FILES</span><span class="o">=(</span><span class="k">$(</span>git diff --name-only --diff-filter<span class="o">=</span>d <span class="s2">&#34;origin/</span><span class="nv">$CURRENT_BRANCH</span><span class="s2">&#34;</span> HEAD<span class="k">)</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="si">${#</span><span class="nv">MODIFIED_FILES</span><span class="p">[@]</span><span class="si">}</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">echo</span> <span class="s2">&#34;✅ No versioned modified files tracked by the linter are pending to be pushed, skipping linter...&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">echo</span> -e <span class="s2">&#34;\n🚀 Proceeding with the push...&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">exit</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\n🔃 Running flutter analyze...&#34;</span>
+</span></span><span class="line"><span class="cl">flutter analyze <span class="s2">&#34;</span><span class="si">${</span><span class="nv">MODIFIED_FILES</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ANALYZE_EXIT_CODE</span><span class="o">=</span><span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="nv">$ANALYZE_EXIT_CODE</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> -e <span class="s2">&#34;\n❌ Flutter analyze failed. Please fix the issues before pushing&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> -e <span class="s2">&#34;Execute \e[36mtask linter\e[0m to list the warnings or execute \e[36mtask linter-fix\e[0m to automatically fix all of them&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> -e <span class="s2">&#34;\e[33mRemember that maybe not all the warnings would be automatically fixed as they could haven&#39;t a quick fix\e[0m&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">IS_SCRIPT_PASSED</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> -e <span class="s2">&#34;\n✅ Flutter analyze passed&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\n🔃 Running .editorconfig check...&#34;</span>
+</span></span><span class="line"><span class="cl">ec <span class="s2">&#34;</span><span class="si">${</span><span class="nv">MODIFIED_FILES</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CHECK_EXIT_CODE</span><span class="o">=</span><span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="nv">$CHECK_EXIT_CODE</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> -e <span class="s2">&#34;\n❌ You have infringed some rules of the .editorconfig. Please fix the issues before pushing&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> -e <span class="s2">&#34;\e[33mYou can reformat the code using your IDE but remember that some rules need to be fixed manually\e[0m&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">IS_SCRIPT_PASSED</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> -e <span class="s2">&#34;\n✅ .editorconfig check passed&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="nv">$IS_SCRIPT_PASSED</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\n🚀 Proceeding with the push...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span> <span class="m">0</span>
+</span></span></code></pre></div><p>En el equipo decidimos dejar en el <em>pre-commit</em> algo que no fuera muy restrictivo, es decir, algo que no pudiese detener que hagamos <em>commit</em>, ya que si estamos trabajando con <em>micro-commit</em> nos parecía que podía suponer una carga. Es a la hora de subir los cambios utilizando el <em>pre-push</em> donde se ejecutan las revisiones más restrictivas, donde en caso de no seguir los estándares no se permite hacer <em>push</em> de los cambios, con el fin de cumplir los estándares de código acordados por el equipo.</p>
+<h3 id="_pipelines_"><em>Pipelines</em></h3>
+<p>Además de tener los <em>hooks</em> de Git, es buena opción tener los <em>linter</em> como un paso de nuestra <em>pipeline</em> para que se ejecute en nuestra integración continua. Al final, los <em>hooks</em> de Git son archivos configurables que no son versionados, por lo que depende del buen hacer de cada persona tenerlos actualizados y respetar que se ejecuten, en lugar de configurar el IDE para que se salte las comprobaciones. Es en este escenario, donde la integración continua sí nos garantiza que el código que está listo para ser fusionado con la rama principal y cumple los estándares de los <em>linter</em>.</p>
+<p>En ocasiones he escuchado opiniones de otros desarrolladores que opinan que incluir un <em>linter</em> en la <em>pipeline</em> es un lastre, porque puede suponer que tardes más en subir cambios, o porque resulta tedioso el hecho de querer subir cambios y tener que solventar esos conflictos primero. Yo creo que en un equipo es normal que entre las diferentes personas, haya distintas formas de cuidar el código, por eso usamos los <em>linter</em>, para conseguir un resultado uniforme que sea del agrado de todos. Por esto, no encuentro razones en los que hayan casos donde no tenga sentido seguir los estilos definidos, es más, si empezamos a hacer pequeñas excepciones solo para subir código más rápido, es cuando comienzan a surgir incongruencias en el código que darán más trabajo a los demás cuando se lo encuentren desarrollando alguna <em>feature</em>.</p>
+<h2 id="conclusión">Conclusión</h2>
+<p>Personalmente, es de los primeros <em>linter</em> que configuro y probablemente no tengo mucho bagaje en el asunto, por lo que me encantaría escuchar opiniones y sugerencias ¡Gracias por leer!</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/blog/p/automatizando-tareas-con-task/">
+        
+        
+            <div class="article-image">
+                <img src="/blog/p/automatizando-tareas-con-task/images/make-vs-task.b89cc518572f786553b9ba91297ff0e0_hu01e33d79e7a709bf35f43640f28b1915_133748_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-uJzFGFcveGVTubqRKX/w4A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Automatizando tareas con Task</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="raulpadilladelgado/blog"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#qué-es-un-_linter_">¿Qué es un <em>linter</em>?</a></li>
+    <li><a href="#_linter_-para-_flutter_"><em>Linter</em> para <em>flutter</em></a></li>
+    <li><a href="#_linter_-para-_editorconfig_"><em>Linter</em> para <em>.editorconfig</em></a></li>
+    <li><a href="#cambiemos-solo-lo-necesario">Cambiemos solo lo necesario</a></li>
+    <li><a href="#como-automatizarlo">¿Como automatizarlo?</a>
+      <ol>
+        <li><a href="#_hooks_-de-git"><em>Hooks</em> de Git</a></li>
+        <li><a href="#_pipelines_"><em>Pipelines</em></a></li>
+      </ol>
+    </li>
+    <li><a href="#conclusión">Conclusión</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

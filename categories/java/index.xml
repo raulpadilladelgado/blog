@@ -13,8 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/</link>
       <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/</guid>
-      <description>Introducción Este post tiene como objetivo mostrar una serie de trucos o tips sobre Java que no son más que nuevan funcionalidades que han ido saliendo con el paso de los años y que hoy recojo aquí con la intención de mostrar las más útiles y ejemplos de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes buscar en blog los demás post.
-Try with resources Desde Java 7 existe la fórmula try-with-resources que permite vincular el cerrado de recursos a la conclusión del try, de modo que no se nos olvide hacerlo manualmente.</description>
+      <description>Introducción Este post tiene como objetivo mostrar una serie de trucos o tips sobre Java que no son más que nuevan funcionalidades que han ido saliendo con el paso de los años y que hoy recojo aquí con la intención de mostrar las más útiles y ejemplos de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes buscar en blog los demás post.&#xA;Try with resources Desde Java 7 existe la fórmula try-with-resources que permite vincular el cerrado de recursos a la conclusión del try, de modo que no se nos olvide hacerlo manualmente.</description>
     </item>
     <item>
       <title>Java Virtual Machine</title>
@@ -28,8 +27,7 @@ Try with resources Desde Java 7 existe la fórmula try-with-resources que permit
       <link>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</link>
       <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</guid>
-      <description>Primitivos y wrappers de primitivos en Java Asignar una variable primitiva usando otra variable primitiva Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.
-public class Main { public static void main(String[] args) { int x = 0; int y = x; y=5; System.</description>
+      <description>Primitivos y wrappers de primitivos en Java Asignar una variable primitiva usando otra variable primitiva Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.&#xA;public class Main { public static void main(String[] args) { int x = 0; int y = x; y=5; System.</description>
     </item>
   </channel>
 </rss>

@@ -13,8 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/domina-los-json-con-gson/</link>
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/domina-los-json-con-gson/</guid>
-      <description>Puede darse la situación de que en nuestra aplicación Java, necesitemos atender peticiones representadas en JSON, transformarlas a objetos, tratar los datos y devolver una respuesta en JSON. Los servicios REST o los Websockets son un buen ejemplo de esto.
-Para resolver este problema podemos implementar &amp;ldquo;a mano&amp;rdquo; la lógica de negocio para serializar y deserializar nuestro JSON, lo que supodrá un esfuerzo considerable. O podríamos hacer uso de alguna libería diseñada para este propósito como puede ser Gson.</description>
+      <description>Puede darse la situación de que en nuestra aplicación Java, necesitemos atender peticiones representadas en JSON, transformarlas a objetos, tratar los datos y devolver una respuesta en JSON. Los servicios REST o los Websockets son un buen ejemplo de esto.&#xA;Para resolver este problema podemos implementar &amp;ldquo;a mano&amp;rdquo; la lógica de negocio para serializar y deserializar nuestro JSON, lo que supodrá un esfuerzo considerable. O podríamos hacer uso de alguna libería diseñada para este propósito como puede ser Gson.</description>
     </item>
   </channel>
 </rss>

@@ -13,19 +13,14 @@
       <link>https://raulpadilladelgado.github.io/blog/p/base-de-datos-local-con-docker/</link>
       <pubDate>Wed, 12 Aug 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/base-de-datos-local-con-docker/</guid>
-      <description>El siguiente ejemplo se ha desarrollado con Spring Boot.
-Hacemos ciertos ajustes en applicacion.properties para configurar la conexión a la DB.
-spring.jpa.database=POSTGRESQL spring.datasource.platform=postgres spring.datasource.url=jdbc:postgresql://localhost:5432/postgres spring.datasource.username=postgres spring.datasource.password=postgres spring.jpa.show-sql=true spring.jpa.generate-ddl=true spring.jpa.hibernate.ddl-auto=create-drop spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true Creamos y arrancamos el contenedor en Docker que use la imagen de PostgreSQL.
-docker run --name my_postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres Listo, ya podemos trabajar con nuestra base de datos en local 🥳
-Para cualquier duda el proyecto se puede consultar aquí: https://github.</description>
+      <description>El siguiente ejemplo se ha desarrollado con Spring Boot.&#xA;Hacemos ciertos ajustes en applicacion.properties para configurar la conexión a la DB.&#xA;spring.jpa.database=POSTGRESQL spring.datasource.platform=postgres spring.datasource.url=jdbc:postgresql://localhost:5432/postgres spring.datasource.username=postgres spring.datasource.password=postgres spring.jpa.show-sql=true spring.jpa.generate-ddl=true spring.jpa.hibernate.ddl-auto=create-drop spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true Creamos y arrancamos el contenedor en Docker que use la imagen de PostgreSQL.&#xA;docker run --name my_postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres Listo, ya podemos trabajar con nuestra base de datos en local 🥳&#xA;Para cualquier duda el proyecto se puede consultar aquí: https://github.</description>
     </item>
     <item>
       <title>Docker basics</title>
       <link>https://raulpadilladelgado.github.io/blog/p/docker-basics/</link>
       <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/docker-basics/</guid>
-      <description>Imágenes vs Contenedores Para entender claramente ambos conceptos, me ayuda asemejarlos a la programación habitual, entendiendo que las imágenes son como clases y los contenedores como los objetos instanciados de las clases.
-La imagen contiene la base para crear un contenedor, y éste carga la imagen para empezar a funcionar. Una imagen puede ser cargada en todos los contenedores que queramos, igual que un contenedor puede cargar varias imágenes. Cualquier cambio realizado en sistema de archivos del contenedor no afecta a la imagen, pues la imagen solo se usa para la creación del contenedor.</description>
+      <description>Imágenes vs Contenedores Para entender claramente ambos conceptos, me ayuda asemejarlos a la programación habitual, entendiendo que las imágenes son como clases y los contenedores como los objetos instanciados de las clases.&#xA;La imagen contiene la base para crear un contenedor, y éste carga la imagen para empezar a funcionar. Una imagen puede ser cargada en todos los contenedores que queramos, igual que un contenedor puede cargar varias imágenes. Cualquier cambio realizado en sistema de archivos del contenedor no afecta a la imagen, pues la imagen solo se usa para la creación del contenedor.</description>
     </item>
   </channel>
 </rss>

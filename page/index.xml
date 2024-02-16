@@ -13,8 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/sobre-m%C3%AD/</link>
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/sobre-m%C3%AD/</guid>
-      <description>¡Bienvenid@ a mi blog personal sobre desarrollo de software!
-Mi nombre es Raúl, vivo en Tenerife y nací en el año 2000. Terminé mis estudios en 2020, graduándome como Técnico Superior en Desarrollo de Aplicaciones Web, por lo que puede intuirse que tengo una corta trayectoria como programador. Tras finalizar mis estudios, empecé las prácticas externas en una empresa llamada LeanMind. Una vez finalizadas dichas prácticas y ya graduado, me quedé trabajando en esta misma empresa.</description>
+      <description>¡Bienvenid@ a mi blog personal sobre desarrollo de software!&#xA;Mi nombre es Raúl, vivo en Tenerife y nací en el año 2000. Terminé mis estudios en 2020, graduándome como Técnico Superior en Desarrollo de Aplicaciones Web, por lo que puede intuirse que tengo una corta trayectoria como programador. Tras finalizar mis estudios, empecé las prácticas externas en una empresa llamada LeanMind. Una vez finalizadas dichas prácticas y ya graduado, me quedé trabajando en esta misma empresa.</description>
     </item>
     <item>
       <title>Búsqueda</title>
@@ -28,26 +27,7 @@ Mi nombre es Raúl, vivo en Tenerife y nací en el año 2000. Terminé mis estud
       <link>https://raulpadilladelgado.github.io/blog/recursos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/recursos/</guid>
-      <description>Free Hosting / Free Deploys Develop. Preview. Ship. For the best frontend teams – Vercel
-Roadmaps https://roadmap.sh/backend
-https://roadmap.sh/frontend
-Shell de Linux LiCODELi – La línea de comandos de Linux
-Bash scripting cheatsheet
-USB Boot Acer F12
-Asrock F11
-Asus F8
-Commodore F12
-Compaq Presario Esc + F9
-Ecs Elitegroup F7
-Eurocase F12
-Gigabyte F12
-Hp F9
-intel F10
-Lenovo F12
-Msi F11
-Olivetti F12
-Samsung F10
-Zotac Esc</description>
+      <description>Free Hosting / Free Deploys Develop. Preview. Ship. For the best frontend teams – Vercel&#xA;Roadmaps https://roadmap.sh/backend&#xA;https://roadmap.sh/frontend&#xA;Shell de Linux LiCODELi – La línea de comandos de Linux&#xA;Bash scripting cheatsheet&#xA;USB Boot Acer F12&#xA;Asrock F11&#xA;Asus F8&#xA;Commodore F12&#xA;Compaq Presario Esc + F9&#xA;Ecs Elitegroup F7&#xA;Eurocase F12&#xA;Gigabyte F12&#xA;Hp F9&#xA;intel F10&#xA;Lenovo F12&#xA;Msi F11&#xA;Olivetti F12&#xA;Samsung F10&#xA;Zotac Esc</description>
     </item>
   </channel>
 </rss>

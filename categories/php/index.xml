@@ -13,10 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</link>
       <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</guid>
-      <description>Introducción e instalación Este post surge por mi deseo de iniciar en el desarrollo de tests de código PHP mediante PHPUnit, un acercamiento que sirva para asimilar conceptos básicos. ¡Empezamos!.
-Lo primero que necesitamos es instalar PHPUnit en el proyecto, y ésto lo realizaremos gracias a composer.
-composer require --dev phpunit/phpunit ^latest Trás esto, en nuestra primera clase de test, debemos extender de TestCase, contenido en:
-vendor → phpunit → framework ahora es momento de hacer la primera aserción</description>
+      <description>Introducción e instalación Este post surge por mi deseo de iniciar en el desarrollo de tests de código PHP mediante PHPUnit, un acercamiento que sirva para asimilar conceptos básicos. ¡Empezamos!.&#xA;Lo primero que necesitamos es instalar PHPUnit en el proyecto, y ésto lo realizaremos gracias a composer.&#xA;composer require --dev phpunit/phpunit ^latest Trás esto, en nuestra primera clase de test, debemos extender de TestCase, contenido en:&#xA;vendor → phpunit → framework ahora es momento de hacer la primera aserción</description>
     </item>
   </channel>
 </rss>
