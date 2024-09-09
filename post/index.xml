@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Raúl Padilla Delgado</description>
     <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Fri, 16 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Sep 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Testcontainers para ejecución local</title>
+      <link>https://raulpadilladelgado.github.io/blog/p/testcontainers-para-ejecuci%C3%B3n-local/</link>
+      <pubDate>Mon, 09 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://raulpadilladelgado.github.io/blog/p/testcontainers-para-ejecuci%C3%B3n-local/</guid>
+      <description>&lt;h1 id=&#34;introducción&#34;&gt;Introducción&lt;/h1&gt;&#xA;&lt;p&gt;Cuando estamos desarrollando algún proyecto es muy común que necesitemos una dependencia externa al propio proyecto que estamos realizando como pueda ser una base de datos, un sistema de mensajería, etc. Nuestra aplicación está pensada para que sea desplegada en un entorno que no sea la máquina donde estamos programando para que usuarios finales puedan usarla. Podría ser “staging” y que sea entonces para usuarios que se dedicaran a probarla. También podría ser “production” y que sea entonces para usuarios finales, que probablemente paguen por el producto que desarrollamos. Sin embargo, no debemos olvidar que nosotros, como desarrolladores, también somos usuarios de alguna forma cuando se trata del entorno “local”.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Configurando un linter en flutter y otras herramientas</title>
       <link>https://raulpadilladelgado.github.io/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/</link>

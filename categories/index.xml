@@ -6,8 +6,15 @@
     <description>Recent content in Categories on Raúl Padilla Delgado</description>
     <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Fri, 16 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Sep 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spring-Boot</title>
+      <link>https://raulpadilladelgado.github.io/blog/categories/spring-boot/</link>
+      <pubDate>Mon, 09 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://raulpadilladelgado.github.io/blog/categories/spring-boot/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Herramientas</title>
       <link>https://raulpadilladelgado.github.io/blog/categories/herramientas/</link>
@@ -20,13 +27,6 @@
       <link>https://raulpadilladelgado.github.io/blog/categories/programacion-reactiva/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/categories/programacion-reactiva/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Spring-Boot</title>
-      <link>https://raulpadilladelgado.github.io/blog/categories/spring-boot/</link>
-      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>https://raulpadilladelgado.github.io/blog/categories/spring-boot/</guid>
       <description></description>
     </item>
     <item>

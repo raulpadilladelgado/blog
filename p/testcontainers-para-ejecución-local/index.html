@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Cuando estamos desarrollando algún proyecto es muy común que necesitemos una dependencia externa al propio proyecto que estamos realizando como pueda ser una base de datos, un sistema de mensajería, etc. Nuestra aplicación está pensada para que sea desplegada en un entorno que no sea la máquina donde estamos programando para que usuarios finales puedan usarla. Podría ser “staging” y que sea entonces para usuarios que se dedicaran a probarla. También podría ser “production” y que sea entonces para usuarios finales, que probablemente paguen por el producto que desarrollamos. Sin embargo, no debemos olvidar que nosotros, como desarrolladores, también somos usuarios de alguna forma cuando se trata del entorno “local”.
+'><title>Testcontainers para ejecución local</title>
+
+
+<link rel="canonical" href="https://leanmind.es/es/blog/configurando-un-linter-y-otras-herramientas-en-flutter/">
+
+
+<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Testcontainers para ejecución local'>
+<meta property='og:description' content='Introducción Cuando estamos desarrollando algún proyecto es muy común que necesitemos una dependencia externa al propio proyecto que estamos realizando como pueda ser una base de datos, un sistema de mensajería, etc. Nuestra aplicación está pensada para que sea desplegada en un entorno que no sea la máquina donde estamos programando para que usuarios finales puedan usarla. Podría ser “staging” y que sea entonces para usuarios que se dedicaran a probarla. También podría ser “production” y que sea entonces para usuarios finales, que probablemente paguen por el producto que desarrollamos. Sin embargo, no debemos olvidar que nosotros, como desarrolladores, también somos usuarios de alguna forma cuando se trata del entorno “local”.
+'>
+<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/testcontainers-para-ejecuci%C3%B3n-local/'>
+<meta property='og:site_name' content='Raúl Padilla Delgado'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-09-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-09-09T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/testcontainers-para-ejecuci%C3%B3n-local/images/th.png' />
+<meta name="twitter:title" content="Testcontainers para ejecución local">
+<meta name="twitter:description" content="Introducción Cuando estamos desarrollando algún proyecto es muy común que necesitemos una dependencia externa al propio proyecto que estamos realizando como pueda ser una base de datos, un sistema de mensajería, etc. Nuestra aplicación está pensada para que sea desplegada en un entorno que no sea la máquina donde estamos programando para que usuarios finales puedan usarla. Podría ser “staging” y que sea entonces para usuarios que se dedicaran a probarla. También podría ser “production” y que sea entonces para usuarios finales, que probablemente paguen por el producto que desarrollamos. Sin embargo, no debemos olvidar que nosotros, como desarrolladores, también somos usuarios de alguna forma cuando se trata del entorno “local”.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/testcontainers-para-ejecuci%C3%B3n-local/images/th.png' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/blog" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Volver</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/testcontainers-para-ejecuci%C3%B3n-local/">
+                <img src="/blog/p/testcontainers-para-ejecuci%C3%B3n-local/images/th.png"
+                        
+                        width="474" 
+                        height="204" 
+                        loading="lazy"
+                        alt="Featured image of post Testcontainers para ejecución local" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/spring-boot/" >
+                Spring-Boot
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/blog/p/testcontainers-para-ejecuci%C3%B3n-local/">Testcontainers para ejecución local</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 09, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="introducción">Introducción</h1>
+<p>Cuando estamos desarrollando algún proyecto es muy común que necesitemos una dependencia externa al propio proyecto que estamos realizando como pueda ser una base de datos, un sistema de mensajería, etc. Nuestra aplicación está pensada para que sea desplegada en un entorno que no sea la máquina donde estamos programando para que usuarios finales puedan usarla. Podría ser “staging” y que sea entonces para usuarios que se dedicaran a probarla. También podría ser “production” y que sea entonces para usuarios finales, que probablemente paguen por el producto que desarrollamos. Sin embargo, no debemos olvidar que nosotros, como desarrolladores, también somos usuarios de alguna forma cuando se trata del entorno “local”.</p>
+<p>En este post mi idea es exponer como a partir de la versión 3.1 de <em>Spring Boot</em> podemos simplificar la forma en la que ejecutamos nuestro proyecto en local.</p>
+<h1 id="caso-típico">Caso típico</h1>
+<p>En mi paso por distintos proyectos he visto que lo más común cuando se trata de ejecutar la aplicación en el entorno local sea tener un archivo <em>docker-compose.yml</em> el cual tiene la definición de como se debe levantar nuestra aplicación y el resto de servicios colaboradores, como una base de datos, en contenedores sobre nuestro sistema. Veamos un ejemplo:</p>
+<p><em>docker-compose.yml</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.8&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">db</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">postgres:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l">songs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l">user</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;5432:5432&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l">docker/Dockerfile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8080:8080&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">SPRING_DATASOURCE_URL</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:postgresql://db:5432/songs</span><span class="w">
+</span></span></span></code></pre></div><p>En el archivo se define una base de datos <em>Postgres</em> además de nuestra aplicación <em>Spring Boot</em>. En el <em>Dockerfile</em> que crea la imagen en la que se basa la definición del contenedor de la aplicación se copia el <em>Jar</em> generado en el contenedor y se ejecuta:</p>
+<p><em>Dockerfile</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> openjdk:21-jdk-slim</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">JAR_FILE</span><span class="o">=</span>build/libs/*.jar<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> <span class="si">${</span><span class="nv">JAR_FILE</span><span class="si">}</span> app.jar<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;java&#34;</span><span class="p">,</span><span class="s2">&#34;-jar&#34;</span><span class="p">,</span><span class="s2">&#34;/app.jar&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></div><p>Este planteamiento es perfectamente válido, pero podemos optimizarlo porque lo más probable es que ya estemos usando Testcontainers para levantar los servicios externos que necesitan nuestros <em>test</em> de integración, y nos vamos a valer de esa configuración para mejorar nuestra experiencia. Veamos primero como podría ser una configuración del Testcontainers:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@TestConfiguration</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PostgresTestContainerConfiguration</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">companion</span> <span class="k">object</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">private</span> <span class="k">val</span> <span class="py">container</span><span class="p">:</span> <span class="n">PostgreSQLContainer</span><span class="p">&lt;*&gt;</span> <span class="p">=</span> <span class="n">PostgreSQLContainer</span><span class="p">(</span><span class="s2">&#34;postgres:latest&#34;</span><span class="p">).</span><span class="n">apply</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nd">@DynamicPropertySource</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@JvmStatic</span>
+</span></span><span class="line"><span class="cl">        <span class="k">private</span> <span class="k">fun</span> <span class="nf">configureDatasource</span><span class="p">(</span><span class="n">registry</span><span class="p">:</span> <span class="n">DynamicPropertyRegistry</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">registry</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;spring.datasource.url&#34;</span><span class="p">,</span> <span class="n">container</span><span class="o">::</span><span class="n">getJdbcUrl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">registry</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;spring.datasource.username&#34;</span><span class="p">,</span> <span class="n">container</span><span class="o">::</span><span class="n">getUsername</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">registry</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;spring.datasource.password&#34;</span><span class="p">,</span> <span class="n">container</span><span class="o">::</span><span class="n">getPassword</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Tenemos una clase que se encarga de crear un contenedor <em>Postgres</em> y sobreescribir en el contexto de <em>Spring</em> la configuración relacionada con la base de datos, como la <em>URL</em>.</p>
+<p>Ya hemos visto el ejemplo más común que te puedes encontrar. Vamos a ver ahora como exprimir lo que nos ofrece <em>Spring Boot</em> a partir de su versión 3.1 para mejorar toda esta configuración.</p>
+<h1 id="autoconfiguración-de-la-conexión">Autoconfiguración de la conexión</h1>
+<p>En el último ejemplo del apartado anterior hemos visto que las propiedades de conexión de la base de datos se definían de manera manual sobreescribiendo el contexto de <em>Spring</em>. Veamos como podemos hacer lo mismo pero delegando ese trabajo al <em>framework</em>:</p>
+<p><em>PostgresTestContainerConfiguration.kt (<strong>Antes</strong>)</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@TestConfiguration</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PostgresTestContainerConfiguration</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">companion</span> <span class="k">object</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">private</span> <span class="k">val</span> <span class="py">container</span><span class="p">:</span> <span class="n">PostgreSQLContainer</span><span class="p">&lt;*&gt;</span> <span class="p">=</span> <span class="n">PostgreSQLContainer</span><span class="p">(</span><span class="s2">&#34;postgres:latest&#34;</span><span class="p">).</span><span class="n">apply</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nd">@DynamicPropertySource</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@JvmStatic</span>
+</span></span><span class="line"><span class="cl">        <span class="k">private</span> <span class="k">fun</span> <span class="nf">configureDatasource</span><span class="p">(</span><span class="n">registry</span><span class="p">:</span> <span class="n">DynamicPropertyRegistry</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">registry</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;spring.datasource.url&#34;</span><span class="p">,</span> <span class="n">container</span><span class="o">::</span><span class="n">getJdbcUrl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">registry</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;spring.datasource.username&#34;</span><span class="p">,</span> <span class="n">container</span><span class="o">::</span><span class="n">getUsername</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">registry</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;spring.datasource.password&#34;</span><span class="p">,</span> <span class="n">container</span><span class="o">::</span><span class="n">getPassword</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><em>PostgresTestContainerConfiguration.kt (<strong>Después</strong>)</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@TestConfiguration</span><span class="p">(</span><span class="n">proxyBeanMethods</span> <span class="p">=</span> <span class="k">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PostgresTestContainerConfiguration</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@ServiceConnection</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">postgresContainer</span><span class="p">()</span> <span class="p">=</span> <span class="n">PostgreSQLContainer</span><span class="p">(</span><span class="s2">&#34;postgres:13&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Usando la combinación <em>@Bean</em> junto con <em>@ServiceConnection</em>, <em>Spring</em> es capaz de autoinyectar las configuraciones de la base de datos en el contexto sin necesidad de que lo hagamos nosotros.</p>
+<h1 id="ejecutando-aplicación-en-local-usando-testcontainers">Ejecutando aplicación en local usando Testcontainers</h1>
+<p>Nos podemos quitar la responsabilidad de mantener los archivos de <em>Docker</em> que mencionamos anteriormente y usar la misma configuración que tenemos para los <em>test</em> que usan <em>Testcontainers</em>. Solo tenemos que crear un método <em>main</em> en la carpeta de <em>test</em>, el cual usaremos para ejecutar nuestra aplicación desde el <em>IDE</em> de preferencia (en mi caso es <em>IntelliJ</em>):</p>
+<p><em>LocalApp.kt</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fromApplication</span><span class="p">&lt;</span><span class="n">TestcontainersLocalDevelopmentApplication</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">with</span><span class="p">(</span><span class="n">PostgresTestContainerConfiguration</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">run</span><span class="p">(*</span><span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Lo que hacemos es usar el método <em>fromApplication</em> de <em>Spring Boot</em> para elegir qué clase es la que contiene el <em>main</em> del proyecto, apuntamos a la clase que está contenida en el código productivo, y además añadimos que tiene que cargar la configuración del contenedor que hemos visto anteriormente para que así levante los contenedores necesarios para los servicios externos de los que depende nuestra aplicación.</p>
+<h1 id="casos-límite">Casos límite</h1>
+<h2 id="contenedor-genérico">Contenedor genérico</h2>
+<p><em>Testcontainers</em> tiene bastantes módulos que simplifican la integración de contenedores para nuestros tests. En el código de antes vimos como levantamos un contenedor de <em>PostgreSQL</em> aprovechando la pre configuración que nos hace al ser un módulo de <em>Testcontainers</em> que podemos importar en nuestro proyecto.</p>
+<p>Dicho esto, tampoco te será tan raro encontrarte en una situación en la que <em>Testcontainers</em> oficialmente no tenga una integración para una tecnología que quieres levantar en un contenedor para tus test. Sin embargo, aún es posible que saquemos provecho de usar <em>Testcontainers</em> para lanzar la aplicación en local.</p>
+<p>Vamos a crear la configuración del contenedor:</p>
+<p><em>UnofficialModuleTestContainerConfiguration.kt</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@TestConfiguration</span><span class="p">(</span><span class="n">proxyBeanMethods</span> <span class="p">=</span> <span class="k">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">UnofficialModuleTestContainerConfiguration</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">genericContainer</span><span class="p">(</span><span class="n">dynamicPropertyRegistry</span><span class="p">:</span> <span class="n">DynamicPropertyRegistry</span><span class="p">):</span> <span class="n">GenericContainer</span><span class="p">&lt;*&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dynamicPropertyRegistry</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;some.property&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="s2">&#34;some-value&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">GenericContainer</span><span class="p">(</span><span class="s2">&#34;image-without-testcontainers-support&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Como vemos, la diferencia con el otro contenedor que habíamos configurado es que este no tiene la anotación <em>@ServiceConnection</em>, la cual establecía automáticamente las propiedades de conexión del contenedor en el contexto de <em>Spring</em>. Como no existe módulo oficial en <em>Testcontainers</em> para la tecnología que queremos levantar el contendor, tenemos que usar <em>DynamicPropertyRegistry</em> para establecer nosotros manualmente esas propiedades en el contexto.</p>
+<h1 id="conclusión">Conclusión</h1>
+<p>Nos ha quedado una forma muy sencilla de usar nuestra aplicación en local sin mayor necesidad que darle al botón de <em>play</em> en el <em>IDE</em>. Para revisar el código de ejemplo que usé, por aquí tienes el repositorio que hice para guiar el blog:</p>
+<p><a class="link" href="https://github.com/raulpadilladelgado/testcontainers-for-local-development"  target="_blank" rel="noopener"
+    >https://github.com/raulpadilladelgado/testcontainers-for-local-development</a></p>
+<p>En la rama <em>docker-compose-for-the-local-environment</em> tienes la forma tradicional de levantar la aplicación apoyándonos en archivos Docker. En la otra rama <em>testcontainers-for-the-local-environment</em> tienes las mejoras de las que hemos hablado.</p>
+<p>Eso es todo, espero que este post te haya servido. ¡Muchas gracias por leer!</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Contenidos relacionados</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/">
+        
+        
+            <div class="article-image">
+                <img src="/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/images/programacion_reactiva.0af1dc214d2b3e3e1ebf9ef56262b5ee_hu3992036983827173633.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-CvHcIU0rPj4ev571YmK17g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Programación reactiva, que es y como usarla en Spring Boot</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/jwt-auth-en-spring-boot/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">JWT Auth en Spring Boot</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/base-de-datos-local-con-docker/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Base de datos local con docker</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/blog/p/lombok-annotations/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Lombok annotations</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/blog/p/spring-boot-primer-contacto/">
+        
+        
+            <div class="article-image">
+                <img src="/blog/p/spring-boot-primer-contacto/images/spring-icon.ee5eeea8c805797c63bf21592f9aff8f_hu2382300874515060218.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-7l7uqMgFeXxjvyFZL5r/jw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring boot, primer contacto</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="raulpadilladelgado/blog"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Raúl Padilla Delgado
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Tabla de contenido</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contenedor-genérico">Contenedor genérico</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
