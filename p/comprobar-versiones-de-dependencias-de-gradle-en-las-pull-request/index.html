@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.'><title>Comprobar versiones de dependencias de Gradle en las Pull Request</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.
+'><title>Comprobar versiones de dependencias de Gradle en las Pull Request</title>
 
 
 <link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/'>
 
 
 <link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Comprobar versiones de dependencias de Gradle en las Pull Request'>
-<meta property='og:description' content='Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.'>
+<meta property='og:description' content='Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.
+'>
 <meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/'>
 <meta property='og:site_name' content='Raúl Padilla Delgado'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-01-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-01-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/ghactionsgradle.png' />
 <meta name="twitter:title" content="Comprobar versiones de dependencias de Gradle en las Pull Request">
-<meta name="twitter:description" content="Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos."><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.
+"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/ghactionsgradle.png' />
     </head>
     <body class="
@@ -81,7 +84,7 @@
     <header class="article-category">
         
             <a href="/blog/categories/manejo-de-dependencias/" >
-                manejo-de-dependencias
+                Manejo-De-Dependencias
             </a>
         
     </header>

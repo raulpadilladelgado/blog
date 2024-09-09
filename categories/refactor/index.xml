@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>refactor on Raúl Padilla Delgado</title>
+    <title>Refactor on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/refactor/</link>
-    <description>Recent content in refactor on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Refactor on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/refactor/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,14 @@
       <link>https://raulpadilladelgado.github.io/blog/p/evita-primitive-obsession/</link>
       <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/evita-primitive-obsession/</guid>
-      <description>En la capa de lógica de nuestra aplicación se encuentra el código más personal del programador, ese código que no necesita basarse en primitivos para cumplir tipos de datos en transferencias porque es otra capa quien lo hará por ésta.&#xA;Anteriormente he definido &amp;ldquo;el código más personal del trabajador&amp;rdquo;, y me refiero a que la estructura y legibilidad del código en ésta capa depende de como se implemente. Si no se nos exigen primitivos, podemos crear nuestros propios tipos para que cuando se lea el código mejoremos la expresividad y legibilidad, en una capa como la que menciono en la que se encuentra el núcleo de la aplicación y a su vez el código que más desarrollo y razonamiento necesita.</description>
+      <description>&lt;p&gt;En la capa de lógica de nuestra aplicación se encuentra el código más personal del programador, ese código que no necesita basarse en primitivos para cumplir tipos de datos en transferencias porque es otra capa quien lo hará por ésta.&lt;/p&gt;&#xA;&lt;p&gt;Anteriormente he definido &amp;ldquo;el código más personal del trabajador&amp;rdquo;, y me refiero a que la estructura y legibilidad del código en ésta capa depende de como se implemente. Si no se nos exigen primitivos, podemos crear nuestros propios tipos para que cuando se lea el código mejoremos la expresividad y legibilidad, en una capa como la que menciono en la que se encuentra el núcleo de la aplicación y a su vez el código que más desarrollo y razonamiento necesita.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Reemplazar constructores por métodos de factoría</title>
       <link>https://raulpadilladelgado.github.io/blog/p/reemplazar-constructores-por-m%C3%A9todos-de-factor%C3%ADa/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/reemplazar-constructores-por-m%C3%A9todos-de-factor%C3%ADa/</guid>
-      <description>Pongamos el ejemplo de que creamos una clase &amp;ldquo;Texto&amp;rdquo; y queremos admitir para su atributo &amp;ldquo;texto&amp;rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:&#xA;public Texto(String texto){ if(texto==null){texto=&amp;#34;&amp;#34;;} this.texto=texto; } Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.</description>
+      <description>&lt;p&gt;Pongamos el ejemplo de que creamos una clase &amp;ldquo;Texto&amp;rdquo; y queremos admitir para su atributo &amp;ldquo;texto&amp;rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public Texto(String texto){&#xA;&#x9;if(texto==null){texto=&amp;#34;&amp;#34;;}&#xA;&#x9;this.texto=texto;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

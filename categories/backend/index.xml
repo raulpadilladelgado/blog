@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>backend on Raúl Padilla Delgado</title>
+    <title>Backend on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/backend/</link>
-    <description>Recent content in backend on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Backend on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Sat, 28 Nov 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/backend/index.xml" rel="self" type="application/rss+xml" />
@@ -13,28 +13,28 @@
       <link>https://raulpadilladelgado.github.io/blog/p/principios-solid/</link>
       <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/principios-solid/</guid>
-      <description>Introducción Los principio SOLID son convenciones en cuanto a diseño de software que ayudan a conseguir un código más mantenible, tolerante a cambios, y testeable.&#xA;Todos los desarrolladores de un equipo deberían tener nociones de diseño de software para fomentar la autonomía y agilidad del equipo&#xA;Huir de STUPID, el enemigo de SOLID S → Singleton: Hay un objeto que lo contiene todo. No necesita inyección de dependencias. Y se encuentra por todo el programa.</description>
+      <description>&lt;h1 id=&#34;introducción&#34;&gt;Introducción&lt;/h1&gt;&#xA;&lt;p&gt;Los principio SOLID son convenciones en cuanto a diseño de software que ayudan a conseguir un código más mantenible, tolerante a cambios, y testeable.&lt;/p&gt;&#xA;&lt;p&gt;Todos los desarrolladores de un equipo deberían tener nociones de diseño de software para fomentar la autonomía y agilidad del equipo&lt;/p&gt;&#xA;&lt;h1 id=&#34;huir-de-stupid-el-enemigo-de-solid&#34;&gt;Huir de STUPID, el enemigo de SOLID&lt;/h1&gt;&#xA;&lt;p&gt;S → Singleton: Hay un objeto que lo contiene todo. No necesita inyección de dependencias. Y se encuentra por todo el programa. Tiene demasiadas resposabilidades.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Clases, Interfaces y Genéricos</title>
       <link>https://raulpadilladelgado.github.io/blog/p/clases-interfaces-y-gen%C3%A9ricos/</link>
       <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/clases-interfaces-y-gen%C3%A9ricos/</guid>
-      <description>Interfaces Es una colección de métodos abstractos y propiedades constantes. En las interfaces se especifica qué se debe hacer pero no su implementación. Serán las clases que implementen estas interfaces las que describen la lógica del comportamiento de los métodos. Las clases que hereden de la interfaz solo podrán hacerlo de ella.&#xA;Un momento muy útil en el que declarar una interfaz, puede ser cuando vemos que dos clases tienen el mismo contrato, por ejemplo, tenemos una clase coche y una clase moto, que implementan los mismos métodos de formas distintas.</description>
+      <description>&lt;h1 id=&#34;interfaces&#34;&gt;Interfaces&lt;/h1&gt;&#xA;&lt;p&gt;Es una colección de métodos abstractos y propiedades constantes. En las interfaces se especifica qué se debe hacer pero no su implementación. Serán las clases que implementen estas interfaces las que describen la lógica del comportamiento de los métodos. Las clases que hereden de la interfaz solo podrán hacerlo de ella.&lt;/p&gt;&#xA;&lt;p&gt;Un momento muy útil en el que declarar una interfaz, puede ser cuando vemos que dos clases tienen el mismo contrato, por ejemplo, tenemos una clase coche y una clase moto, que implementan los mismos métodos de formas distintas.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Principios fundamentales de los tipos de datos en Java</title>
       <link>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</link>
       <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</guid>
-      <description>Primitivos y wrappers de primitivos en Java Asignar una variable primitiva usando otra variable primitiva Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.&#xA;public class Main { public static void main(String[] args) { int x = 0; int y = x; y=5; System.</description>
+      <description>&lt;h1 id=&#34;primitivos-y-wrappers-de-primitivos-en-java&#34;&gt;Primitivos y wrappers de primitivos en Java&lt;/h1&gt;&#xA;&lt;h2 id=&#34;asignar-una-variable-primitiva-usando-otra-variable-primitiva&#34;&gt;Asignar una variable primitiva usando otra variable primitiva&lt;/h2&gt;&#xA;&lt;p&gt;Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class Main {&#xA;    public static void main(String[] args) {&#xA;        int x = 0;&#xA;        int y = x;&#xA;        y=5;&#xA;        System.out.println(x);//x sigue valiendo 0&#xA;    }&#xA;}&#xA;&lt;/code&gt;&lt;/pr</description>
     </item>
     <item>
       <title>Value object VS Entity object</title>
       <link>https://raulpadilladelgado.github.io/blog/p/value-object-vs-entity-object/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/value-object-vs-entity-object/</guid>
-      <description>Value object En el modelo Value Object, un objeto se diferencia de otro por su contenido, no por su identidad propia.&#xA;Podemos entender el concepto de Value Object con el ejemplo de las monedas. Aunque cada moneda de 1 euro tiene su propia identidad (un número de serie), la economía funciona porque entiende que una moneda de 1 euro es igual que otra moneda de un euro, ambas valen lo mismo y a efectos prácticos son iguales.</description>
+      <description>&lt;h1 id=&#34;value-object&#34;&gt;Value object&lt;/h1&gt;&#xA;&lt;p&gt;En el modelo Value Object, un objeto se diferencia de otro por su contenido, no por su identidad propia.&lt;/p&gt;&#xA;&lt;p&gt;Podemos entender el concepto de Value Object con el ejemplo de las monedas. Aunque cada moneda de 1 euro tiene su propia identidad (un número de serie), la economía funciona porque entiende que una moneda de 1 euro es igual que otra moneda de un euro, ambas valen lo mismo y a efectos prácticos son iguales.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

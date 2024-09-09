@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>organizacion on Raúl Padilla Delgado</title>
+    <title>Organizacion on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/organizacion/</link>
-    <description>Recent content in organizacion on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Organizacion on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Fri, 02 Oct 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/organizacion/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/scrum-vs-kanban/</link>
       <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/scrum-vs-kanban/</guid>
-      <description>Diferencias Scrum: Iteraciones de tiempo fijo (Sprints). La pila del producto (conjunto de tareas) tiene que tener al menos el tamaño de un Sprint. Limita el WIP (WorkInProgress) por iteración. No se permiten cambiar las tareas del Sprint, solo el Sprint. Roles de Scrum Master, de Product Owner y del equipo&#xA;Kanban:Trabajo continuo. Se arrastran las nuevas tareas por el panel hasta que lleguen a su estado final. Limita el WIP por el flujo de trabajo.</description>
+      <description>&lt;h1 id=&#34;diferencias&#34;&gt;Diferencias&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Scrum&lt;/strong&gt;: Iteraciones de tiempo fijo (Sprints). La pila del producto (conjunto de tareas) tiene que tener al menos el tamaño de un Sprint. Limita el WIP (WorkInProgress) por iteración. No se permiten cambiar las tareas del Sprint, solo el Sprint. Roles de Scrum Master, de Product Owner y del equipo&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Kanban&lt;/strong&gt;:Trabajo continuo. Se arrastran las nuevas tareas por el panel hasta que lleguen a su estado final. Limita el WIP por el flujo de trabajo. Se puede modificar la tarea hasta que entra en flujo No existen roles.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

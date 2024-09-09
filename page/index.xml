@@ -4,7 +4,7 @@
     <title>Pages on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/page/</link>
     <description>Recent content in Pages on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Thu, 28 Feb 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/page/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/sobre-m%C3%AD/</link>
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/sobre-m%C3%AD/</guid>
-      <description>¡Bienvenid@ a mi blog personal sobre desarrollo de software!&#xA;Mi nombre es Raúl, vivo en Tenerife y nací en el año 2000. Terminé mis estudios en 2020, graduándome como Técnico Superior en Desarrollo de Aplicaciones Web, por lo que puede intuirse que tengo una corta trayectoria como programador. Tras finalizar mis estudios, empecé las prácticas externas en una empresa llamada LeanMind. Una vez finalizadas dichas prácticas y ya graduado, me quedé trabajando en esta misma empresa.</description>
+      <description>&lt;p&gt;¡Bienvenid@ a mi blog personal sobre desarrollo de software!&lt;/p&gt;&#xA;&lt;p&gt;Mi nombre es Raúl, vivo en Tenerife y nací en el año 2000. Terminé mis estudios en 2020, graduándome como&#xA;Técnico Superior en Desarrollo de Aplicaciones Web, por lo que puede intuirse que tengo una corta trayectoria&#xA;como programador. Tras finalizar mis estudios, empecé las prácticas externas en una empresa llamada LeanMind.&#xA;Una vez finalizadas dichas prácticas y ya graduado, me quedé trabajando en esta misma empresa. A día de hoy, sigo&#xA;colaborando con el magnífico grupo de personas que componen LeanMind.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Búsqueda</title>
@@ -27,7 +27,7 @@
       <link>https://raulpadilladelgado.github.io/blog/recursos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/recursos/</guid>
-      <description>Free Hosting / Free Deploys Develop. Preview. Ship. For the best frontend teams – Vercel&#xA;Roadmaps https://roadmap.sh/backend&#xA;https://roadmap.sh/frontend&#xA;Shell de Linux LiCODELi – La línea de comandos de Linux&#xA;Bash scripting cheatsheet&#xA;USB Boot Acer F12&#xA;Asrock F11&#xA;Asus F8&#xA;Commodore F12&#xA;Compaq Presario Esc + F9&#xA;Ecs Elitegroup F7&#xA;Eurocase F12&#xA;Gigabyte F12&#xA;Hp F9&#xA;intel F10&#xA;Lenovo F12&#xA;Msi F11&#xA;Olivetti F12&#xA;Samsung F10&#xA;Zotac Esc</description>
+      <description>&lt;h1 id=&#34;free-hosting--free-deploys&#34;&gt;Free Hosting / Free Deploys&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://vercel.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;Develop. Preview. Ship. For the best frontend teams – Vercel&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;roadmaps&#34;&gt;Roadmaps&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://roadmap.sh/backend&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;https://roadmap.sh/backend&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://roadmap.sh/frontend&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;https://roadmap.sh/frontend&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;shell-de-linux&#34;&gt;Shell de Linux&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://licodeli.blogspot.com/?m=1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;LiCODELi – La línea de comandos de Linux&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

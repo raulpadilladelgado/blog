@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>testing on Raúl Padilla Delgado</title>
+    <title>Testing on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/testing/</link>
-    <description>Recent content in testing on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Testing on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/testing/index.xml" rel="self" type="application/rss+xml" />
@@ -13,28 +13,28 @@
       <link>https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/</link>
       <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/</guid>
-      <description>Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.&#xA;Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje.</description>
+      <description>&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Consumer driven contract testing&lt;/em&gt; es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con&#xA;un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una&#xA;petición y devuelve la respuesta esperada.&lt;/p&gt;&#xA;&lt;p&gt;Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un&#xA;formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que&#xA;su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina&#xA;«contrato». Es entonces gracias a &lt;em&gt;contract testing&lt;/em&gt; cuando podemos testear esa integración y asegurarnos que el mensaje&#xA;que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la&#xA;perfección.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Buenas prácticas en testing (Cap.1)</title>
       <link>https://raulpadilladelgado.github.io/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/</link>
       <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/</guid>
-      <description>Introducción Este post trata de exponer una serie de buenas prácticas o trucos a la hora de realizar testing de código, y forma parte de una serie de capítulos que pretenden seguir con el propósito.&#xA;En esta primera iteración la idea es hablemos sobre TDD, programación funcional, patrones de diseño y estabilidad, todo esto orientado a los tests.&#xA;Vamos al laboratorio! 🧪&#xA;TDD en nuestros tests Test-Driven Development (TDD) es una práctica de programación que consiste en escribir primero las pruebas, después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.</description>
+      <description>&lt;h1 id=&#34;introducción&#34;&gt;Introducción&lt;/h1&gt;&#xA;&lt;p&gt;Este post trata de exponer una serie de buenas prácticas o trucos a la hora de realizar testing de código, y forma parte de una serie de capítulos que pretenden seguir con el propósito.&lt;/p&gt;&#xA;&lt;p&gt;En esta primera iteración la idea es hablemos sobre TDD, programación funcional, patrones de diseño y estabilidad, todo esto orientado a los tests.&lt;/p&gt;&#xA;&lt;p&gt;Vamos al laboratorio! 🧪&lt;/p&gt;&#xA;&lt;h1 id=&#34;tdd-en-nuestros-tests&#34;&gt;TDD en nuestros tests&lt;/h1&gt;&#xA;&lt;p&gt;Test-Driven Development (TDD) es una práctica de programación que consiste en escribir primero las pruebas, después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.&lt;/p&gt;</description>
     </item>
     <item>
       <title>PHPUnit basics</title>
       <link>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</link>
       <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</guid>
-      <description>Introducción e instalación Este post surge por mi deseo de iniciar en el desarrollo de tests de código PHP mediante PHPUnit, un acercamiento que sirva para asimilar conceptos básicos. ¡Empezamos!.&#xA;Lo primero que necesitamos es instalar PHPUnit en el proyecto, y ésto lo realizaremos gracias a composer.&#xA;composer require --dev phpunit/phpunit ^latest Trás esto, en nuestra primera clase de test, debemos extender de TestCase, contenido en:&#xA;vendor → phpunit → framework ahora es momento de hacer la primera aserción</description>
+      <description>&lt;h2 id=&#34;introducción-e-instalación&#34;&gt;Introducción e instalación&lt;/h2&gt;&#xA;&lt;p&gt;Este post surge por mi deseo de iniciar en el desarrollo de tests de código PHP mediante PHPUnit, un acercamiento que sirva para asimilar conceptos básicos. ¡Empezamos!.&lt;/p&gt;&#xA;&lt;p&gt;Lo primero que necesitamos es instalar PHPUnit en el proyecto, y ésto lo realizaremos gracias a composer.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;composer require --dev phpunit/phpunit ^latest&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Trás esto, en nuestra primera clase de test, debemos extender de TestCase, contenido en:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Análisis del libro &#34;Diseño ágil con TDD&#34;</title>
       <link>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/</link>
       <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/</guid>
-      <description>Portada libro INTRODUCCIÓN &amp;ldquo;Diseño Ágil con TDD&amp;rdquo;, por Carlos Ble, es un libro muy interesante que nos enseña como implementar Test-Driven Development en el desarrollo de código. Muestra como basar nuestro código en los Test que escribimos, y no al revés. A continuación comparto mis experiencias leyendo éste libro.&#xA;¿QUE BENEFICIOS NOS APORTA? Se presentan grandes beneficios de codificar de ésta forma. Se habla de conseguir un código simple, que haga lo que necesitamos para cada momento, que cuando falle nos de un correcto y constante feedback de porqué eso está ocurriendo, así como un código legible y fácil de mantener.</description>
+      <description>&lt;p&gt;&lt;figure &#xA;&#x9;&gt;&#xA;&#x9;&lt;a href=&#34;https://d2sofvawe08yqg.cloudfront.net/tdd-en-castellano/hero?1576861322&#34; &gt;&#xA;&#x9;&#x9;&lt;img src=&#34;https://d2sofvawe08yqg.cloudfront.net/tdd-en-castellano/hero?1576861322&#34;&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;loading=&#34;lazy&#34;&#xA;&#x9;&#x9;&#x9;alt=&#34;Portada libro&#34;&gt;&#xA;&#x9;&lt;/a&gt;&#xA;&#x9;&#xA;&#x9;&lt;figcaption&gt;Portada libro&lt;/figcaption&gt;&#xA;&#x9;&#xA;&lt;/figure&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;introducción&#34;&gt;&lt;strong&gt;INTRODUCCIÓN&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;&amp;ldquo;Diseño Ágil con TDD&amp;rdquo;, por Carlos Ble, es un libro muy interesante que nos enseña como implementar Test-Driven Development en el desarrollo de código. Muestra como basar nuestro código en los Test que escribimos, y no al revés. A continuación comparto mis experiencias leyendo éste libro.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

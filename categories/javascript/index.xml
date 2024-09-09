@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>javascript on Raúl Padilla Delgado</title>
+    <title>Javascript on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/javascript/</link>
-    <description>Recent content in javascript on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Javascript on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Sun, 11 Apr 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/como-funciona-async-await/</link>
       <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/como-funciona-async-await/</guid>
-      <description>Asíncrono &amp;ldquo;Que no tiene lugar en completa correspondencia temporal con otro proceso o con la causa que lo produce.&amp;rdquo;&#xA;Recientemente he estado desarrollando un proyecto basado en Node JS que usaba una librería externa en la que sus métodos devolvían promesas. Sin tener mucha experiencia con lo asíncrono en javascript, para mi la forma más simple de entenderlo y aplicarlo correctamente fue la siguiente:&#xA;Supongamos que tienes una promesa como por ejemplo:</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Asíncrono&lt;/strong&gt; &amp;ldquo;Que no tiene lugar en completa correspondencia temporal con otro proceso o con la causa que lo produce.&amp;rdquo;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Recientemente he estado desarrollando un proyecto basado en Node JS que usaba una librería externa en la que sus métodos devolvían promesas. Sin tener mucha experiencia con lo asíncrono en javascript, para mi la forma más simple de entenderlo y aplicarlo correctamente fue la siguiente:&lt;/p&gt;&#xA;&lt;p&gt;Supongamos que tienes una promesa como por ejemplo:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

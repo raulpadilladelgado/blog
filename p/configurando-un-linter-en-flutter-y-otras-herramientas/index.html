@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido.'><title>Configurando un linter en flutter y otras herramientas</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido. Con la capacidad de aplicar convenciones de codificación, identificar posibles errores y mejorar la legibilidad del código, una herramienta de linter es un activo valioso para cualquier proyecto de código. Al mantener un código consistente y de alta calidad, se facilita la colaboración entre los miembros del equipo, se reducen los conflictos y se mejora la eficiencia en el desarrollo.
+'><title>Configurando un linter en flutter y otras herramientas</title>
 
 
 <link rel="canonical" href="https://leanmind.es/es/blog/configurando-un-linter-y-otras-herramientas-en-flutter/">
 
 
 <link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Configurando un linter en flutter y otras herramientas'>
-<meta property='og:description' content='¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido.'>
+<meta property='og:description' content='¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido. Con la capacidad de aplicar convenciones de codificación, identificar posibles errores y mejorar la legibilidad del código, una herramienta de linter es un activo valioso para cualquier proyecto de código. Al mantener un código consistente y de alta calidad, se facilita la colaboración entre los miembros del equipo, se reducen los conflictos y se mejora la eficiencia en el desarrollo.
+'>
 <meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/'>
 <meta property='og:site_name' content='Raúl Padilla Delgado'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-02-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-02-16T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/images/linter.png' />
 <meta name="twitter:title" content="Configurando un linter en flutter y otras herramientas">
-<meta name="twitter:description" content="¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido."><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido. Con la capacidad de aplicar convenciones de codificación, identificar posibles errores y mejorar la legibilidad del código, una herramienta de linter es un activo valioso para cualquier proyecto de código. Al mantener un código consistente y de alta calidad, se facilita la colaboración entre los miembros del equipo, se reducen los conflictos y se mejora la eficiencia en el desarrollo.
+"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/images/linter.png' />
     </head>
     <body class="
@@ -81,7 +84,7 @@
     <header class="article-category">
         
             <a href="/blog/categories/herramientas/" >
-                herramientas
+                Herramientas
             </a>
         
     </header>
@@ -263,7 +266,7 @@
         
         
             <div class="article-image">
-                <img src="/blog/p/automatizando-tareas-con-task/images/make-vs-task.b89cc518572f786553b9ba91297ff0e0_hu01e33d79e7a709bf35f43640f28b1915_133748_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/blog/p/automatizando-tareas-con-task/images/make-vs-task.b89cc518572f786553b9ba91297ff0e0_hu15322979252763304952.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy" 

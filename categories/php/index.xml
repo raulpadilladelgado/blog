@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>php on Raúl Padilla Delgado</title>
+    <title>Php on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/php/</link>
-    <description>Recent content in php on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Php on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Mon, 13 Jul 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/php/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</link>
       <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/phpunit-basics/</guid>
-      <description>Introducción e instalación Este post surge por mi deseo de iniciar en el desarrollo de tests de código PHP mediante PHPUnit, un acercamiento que sirva para asimilar conceptos básicos. ¡Empezamos!.&#xA;Lo primero que necesitamos es instalar PHPUnit en el proyecto, y ésto lo realizaremos gracias a composer.&#xA;composer require --dev phpunit/phpunit ^latest Trás esto, en nuestra primera clase de test, debemos extender de TestCase, contenido en:&#xA;vendor → phpunit → framework ahora es momento de hacer la primera aserción</description>
+      <description>&lt;h2 id=&#34;introducción-e-instalación&#34;&gt;Introducción e instalación&lt;/h2&gt;&#xA;&lt;p&gt;Este post surge por mi deseo de iniciar en el desarrollo de tests de código PHP mediante PHPUnit, un acercamiento que sirva para asimilar conceptos básicos. ¡Empezamos!.&lt;/p&gt;&#xA;&lt;p&gt;Lo primero que necesitamos es instalar PHPUnit en el proyecto, y ésto lo realizaremos gracias a composer.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;composer require --dev phpunit/phpunit ^latest&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Trás esto, en nuestra primera clase de test, debemos extender de TestCase, contenido en:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>sistema on Raúl Padilla Delgado</title>
+    <title>Sistema on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/sistema/</link>
-    <description>Recent content in sistema on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Sistema on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/sistema/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/versiona-tus-dotfiles/</link>
       <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/versiona-tus-dotfiles/</guid>
-      <description>Introducción Durante mucho tiempo fui usuario de Windows, pero un día decidí probar Linux y terminé por elegirlo como mi sistema operativo para trabajar. Depende de cuando leas esto quizá el cambio haya sido al revés. Pero lo dicho, llegando a un mundo nuevo para mí, decidí probar distintas distribuciones Linux para encontrar cuál era la que mejor se adaptaba al uso que le daría. Tras ver un curso en CodelyTV, pude aprender que la configuración tediosa que hacemos día tras día desde que iniciamos en una máquina se puede resumir en la simple ejecución de un script, y puedo decir que ojalá haber conocido está práctica tan simple, pero que aporta y ayuda tanto a la configuración personal.</description>
+      <description>&lt;h1 id=&#34;introducción&#34;&gt;Introducción&lt;/h1&gt;&#xA;&lt;p&gt;Durante mucho tiempo fui usuario de Windows, pero un día decidí probar Linux y terminé por elegirlo como mi sistema operativo para trabajar. Depende&#xA;de cuando leas esto quizá el cambio haya sido al revés. Pero lo dicho, llegando a un mundo nuevo para mí, decidí probar distintas distribuciones Linux&#xA;para encontrar cuál era la que mejor se adaptaba al uso que le daría. Tras ver un curso en CodelyTV, pude aprender que la configuración tediosa que&#xA;hacemos día tras día desde que iniciamos en una máquina se puede resumir en la simple ejecución de un script, y puedo decir que ojalá haber conocido&#xA;está práctica tan simple, pero que aporta y ayuda tanto a la configuración personal.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

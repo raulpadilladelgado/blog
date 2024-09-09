@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>deploy on Raúl Padilla Delgado</title>
+    <title>Deploy on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/deploy/</link>
-    <description>Recent content in deploy on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Deploy on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Fri, 17 Apr 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/deploy/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/deploy-b%C3%A1sico-usando-heroku-y-git/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/deploy-b%C3%A1sico-usando-heroku-y-git/</guid>
-      <description>Heroku nos va a permitir alojar nuestras aplicaciones en sus servidores, y acceder a éstas desde un enlace que nos proporcione.&#xA;Tras crear una cuenta y descargar la línea de comandos de Heroku, nos dirigimos a la carpeta donde tengamos nuestro proyecto y ejecutamos lo siguiente:&#xA;Iniciar sesión con heroku heroku login&#xA;Inicializar repositorio con Git y primer commit. git init&#xA;git add .&#xA;git commit -m &amp;quot;primer commit&amp;quot;&#xA;Crear espacio para nuestra app en servidor de heroku -&amp;gt; automáticamente añade un repositorio remoto &amp;ldquo;heroku&amp;rdquo; el que haremos push para subir nuestro proyecto a ese espacio.</description>
+      <description>&lt;p&gt;Heroku nos va a permitir alojar nuestras aplicaciones en sus servidores, y acceder a éstas desde un enlace que nos proporcione.&lt;/p&gt;&#xA;&lt;p&gt;Tras crear una cuenta y descargar la línea de comandos de Heroku, nos dirigimos a la carpeta donde tengamos nuestro proyecto y ejecutamos lo siguiente:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Iniciar sesión con heroku&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;code&gt;heroku login&lt;/code&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Inicializar repositorio con Git y primer commit.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;code&gt;git init&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;git add .&lt;/code&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

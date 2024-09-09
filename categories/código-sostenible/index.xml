@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>código-sostenible on Raúl Padilla Delgado</title>
+    <title>Código-Sostenible on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/c%C3%B3digo-sostenible/</link>
-    <description>Recent content in código-sostenible on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Código-Sostenible on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Thu, 07 Jul 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/c%C3%B3digo-sostenible/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/</link>
       <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/</guid>
-      <description>Introducción Toda la información que encontrarás aquí está basada en el libro de Carlos Blé &amp;ldquo;Código sostenible&amp;rdquo;. En este post hablaré sobre lo que he aprendido con la lectura de este libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía para realizar código limpio y fácil de mantener.</description>
+      <description>&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;&#xA;&lt;p&gt;Toda la información que encontrarás aquí está basada en el libro de Carlos Blé&#xA;&lt;a class=&#34;link&#34; href=&#34;https://codigosostenible.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;&amp;ldquo;Código sostenible&amp;rdquo;&lt;/a&gt;. En este post hablaré sobre lo que he aprendido con la lectura de este&#xA;libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas&#xA;el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía&#xA;para realizar código limpio y fácil de mantener.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

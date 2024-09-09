@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Pongamos el ejemplo de que creamos una clase &amp;ldquo;Texto&amp;rdquo; y queremos admitir para su atributo &amp;ldquo;texto&amp;rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:
-public Texto(String texto){ if(texto==null){texto=&amp;#34;&amp;#34;;} this.texto=texto; } Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.'><title>Reemplazar constructores por métodos de factoría</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Pongamos el ejemplo de que creamos una clase &ldquo;Texto&rdquo; y queremos admitir para su atributo &ldquo;texto&rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:
+public Texto(String texto){ if(texto==null){texto=&#34;&#34;;} this.texto=texto; } Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.
+'><title>Reemplazar constructores por métodos de factoría</title>
 
 
 <link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/reemplazar-constructores-por-m%C3%A9todos-de-factor%C3%ADa/'>
 
 
 <link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Reemplazar constructores por métodos de factoría'>
-<meta property='og:description' content='Pongamos el ejemplo de que creamos una clase &amp;ldquo;Texto&amp;rdquo; y queremos admitir para su atributo &amp;ldquo;texto&amp;rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:
-public Texto(String texto){ if(texto==null){texto=&amp;#34;&amp;#34;;} this.texto=texto; } Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.'>
+<meta property='og:description' content='Pongamos el ejemplo de que creamos una clase &ldquo;Texto&rdquo; y queremos admitir para su atributo &ldquo;texto&rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:
+public Texto(String texto){ if(texto==null){texto=&#34;&#34;;} this.texto=texto; } Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.
+'>
 <meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/reemplazar-constructores-por-m%C3%A9todos-de-factor%C3%ADa/'>
 <meta property='og:site_name' content='Raúl Padilla Delgado'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-04-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-04-17T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Reemplazar constructores por métodos de factoría">
-<meta name="twitter:description" content="Pongamos el ejemplo de que creamos una clase &amp;ldquo;Texto&amp;rdquo; y queremos admitir para su atributo &amp;ldquo;texto&amp;rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:
-public Texto(String texto){ if(texto==null){texto=&amp;#34;&amp;#34;;} this.texto=texto; } Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.">
+<meta name="twitter:description" content="Pongamos el ejemplo de que creamos una clase &ldquo;Texto&rdquo; y queremos admitir para su atributo &ldquo;texto&rdquo; los valores nulos como String vacíos, podríamos implementar ésta funcionalidad en el constructor, algo que quedaría así:
+public Texto(String texto){ if(texto==null){texto=&#34;&#34;;} this.texto=texto; } Es perfectamente funcional, pero para conseguir un código en el que cada componente haga lo que se espera de él, lo mejor sería delegar ésta comprobación a un método de factoría, un método estático que llame al constructor, estableciendo el constructor privado.
+">
     </head>
     <body class="
     article-page 
@@ -65,7 +68,7 @@ public Texto(String texto){ if(texto==null){texto=&amp;#34;&amp;#34;;} this.text
 
                     
                         
-                        <img src="/blog/images/Raul_hu6de51eb0c73b799f269af52f7ff0858b_48464_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/Raul_hu14508492098127620801.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,7 +211,7 @@ License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1,
     <header class="article-category">
         
             <a href="/blog/categories/refactor/" >
-                refactor
+                Refactor
             </a>
         
     </header>

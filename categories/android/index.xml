@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>android on Raúl Padilla Delgado</title>
+    <title>Android on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/android/</link>
-    <description>Recent content in android on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Android on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/android/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/debloat-android/</link>
       <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/debloat-android/</guid>
-      <description>Hoy en día es fácil adquirir a un precio asequible un dispositivo con suficiente memoria de almacenamiento como para que no lo llenemos con un uso normal. Pero aún así, es perfectamente comprensible que llegues al punto de necesitar sacar unos megabytes de almacenamiento por algún lado.&#xA;Hoy ofrezco una solución que no solo te ayudará a lograr más almacenamiento para tu Android, lograrás un mejor rendimiento, y lo mejor de todo es que lo amarás porque tendrás el control sobre lo que está instalado en tu dispositivo, solo tú eliges que está y que no.</description>
+      <description>&lt;p&gt;Hoy en día es fácil adquirir a un precio asequible un dispositivo con suficiente memoria de almacenamiento como para que no lo llenemos con un uso normal. Pero aún así, es perfectamente comprensible que llegues al punto de necesitar sacar unos megabytes de almacenamiento por algún lado.&lt;/p&gt;&#xA;&lt;p&gt;Hoy ofrezco una solución que no solo te ayudará a lograr más almacenamiento para tu Android, lograrás un mejor rendimiento, y lo mejor de todo es que lo amarás porque tendrás el control sobre lo que está instalado en tu dispositivo, solo tú eliges que está y que no.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

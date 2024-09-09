@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>libreria on Raúl Padilla Delgado</title>
+    <title>Libreria on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/libreria/</link>
-    <description>Recent content in libreria on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Libreria on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/libreria/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/domina-los-json-con-gson/</link>
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/domina-los-json-con-gson/</guid>
-      <description>Puede darse la situación de que en nuestra aplicación Java, necesitemos atender peticiones representadas en JSON, transformarlas a objetos, tratar los datos y devolver una respuesta en JSON. Los servicios REST o los Websockets son un buen ejemplo de esto.&#xA;Para resolver este problema podemos implementar &amp;ldquo;a mano&amp;rdquo; la lógica de negocio para serializar y deserializar nuestro JSON, lo que supodrá un esfuerzo considerable. O podríamos hacer uso de alguna libería diseñada para este propósito como puede ser Gson.</description>
+      <description>&lt;p&gt;Puede darse la situación de que en nuestra aplicación Java, necesitemos atender peticiones representadas en JSON, transformarlas a objetos, tratar los datos y devolver una respuesta en JSON. Los servicios REST o los Websockets son un buen ejemplo de esto.&lt;/p&gt;&#xA;&lt;p&gt;Para resolver este problema podemos implementar &amp;ldquo;a mano&amp;rdquo; la lógica de negocio para serializar y deserializar nuestro JSON, lo que supodrá un esfuerzo considerable. O podríamos hacer uso de alguna libería diseñada para este propósito como puede ser Gson.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

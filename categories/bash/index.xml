@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>bash on Raúl Padilla Delgado</title>
+    <title>Bash on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/bash/</link>
-    <description>Recent content in bash on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Bash on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/bash/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/el-arte-de-la-l%C3%ADnea-de-comandos/</link>
       <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/el-arte-de-la-l%C3%ADnea-de-comandos/</guid>
-      <description>¿Por qué aprender bash? La respuesta corta es porque linux es realmente GNU/Linux. Sólo el kernel es linux, pero la colección base de utilidades que proporcionan el entorno Unix es proporcionada por GNU y el shell de GNU es bash. Es por esto que bash el shell por defecto que te encontrarás en cualquier distribución o servidor basado en linux.&#xA;Hay muchas shells que se adaptan mejor a los propósitos o gustos individuales, como pueden ser zsh, pero creo que al ser un estandar es muy positivo dominar la herramienta para tener un desarrollo fluido, cómodo y productivo cuando necesites usarla o por si es tu shell de preferencia.</description>
+      <description>&lt;h1 id=&#34;por-qué-aprender-bash&#34;&gt;¿Por qué aprender bash?&lt;/h1&gt;&#xA;&lt;p&gt;La respuesta corta es porque linux es realmente GNU/Linux. Sólo el kernel es linux, pero la colección base de utilidades que proporcionan el entorno Unix es proporcionada por GNU y el shell de GNU es bash. Es por esto que bash el shell por defecto que te encontrarás en cualquier distribución o servidor basado en linux.&lt;/p&gt;&#xA;&lt;p&gt;Hay muchas shells que se adaptan mejor a los propósitos o gustos individuales, como pueden ser zsh, pero creo que al ser un estandar es muy positivo dominar la herramienta para tener un desarrollo fluido, cómodo y productivo cuando necesites usarla o por si es tu shell de preferencia.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

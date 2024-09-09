@@ -4,7 +4,7 @@
     <title>Java on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/java/</link>
     <description>Recent content in Java on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Fri, 19 Nov 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/java/index.xml" rel="self" type="application/rss+xml" />
@@ -13,21 +13,21 @@
       <link>https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/</link>
       <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/java-moderno-cap%C3%ADtulo-1/</guid>
-      <description>Introducción Este post tiene como objetivo mostrar una serie de trucos o tips sobre Java que no son más que nuevan funcionalidades que han ido saliendo con el paso de los años y que hoy recojo aquí con la intención de mostrar las más útiles y ejemplos de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes buscar en blog los demás post.&#xA;Try with resources Desde Java 7 existe la fórmula try-with-resources que permite vincular el cerrado de recursos a la conclusión del try, de modo que no se nos olvide hacerlo manualmente.</description>
+      <description>&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;&#xA;&lt;p&gt;Este post tiene como objetivo mostrar una serie de trucos o tips sobre Java que no son más que nuevan funcionalidades&#xA;que han ido saliendo con el paso de los años y que hoy recojo aquí con la intención de mostrar las más útiles y ejemplos&#xA;de uso. Pertenece a una serie de post que siguen el mismo objetivo, puedes buscar en blog los demás post.&lt;/p&gt;&#xA;&lt;h2 id=&#34;try-with-resources&#34;&gt;Try with resources&lt;/h2&gt;&#xA;&lt;p&gt;Desde Java 7 existe la fórmula try-with-resources que permite vincular el cerrado de recursos a la conclusión del try, de modo que no se nos olvide hacerlo manualmente.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Java Virtual Machine</title>
       <link>https://raulpadilladelgado.github.io/blog/p/java-virtual-machine/</link>
       <pubDate>Fri, 29 Oct 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/java-virtual-machine/</guid>
-      <description>Java Virtual Machine (JVM) ¿Que es? La Máquina Virtual de Java, en inglés Java Virtual Machine (JVM), es un componente dentro de JRE (Java Runtime Environment) necesario para la ejecución del código desarrollado en Java, es decir, es la máquina virtual la que permite ejecutar código Java en cualquier sistema operativo o arquitectura. De aquí que se conozca Java como un lenguaje multiplataforma. JVM interpreta y ejecuta instrucciones expresadas en un código máquina especial (bytecode), el cual es generado por el compilador de Java (también ocurre con los generados por los compiladores de lenguajes como Kotlin y Scala).</description>
+      <description>&lt;h1 id=&#34;java-virtual-machine-jvm&#34;&gt;Java Virtual Machine (JVM)&lt;/h1&gt;&#xA;&lt;h2 id=&#34;que-es&#34;&gt;¿Que es?&lt;/h2&gt;&#xA;&lt;p&gt;La Máquina Virtual de Java, en inglés Java Virtual Machine (JVM), es un componente dentro de JRE (Java Runtime Environment) necesario para la ejecución del código desarrollado en Java, es decir, es la máquina virtual la que permite ejecutar código Java en cualquier sistema operativo o arquitectura. De aquí que se conozca Java como un lenguaje multiplataforma. JVM interpreta y ejecuta instrucciones expresadas en un código máquina especial (bytecode), el cual es generado por el compilador de Java (también ocurre con los generados por los compiladores de lenguajes como Kotlin y Scala). Dicho de otra forma, es un proceso escrito en C o C++ que se encarga de interpretar el bytecode generado por el compilador y hacerlo funcionar sobre la infraestructura de ejecución. Como hay una versión de la JVM para cada entorno que sí conoce los detalles de ejecución de cada sistema, puede utilizar el código máquina equivalente para cada una de las instrucciones bytecode.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Principios fundamentales de los tipos de datos en Java</title>
       <link>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</link>
       <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/principios-fundamentales-de-los-tipos-de-datos-en-java/</guid>
-      <description>Primitivos y wrappers de primitivos en Java Asignar una variable primitiva usando otra variable primitiva Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.&#xA;public class Main { public static void main(String[] args) { int x = 0; int y = x; y=5; System.</description>
+      <description>&lt;h1 id=&#34;primitivos-y-wrappers-de-primitivos-en-java&#34;&gt;Primitivos y wrappers de primitivos en Java&lt;/h1&gt;&#xA;&lt;h2 id=&#34;asignar-una-variable-primitiva-usando-otra-variable-primitiva&#34;&gt;Asignar una variable primitiva usando otra variable primitiva&lt;/h2&gt;&#xA;&lt;p&gt;Con los primitivos, cuando asignamos el valor de una variable a el valor de otra variable, simplemente se genera una copia, por lo que la variable original no mutará su estado por más que la variable nueva decida cambiar.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class Main {&#xA;    public static void main(String[] args) {&#xA;        int x = 0;&#xA;        int y = x;&#xA;        y=5;&#xA;        System.out.println(x);//x sigue valiendo 0&#xA;    }&#xA;}&#xA;&lt;/code&gt;&lt;/pr</description>
     </item>
   </channel>
 </rss>

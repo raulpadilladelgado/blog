@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>taller on Raúl Padilla Delgado</title>
+    <title>Taller on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/taller/</link>
-    <description>Recent content in taller on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Taller on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Sun, 27 Sep 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/taller/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/taller-refactor-java--intellij/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/taller-refactor-java--intellij/</guid>
-      <description>Recientemente estuve realizando una formación que impartía Carlos Ble. Dicha formación consistía en aprender trucos y consejos para aplicar a la hora de hacer refactor. Lejos de ser solo una charla, los alumnos estuvimos gran parte del tiempo practicando lo que íbamos aprendiendo con cada ejercicio, y ahora yo quiero hablar un poco acerca de ello.&#xA;Tras concluir esta formación mi perspectiva acerca del refactor cambió mucho. Generalmente, tendemos a buscar los refactors más complicados, esos que simplifican 20 líneas de código en la mitad o casos por el estilo.</description>
+      <description>&lt;p&gt;Recientemente estuve realizando una formación que impartía &lt;a class=&#34;link&#34; href=&#34;https://www.carlosble.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;Carlos Ble&lt;/a&gt;. Dicha formación consistía en aprender trucos y consejos para aplicar a la hora de hacer refactor. Lejos de ser solo una charla, los alumnos estuvimos gran parte del tiempo practicando lo que íbamos aprendiendo con cada ejercicio, y ahora yo quiero hablar un poco acerca de ello.&lt;/p&gt;&#xA;&lt;p&gt;Tras concluir esta formación mi perspectiva acerca del refactor cambió mucho. Generalmente, tendemos a buscar los refactors más complicados, esos que simplifican 20 líneas de código en la mitad o casos por el estilo. Hay entender que el refactor no consiste en hacer el código lo más pequeño posible, porque menos código no es directamente proporcional con código más simple. Estuve viendo muchos ejemplos de que con cambios muy simple como puede ser un cambio de nombre llegas a lograr una mejor semántica en tu código. Los refactor en código legacy deben empezarse por algo sencillo, es decir, desde fuera hacia dentro de un método o una clase.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

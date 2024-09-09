@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>manejo-de-dependencias on Raúl Padilla Delgado</title>
+    <title>Manejo-De-Dependencias on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/manejo-de-dependencias/</link>
-    <description>Recent content in manejo-de-dependencias on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Manejo-De-Dependencias on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/manejo-de-dependencias/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/</guid>
-      <description>Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.</description>
+      <description>&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;&#xA;&lt;p&gt;Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de&#xA;librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde&#xA;ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de&#xA;incorporar.&#xA;Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un&#xA;auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han&#xA;ocurrido cambios que rompen con lo que actualmente usábamos.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

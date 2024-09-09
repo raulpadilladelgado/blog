@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>patrones-de-software-2 on Raúl Padilla Delgado</title>
+    <title>Patrones-De-Software-2 on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/patrones-de-software-2/</link>
-    <description>Recent content in patrones-de-software-2 on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Patrones-De-Software-2 on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Wed, 24 Jun 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/patrones-de-software-2/index.xml" rel="self" type="application/rss+xml" />
@@ -13,21 +13,21 @@
       <link>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/</link>
       <pubDate>Wed, 24 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/an%C3%A1lisis-del-libro-implementation-patterns/</guid>
-      <description>Implementations Patterns, de Kent Beck, es un libro sobre programación que define buenas prácticas a seguir en el desarrollo de código en Java, con el objetivo de tener un código legible y del que nos sintamos orgullosos. Se busca mejorar la perspectiva que tenga un programador sobre el sistema que va a tratar, para que entienda que cuando escriba código, éste debe hablar por si solo, debe ser la respuesta correcta y simple a una pregunta que se haga una persona cuando debe resolver un problema.</description>
+      <description>&lt;p&gt;Implementations Patterns, de Kent Beck, es un libro sobre programación que define buenas prácticas a seguir en el desarrollo de código en Java, con el objetivo de tener un código legible y del que nos sintamos orgullosos. Se busca mejorar la perspectiva que tenga un programador sobre el sistema que va a tratar, para que entienda que cuando escriba código, éste debe hablar por si solo, debe ser la respuesta correcta y simple a una pregunta que se haga una persona cuando debe resolver un problema. Podemos decir entonces que el libro trata la responsabilidad que debe asumir un programador para tener un código satisfactorio.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Patrón decorator</title>
       <link>https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/</link>
       <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/</guid>
-      <description>https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png Es un patrón de diseño que nos va a permitir agregar funcionalidad a un objeto existente sin cambiar su estructura. Se busca poder añadir dinámicamente funcionalidad a un Objeto. Esto nos permite no tener que crear sucesivas clases que hereden de la primera incorporando la nueva funcionalidad, sino otras que la implementan y se asocian a la primera.&#xA;Un gran momento para aplicarlo es cuando tenemos una clase que contiene métodos que realizan algo más que lógica de negocio.</description>
+      <description>&lt;p&gt;&lt;figure &#xA;&#x9;&#xA;&#x9;&#x9;class=&#34;gallery-image&#34; &#xA;&#x9;&#x9;style=&#34;&#xA;&#x9;&#x9;&#x9;flex-grow: 126; &#xA;&#x9;&#x9;&#x9;flex-basis: 302px&#34;&#xA;&#x9;&gt;&#xA;&#x9;&lt;a href=&#34;https://raulpadilladelgado.github.io/blog/blog/p/patr%C3%B3n-decorator/images/400px-Decorator_UML_class_diagram.svg.png&#34; data-size=&#34;400x317&#34;&gt;&#xA;&#x9;&#x9;&lt;img src=&#34;https://raulpadilladelgado.github.io/blog/blog/p/patr%C3%B3n-decorator/images/400px-Decorator_UML_class_diagram.svg.png&#34;&#xA;&#x9;&#x9;&#x9;width=&#34;400&#34;&#xA;&#x9;&#x9;&#x9;height=&#34;317&#34;&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;loading=&#34;lazy&#34;&#xA;&#x9;&#x9;&#x9;alt=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png&#34;&gt;&#xA;&#x9;&lt;/a&gt;&#xA;&#x9;&#xA;&#x9;&lt;figcaption&gt;&lt;a class=&#34;link&#34; href=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png&lt;/a&gt;&lt;/figcaption&gt;&#xA;&#x9;&#xA;&lt;/figure&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Patrones de diseño (DAO y DTO)</title>
       <link>https://raulpadilladelgado.github.io/blog/p/patrones-de-dise%C3%B1o-dao-y-dto/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/patrones-de-dise%C3%B1o-dao-y-dto/</guid>
-      <description>DAO DAO encapsula el acceso a la base de datos. Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo cuando la capa de lógica de negocio necesite guardar un dato en la base de datos, va a llamar a un método create().</description>
+      <description>&lt;h1 id=&#34;dao&#34;&gt;DAO&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;DAO encapsula el acceso a la base de datos.&lt;/strong&gt; Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo &lt;strong&gt;cuando la capa de lógica de negocio necesite guardar un dato en la base de datos&lt;/strong&gt;, va a llamar a un método create(). &lt;strong&gt;Lo que haga este método, es problema de DAO&lt;/strong&gt; y depende de como DAO implemente el método create(), puede que lo implemente de manera que los datos se almacenen en una base de datos relacional como puede que lo implemente de manera que los datos se almacenen en ficheros de texto. Lo importante es que la capa de lógica de negocio no tiene porque saberlo, lo único que sabe es que el método create() va a guardar los datos, así como el método delete() va a eliminarlos, el método update() actualizarlos, etc. Pero no tiene idea de como interactúa DAO con la base de datos.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

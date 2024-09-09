@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>herramientas on Raúl Padilla Delgado</title>
+    <title>Herramientas on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/herramientas/</link>
-    <description>Recent content in herramientas on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Herramientas on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Fri, 16 Feb 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/herramientas/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,14 @@
       <link>https://raulpadilladelgado.github.io/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/</link>
       <pubDate>Fri, 16 Feb 2024 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/</guid>
-      <description>¿Qué es un linter? Los linter son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de linter, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido.</description>
+      <description>&lt;h2 id=&#34;qué-es-un-_linter_&#34;&gt;¿Qué es un &lt;em&gt;linter&lt;/em&gt;?&lt;/h2&gt;&#xA;&lt;p&gt;Los &lt;em&gt;linter&lt;/em&gt; son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de &lt;em&gt;linter&lt;/em&gt;, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido. Con la capacidad de aplicar convenciones de codificación, identificar posibles errores y mejorar la legibilidad del código, una herramienta de &lt;em&gt;linter&lt;/em&gt; es un activo valioso para cualquier proyecto de código. Al mantener un código consistente y de alta calidad, se facilita la colaboración entre los miembros del equipo, se reducen los conflictos y se mejora la eficiencia en el desarrollo.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Automatizando tareas con Task</title>
       <link>https://raulpadilladelgado.github.io/blog/p/automatizando-tareas-con-task/</link>
       <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/automatizando-tareas-con-task/</guid>
-      <description>Introducción Típicamente, cuando estamos desarrollando código, hacemos mucho uso de la terminal para ejecutar distintos comandos que nos permiten, por ejemplo, comprobar que nuestros test pasan, descargar dependencias, arrancar la aplicación en local&amp;hellip; Estos comandos suelen ser largos y nos puede resultar difícil recordarlos o simplemente tenemos que ejecutar varios porque encadenan una función que queremos realizar sobre nuestro código.&#xA;Es aquí donde nos preguntamos si existía alguna herramienta que nos simplificara esta tarea y que fuera fácil de implementar y usar.</description>
+      <description>&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;&#xA;&lt;p&gt;Típicamente, cuando estamos desarrollando código, hacemos mucho uso de la terminal para ejecutar distintos comandos que nos permiten, por ejemplo, comprobar que nuestros &lt;em&gt;test&lt;/em&gt; pasan, descargar dependencias, arrancar la aplicación en local&amp;hellip; Estos comandos suelen ser largos y nos puede resultar difícil recordarlos o simplemente tenemos que ejecutar varios porque encadenan una función que queremos realizar sobre nuestro código.&lt;/p&gt;&#xA;&lt;p&gt;Es aquí donde nos preguntamos si existía alguna herramienta que nos simplificara esta tarea y que fuera fácil de implementar y usar. La primera que se nos ocurrió debido a su popularidad fue Makefile. Indagando un poco más sobre qué es esta tecnología y para qué fue creada, llegamos a la conclusión de que su propósito principal es describir las dependencias entre los archivos fuente de un proyecto y las reglas para compilarlos, así como generar ejecutables. Esta definición no cuadraba mucho con el tipo de herramienta que estábamos buscando, por lo que decidimos descartarla.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

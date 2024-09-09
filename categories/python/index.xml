@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Raúl Padilla Delgado</title>
+    <title>Python on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/python/</link>
-    <description>Recent content in python on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Python on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Sat, 13 Nov 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/python/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/</link>
       <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/entornos-virtuales-en-python/</guid>
-      <description>Introducción En nuestras aplicaciones Python solemos hacer uso de librerías, y las diferentes versiones de estas pueden llegar a ser un quebradero de cabeza cuando son usadas desde varias aplicaciones. Además de las librerías, la propia instalación de Python tiene un sistema de versionado, por lo que nos ocurre el mismo problema. Una aplicación A no funciona con Python 3.8 pero la aplicación B lo necesita.&#xA;La solución a este problema es usar un entorno virtual, que es un árbol de directorios autónomo que contiene una instalación de Python con una versión concreta, además de una serie de paquetes adicionales que queramos instalar.</description>
+      <description>&lt;h1 id=&#34;introducción&#34;&gt;Introducción&lt;/h1&gt;&#xA;&lt;p&gt;En nuestras aplicaciones Python solemos hacer uso de librerías, y las diferentes versiones de estas pueden llegar a ser un quebradero de cabeza cuando son usadas desde varias aplicaciones. Además de las librerías, la propia instalación de Python tiene un sistema de versionado, por lo que nos ocurre el mismo problema. Una aplicación A no funciona con Python 3.8 pero la aplicación B lo necesita.&lt;/p&gt;&#xA;&lt;p&gt;La solución a este problema es usar un entorno virtual, que es un árbol de directorios autónomo que contiene una instalación de Python con una versión concreta, además de una serie de paquetes adicionales que queramos instalar.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

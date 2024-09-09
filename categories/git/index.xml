@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>git on Raúl Padilla Delgado</title>
+    <title>Git on Raúl Padilla Delgado</title>
     <link>https://raulpadilladelgado.github.io/blog/categories/git/</link>
-    <description>Recent content in git on Raúl Padilla Delgado</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Git on Raúl Padilla Delgado</description>
+    <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Sun, 06 Sep 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://raulpadilladelgado.github.io/blog/categories/git/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,14 @@
       <link>https://raulpadilladelgado.github.io/blog/p/git-autostash/</link>
       <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/git-autostash/</guid>
-      <description>Problema Intentas hacer un pull pero tus cambios locales entran en conflicto con los del repo remoto. La solución que usaría sería hacer un stash de mis cambios locales, que sería algo así como dejarlos de lado por el momento, y después hacer el pull. Finalmente incluiríamos los cambios que habíamos dejado de lado.&#xA;Existe una forma de automatizar esto, y lo podríamos hacer mediante la configuración de Git, para que cuando hagamos un pull, nos deje de lado nuestros cambios locales y después sea decisión nuestra incluirlos o no después del pull.</description>
+      <description>&lt;h1 id=&#34;problema&#34;&gt;Problema&lt;/h1&gt;&#xA;&lt;p&gt;Intentas hacer un &lt;em&gt;pull&lt;/em&gt; pero tus cambios locales entran en conflicto con los del repo remoto. La solución que usaría sería hacer un &lt;em&gt;stash&lt;/em&gt; de mis cambios locales, que sería algo así como dejarlos de lado por el momento, y después hacer el &lt;em&gt;pull&lt;/em&gt;. Finalmente incluiríamos los cambios que habíamos dejado de lado.&lt;/p&gt;&#xA;&lt;p&gt;Existe una forma de automatizar esto, y lo podríamos hacer mediante la configuración de Git, para que cuando hagamos un &lt;em&gt;pull&lt;/em&gt;, nos deje de lado nuestros cambios locales y después sea decisión nuestra incluirlos o no después del &lt;em&gt;pull&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Revertir commits en Git</title>
       <link>https://raulpadilladelgado.github.io/blog/p/revertir-commits-en-git/</link>
       <pubDate>Sat, 05 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://raulpadilladelgado.github.io/blog/p/revertir-commits-en-git/</guid>
-      <description>Revertir último commit Importante: Un --soft borrará el último commit pero mantendrá los cambios que has hecho. Un --hard borrará el último commit y desechará los cambios que has hecho&#xA;Revertir último commit (local) Con este comando desaparecerá de tu rama el último commit que has hecho.&#xA;git reset --hard HEAD~1 Revertir último commit (remoto) Si has llegado a subirlo al repositorio remoto, es tan sencillo como realizar el proceso en local y después actualizar el repo remoto (push).</description>
+      <description>&lt;h1 id=&#34;revertir-último-commit&#34;&gt;Revertir último commit&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Importante:&lt;/strong&gt; Un &lt;code&gt;--soft&lt;/code&gt; borrará el último commit pero mantendrá los cambios que has hecho. Un &lt;code&gt;--hard&lt;/code&gt; borrará el último commit y desechará los cambios que has hecho&lt;/p&gt;&#xA;&lt;h2 id=&#34;revertir-último-commit-local&#34;&gt;Revertir último commit (local)&lt;/h2&gt;&#xA;&lt;p&gt;Con este comando desaparecerá de tu rama el último &lt;em&gt;commit&lt;/em&gt; que has hecho.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git reset --hard HEAD~1&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;revertir-último-commit-remoto&#34;&gt;Revertir último commit (remoto)&lt;/h2&gt;&#xA;&lt;p&gt;Si has llegado a subirlo al repositorio remoto, es tan sencillo como realizar el proceso en local y después actualizar el &lt;em&gt;repo&lt;/em&gt; remoto (&lt;code&gt;push&lt;/code&gt;).&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

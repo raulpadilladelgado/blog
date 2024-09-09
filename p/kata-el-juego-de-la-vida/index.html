@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Mi implementación para este ejercicio de programación se basa en tener una clase &amp;ldquo;Cell&amp;rdquo;, que tendrá un atributo llamado &amp;ldquo;isAlive&amp;rdquo;(haciendo referencia a si la célula vive o no), y además otra clase llamada &amp;ldquo;World&amp;rdquo; que tiene un diccionario tipo clave(Integer) valor(Cell).
-En la clase &amp;ldquo;World&amp;rdquo; existe un método que cambia &amp;ldquo;de generación&amp;rdquo;, que comprueba que las células muertas que tengan exactamente tres células vecinas vivas(tres posiciones seguidas del diccionario con valor &amp;ldquo;isAlive&amp;rdquo; a true) revivan.'><title>Kata El juego de la vida</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Mi implementación para este ejercicio de programación se basa en tener una clase &ldquo;Cell&rdquo;, que tendrá un atributo llamado &ldquo;isAlive&rdquo;(haciendo referencia a si la célula vive o no), y además otra clase llamada &ldquo;World&rdquo; que tiene un diccionario tipo clave(Integer) valor(Cell).
+En la clase &ldquo;World&rdquo; existe un método que cambia &ldquo;de generación&rdquo;, que comprueba que las células muertas que tengan exactamente tres células vecinas vivas(tres posiciones seguidas del diccionario con valor &ldquo;isAlive&rdquo; a true) revivan. Además, comprueba también que una célula viva que tenga dos o tres vecinos, siga con vida, en cambio, la célula que tenga menos de dos o más de tres vecinos, debe morir por &ldquo;sobrepoblación o soledad&rdquo;.
+'><title>Kata El juego de la vida</title>
 
 
 <link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/kata-el-juego-de-la-vida/'>
 
 
 <link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Kata El juego de la vida'>
-<meta property='og:description' content='Mi implementación para este ejercicio de programación se basa en tener una clase &amp;ldquo;Cell&amp;rdquo;, que tendrá un atributo llamado &amp;ldquo;isAlive&amp;rdquo;(haciendo referencia a si la célula vive o no), y además otra clase llamada &amp;ldquo;World&amp;rdquo; que tiene un diccionario tipo clave(Integer) valor(Cell).
-En la clase &amp;ldquo;World&amp;rdquo; existe un método que cambia &amp;ldquo;de generación&amp;rdquo;, que comprueba que las células muertas que tengan exactamente tres células vecinas vivas(tres posiciones seguidas del diccionario con valor &amp;ldquo;isAlive&amp;rdquo; a true) revivan.'>
+<meta property='og:description' content='Mi implementación para este ejercicio de programación se basa en tener una clase &ldquo;Cell&rdquo;, que tendrá un atributo llamado &ldquo;isAlive&rdquo;(haciendo referencia a si la célula vive o no), y además otra clase llamada &ldquo;World&rdquo; que tiene un diccionario tipo clave(Integer) valor(Cell).
+En la clase &ldquo;World&rdquo; existe un método que cambia &ldquo;de generación&rdquo;, que comprueba que las células muertas que tengan exactamente tres células vecinas vivas(tres posiciones seguidas del diccionario con valor &ldquo;isAlive&rdquo; a true) revivan. Además, comprueba también que una célula viva que tenga dos o tres vecinos, siga con vida, en cambio, la célula que tenga menos de dos o más de tres vecinos, debe morir por &ldquo;sobrepoblación o soledad&rdquo;.
+'>
 <meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/kata-el-juego-de-la-vida/'>
 <meta property='og:site_name' content='Raúl Padilla Delgado'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-07-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-07-06T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Kata El juego de la vida">
-<meta name="twitter:description" content="Mi implementación para este ejercicio de programación se basa en tener una clase &amp;ldquo;Cell&amp;rdquo;, que tendrá un atributo llamado &amp;ldquo;isAlive&amp;rdquo;(haciendo referencia a si la célula vive o no), y además otra clase llamada &amp;ldquo;World&amp;rdquo; que tiene un diccionario tipo clave(Integer) valor(Cell).
-En la clase &amp;ldquo;World&amp;rdquo; existe un método que cambia &amp;ldquo;de generación&amp;rdquo;, que comprueba que las células muertas que tengan exactamente tres células vecinas vivas(tres posiciones seguidas del diccionario con valor &amp;ldquo;isAlive&amp;rdquo; a true) revivan.">
+<meta name="twitter:description" content="Mi implementación para este ejercicio de programación se basa en tener una clase &ldquo;Cell&rdquo;, que tendrá un atributo llamado &ldquo;isAlive&rdquo;(haciendo referencia a si la célula vive o no), y además otra clase llamada &ldquo;World&rdquo; que tiene un diccionario tipo clave(Integer) valor(Cell).
+En la clase &ldquo;World&rdquo; existe un método que cambia &ldquo;de generación&rdquo;, que comprueba que las células muertas que tengan exactamente tres células vecinas vivas(tres posiciones seguidas del diccionario con valor &ldquo;isAlive&rdquo; a true) revivan. Además, comprueba también que una célula viva que tenga dos o tres vecinos, siga con vida, en cambio, la célula que tenga menos de dos o más de tres vecinos, debe morir por &ldquo;sobrepoblación o soledad&rdquo;.
+">
     </head>
     <body class="
     article-page has-toc
@@ -71,7 +74,7 @@ En la clase &amp;ldquo;World&amp;rdquo; existe un método que cambia &amp;ldquo;
     <header class="article-category">
         
             <a href="/blog/categories/kata/" >
-                kata
+                Kata
             </a>
         
     </header>

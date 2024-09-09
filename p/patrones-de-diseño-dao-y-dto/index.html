@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='DAO DAO encapsula el acceso a la base de datos. Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo cuando la capa de lógica de negocio necesite guardar un dato en la base de datos, va a llamar a un método create().'><title>Patrones de diseño (DAO y DTO)</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='DAO DAO encapsula el acceso a la base de datos. Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo cuando la capa de lógica de negocio necesite guardar un dato en la base de datos, va a llamar a un método create(). Lo que haga este método, es problema de DAO y depende de como DAO implemente el método create(), puede que lo implemente de manera que los datos se almacenen en una base de datos relacional como puede que lo implemente de manera que los datos se almacenen en ficheros de texto. Lo importante es que la capa de lógica de negocio no tiene porque saberlo, lo único que sabe es que el método create() va a guardar los datos, así como el método delete() va a eliminarlos, el método update() actualizarlos, etc. Pero no tiene idea de como interactúa DAO con la base de datos.
+'><title>Patrones de diseño (DAO y DTO)</title>
 
 
 <link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/patrones-de-dise%C3%B1o-dao-y-dto/'>
 
 
 <link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Patrones de diseño (DAO y DTO)'>
-<meta property='og:description' content='DAO DAO encapsula el acceso a la base de datos. Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo cuando la capa de lógica de negocio necesite guardar un dato en la base de datos, va a llamar a un método create().'>
+<meta property='og:description' content='DAO DAO encapsula el acceso a la base de datos. Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo cuando la capa de lógica de negocio necesite guardar un dato en la base de datos, va a llamar a un método create(). Lo que haga este método, es problema de DAO y depende de como DAO implemente el método create(), puede que lo implemente de manera que los datos se almacenen en una base de datos relacional como puede que lo implemente de manera que los datos se almacenen en ficheros de texto. Lo importante es que la capa de lógica de negocio no tiene porque saberlo, lo único que sabe es que el método create() va a guardar los datos, así como el método delete() va a eliminarlos, el método update() actualizarlos, etc. Pero no tiene idea de como interactúa DAO con la base de datos.
+'>
 <meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/patrones-de-dise%C3%B1o-dao-y-dto/'>
 <meta property='og:site_name' content='Raúl Padilla Delgado'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-04-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-04-16T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Patrones de diseño (DAO y DTO)">
-<meta name="twitter:description" content="DAO DAO encapsula el acceso a la base de datos. Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo cuando la capa de lógica de negocio necesite guardar un dato en la base de datos, va a llamar a un método create().">
+<meta name="twitter:description" content="DAO DAO encapsula el acceso a la base de datos. Por lo que cuando la capa de lógica de negocio necesite interactuar con la base de datos, va a hacerlo a través de la API que le ofrece DAO. Generalmente esta API consiste en métodos CRUD (Create, Read, Update y Delete). Entonces por ejemplo cuando la capa de lógica de negocio necesite guardar un dato en la base de datos, va a llamar a un método create(). Lo que haga este método, es problema de DAO y depende de como DAO implemente el método create(), puede que lo implemente de manera que los datos se almacenen en una base de datos relacional como puede que lo implemente de manera que los datos se almacenen en ficheros de texto. Lo importante es que la capa de lógica de negocio no tiene porque saberlo, lo único que sabe es que el método create() va a guardar los datos, así como el método delete() va a eliminarlos, el método update() actualizarlos, etc. Pero no tiene idea de como interactúa DAO con la base de datos.
+">
     </head>
     <body class="
     article-page 
@@ -62,7 +65,7 @@
 
                     
                         
-                        <img src="/blog/images/Raul_hu6de51eb0c73b799f269af52f7ff0858b_48464_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/Raul_hu14508492098127620801.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -205,7 +208,7 @@ License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1,
     <header class="article-category">
         
             <a href="/blog/categories/patrones-de-software-2/" >
-                patrones-de-software-2
+                Patrones-De-Software-2
             </a>
         
     </header>
