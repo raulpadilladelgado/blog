@@ -3,13 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://raulpadilladelgado.github.io/blog/categories/</loc>
-    <lastmod>2024-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://raulpadilladelgado.github.io/blog/categories/codigo-legacy/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://raulpadilladelgado.github.io/blog/p/gu%C3%ADa-para-modificar-c%C3%B3digo-legacy/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://raulpadilladelgado.github.io/blog/post/</loc>
-    <lastmod>2024-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://raulpadilladelgado.github.io/blog/</loc>
-    <lastmod>2024-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://raulpadilladelgado.github.io/blog/categories/refactoring/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://raulpadilladelgado.github.io/blog/categories/testing/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://raulpadilladelgado.github.io/blog/categories/spring-boot/</loc>
     <lastmod>2024-09-09T00:00:00+00:00</lastmod>
@@ -45,9 +57,6 @@
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/</loc>
-    <lastmod>2022-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://raulpadilladelgado.github.io/blog/categories/testing/</loc>
     <lastmod>2022-02-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://raulpadilladelgado.github.io/blog/categories/arquitectura-de-software/</loc>

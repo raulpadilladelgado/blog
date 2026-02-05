@@ -134,22 +134,22 @@
 </header>
 
     <section class="article-content">
-    <h2 id="qué-es-un-_linter_">¿Qué es un <em>linter</em>?</h2>
+    <h2 id="qué-es-un-linter">¿Qué es un <em>linter</em>?</h2>
 <p>Los <em>linter</em> son herramientas esenciales en proyectos de código, ya que ayudan a mantener una base de código consistente y de alta calidad. Analizan el código en busca de posibles errores, violaciones de estilo y otros problemas, asegurando que el código siga las mejores prácticas y estándares de codificación acordados por el equipo. Al utilizar una herramienta de <em>linter</em>, podemos detectar y solucionar problemas temprano, lo que resulta en un código más limpio y un proceso de desarrollo más fluido. Con la capacidad de aplicar convenciones de codificación, identificar posibles errores y mejorar la legibilidad del código, una herramienta de <em>linter</em> es un activo valioso para cualquier proyecto de código. Al mantener un código consistente y de alta calidad, se facilita la colaboración entre los miembros del equipo, se reducen los conflictos y se mejora la eficiencia en el desarrollo.</p>
 <p>Cuando hablamos de <em>linter</em>, nos encontramos con opciones muy populares y extendidas. Podríamos destacar <a class="link" href="https://eslint.org/"  target="_blank" rel="noopener"
     >ESLint</a> en JavaScript, entre muchas otras que existan. En este <em>post</em> vengo a contar un caso muy particular, en el cual integro un <em>linter</em> muy completo en una aplicación <em>flutter</em>.</p>
-<h2 id="_linter_-para-_flutter_"><em>Linter</em> para <em>flutter</em></h2>
+<h2 id="linter-para-flutter"><em>Linter</em> para <em>flutter</em></h2>
 <p>En el caso particular de que estés usando <em>Flutter</em> en tu proyecto, tenemos la opción de usar el analizador de código que viene por defecto con <em>flutter</em>. Con este, podemos configurar una serie de reglas en el archivo <em>analysis_options</em>.<em>yaml</em> que serán interpretadas cuando ejecutemos el comando <code>flutter analyze</code>. Nos las mencionaré todas porque hay una gran cantidad, pero puedes consultarlas en <a class="link" href="https://dart.dev/tools/linter-rules"  target="_blank" rel="noopener"
     >este enlace</a>. Muchas tienen asociado un <em>Quick fix</em>, lo que viene a ser que pulsando un botón se aplica una sugerencia automática para el problema que nos detecta el <em>linter</em>. En sí la capacidad de ejecutar el <em>linter</em> viene por defecto con <em>flutter</em>, pero para importar una serie de reglas recomendadas por el equipo de <em>flutter</em> añadiremos como dependencia el paquete &lsquo;flutter_lints&rsquo; a nuestro proyecto y lo usaremos de la siguiente forma:</p>
 <p><em>analysis_options</em>.<em>yaml</em></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">include</span><span class="p">:</span><span class="w"> </span><span class="l">package:flutter_lints/flutter.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">analyzer</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">analyzer</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">exclude</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">test/**/*.mocks.dart</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">lib/config/firebase_options.dart</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">linter</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">linter</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">rules</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">prefer_relative_imports</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">avoid_slow_async_io</span><span class="w">
@@ -157,7 +157,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">close_sinks</span><span class="w">
 </span></span></span></code></pre></div><p>La línea del <em>include</em> es la que nos importa las opciones recomendadas por <em>flutter</em>, y sería a partir de la sección <em>linter</em> donde aparece la que en adición añadimos nosotros.</p>
 <p>Para que nos aplique los cambios de aquellas reglas que sí que tienen asociada un <em>quick fix</em>, podemos ejecutar el comando <code>dart fix --apply &lt;nombre_de_archivo&gt;</code>.</p>
-<h2 id="_linter_-para-_editorconfig_"><em>Linter</em> para <em>.editorconfig</em></h2>
+<h2 id="linter-para-editorconfig"><em>Linter</em> para <em>.editorconfig</em></h2>
 <p>El archivo &ldquo;.editorconfig&rdquo; es una herramienta que se utiliza en proyectos de código para establecer y mantener la consistencia en la configuración del editor. Permite definir reglas y configuraciones específicas, como el estilo de sangrado, la indentación, la codificación de caracteres y las preferencias de final de línea. Al emplearlo, se mejora la legibilidad del código, se reduce el conflicto en el control de versiones y se facilita la colaboración entre los miembros del equipo.</p>
 <p>Quisimos aplicarlo en adición al <em>linter</em>, ya que la cantidad de indentación o el ancho de línea eran cosas que no podíamos tener con el <em>linter</em> por defecto de <em>Flutter</em>.</p>
 <p>En el título de este apartado he indicado “linter para el editorconfig” aunque como hemos visto, el <em>editorconfig</em> en sí no es un <em>linter</em>. Pero encontré una forma de que se comportara como tal. Gracias al uso de la herramienta <a class="link" href="https://github.com/editorconfig-checker/editorconfig-checker"  target="_blank" rel="noopener"
@@ -178,12 +178,12 @@
 </span></span></code></pre></div><h2 id="como-automatizarlo">¿Como automatizarlo?</h2>
 <p>La gracia de definir unas herramientas que buscan conseguir que el equipo siga un estilo de código común, es utilizar la herramienta, por lo que no nos sirve que a veces si la usemos y otras no. A veces estamos pensando en muchas cosas, nos olvidamos del <em>linter</em> y es ahí donde empiezan las inconsistencias. Además de querer que se emplee la herramienta, también debemos creer que cuando añadimos herramientas a nuestro flujo de trabajo es importante que no supongan una carga para el equipo, en su lugar solo nos debería beneficiar.</p>
 <p>Por estas razones, lo mejor es tratar de automatizar la ejecución de las herramientas para que los desarrolladores nos podamos concentrar en la tarea que nos ocupa.</p>
-<h3 id="_hooks_-de-git"><em>Hooks</em> de Git</h3>
+<h3 id="hooks-de-git"><em>Hooks</em> de Git</h3>
 <p>Los <em>hooks</em> de Git son <em>scripts</em> personalizables que se pueden ejecutar automáticamente en ciertos puntos clave del ciclo de vida de Git. Estos <em>scripts</em> se encuentran en la carpeta &ldquo;.git/hooks&rdquo; de un repositorio de Git y se activan en respuesta a eventos específicos, como confirmar cambios, fusionar ramas, empujar cambios, entre otros.</p>
 <p>Para simplificarnos el proceso de ejecutar los <em>linter</em>, nos apoyaremos en dos <em>hooks</em> de Git. Primero usaremos el <em>pre-commit</em> para que antes de hacer <em>commit</em> dé los cambios:</p>
 <p><em>pre-commit</em></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nv">MODIFIED_FILES</span><span class="o">=(</span><span class="k">$(</span>git diff --cached --name-only --diff-filter<span class="o">=</span>d<span class="k">)</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">MODIFIED_FILES</span><span class="p">[@]</span><span class="si">}</span> <span class="o">=</span>~ .dart$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </span></span><span class="line"><span class="cl">  <span class="nv">DART_FILES</span><span class="o">=(</span><span class="k">$(</span>git diff --cached --name-only --diff-filter<span class="o">=</span>d <span class="p">|</span> grep .dart<span class="k">)</span><span class="o">)</span>
@@ -194,7 +194,7 @@
 </span></span></code></pre></div><p>Esto nos garantiza que se cumple un ancho de línea determinado y que el código sigue unos estándares de formato definidos por Dart. Finalmente, usaremos el <em>pre-push</em>, para que antes de hacer <em>push</em> de los cambios al repositorio remoto, se realicen las comprobaciones de los <em>linter</em> pertinentes.</p>
 <p><em>pre-push</em></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nv">IS_SCRIPT_PASSED</span><span class="o">=</span><span class="m">0</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nv">CURRENT_BRANCH</span><span class="o">=</span><span class="k">$(</span>git branch --show-current<span class="k">)</span>
@@ -235,7 +235,7 @@
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\n🚀 Proceeding with the push...&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nb">exit</span> <span class="m">0</span>
 </span></span></code></pre></div><p>En el equipo decidimos dejar en el <em>pre-commit</em> algo que no fuera muy restrictivo, es decir, algo que no pudiese detener que hagamos <em>commit</em>, ya que si estamos trabajando con <em>micro-commit</em> nos parecía que podía suponer una carga. Es a la hora de subir los cambios utilizando el <em>pre-push</em> donde se ejecutan las revisiones más restrictivas, donde en caso de no seguir los estándares no se permite hacer <em>push</em> de los cambios, con el fin de cumplir los estándares de código acordados por el equipo.</p>
-<h3 id="_pipelines_"><em>Pipelines</em></h3>
+<h3 id="pipelines"><em>Pipelines</em></h3>
 <p>Además de tener los <em>hooks</em> de Git, es buena opción tener los <em>linter</em> como un paso de nuestra <em>pipeline</em> para que se ejecute en nuestra integración continua. Al final, los <em>hooks</em> de Git son archivos configurables que no son versionados, por lo que depende del buen hacer de cada persona tenerlos actualizados y respetar que se ejecuten, en lugar de configurar el IDE para que se salte las comprobaciones. Es en este escenario, donde la integración continua sí nos garantiza que el código que está listo para ser fusionado con la rama principal y cumple los estándares de los <em>linter</em>.</p>
 <p>En ocasiones he escuchado opiniones de otros desarrolladores que opinan que incluir un <em>linter</em> en la <em>pipeline</em> es un lastre, porque puede suponer que tardes más en subir cambios, o porque resulta tedioso el hecho de querer subir cambios y tener que solventar esos conflictos primero. Yo creo que en un equipo es normal que entre las diferentes personas, haya distintas formas de cuidar el código, por eso usamos los <em>linter</em>, para conseguir un resultado uniforme que sea del agrado de todos. Por esto, no encuentro razones en los que hayan casos donde no tenga sentido seguir los estilos definidos, es más, si empezamos a hacer pequeñas excepciones solo para subir código más rápido, es cuando comienzan a surgir incongruencias en el código que darán más trabajo a los demás cuando se lo encuentren desarrollando alguna <em>feature</em>.</p>
 <h2 id="conclusión">Conclusión</h2>
@@ -266,7 +266,7 @@
         
         
             <div class="article-image">
-                <img src="/blog/p/automatizando-tareas-con-task/images/make-vs-task.b89cc518572f786553b9ba91297ff0e0_hu15322979252763304952.jpg" 
+                <img src="/blog/p/automatizando-tareas-con-task/images/make-vs-task.b89cc518572f786553b9ba91297ff0e0_hu_c6e21dc49613fc8b.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy" 
@@ -338,7 +338,7 @@
         
             2020 - 
         
-        2024 Raúl Padilla Delgado
+        2026 Raúl Padilla Delgado
     </section>
     
     <section class="powerby">
@@ -447,14 +447,14 @@
                 <div class="widget--toc">
                     <nav id="TableOfContents">
   <ol>
-    <li><a href="#qué-es-un-_linter_">¿Qué es un <em>linter</em>?</a></li>
-    <li><a href="#_linter_-para-_flutter_"><em>Linter</em> para <em>flutter</em></a></li>
-    <li><a href="#_linter_-para-_editorconfig_"><em>Linter</em> para <em>.editorconfig</em></a></li>
+    <li><a href="#qué-es-un-linter">¿Qué es un <em>linter</em>?</a></li>
+    <li><a href="#linter-para-flutter"><em>Linter</em> para <em>flutter</em></a></li>
+    <li><a href="#linter-para-editorconfig"><em>Linter</em> para <em>.editorconfig</em></a></li>
     <li><a href="#cambiemos-solo-lo-necesario">Cambiemos solo lo necesario</a></li>
     <li><a href="#como-automatizarlo">¿Como automatizarlo?</a>
       <ol>
-        <li><a href="#_hooks_-de-git"><em>Hooks</em> de Git</a></li>
-        <li><a href="#_pipelines_"><em>Pipelines</em></a></li>
+        <li><a href="#hooks-de-git"><em>Hooks</em> de Git</a></li>
+        <li><a href="#pipelines"><em>Pipelines</em></a></li>
       </ol>
     </li>
     <li><a href="#conclusión">Conclusión</a></li>

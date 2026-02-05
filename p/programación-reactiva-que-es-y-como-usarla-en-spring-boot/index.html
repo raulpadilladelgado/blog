@@ -194,7 +194,7 @@ un ejemplo de programación reactiva usando Spring Boot y Kotlin.</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nd">@GetMapping</span><span class="p">(</span><span class="k">value</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;/song&#34;</span><span class="p">],</span> <span class="n">produces</span> <span class="p">=</span> <span class="p">[</span><span class="n">TEXT_EVENT_STREAM_VALUE</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">findSongs</span><span class="p">():</span> <span class="n">Flux</span><span class="p">&lt;</span><span class="n">Song</span><span class="p">&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">songRepository</span><span class="p">.</span><span class="n">findAll</span><span class="p">().</span><span class="n">delayElements</span><span class="p">(</span><span class="n">ofSeconds</span><span class="p">(</span><span class="m">3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">songRepository</span><span class="p">.</span><span class="n">findAll</span><span class="p">().</span><span class="n">delayElements</span><span class="p">(</span><span class="n">ofSeconds</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nd">@PostMapping</span><span class="p">(</span><span class="k">value</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;/song&#34;</span><span class="p">],</span> <span class="n">produces</span> <span class="p">=</span> <span class="p">[</span><span class="n">TEXT_EVENT_STREAM_VALUE</span><span class="p">])</span>
@@ -217,7 +217,7 @@ integración con nuestra API reactiva ya que trabaja usando los tipos de datos a
 la implementación del repositorio:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
 </span></span><span class="line"><span class="cl"><span class="c1">//R2DBC PostgreSQL
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">import</span> <span class="nn">org</span> <span class="p">.</span> <span class="n">springframework</span> <span class="p">.</span> <span class="k">data</span> <span class="p">.</span> <span class="n">r2dbc</span> <span class="p">.</span> <span class="n">repository</span> <span class="p">.</span> <span class="n">R2dbcRepository</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="nn">org</span> <span class="p">.</span> <span class="n">springframework</span> <span class="p">.</span> <span class="k">data</span> <span class="p">.</span> <span class="n">r2dbc</span> <span class="p">.</span> <span class="n">repository</span> <span class="p">.</span> <span class="n">R2dbcRepository</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="nd">@Repository</span>
 </span></span><span class="line"><span class="cl">        <span class="k">interface</span> <span class="nc">SongRepository</span> <span class="p">:</span> <span class="n">R2dbcRepository</span><span class="p">&lt;</span><span class="n">Song</span><span class="p">,</span> <span class="n">Int</span><span class="p">&gt;</span>
@@ -266,7 +266,7 @@ biblioteca Reactor de Spring:</p>
 </span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="k">get</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">retrieve</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">bodyToFlux</span><span class="p">(</span><span class="n">Map</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                <span class="n">response</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="m">2</span><span class="p">).</span><span class="n">subscribe</span> <span class="p">{</span> <span class="n">song</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">response</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">subscribe</span> <span class="p">{</span> <span class="n">song</span> <span class="o">-&gt;</span>
 </span></span><span class="line"><span class="cl">                    <span class="n">println</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">                <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
@@ -279,7 +279,7 @@ biblioteca Reactor de Spring:</p>
 </span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="k">get</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">retrieve</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">bodyToFlux</span><span class="p">(</span><span class="n">Map</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                <span class="n">response</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="nc">Duration</span><span class="p">.</span><span class="n">ofSeconds</span><span class="p">(</span><span class="m">5</span><span class="p">)).</span><span class="n">subscribe</span> <span class="p">{</span> <span class="n">song</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">response</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="nc">Duration</span><span class="p">.</span><span class="n">ofSeconds</span><span class="p">(</span><span class="mi">5</span><span class="p">)).</span><span class="n">subscribe</span> <span class="p">{</span> <span class="n">song</span> <span class="o">-&gt;</span>
 </span></span><span class="line"><span class="cl">                    <span class="n">println</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">                <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
@@ -331,7 +331,7 @@ completa: <a class="link" href="https://fullstackdeveloper.guru/2022/06/10/how-t
         
         
             <div class="article-image">
-                <img src="/blog/p/testcontainers-para-ejecuci%C3%B3n-local/images/th.4ff48eaaf0674399d68ae6cb48eb0019_hu2354166798516867232.png" 
+                <img src="/blog/p/testcontainers-para-ejecuci%C3%B3n-local/images/th.4ff48eaaf0674399d68ae6cb48eb0019_hu_e3db658766bff72.webp" 
                         width="250" 
                         height="150" 
                         loading="lazy" 
@@ -389,7 +389,7 @@ completa: <a class="link" href="https://fullstackdeveloper.guru/2022/06/10/how-t
         
         
             <div class="article-image">
-                <img src="/blog/p/spring-boot-primer-contacto/images/spring-icon.ee5eeea8c805797c63bf21592f9aff8f_hu2382300874515060218.png" 
+                <img src="/blog/p/spring-boot-primer-contacto/images/spring-icon.ee5eeea8c805797c63bf21592f9aff8f_hu_cb12c8263be52839.png" 
                         width="250" 
                         height="150" 
                         loading="lazy" 
@@ -461,7 +461,7 @@ completa: <a class="link" href="https://fullstackdeveloper.guru/2022/06/10/how-t
         
             2020 - 
         
-        2024 Raúl Padilla Delgado
+        2026 Raúl Padilla Delgado
     </section>
     
     <section class="powerby">

@@ -310,13 +310,13 @@ public void return_the_same_number_as_passed(){
 <p>El uso de patrones de diseño en código productivo se hace con la finalidad de que nuestro código sea más mantenible, escalable, siga unas reglas de diseño que busquen organización y otros fines similares. Pero cuando se trata de test, estos no son una excepción. Nuestras pruebas automatizadas también pueden seguir unos patrones de diseño con el fin de mejorar la mantenibilidad y legibilidad.</p>
 <p>Ahora veremos algunos ejemplos escritos en Kotlin sobre como mejorar la legibilidad y mantenibilidad de nuestros test mediante el uso de build pattern, object mother o named arguments. Vamos a poner en contexto una clase llamada User, en la que tenemos una regla de negocio que para apostar se debe tener una edad mínima.</p>
 <h3 id="tradicional">Tradicional</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">val</span> <span class="py">minimumAgeToBet</span> <span class="p">=</span> <span class="m">18</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">val</span> <span class="py">minimumAgeToBet</span> <span class="p">=</span> <span class="mi">18</span>
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">canBet</span><span class="p">():</span> <span class="n">Boolean</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">userAge</span> <span class="o">&gt;=</span> <span class="n">minimumAgeToBet</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">`user can bet with the minimum age`</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">userAge</span> <span class="p">=</span> <span class="m">22</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">userAge</span> <span class="p">=</span> <span class="mi">22</span>
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&#34;some name&#34;</span><span class="p">,</span> <span class="n">userAge</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">assertTrue</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">canBet</span><span class="p">())</span>
@@ -333,8 +333,8 @@ public void return_the_same_number_as_passed(){
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">`user can bet with the minimum age`</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">userAge</span> <span class="p">=</span> <span class="m">22</span>
-</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">UserBuilder</span><span class="p">().</span><span class="n">withAge</span><span class="p">(</span><span class="m">20</span><span class="p">).</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">userAge</span> <span class="p">=</span> <span class="mi">22</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">UserBuilder</span><span class="p">().</span><span class="n">withAge</span><span class="p">(</span><span class="mi">20</span><span class="p">).</span><span class="n">build</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">assertTrue</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">canBet</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -345,7 +345,7 @@ public void return_the_same_number_as_passed(){
 <h3 id="object-mother">Object mother</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">companion</span> <span class="k">object</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">userWithMinimumAgeToBet</span><span class="p">():</span> <span class="n">User</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">User</span><span class="p">(</span><span class="s2">&#34;name&#34;</span><span class="p">,</span> <span class="m">22</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">User</span><span class="p">(</span><span class="s2">&#34;name&#34;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -406,7 +406,7 @@ la clase para que podamos ir concatenando llamadas y agregar más columna que co
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nd">@Throws</span><span class="p">(</span><span class="n">Exception</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">assertOrder</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">sql</span> <span class="p">=</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">sql</span> <span class="p">=</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">sql</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;SELECT id&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="k">field</span> <span class="k">in</span> <span class="n">fieldsValuesMap</span><span class="p">.</span><span class="n">keys</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="n">sql</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;, &#34;</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="k">field</span><span class="p">)</span>
@@ -472,8 +472,8 @@ de datos, y ha quedado un test muy fácil de leer. Así es, test legible, test m
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MorningChecker</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">isMorning</span><span class="p">():</span> <span class="n">Boolean</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">hour</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="n">now</span><span class="p">().</span><span class="n">hour</span>
-</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">startOfMorning</span> <span class="p">=</span> <span class="m">6</span>
-</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">endOfMorning</span> <span class="p">=</span> <span class="m">12</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">startOfMorning</span> <span class="p">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">endOfMorning</span> <span class="p">=</span> <span class="mi">12</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hour</span> <span class="k">in</span> <span class="n">startOfMorning</span><span class="o">..</span><span class="n">endOfMorning</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -489,8 +489,8 @@ de datos, y ha quedado un test muy fácil de leer. Así es, test legible, test m
 <p>Extraemos a un parámetro la hora del día</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MorningChecker</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">isMorning</span><span class="p">(</span><span class="n">hour</span><span class="p">:</span> <span class="n">Int</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">startOfMorning</span> <span class="p">=</span> <span class="m">6</span>
-</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">endOfMorning</span> <span class="p">=</span> <span class="m">12</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">startOfMorning</span> <span class="p">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">endOfMorning</span> <span class="p">=</span> <span class="mi">12</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hour</span> <span class="k">in</span> <span class="n">startOfMorning</span><span class="o">..</span><span class="n">endOfMorning</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -499,7 +499,7 @@ de datos, y ha quedado un test muy fácil de leer. Así es, test legible, test m
 </span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">`check if is morning`</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">morningChecker</span> <span class="p">=</span> <span class="n">MorningChecker</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">actualHour</span> <span class="p">=</span> <span class="m">8</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">actualHour</span> <span class="p">=</span> <span class="mi">8</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="n">assertTrue</span><span class="p">(</span><span class="n">morningChecker</span><span class="p">.</span><span class="n">isMorning</span><span class="p">(</span><span class="n">actualHour</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -540,11 +540,33 @@ arquitectura hexagonal puede ver un post realizado por mí:</p>
                 
                     
 <article class="has-image">
+    <a href="/blog/p/gu%C3%ADa-para-modificar-c%C3%B3digo-legacy/">
+        
+        
+            <div class="article-image">
+                <img src="/blog/p/gu%C3%ADa-para-modificar-c%C3%B3digo-legacy/images/portada.29c1fe3424c8db5bac2c5600b32c3b6d_hu_1811c9f0f72d3967.JPG" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-KcH&#43;NCTI21usLFYAsyw7bQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Guía para modificar código legacy</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
     <a href="/blog/p/consumer-driven-contract-testing/">
         
         
             <div class="article-image">
-                <img src="/blog/p/consumer-driven-contract-testing/images/cdct-no-bg.675672fb5fede4094334b7f6fedc3b60_hu8237525330436351832.png" 
+                <img src="/blog/p/consumer-driven-contract-testing/images/cdct-no-bg.675672fb5fede4094334b7f6fedc3b60_hu_2009e3108545be0f.png" 
                         width="250" 
                         height="150" 
                         loading="lazy" 
@@ -640,7 +662,7 @@ arquitectura hexagonal puede ver un post realizado por mí:</p>
         
             2020 - 
         
-        2024 Raúl Padilla Delgado
+        2026 Raúl Padilla Delgado
     </section>
     
     <section class="powerby">

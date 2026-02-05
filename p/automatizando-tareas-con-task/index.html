@@ -151,7 +151,7 @@ Es aquí donde nos preguntamos si existía alguna herramienta que nos simplifica
 <p>Task por defecto buscará en tu proyecto un archivo llamado Taskfile.yml que podría tener una estructura como esta:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">tasks</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hello</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cmds</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">echo &#39;Hello World from Task!&#39;</span><span class="w">
@@ -160,8 +160,8 @@ Es aquí donde nos preguntamos si existía alguna herramienta que nos simplifica
 <h2 id="ejemplo">Ejemplo</h2>
 <p>Les mostramos un breve ejemplo propio sobre como se puede usar la herramienta:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">silent</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">silent</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">tasks</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">test</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;🧪 Run tests&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cmds</span><span class="p">:</span><span class="w">
@@ -186,12 +186,12 @@ Es aquí donde nos preguntamos si existía alguna herramienta que nos simplifica
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cmds</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">task -l</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">vars</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">vars</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">PRECONDITION_MESSAGE</span><span class="p">:</span><span class="w"> </span><span class="l">🤷‍♀️You need to have a valid Taskfile in your myplugin project</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">MY_PLUGIN_DIR</span><span class="p">:</span><span class="w"> </span><span class="l">../my-plugin</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">TASKFILE_DIR</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ .MY_PLUGIN_DIR }}/Taskfile.yml&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">includes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">includes</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">my-plugin</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">taskfile</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ .MY_PLUGIN_DIR }}&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ .MY_PLUGIN_DIR }}&#34;</span><span class="w">
@@ -244,7 +244,7 @@ task: Available tasks for this project:
         
         
             <div class="article-image">
-                <img src="/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/images/linter.42e454d5a6e8035607667d01762d1639_hu15678079934895401891.png" 
+                <img src="/blog/p/configurando-un-linter-en-flutter-y-otras-herramientas/images/linter.42e454d5a6e8035607667d01762d1639_hu_89c385f3ae1e50af.png" 
                         width="250" 
                         height="150" 
                         loading="lazy" 
@@ -316,7 +316,7 @@ task: Available tasks for this project:
         
             2020 - 
         
-        2024 Raúl Padilla Delgado
+        2026 Raúl Padilla Delgado
     </section>
     
     <section class="powerby">

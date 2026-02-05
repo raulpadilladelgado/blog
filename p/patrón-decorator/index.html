@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=' https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png '><title>Patrón decorator</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=' https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png Es un patrón de diseño que nos va a permitir agregar funcionalidad a un objeto existente sin cambiar su estructura. Se busca poder añadir dinámicamente funcionalidad a un Objeto. Esto nos permite no tener que crear sucesivas clases que hereden de la primera incorporando la nueva funcionalidad, sino otras que la implementan y se asocian a la primera.
+Un gran momento para aplicarlo es cuando tenemos una clase que contiene métodos que realizan algo más que lógica de negocio. Dicha lógica no tiene que ver con la intencionalidad del método, pero si es cierto que necesitamos que éste ahí. Buscamos el desacople de funcionalidades que no deberían estar realizando ciertos métodos de una clase, ya que dichos requisitos responden a una forma de implementación que puede variar en el futuro, y el hecho de tenerlo separado en otros métodos que añaden funcionalidad a uno principal, nos permite cambiar fácilmente la funcionalidad, sin tener que realizar el cambio en muchos lugares del código, lo que nos aporta una gran mantenibilidad del código.
+'><title>Patrón decorator</title>
 
 
 <link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/'>
 
 
 <link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Patrón decorator'>
-<meta property='og:description' content=' https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png '>
+<meta property='og:description' content=' https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png Es un patrón de diseño que nos va a permitir agregar funcionalidad a un objeto existente sin cambiar su estructura. Se busca poder añadir dinámicamente funcionalidad a un Objeto. Esto nos permite no tener que crear sucesivas clases que hereden de la primera incorporando la nueva funcionalidad, sino otras que la implementan y se asocian a la primera.
+Un gran momento para aplicarlo es cuando tenemos una clase que contiene métodos que realizan algo más que lógica de negocio. Dicha lógica no tiene que ver con la intencionalidad del método, pero si es cierto que necesitamos que éste ahí. Buscamos el desacople de funcionalidades que no deberían estar realizando ciertos métodos de una clase, ya que dichos requisitos responden a una forma de implementación que puede variar en el futuro, y el hecho de tenerlo separado en otros métodos que añaden funcionalidad a uno principal, nos permite cambiar fácilmente la funcionalidad, sin tener que realizar el cambio en muchos lugares del código, lo que nos aporta una gran mantenibilidad del código.
+'>
 <meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/patr%C3%B3n-decorator/'>
 <meta property='og:site_name' content='Raúl Padilla Delgado'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-06-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-06-23T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Patrón decorator">
-<meta name="twitter:description" content=" https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png ">
+<meta name="twitter:description" content=" https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/400px-Decorator_UML_class_diagram.svg.png Es un patrón de diseño que nos va a permitir agregar funcionalidad a un objeto existente sin cambiar su estructura. Se busca poder añadir dinámicamente funcionalidad a un Objeto. Esto nos permite no tener que crear sucesivas clases que hereden de la primera incorporando la nueva funcionalidad, sino otras que la implementan y se asocian a la primera.
+Un gran momento para aplicarlo es cuando tenemos una clase que contiene métodos que realizan algo más que lógica de negocio. Dicha lógica no tiene que ver con la intencionalidad del método, pero si es cierto que necesitamos que éste ahí. Buscamos el desacople de funcionalidades que no deberían estar realizando ciertos métodos de una clase, ya que dichos requisitos responden a una forma de implementación que puede variar en el futuro, y el hecho de tenerlo separado en otros métodos que añaden funcionalidad a uno principal, nos permite cambiar fácilmente la funcionalidad, sin tener que realizar el cambio en muchos lugares del código, lo que nos aporta una gran mantenibilidad del código.
+">
     </head>
     <body class="
     article-page 
@@ -62,7 +68,7 @@
 
                     
                         
-                        <img src="/blog/images/Raul_hu14508492098127620801.png" width="300"
+                        <img src="/blog/images/Raul_hu_571719d734651cb7.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -440,7 +446,7 @@ License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1,
         
             2020 - 
         
-        2024 Raúl Padilla Delgado
+        2026 Raúl Padilla Delgado
     </section>
     
     <section class="powerby">
