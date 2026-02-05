@@ -156,17 +156,22 @@
 <p>Otra herramienta que te puede venir muy bien para esto es crear diagramas. Aquí te puedes apoyar en los estándares de la industria como diagramas de secuencia y demás, pero incluso unos cuantos cuadrados y flechas pueden ayudarte enormemente a entender el sistema. Una herramienta de pintura estilo Paint o Excalidraw te serán de gran ayuda para empezar a realizar esos primeros bocetos que te ayuden a construir el esquema mental de como funciona el código.</p>
 <p>Vamos a poner un ejemplo muy básico de cómo puede ser un dibujo que nos empiece a dar pistas sobre cómo funciona actualmente el código:</p>
 <p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 240; 
+			flex-basis: 577px"
 	>
-	<a href="upload://pa9Sx1Y0lsNRu3bkGri5cLEWQcV.jpeg" >
-		<img src="upload://pa9Sx1Y0lsNRu3bkGri5cLEWQcV.jpeg"
-			
-			
+	<a href="/blog/p/gu%C3%ADa-para-modificar-c%C3%B3digo-legacy/images/1.jpeg" data-size="2048x851">
+		<img src="/blog/p/gu%C3%ADa-para-modificar-c%C3%B3digo-legacy/images/1.jpeg"
+			width="2048"
+			height="851"
 			
 			loading="lazy"
-			alt="image|690x286">
+			alt="Gráfico sobre la arquitectura">
 	</a>
 	
-	<figcaption>image|690x286</figcaption>
+	<figcaption>Gráfico sobre la arquitectura</figcaption>
 	
 </figure></p>
 <p>En el dibujo hemos agrupado los distintos colaboradores que interactúan en un proceso de guardado de usuario. Gracias a tenerlo esquematizado de esta forma podremos detectar qué partes no tienen sentido o cómo se pueden mejorar. En el diagrama hemos incluido marcas de tiempo donde más se demora el código para tener una pista de qué lugares pueden ser mejorados en lo que a eficiencia se refiere. Para las marcas de tiempo hemos usado el <a class="link" href="https://www.jetbrains.com/pages/intellij-idea-profiler/"  target="_blank" rel="noopener"
@@ -595,17 +600,22 @@ public class ServicioAlertaTest {
 </span></span></span></code></pre></div><h2 id="paso-4-construye-tu-red-de-seguridad">Paso 4: Construye tu Red de Seguridad</h2>
 <p>Como hemos mencionado anteriormente, los tests son lo que necesitas para poder garantizar que las modificaciones que haces en el código no alteran comportamiento o estén rompiendo la aplicación. Necesitas tests unitarios, ya que son los más rápidos y precisos. Son tu primera línea de defensa. Nada de bases de datos o HTTP aquí. Sobre esto, Michael Feathers nos comenta que el grado de cuan seguro es realizar un cambio sobre una pieza es proporcional a la cercanía que tienen los test que cubren dicha parte. Con los test unitarios podemos cumplir esta premisa. También nos vendrán muy bien los tests de integración, para asegurar que funcionan correctamente nuestras piezas de infraestructura como bases de datos, API externas, etc. Finalmente, también debemos tener algunos test end to end que verifique que la funcionalidad en todo su conjunto, lógica de negocio, infraestructura y demás funcione perfectamente toda junta.</p>
 <p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 229; 
+			flex-basis: 551px"
 	>
-	<a href="upload://b2Wk4foSYV2WYlh9MkuUPAAIHXV.png" >
-		<img src="upload://b2Wk4foSYV2WYlh9MkuUPAAIHXV.png"
-			
-			
+	<a href="/blog/p/gu%C3%ADa-para-modificar-c%C3%B3digo-legacy/images/2.png" data-size="574x250">
+		<img src="/blog/p/gu%C3%ADa-para-modificar-c%C3%B3digo-legacy/images/2.png"
+			width="574"
+			height="250"
 			
 			loading="lazy"
-			alt="image|574x250">
+			alt="Piramide del testing">
 	</a>
 	
-	<figcaption>image|574x250</figcaption>
+	<figcaption>Piramide del testing</figcaption>
 	
 </figure></p>
 <p>Es posible que te encuentres atascado en la creación de test porque aún no tienes el conocimiento suficiente de la lógica de negocio o el dominio del código como para poder empezar a escribir los primeros tests. Para solucionar esto, tenemos <a class="link" href="https://approvaltests.com/"  target="_blank" rel="noopener"
@@ -732,20 +742,6 @@ Customer{name=&#39;Bob Johnson&#39;, age=42}
 ]
 </code></pre><p>Otra herramienta que te será de utilidad es el <a class="link" href="https://www.jetbrains.com/help/idea/code-coverage.html"  target="_blank" rel="noopener"
     >medidor de cobertura</a> de tu IDE. Puedes poner que se ejecute junto con los test y lo que hará es ver que partes del código están cubiertas por test. No te tomes esto como el indicador mágico, ya que un 100% no es sinónimo de no haya bugs, y de hecho tanto porcentaje es contraproducente. Hay cosas que sencillamente no tiene sentido testear, como un getter u otros métodos con una lógica extremadamente sencilla. En realidad, un porcentaje que este sobre el 70% y el 80% con test de calidad que verdaderamente prueben las diferentes casuísticas ya es más que suficiente. Ten en cuenta también que aunque la cobertura indique que hay algún test que cubre cierto bloque de código, es posible que el test este escrito para cubrir otra parte y, por lo tanto, aunque la herramienta te diga que esa parte está completa, deberías de escribir un test dedicado para esa parte y sus diferentes casuísticas. Si tienes en cuenta sus limitaciones y sus bondades, verás que es una gran herramienta para detectar qué código necesita más tests.</p>
-<p><figure 
-	>
-	<a href="upload://7ELGenXuiPxsaYoZs1VOlDLkIi3.jpeg" >
-		<img src="upload://7ELGenXuiPxsaYoZs1VOlDLkIi3.jpeg"
-			
-			
-			
-			loading="lazy"
-			alt="image|690x276">
-	</a>
-	
-	<figcaption>image|690x276</figcaption>
-	
-</figure></p>
 <h2 id="paso-5-hora-de-la-acción">Paso 5: Hora de la Acción</h2>
 <p>Con los test en su lugar, es hora de mejorar el código.</p>
 <p>Cuando estamos haciendo refactoring, aconsejo ir siempre al cambio más sencillo. Si estamos ante método que te resulta complicado de entender comienza por renombrar alguna variable, o extraerla. Comienza a darle semántica al método. Verás que poco a poco iras ganando en conocimiento sobre su cometido, y cuando menos te des cuenta ya lo estarás dominando. Es en ese momento de control cuando podemos venirnos arriba y comenzar a introducir algunas abstracciones o lo que se necesite para que el código sea más sencillo.</p>
