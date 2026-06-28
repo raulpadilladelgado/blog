@@ -1,497 +1,71 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.
-Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina «contrato». Es entonces gracias a contract testing cuando podemos testear esa integración y asegurarnos que el mensaje que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la perfección.
-'><title>Consumer Driven Contract Testing</title>
-
-
-<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/'>
-
-
-<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Consumer Driven Contract Testing'>
-<meta property='og:description' content='Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.
-Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina «contrato». Es entonces gracias a contract testing cuando podemos testear esa integración y asegurarnos que el mensaje que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la perfección.
-'>
-<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/'>
-<meta property='og:site_name' content='Raúl Padilla Delgado'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-02-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-02-24T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/images/cdct-no-bg.png' />
-<meta name="twitter:title" content="Consumer Driven Contract Testing">
-<meta name="twitter:description" content="Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.
-Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina «contrato». Es entonces gracias a contract testing cuando podemos testear esa integración y asegurarnos que el mensaje que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la perfección.
-"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/images/cdct-no-bg.png' />
-    </head>
-    <body class="
-    article-page has-toc
-">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex 
-    
-        extended
-    
-">
-    
-        <div id="article-toolbar">
-            <a href="/blog" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
-</svg>
-
-
-
-                <span>Volver</span>
-            </a>
-        </div>
-    
-<main class="main full-width">
-    <article class="has-image main-article">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/blog/p/consumer-driven-contract-testing/">
-                <img src="/blog/p/consumer-driven-contract-testing/images/cdct-no-bg.png"
-                        
-                        width="1356" 
-                        height="484" 
-                        loading="lazy"
-                        alt="Featured image of post Consumer Driven Contract Testing" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/blog/categories/testing/" >
-                Testing
-            </a>
-        
-    </header>
-    
-
-    <h2 class="article-title">
-        <a href="/blog/p/consumer-driven-contract-testing/">Consumer Driven Contract Testing</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Feb 24, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    6 minutos a leer
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-
-    <section class="article-content">
-    <h2 id="introducción">Introducción</h2>
-<p><em>Consumer driven contract testing</em> es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con
+<!doctype html><html lang=es dir=auto data-theme=dark><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Consumer Driven Contract Testing | Raúl Padilla Delgado</title><meta name=keywords content><meta name=description content="Introducción
+Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con
 un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una
-petición y devuelve la respuesta esperada.</p>
-<p>Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un
+petición y devuelve la respuesta esperada.
+Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un
+formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que
+su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina
+«contrato». Es entonces gracias a contract testing cuando podemos testear esa integración y asegurarnos que el mensaje
+que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la
+perfección."><meta name=author content><link rel=canonical href=https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.e4fabc450c0ce1783aadfeceb2d26b403953ec5a64397309932d4e900982b40c.css integrity="sha256-5Pq8RQwM4Xg6rf7OstJrQDlT7FpkOXMJky1OkAmCtAw=" rel="preload stylesheet" as=style><link rel=icon href=https://raulpadilladelgado.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://raulpadilladelgado.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://raulpadilladelgado.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://raulpadilladelgado.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://raulpadilladelgado.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=es href=https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><meta property="og:url" content="https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/"><meta property="og:site_name" content="Raúl Padilla Delgado"><meta property="og:title" content="Consumer Driven Contract Testing"><meta property="og:description" content="Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.
+Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina «contrato». Es entonces gracias a contract testing cuando podemos testear esa integración y asegurarnos que el mensaje que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la perfección."><meta property="og:locale" content="es"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2022-02-24T00:00:00+00:00"><meta property="article:modified_time" content="2022-02-24T00:00:00+00:00"><meta property="og:image" content="https://raulpadilladelgado.github.io/blog/images/Raul.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://raulpadilladelgado.github.io/blog/images/Raul.png"><meta name=twitter:title content="Consumer Driven Contract Testing"><meta name=twitter:description content="Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.
+Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina «contrato». Es entonces gracias a contract testing cuando podemos testear esa integración y asegurarnos que el mensaje que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la perfección."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://raulpadilladelgado.github.io/blog/post/"},{"@type":"ListItem","position":2,"name":"Consumer Driven Contract Testing","item":"https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Consumer Driven Contract Testing","name":"Consumer Driven Contract Testing","description":"Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.\nCuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina «contrato». Es entonces gracias a contract testing cuando podemos testear esa integración y asegurarnos que el mensaje que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la perfección.\n","keywords":[],"articleBody":"Introducción Consumer driven contract testing es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una petición y devuelve la respuesta esperada.\nCuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina «contrato». Es entonces gracias a contract testing cuando podemos testear esa integración y asegurarnos que el mensaje que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la perfección.\nPero más allá de ser una herramienta para testear la integración entre varios artefactos, también lo podemos usar en el contexto de un único artefacto. Véase el caso de asegurar que una API cumple el formato acordado en su documentación, pero en este caso sin hacer el enfoque en un tipo de consumidor concreto.\nHablamos de una herramienta que nos permite testear cualquier tipo de integración de software, pero que ha tenido su auge en los últimos años para HTTP e intercambio de mensajes entre microservicios.\nTipos de contrato Contrato explícito Cuando hablamos de un contrato explícito hacemos referencia al hecho de que el consumidor defina durante la ejecucción de sus test un archivo con la estructura del contrato que espera que se cumpla. Es entonces cuando dicho archivo se valida contra el que genera el proveedor, que lo crea de la misma forma, tras haber ejecutado sus propios test.\nLa clave de este tipo de contrato es que ambas partes hagan los test necesarios para asegurar que se cumple el contrato.\nDado que tanto proveedor como consumidor son de nuestro dominio, cuando queramos cambiar el contrato entre ambos, propagaremos el cambio cambiando el contrato en el proveedor y propagando el cambio en el consumidor para que ambos se equiparen con la nueva versión.\nContrato implícito El contrato implícito es muy similar al explícito, con la diferencia de que en este caso el proveedor no puede acoplarse al ciclo de test entre consumidor y proveedor. El caso más típico de como puede ocurrir esto es el caso de una API pública. Podemos consumirla, pero ese proveedor como es ajeno y probablemente de soporte para otros muchos servicios no podemos hacer que cumpla un contrato explícito.\nEn su lugar, el archivo que genera nuestro consumidor mediante la ejecucción de los test esperando que se cumpla un contrato determinado se valida contra la salida de un de doble de test que simula ser el proveedor real. En este caso es importante que configuremos algún tipo de alerta que nos avisa cuando el proveedor real cambia su salida para que nosotros la actualicemos en nuestro proveedor falso. Recalcar que en este caso el falso proveedor se encuentra integrado dentro del mismo artefacto donde está el consumidor. El punto negativo de este método es que cuando el proveedor cambie el mensaje que publica, hará que nuestro código falle hasta que nuestra batería de test se lancen y se vuelva a comprobar que se cumple el contrato, algo que no se estaría cumpliendo y por lo tanto tendríamos que actualizar el contrato que espera nuestro consumidor.\nVentajas de Consumer Driven Contract Testing ¿Qué ganamos con el uso de una herramienta como esta? Pues evitamos que tener que hacer test end to end muy costosos para verificar que la integración entre nuestros microservicios funciona correctamente. Nos ahorra mantener el entorno de ejecucción que levantamos para los test end to end. Recibimos feedback más rápido.\nComo único problema de este tipo de contract testing es que representa un entorno simulado, mientras que un test end to end representa un entorno más real, por lo que depende del caso según el tipo de integración que estemos intentando testear, puede que nos salga más a cuenta para ir más seguros a producción los test end to end, pero lo dicho, para una comunicación básica entre servicios basada en mensajes o vía API sale muy rentable utilizar consumer driven contract testing.\nHerramientas para su uso Pact es una herramienta de prueba de contratos impulsada por el consumidor que genera contratos explícitos mediante el uso de un doble de prueba que registra las solicitudes y las respuestas esperadas a un contrato que se denomina «pacto», el ‘contrato’ del que hablabamos anteriormente.\nDurante la ejecucción de los test del consumidor se realiza una solicitud al proveedor simulado de Pact que registra en el archivo del contrato junto con su respuesta esperada. Con esto hemos garantizado que desde el lado del consumidor se sigue cumpliendo el contrato. Tras esto, una simulación del consumir que nos provee Pact vuelve a ejecutar una solicitud, pero esta vez contra el proveedor real y compara la respuesta actual con la esperada. Si la salida del consumidor simulado es igual a la real se cumple el contrato por parte del proveedor. Entonces, tras haberse cumplido el contrato por ambas partes nos hemos asegurado que nuestros dos servicios, proveedor y consumidor, se comunicarán correctamente en el entorno real, véase producción.\nConsumer Driven Contract Testing + Continuous Integration/Continuous Deployment La guinda en el pastel es que automaticemos el uso de Contract Testing haciendo que se integre en nuestro CI/CD, asegurándonos así que con cada build se ejecute y que nos permita deployar solo si el contrato se cumple. En el caso de que utilicemos Pact como nuestra herramienta para contract testing será necesario configurar Pact Broker, una aplicación para compartir contratos impulsados por el consumidor. Está optimizado para su uso con «pactos» (contratos creados por el framework Pact), pero puede utilizarse para cualquier tipo de contrato que pueda serializarse en JSON ¿Y qué ganamos usando esto? El Pact Broker permite desacoplar fácilmente el ciclo de lanzamiento de Consumer y Provider, unificando en un solo punto los resultado obtenidos y demás información interesante sobre el pacto, como pueda ser documentación entre otros detalles. Quizás como único inconveniente es que Pact Brocker al ser Open Source es self hosting, por lo que otra alternativa puede ser Pactflow, un fork de Pact Broker que ofrece una serie de ventajas sobre su padre que las que podemos destacar que está pensada para equipos ofreciendo una mejor interfaz de usuario, almacenamiento a cargo de la aplicación, una gran mejora en seguridad en lo que se refiera a inicio de sesión, y demás features que se pueden seguir destacando.\nPara que puedas realizar o ver un ejemplo práctico te recomiendo seguir el workshop creado por la propia gente de Pactflow en el que detallan como realizar Consumer Driven Contract Testing e integrarlo con CI/CD. Ver el siguiente enlace: Pactflow Workshop - CI/CD\n","wordCount":"1145","inLanguage":"es","image":"https://raulpadilladelgado.github.io/blog/images/Raul.png","datePublished":"2022-02-24T00:00:00Z","dateModified":"2022-02-24T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/"},"publisher":{"@type":"Organization","name":"Raúl Padilla Delgado","logo":{"@type":"ImageObject","url":"https://raulpadilladelgado.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=/blog/ accesskey=h title="Raúl Padilla Delgado (Alt + H)"><img src=/blog/images/Raul_hu_bfdabb67a9c2c8a4.png alt aria-label=logo height=30>Raúl Padilla Delgado</a></div><ul id=menu class=menu><li><a href=https://github.com/raulpadilladelgado title=GitHub><span>GitHub</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li><li><a href=https://www.linkedin.com/in/raulpadilladelgado/ title=LinkedIn><span>LinkedIn</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li><li><a href=https://raulpadilladelgado.github.io/ title=Landing><span>Landing</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Consumer Driven Contract Testing</h1><div class=post-meta><span title='2022-02-24 00:00:00 +0000 UTC'>2022-02-24</span>&nbsp;·&nbsp;<span>6 min</span></div></header><details class=toc><summary accesskey=c title="(Alt + C)"><span class=title>Tabla de Contenidos</span></summary><div class=inner><ul><li><a href=#introducci%c3%b3n aria-label=Introducción>Introducción</a></li><li><a href=#tipos-de-contrato aria-label="Tipos de contrato">Tipos de contrato</a><ul><li><a href=#contrato-expl%c3%adcito aria-label="Contrato explícito">Contrato explícito</a></li><li><a href=#contrato-impl%c3%adcito aria-label="Contrato implícito">Contrato implícito</a></li></ul></li><li><a href=#ventajas-de-consumer-driven-contract-testing aria-label="Ventajas de Consumer Driven Contract Testing">Ventajas de Consumer Driven Contract Testing</a></li><li><a href=#herramientas-para-su-uso aria-label="Herramientas para su uso">Herramientas para su uso</a><ul><li><a href=#consumer-driven-contract-testing--continuous-integrationcontinuous-deployment aria-label="Consumer Driven Contract Testing + Continuous Integration/Continuous Deployment">Consumer Driven Contract Testing + Continuous Integration/Continuous Deployment</a></li></ul></li></ul></div></details><div class="post-content md-content"><h2 id=introducción>Introducción<a hidden class=anchor aria-hidden=true href=#introducción>#</a></h2><p><em>Consumer driven contract testing</em> es un tipo de prueba que nos garantiza que un proveedor cumple lo acordado con
+un consumidor. Por ejemplo, en una API usaríamos este tipo de pruebas para asegurar que el proveedor recibe una
+petición y devuelve la respuesta esperada.</p><p>Cuando dos artefactos se comunican entre sí, típicamente lo suelen hacer mediante un mensaje, el cual tiene un
 formato determinado. Ese formato hace que el consumidor dependa del productor para poder funcionar correctamente, ya que
 su código se ajusta a un determinado formato de mensaje. Ese «acuerdo» entre ambas partes es lo que se denomina
 «contrato». Es entonces gracias a <em>contract testing</em> cuando podemos testear esa integración y asegurarnos que el mensaje
 que se envía de un artefacto a otro tiene el formato acordado para que la integración entre ambos funcione a la
-perfección.</p>
-<p>Pero más allá de ser una herramienta para testear la integración entre varios artefactos, también lo podemos usar en el
+perfección.</p><p>Pero más allá de ser una herramienta para testear la integración entre varios artefactos, también lo podemos usar en el
 contexto de un único artefacto. Véase el caso de asegurar que una API cumple el formato acordado en su documentación,
-pero en este caso sin hacer el enfoque en un tipo de consumidor concreto.</p>
-<p>Hablamos de una herramienta que nos permite testear cualquier tipo de integración de <em>software</em>, pero que ha tenido su
-auge en los últimos años para HTTP e intercambio de mensajes entre microservicios.</p>
-<h2 id="tipos-de-contrato">Tipos de contrato</h2>
-<h3 id="contrato-explícito">Contrato explícito</h3>
-<p>Cuando hablamos de un contrato explícito hacemos referencia al hecho de que el consumidor defina durante la ejecucción
+pero en este caso sin hacer el enfoque en un tipo de consumidor concreto.</p><p>Hablamos de una herramienta que nos permite testear cualquier tipo de integración de <em>software</em>, pero que ha tenido su
+auge en los últimos años para HTTP e intercambio de mensajes entre microservicios.</p><h2 id=tipos-de-contrato>Tipos de contrato<a hidden class=anchor aria-hidden=true href=#tipos-de-contrato>#</a></h2><h3 id=contrato-explícito>Contrato explícito<a hidden class=anchor aria-hidden=true href=#contrato-explícito>#</a></h3><p>Cuando hablamos de un contrato explícito hacemos referencia al hecho de que el consumidor defina durante la ejecucción
 de sus test un archivo con la estructura del contrato que espera que se cumpla. Es entonces cuando dicho archivo se
-valida contra el que genera el proveedor, que lo crea de la misma forma, tras haber ejecutado sus propios test.</p>
-<p>La clave de este tipo de contrato es que ambas partes hagan los test necesarios para asegurar que se cumple el contrato.</p>
-<p>Dado que tanto proveedor como consumidor son de nuestro dominio, cuando queramos cambiar el contrato entre ambos,
+valida contra el que genera el proveedor, que lo crea de la misma forma, tras haber ejecutado sus propios test.</p><p>La clave de este tipo de contrato es que ambas partes hagan los test necesarios para asegurar que se cumple el contrato.</p><p>Dado que tanto proveedor como consumidor son de nuestro dominio, cuando queramos cambiar el contrato entre ambos,
 propagaremos el cambio cambiando el contrato en el proveedor y propagando el cambio en el consumidor para que ambos se
-equiparen con la nueva versión.</p>
-<h3 id="contrato-implícito">Contrato implícito</h3>
-<p>El contrato implícito es muy similar al explícito, con la diferencia de que en este caso el proveedor no puede acoplarse
+equiparen con la nueva versión.</p><h3 id=contrato-implícito>Contrato implícito<a hidden class=anchor aria-hidden=true href=#contrato-implícito>#</a></h3><p>El contrato implícito es muy similar al explícito, con la diferencia de que en este caso el proveedor no puede acoplarse
 al ciclo de test entre consumidor y proveedor. El caso más típico de como puede ocurrir esto es el caso de una API
 pública. Podemos consumirla, pero ese proveedor como es ajeno y probablemente de soporte para otros muchos servicios no
-podemos hacer que cumpla un contrato explícito.</p>
-<p>En su lugar, el archivo que genera nuestro consumidor mediante la ejecucción de los test esperando que se cumpla un
+podemos hacer que cumpla un contrato explícito.</p><p>En su lugar, el archivo que genera nuestro consumidor mediante la ejecucción de los test esperando que se cumpla un
 contrato determinado se valida contra la salida de un de doble de test que simula ser el proveedor real. En este caso es
 importante que configuremos algún tipo de alerta que nos avisa cuando el proveedor real cambia su salida para que
 nosotros la actualicemos en nuestro proveedor falso. Recalcar que en este caso el falso proveedor se encuentra integrado
 dentro del mismo artefacto donde está el consumidor. El punto negativo de este método es que cuando el proveedor cambie
 el mensaje que publica, hará que nuestro código falle hasta que nuestra batería de test se lancen y se vuelva a
 comprobar que se cumple el contrato, algo que no se estaría cumpliendo y por lo tanto tendríamos que actualizar el
-contrato que espera nuestro consumidor.</p>
-<h2 id="ventajas-de-consumer-driven-contract-testing">Ventajas de <em>Consumer Driven Contract Testing</em></h2>
-<p>¿Qué ganamos con el uso de una herramienta como esta? Pues evitamos que tener que hacer test <em>end to end</em> muy costosos
+contrato que espera nuestro consumidor.</p><h2 id=ventajas-de-consumer-driven-contract-testing>Ventajas de <em>Consumer Driven Contract Testing</em><a hidden class=anchor aria-hidden=true href=#ventajas-de-consumer-driven-contract-testing>#</a></h2><p>¿Qué ganamos con el uso de una herramienta como esta? Pues evitamos que tener que hacer test <em>end to end</em> muy costosos
 para verificar que la integración entre nuestros microservicios funciona correctamente. Nos ahorra mantener el entorno
-de ejecucción que levantamos para los test <em>end to end</em>. Recibimos <em>feedback</em> más rápido.</p>
-<p>Como único problema de este tipo de <em>contract testing</em> es que representa un entorno simulado, mientras que un test <em>end to
+de ejecucción que levantamos para los test <em>end to end</em>. Recibimos <em>feedback</em> más rápido.</p><p>Como único problema de este tipo de <em>contract testing</em> es que representa un entorno simulado, mientras que un test <em>end to
 end</em> representa un entorno más real, por lo que depende del caso según el tipo de integración que estemos intentando
 testear, puede que nos salga más a cuenta para ir más seguros a producción los test <em>end to end</em>, pero lo dicho, para una
 comunicación básica entre servicios basada en mensajes o vía API sale muy rentable utilizar <em>consumer driven contract
-testing</em>.</p>
-<h2 id="herramientas-para-su-uso">Herramientas para su uso</h2>
-<p><a class="link" href="https://docs.pact.io/"  target="_blank" rel="noopener"
-    >Pact</a> es una herramienta de prueba de contratos impulsada por el consumidor que genera contratos explícitos mediante
+testing</em>.</p><h2 id=herramientas-para-su-uso>Herramientas para su uso<a hidden class=anchor aria-hidden=true href=#herramientas-para-su-uso>#</a></h2><p><a href=https://docs.pact.io/>Pact</a> es una herramienta de prueba de contratos impulsada por el consumidor que genera contratos explícitos mediante
 el uso de un doble de prueba que registra las solicitudes y las respuestas esperadas a un contrato que se denomina
-«pacto», el &lsquo;contrato&rsquo; del que hablabamos anteriormente.</p>
-<p>Durante la ejecucción de los test del consumidor se realiza una solicitud al proveedor simulado de Pact que registra
+«pacto», el &lsquo;contrato&rsquo; del que hablabamos anteriormente.</p><p>Durante la ejecucción de los test del consumidor se realiza una solicitud al proveedor simulado de Pact que registra
 en el archivo del contrato junto con su respuesta esperada. Con esto hemos garantizado que desde el lado del consumidor
 se sigue cumpliendo el contrato. Tras esto, una simulación del consumir que nos provee Pact vuelve a ejecutar una
 solicitud, pero esta vez contra el proveedor real y compara la respuesta actual con la esperada. Si la salida del
 consumidor simulado es igual a la real se cumple el contrato por parte del proveedor. Entonces, tras haberse cumplido el
 contrato por ambas partes nos hemos asegurado que nuestros dos servicios, proveedor y consumidor, se comunicarán
-correctamente en el entorno real, véase producción.</p>
-<h3 id="consumer-driven-contract-testing--continuous-integrationcontinuous-deployment"><em>Consumer Driven Contract Testing</em> + <em>Continuous Integration</em>/<em>Continuous Deployment</em></h3>
-<p>La guinda en el pastel es que automaticemos el uso de <em>Contract Testing</em> haciendo que se integre en nuestro CI/CD,
+correctamente en el entorno real, véase producción.</p><h3 id=consumer-driven-contract-testing--continuous-integrationcontinuous-deployment><em>Consumer Driven Contract Testing</em> + <em>Continuous Integration</em>/<em>Continuous Deployment</em><a hidden class=anchor aria-hidden=true href=#consumer-driven-contract-testing--continuous-integrationcontinuous-deployment>#</a></h3><p>La guinda en el pastel es que automaticemos el uso de <em>Contract Testing</em> haciendo que se integre en nuestro CI/CD,
 asegurándonos así que con cada <em>build</em> se ejecute y que nos permita <em>deployar</em> solo si el contrato se cumple. En el caso de
-que utilicemos Pact como nuestra herramienta para <em>contract testing</em> será necesario configurar <a class="link" href="https://docs.pact.io/getting_started/sharing_pacts/"  target="_blank" rel="noopener"
-    >Pact Broker</a>, una aplicación para compartir contratos impulsados por el consumidor. Está optimizado para su uso con «pactos» (contratos creados por el <em>framework</em> Pact), pero puede utilizarse para cualquier tipo de contrato que pueda
+que utilicemos Pact como nuestra herramienta para <em>contract testing</em> será necesario configurar <a href=https://docs.pact.io/getting_started/sharing_pacts/>Pact Broker</a>, una aplicación para compartir contratos impulsados por el consumidor. Está optimizado para su uso con «pactos» (contratos creados por el <em>framework</em> Pact), pero puede utilizarse para cualquier tipo de contrato que pueda
 serializarse en JSON ¿Y qué ganamos usando esto? El Pact Broker permite desacoplar fácilmente el ciclo de lanzamiento
 de <em>Consumer</em> y <em>Provider</em>, unificando en un solo punto los resultado obtenidos y demás información interesante sobre el
 pacto, como pueda ser documentación entre otros detalles. Quizás como único inconveniente es que Pact Brocker al ser
-<em>Open Source</em> es <em>self hosting</em>, por lo que otra alternativa puede ser <a class="link" href="https://pactflow.io/"  target="_blank" rel="noopener"
-    >Pactflow</a>, un <em>fork</em> de Pact
+<em>Open Source</em> es <em>self hosting</em>, por lo que otra alternativa puede ser <a href=https://pactflow.io/>Pactflow</a>, un <em>fork</em> de Pact
 Broker que ofrece una serie de ventajas sobre su padre que las que podemos destacar que está pensada para equipos
 ofreciendo una mejor interfaz de usuario, almacenamiento a cargo de la aplicación, una gran mejora en seguridad en lo que
-se refiera a inicio de sesión, y demás <em>features</em> que se pueden seguir destacando.</p>
-<p>Para que puedas realizar o ver un ejemplo práctico te recomiendo seguir el <em>workshop</em> creado por la propia gente de Pactflow
+se refiera a inicio de sesión, y demás <em>features</em> que se pueden seguir destacando.</p><p>Para que puedas realizar o ver un ejemplo práctico te recomiendo seguir el <em>workshop</em> creado por la propia gente de Pactflow
 en el que detallan como realizar <em>Consumer Driven Contract Testing</em> e integrarlo con CI/CD. Ver el siguiente enlace:
-<a class="link" href="https://docs.pactflow.io/docs/workshops/ci-cd"  target="_blank" rel="noopener"
-    >Pactflow Workshop - CI/CD</a></p>
-
-</section>
-
-
-    <footer class="article-footer">
-    
-
-    </footer>
-
-
-    
-</article>
-
-    <aside class="related-contents--wrapper">
-    
-    
-        <h2 class="section-title">Contenidos relacionados</h2>
-        <div class="related-contents">
-            <div class="flex article-list--tile">
-                
-                    
-<article class="has-image">
-    <a href="/blog/p/gu%C3%ADa-para-modificar-c%C3%B3digo-legacy/">
-        
-        
-            <div class="article-image">
-                <img src="/blog/p/gu%C3%ADa-para-modificar-c%C3%B3digo-legacy/images/portada.29c1fe3424c8db5bac2c5600b32c3b6d_hu_1811c9f0f72d3967.JPG" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy" 
-                        data-key="" 
-                        data-hash="md5-KcH&#43;NCTI21usLFYAsyw7bQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Guía para modificar código legacy</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/blog/p/buenas-pr%C3%A1cticas-en-testing-cap.1/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Buenas prácticas en testing (Cap.1)</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/blog/p/phpunit-basics/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">PHPUnit basics</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/blog/p/an%C3%A1lisis-del-libro-dise%C3%B1o-%C3%A1gil-con-tdd/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Análisis del libro &#34;Diseño ágil con TDD&#34;</h2>
-        </div>
-    </a>
-</article>
-                
-            </div>
-        </div>
-    
-</aside>
-
-     
-    
-        
-    <script src="https://utteranc.es/client.js" 
-        repo="raulpadilladelgado/blog"
-        issue-term="pathname"
-        
-        crossorigin="anonymous"
-        async
-        >
-</script>
-
-<style>
-    .utterances {
-        max-width: unset;
-    }
-</style>
-
-<script>
-    function setUtterancesTheme(theme) {
-        let utterances = document.querySelector('.utterances iframe');
-        if (utterances) {
-            utterances.contentWindow.postMessage(
-                {
-                    type: 'set-theme',
-                    theme: `github-${theme}`
-                },
-                'https://utteranc.es'
-            );
-        }
-    }
-
-    addEventListener('message', event => {
-        if (event.origin !== 'https://utteranc.es') return;
-        setUtterancesTheme(document.documentElement.dataset.scheme)
-    });
-
-    window.addEventListener('onColorSchemeChange', (e) => {
-        setUtterancesTheme(e.detail)
-    })
-</script>
-
-
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2020 - 
-        
-        2026 Raúl Padilla Delgado
-    </section>
-    
-    <section class="powerby">
-        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-    </section>
-</footer>
-
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
-
-            </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Tabla de contenido</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ol>
-    <li><a href="#introducción">Introducción</a></li>
-    <li><a href="#tipos-de-contrato">Tipos de contrato</a>
-      <ol>
-        <li><a href="#contrato-explícito">Contrato explícito</a></li>
-        <li><a href="#contrato-implícito">Contrato implícito</a></li>
-      </ol>
-    </li>
-    <li><a href="#ventajas-de-consumer-driven-contract-testing">Ventajas de <em>Consumer Driven Contract Testing</em></a></li>
-    <li><a href="#herramientas-para-su-uso">Herramientas para su uso</a>
-      <ol>
-        <li><a href="#consumer-driven-contract-testing--continuous-integrationcontinuous-deployment"><em>Consumer Driven Contract Testing</em> + <em>Continuous Integration</em>/<em>Continuous Deployment</em></a></li>
-      </ol>
-    </li>
-  </ol>
-</nav>
-                </div>
-            </section>
-        </aside>
-    
-
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
-</html>
+<a href=https://docs.pactflow.io/docs/workshops/ci-cd>Pactflow Workshop - CI/CD</a></p></div><footer class=post-footer><ul class=post-tags></ul><nav class=paginav><a class=prev href=https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/><span class=title>« Anterior</span>
+<span>Código sostenible</span>
+</a><a class=next href=https://raulpadilladelgado.github.io/blog/p/command-query-responsibility-segregation/><span class=title>Siguiente »</span>
+<span>Command Query Responsibility Segregation</span></a></nav></footer><div id=comments><script src=https://utteranc.es/client.js repo=raulpadilladelgado/blog issue-term=pathname label=comments theme=dark-blue crossorigin=anonymous async></script></div></article></main><footer class=footer><span>&copy; 2026 <a href=/blog/>Raúl Padilla Delgado</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copiar";function s(){t.innerHTML="¡copiado!",setTimeout(()=>{t.innerHTML="copiar"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

@@ -1,201 +1,49 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Toda la información que encontrarás aquí está basada en el libro de Carlos Blé &ldquo;Código sostenible&rdquo;. En este post hablaré sobre lo que he aprendido con la lectura de este libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía para realizar código limpio y fácil de mantener.
-'><title>Código sostenible</title>
-
-
-<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/'>
-
-
-<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Código sostenible'>
-<meta property='og:description' content='Introducción Toda la información que encontrarás aquí está basada en el libro de Carlos Blé &ldquo;Código sostenible&rdquo;. En este post hablaré sobre lo que he aprendido con la lectura de este libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía para realizar código limpio y fácil de mantener.
-'>
-<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/'>
-<meta property='og:site_name' content='Raúl Padilla Delgado'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-07-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-07-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/images/codigo-sostenible.png' />
-<meta name="twitter:title" content="Código sostenible">
-<meta name="twitter:description" content="Introducción Toda la información que encontrarás aquí está basada en el libro de Carlos Blé &ldquo;Código sostenible&rdquo;. En este post hablaré sobre lo que he aprendido con la lectura de este libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía para realizar código limpio y fácil de mantener.
-"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/images/codigo-sostenible.png' />
-    </head>
-    <body class="
-    article-page has-toc
-">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex 
-    
-        extended
-    
-">
-    
-        <div id="article-toolbar">
-            <a href="/blog" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
-</svg>
-
-
-
-                <span>Volver</span>
-            </a>
-        </div>
-    
-<main class="main full-width">
-    <article class="has-image main-article">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/blog/p/c%C3%B3digo-sostenible/">
-                <img src="/blog/p/c%C3%B3digo-sostenible/images/codigo-sostenible.png"
-                        
-                        width="2489" 
-                        height="1014" 
-                        loading="lazy"
-                        alt="Featured image of post Código sostenible" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/blog/categories/c%C3%B3digo-sostenible/" >
-                Código-Sostenible
-            </a>
-        
-    </header>
-    
-
-    <h2 class="article-title">
-        <a href="/blog/p/c%C3%B3digo-sostenible/">Código sostenible</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jul 07, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    8 minutos a leer
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-
-    <section class="article-content">
-    <h2 id="introducción">Introducción</h2>
-<p>Toda la información que encontrarás aquí está basada en el libro de Carlos Blé
-<a class="link" href="https://codigosostenible.com/"  target="_blank" rel="noopener"
-    >&ldquo;Código sostenible&rdquo;</a>. En este post hablaré sobre lo que he aprendido con la lectura de este
+<!doctype html><html lang=es dir=auto data-theme=dark><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Código sostenible | Raúl Padilla Delgado</title><meta name=keywords content><meta name=description content="Introducción
+Toda la información que encontrarás aquí está basada en el libro de Carlos Blé
+&ldquo;Código sostenible&rdquo;. En este post hablaré sobre lo que he aprendido con la lectura de este
 libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas
 el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía
-para realizar código limpio y fácil de mantener.</p>
-<h2 id="qué-es-código-sostenible">¿Qué es código sostenible?</h2>
-<p>El código debe ser funcionalmente perfecto, debe cumplir todos los criterios especificados, pero además debe ser
-fácil de entender, mantener y escalar.</p>
-<p>Si tu código no es sostenible será una principal fuente de fracaso en tu empresa, ya que con el tiempo será cada
-vez más difícil de modificar.</p>
-<p>Y no confundamos que sostenible va relacionado con futurista, ya que precisamente intentar realizar código que cubra los
+para realizar código limpio y fácil de mantener."><meta name=author content><link rel=canonical href=https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.e4fabc450c0ce1783aadfeceb2d26b403953ec5a64397309932d4e900982b40c.css integrity="sha256-5Pq8RQwM4Xg6rf7OstJrQDlT7FpkOXMJky1OkAmCtAw=" rel="preload stylesheet" as=style><link rel=icon href=https://raulpadilladelgado.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://raulpadilladelgado.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://raulpadilladelgado.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://raulpadilladelgado.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://raulpadilladelgado.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=es href=https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><meta property="og:url" content="https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/"><meta property="og:site_name" content="Raúl Padilla Delgado"><meta property="og:title" content="Código sostenible"><meta property="og:description" content="Introducción Toda la información que encontrarás aquí está basada en el libro de Carlos Blé “Código sostenible”. En este post hablaré sobre lo que he aprendido con la lectura de este libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía para realizar código limpio y fácil de mantener."><meta property="og:locale" content="es"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2022-07-07T00:00:00+00:00"><meta property="article:modified_time" content="2022-07-07T00:00:00+00:00"><meta property="og:image" content="https://raulpadilladelgado.github.io/blog/images/Raul.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://raulpadilladelgado.github.io/blog/images/Raul.png"><meta name=twitter:title content="Código sostenible"><meta name=twitter:description content="Introducción Toda la información que encontrarás aquí está basada en el libro de Carlos Blé “Código sostenible”. En este post hablaré sobre lo que he aprendido con la lectura de este libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía para realizar código limpio y fácil de mantener."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://raulpadilladelgado.github.io/blog/post/"},{"@type":"ListItem","position":2,"name":"Código sostenible","item":"https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Código sostenible","name":"Código sostenible","description":"Introducción Toda la información que encontrarás aquí está basada en el libro de Carlos Blé \u0026ldquo;Código sostenible\u0026rdquo;. En este post hablaré sobre lo que he aprendido con la lectura de este libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía para realizar código limpio y fácil de mantener.\n","keywords":[],"articleBody":"Introducción Toda la información que encontrarás aquí está basada en el libro de Carlos Blé “Código sostenible”. En este post hablaré sobre lo que he aprendido con la lectura de este libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía para realizar código limpio y fácil de mantener.\n¿Qué es código sostenible? El código debe ser funcionalmente perfecto, debe cumplir todos los criterios especificados, pero además debe ser fácil de entender, mantener y escalar.\nSi tu código no es sostenible será una principal fuente de fracaso en tu empresa, ya que con el tiempo será cada vez más difícil de modificar.\nY no confundamos que sostenible va relacionado con futurista, ya que precisamente intentar realizar código que cubra los escenarios de hoy, pero también los de mañana, complica mucho el trabajo que tenemos que hacer y en la mayoría de ocasiones nos induce a que no podamos tener un código sostenible.\nEn resumen, el código es sostenible cuando es simple y conciso, y está respaldado por test automáticos.\n¿Cómo consigo un código sostenible? Como vimos en el punto anterior, tenemos que lograr un código sencillo y concreto. Para entender cómo logramos esto, veamos qué está en nuestra mano.\nNo caigas en la reutilización de código excesiva sin control que, por ejemplo, intenta hacer que una misma función sirva para todo, ya que esto hará que uses menos abstracciones. Las abstracciones son la semántica de tu aplicación. Cada vez que extraes un objeto o una función y le das un nombre estás añadiendo una abstracción que define la misión de esa parte del código. El código es mucho más sencillo de entender cuando es rico en el uso de lenguaje humano. Es por eso que debemos cuidar los nombres que le asignamos a las variables, métodos y clases, ya que determinarán la dificultad para entender tu código. Buscamos nombres coherentes con el contexto, pronunciables, que denoten claramente su comportamiento.\nComo bien indica el concepto anterior, crear abstracciones aporta semántica a nuestra aplicación y denota la intención de lo que programamos, podemos destacar también evitar caer en primitive obsession, la cual nos habla de evitar el uso excesivo de tipos primitivos (como String, Integer…) y en su lugar favorecer nuestros tipos propios, que serían esas clases que envuelven a los primitivos y les da una misión y un sentido, ya que tendrán un contexto basado en el nombre de la clase y el comportamiento (métodos) estará guiado por el mismo contexto. La utilización de tipos propios ayuda a que podamos desarrollar esa nueva feature más rápido, porque con su utilización conseguimos un código fácil de comprender e intuitivo.\nEl código que usa correctamente los tipos propios habla el lenguaje del negocio para el que se está desarrollando la aplicación, es decir, un lenguaje común para todos en la empresa, y favorecerá la comunicación entre desarrolladores y otros cargos de negocio. Por supuesto evita los modelos anémicos, que serían aquellos objetos que no tienen datos o que los tienen, pero no los utilizan directamente porque exponen getters y setters y dejan que los demás artefactos decidan qué debe hacer. En su lugar, pídele al objeto que es el que tiene la responsabilidad de resolver ese problema que haga lo que quieres hacer, favorece el principio Tell don’t ask.\nPara tener un código simple, un buen ejemplo a seguir serían las cuatro reglas del diseño simple definidas por Kent Beck:\nPasar los test Revelar la intención No contener duplicidad (no repetir la implementación de un concepto) Tener el menor número de elementos posible (no hacer más de lo necesario) Procura diseñar software con alta cohesión y bajo acoplamiento, es decir, busca crear artefactos independientes, que no dependan de otros para funcionar. Siempre existirá un mínimo de acoplamiento, ya que hay que conectar las distintas piezas de nuestro código, pero evitar el acoplamiento excesivo hará escalable nuestro código. Implementar una arquitectura hexagonal puede ser muy beneficioso para que el dominio de nuestra aplicación no tenga dependencias externas. La ley de demeter también puede ser aplicada para evitar el acoplamiento. Para diseñar aplicaciones con alta cohesión y bajo acoplamiento es recomendable conocer los principios SOLID. También deberíamos limitar la visibilidad de métodos y clases, deberíamos ser conscientes de que aquello que marcamos como público, solo debería ser lo realmente necesario.\nEl código atractivo nos llama y nos resulta placentero a la hora de leerlo. Indentaciones bien realizadas, saltos de líneas justos, mismo nivel de abstracción del código dentro de un mismo bloque, y más, son ejemplos de lo que podemos hacer para que nuestro código se vea bonito y anime a interpretarlo. Usar cláusulas guarda es tan beneficioso para el rendimiento como para el aspecto visual, ya que denota claramente la intención de un método para forzar la detención de su ejecución y devolver algo cuando se da alguna condición.\nEvita las sorpresas, piensa detenidamente cada decisión de diseño que tomes, ya que tendrá un impacto en la persona que interprete después tu código, que podrías ser tú mismo. Ten constructores que solo construyen, es decir, que no ejecuten ninguna lógica compleja más allá de crear una instancia de la clase, si necesitas hacer validaciones delégalas a métodos de factoría y cierra la visibilidad del constructor. Favorece las funciones puras, aquellas que siempre retornan el mismo resultado para la misma entrada. Favorece el uso de las funciones propias de lenguaje, que en el caso de lenguajes modernos o de los más veteranos, pero que suelen traer mejoras con cada actualización, muchas veces incluyen funcionalidades que facilitan la vida del programador y reducen la cantidad de trabajo que tiene que realizar para resolver un problema, al mismo tiempo que reducen la probabilidad de introducir un error, ya que evitan la complejidad accidental incluida por el programador. Si trabajas con lenguajes modernos aprovecha todas sus ventajas y no caigas en viejos principios divulgados por limitaciones del lenguaje o porque simplemente responden a un contexto del software en una época donde lo correcto era eso, pero como en todo, siempre hay una forma de mejorar y surgen nuevos principios y patrones. Por ejemplo, hoy en día no se recomiendan que las funciones solo deban tener un único return. En realidad, si sabemos que nuestra función ya tiene un valor para retornar y esperamos hasta el final de la ejecución para retornarlo, nos estamos arriesgando a que mute su valor por el camino y no tengamos el resultado esperado, además aumentamos la probabilidad de un bug sin necesidad, ya que se ejecutan más líneas para obtener el mismo resultado. En su lugar, utilizar un return temprano será mucho más claro para los que lean el código y será más seguro, un concepto que se conoce como cláusula guarda. Como este hay muchos otros principios que no aplican para el desarrollo de software más habitual, solo es cuestión de detectarlos y aplicar la lógica, y como no, nuestros conocimientos de código sostenible, para evitarlos y tener un código más fácil de interpretar y de manejar.\nAunque tengamos una buena batería de test es necesario tener también un buen manejo y prevención de errores, algo que ocurre cuando tenemos en cuenta las posibles excepciones de nuestra aplicación y las manejas de una forma inteligente, notificándolas en un log de errores u otros sistemas de monitorización. Cuanto más entiendes el lenguaje de programación que está usando es más complicado que puedas introducir un error, ya que eres más consciente de cada cosa que realizas y qué riesgos puede tener. Utilizar un IDE para programar es lo mejor que puedes hacer, te resaltan zonas donde puedes mejorar el código o zonas donde puede haber riesgo de error, además te autocompletan código o lo sugieren para esos momentos en los que no tienes claro algo o simplemente te sirve para aumentar tu productividad. Para poder decir que tenemos una buena batería de test es necesario que pensemos en multitud de casos, todos los que se nos puedan ocurrir, para poder cubrir todos los escenarios posibles y que tengamos un código resiliente. Para evitar el uso de excepciones a lo loco, tenemos disponibles lenguajes null safe como Kotlin, pero si tú necesitas Java, por ejemplo, siempre tienes herramientas para usar en lugar de las excepciones, como los tipos Either y Try o el patrón notificación. Captúralas y envuélvelas en las tuyas propias para poder proporcionar información extendida y dar más contexto de por qué se pudo dar ese error. Nunca añadas un ’throws’ a la firma de tus métodos, es ignorar totalmente la excepción y no tiene sentido.\nCuando queremos código sostenible no todo es código, ya que hay que cuidar otros aspectos que mejoran la calidad de nuestro trabajo, como puede ser la posibilidad de replicar los entornos productivos en uno local para poder solucionar rápidamente los bugs, hacer pairing para resolverlos, o incluso como forma de trabajo estándar, por el hecho de que dos cabezas pueden pensar una solución mejor y estudiar los riesgos minuciosamente.\nConclusión Hacer código sostenible no es una tarea compleja, pero tampoco es fácil, es el fruto del cuidado diario de nuestro código tomando buenas decisiones en cada momento, huyendo de la complejidad y la sorpresa. Por experiencia propia, lo realmente complicado es no seguir las guías de código sostenible y tener que mantener ese código, es un quebradero de cabeza más grande que invertir nuestros esfuerzos en la aplicación de código sostenible. En definitiva, la fórmula perfecta para que un código sea mantenible, legible y escalable pasa por tener test suficientes y de calidad que cubran el código productivo, y que tanto los test como el código productivo sigan estos consejos que hemos aprendido con la lectura del libro y de este post.\n","wordCount":"1648","inLanguage":"es","image":"https://raulpadilladelgado.github.io/blog/images/Raul.png","datePublished":"2022-07-07T00:00:00Z","dateModified":"2022-07-07T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/"},"publisher":{"@type":"Organization","name":"Raúl Padilla Delgado","logo":{"@type":"ImageObject","url":"https://raulpadilladelgado.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=/blog/ accesskey=h title="Raúl Padilla Delgado (Alt + H)"><img src=/blog/images/Raul_hu_bfdabb67a9c2c8a4.png alt aria-label=logo height=30>Raúl Padilla Delgado</a></div><ul id=menu class=menu><li><a href=https://github.com/raulpadilladelgado title=GitHub><span>GitHub</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li><li><a href=https://www.linkedin.com/in/raulpadilladelgado/ title=LinkedIn><span>LinkedIn</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li><li><a href=https://raulpadilladelgado.github.io/ title=Landing><span>Landing</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Código sostenible</h1><div class=post-meta><span title='2022-07-07 00:00:00 +0000 UTC'>2022-07-07</span>&nbsp;·&nbsp;<span>8 min</span></div></header><details class=toc><summary accesskey=c title="(Alt + C)"><span class=title>Tabla de Contenidos</span></summary><div class=inner><ul><li><a href=#introducci%c3%b3n aria-label=Introducción>Introducción</a></li><li><a href=#qu%c3%a9-es-c%c3%b3digo-sostenible aria-label="¿Qué es código sostenible?">¿Qué es código sostenible?</a></li><li><a href=#c%c3%b3mo-consigo-un-c%c3%b3digo-sostenible aria-label="¿Cómo consigo un código sostenible?">¿Cómo consigo un código sostenible?</a></li><li><a href=#conclusi%c3%b3n aria-label=Conclusión>Conclusión</a></li></ul></div></details><div class="post-content md-content"><h2 id=introducción>Introducción<a hidden class=anchor aria-hidden=true href=#introducción>#</a></h2><p>Toda la información que encontrarás aquí está basada en el libro de Carlos Blé
+<a href=https://codigosostenible.com/>&ldquo;Código sostenible&rdquo;</a>. En este post hablaré sobre lo que he aprendido con la lectura de este
+libro. Serán unas breves nociones lo que destacaré, por lo que para obtener la mejor experiencia te recomiendo que leas
+el libro original, te será muy útil el detalle con el que se explican los conceptos y los ejemplos usados en esta guía
+para realizar código limpio y fácil de mantener.</p><h2 id=qué-es-código-sostenible>¿Qué es código sostenible?<a hidden class=anchor aria-hidden=true href=#qué-es-código-sostenible>#</a></h2><p>El código debe ser funcionalmente perfecto, debe cumplir todos los criterios especificados, pero además debe ser
+fácil de entender, mantener y escalar.</p><p>Si tu código no es sostenible será una principal fuente de fracaso en tu empresa, ya que con el tiempo será cada
+vez más difícil de modificar.</p><p>Y no confundamos que sostenible va relacionado con futurista, ya que precisamente intentar realizar código que cubra los
 escenarios de hoy, pero también los de mañana, complica mucho el trabajo que tenemos que hacer y en la mayoría de
-ocasiones nos induce a que no podamos tener un código sostenible.</p>
-<p>En resumen, el código es sostenible cuando es simple y conciso, y está respaldado por <em>test</em> automáticos.</p>
-<h2 id="cómo-consigo-un-código-sostenible">¿Cómo consigo un código sostenible?</h2>
-<p>Como vimos en el punto anterior, tenemos que lograr un código sencillo y concreto. Para entender cómo logramos
-esto, veamos qué está en nuestra mano.</p>
-<p>No caigas en la reutilización de código excesiva sin control que, por ejemplo, intenta hacer que una misma función sirva
+ocasiones nos induce a que no podamos tener un código sostenible.</p><p>En resumen, el código es sostenible cuando es simple y conciso, y está respaldado por <em>test</em> automáticos.</p><h2 id=cómo-consigo-un-código-sostenible>¿Cómo consigo un código sostenible?<a hidden class=anchor aria-hidden=true href=#cómo-consigo-un-código-sostenible>#</a></h2><p>Como vimos en el punto anterior, tenemos que lograr un código sencillo y concreto. Para entender cómo logramos
+esto, veamos qué está en nuestra mano.</p><p>No caigas en la reutilización de código excesiva sin control que, por ejemplo, intenta hacer que una misma función sirva
 para todo, ya que esto hará que uses menos abstracciones. Las abstracciones son la semántica de tu aplicación. Cada vez
 que extraes un objeto o una función y le das un nombre estás añadiendo una abstracción que define la misión de esa parte
 del código. El código es mucho más sencillo de entender cuando es rico en el uso de lenguaje humano. Es por eso que
 debemos cuidar los nombres que le asignamos a las variables, métodos y clases, ya que determinarán la dificultad para entender
-tu código. Buscamos nombres coherentes con el contexto, pronunciables, que denoten claramente su comportamiento.</p>
-<p>Como bien indica el concepto anterior, crear abstracciones aporta semántica a nuestra aplicación y denota la intención
+tu código. Buscamos nombres coherentes con el contexto, pronunciables, que denoten claramente su comportamiento.</p><p>Como bien indica el concepto anterior, crear abstracciones aporta semántica a nuestra aplicación y denota la intención
 de lo que programamos, podemos destacar también evitar caer en <em>primitive obsession</em>, la cual nos habla de evitar
-el uso excesivo de tipos primitivos (como String, Integer&hellip;) y en su lugar favorecer nuestros tipos propios, que
+el uso excesivo de tipos primitivos (como String, Integer&mldr;) y en su lugar favorecer nuestros tipos propios, que
 serían esas clases que envuelven a los primitivos y les da una misión y un sentido, ya que tendrán un contexto basado en
 el nombre de la clase y el comportamiento (métodos) estará guiado por el mismo contexto. La utilización de tipos propios
 ayuda a que podamos desarrollar esa nueva <em>feature</em> más rápido, porque con su utilización conseguimos un código
-fácil de comprender e intuitivo.</p>
-<p>El código que usa correctamente los tipos propios habla el lenguaje del negocio para el que se está desarrollando la aplicación,
+fácil de comprender e intuitivo.</p><p>El código que usa correctamente los tipos propios habla el lenguaje del negocio para el que se está desarrollando la aplicación,
 es decir, un lenguaje común para todos en la empresa, y favorecerá la comunicación entre desarrolladores y otros cargos de negocio.
 Por supuesto evita los modelos anémicos, que serían aquellos objetos que no tienen datos o que los tienen, pero no los
 utilizan directamente porque exponen <em>getters</em> y <em>setters</em> y dejan que los demás artefactos decidan qué debe hacer. En su lugar,
 pídele al objeto que es el que tiene la responsabilidad de resolver ese problema que haga lo que quieres hacer, favorece
-el principio <em>Tell don&rsquo;t ask</em>.</p>
-<p>Para tener un código simple, un buen ejemplo a seguir serían las cuatro reglas del diseño simple definidas por Kent Beck:</p>
-<ol>
-<li>Pasar los <em>test</em></li>
-<li>Revelar la intención</li>
-<li>No contener duplicidad (no repetir la implementación de un concepto)</li>
-<li>Tener el menor número de elementos posible (no hacer más de lo necesario)</li>
-</ol>
-<p>Procura diseñar <em>software</em> con alta cohesión y bajo acoplamiento, es decir, busca crear artefactos independientes, que
+el principio <em>Tell don&rsquo;t ask</em>.</p><p>Para tener un código simple, un buen ejemplo a seguir serían las cuatro reglas del diseño simple definidas por Kent Beck:</p><ol><li>Pasar los <em>test</em></li><li>Revelar la intención</li><li>No contener duplicidad (no repetir la implementación de un concepto)</li><li>Tener el menor número de elementos posible (no hacer más de lo necesario)</li></ol><p>Procura diseñar <em>software</em> con alta cohesión y bajo acoplamiento, es decir, busca crear artefactos independientes, que
 no dependan de otros para funcionar. Siempre existirá un mínimo de acoplamiento, ya que hay que conectar las distintas
 piezas de nuestro código, pero evitar el acoplamiento excesivo hará escalable nuestro código. Implementar una
-<a class="link" href="https://raulpadilladelgado.github.io/blog/p/arquitectura-hexagonal/"  target="_blank" rel="noopener"
-    >arquitectura hexagonal</a>
+<a href=https://raulpadilladelgado.github.io/blog/p/arquitectura-hexagonal/>arquitectura hexagonal</a>
 puede ser muy beneficioso para que el dominio de nuestra aplicación no tenga dependencias externas. La ley de demeter
 también puede ser aplicada para evitar el acoplamiento. Para diseñar aplicaciones con alta cohesión y bajo acoplamiento
-es recomendable conocer los <a class="link" href="https://raulpadilladelgado.github.io/blog/p/principios-solid/"  target="_blank" rel="noopener"
-    >principios SOLID</a>. También
+es recomendable conocer los <a href=https://raulpadilladelgado.github.io/blog/p/principios-solid/>principios SOLID</a>. También
 deberíamos limitar la visibilidad de métodos y clases, deberíamos ser conscientes de que aquello que marcamos como público, solo
-debería ser lo realmente necesario.</p>
-<p>El código atractivo nos llama y nos resulta placentero a la hora de leerlo. Indentaciones bien realizadas,
+debería ser lo realmente necesario.</p><p>El código atractivo nos llama y nos resulta placentero a la hora de leerlo. Indentaciones bien realizadas,
 saltos de líneas justos, mismo nivel de abstracción del código dentro de un mismo bloque, y más, son ejemplos de lo que
 podemos hacer para que nuestro código se vea bonito y anime a interpretarlo. Usar cláusulas guarda es tan beneficioso
 para el rendimiento como para el aspecto visual, ya que denota claramente la intención de un método para forzar la
-detención de su ejecución y devolver algo cuando se da alguna condición.</p>
-<p>Evita las sorpresas, piensa detenidamente cada decisión de diseño que tomes, ya que tendrá un impacto en la persona que
+detención de su ejecución y devolver algo cuando se da alguna condición.</p><p>Evita las sorpresas, piensa detenidamente cada decisión de diseño que tomes, ya que tendrá un impacto en la persona que
 interprete después tu código, que podrías ser tú mismo. Ten constructores que solo construyen, es decir, que no ejecuten
 ninguna lógica compleja más allá de crear una instancia de la clase, si necesitas hacer validaciones delégalas
 a métodos de factoría y cierra la visibilidad del constructor. Favorece las funciones puras, aquellas que siempre
@@ -213,8 +61,7 @@ la probabilidad de un <em>bug</em> sin necesidad, ya que se ejecutan más línea
 un <em>return</em> temprano será mucho más claro para los que lean el código y será más seguro, un concepto que se conoce como
 cláusula guarda. Como este hay muchos otros principios que no aplican para el desarrollo de <em>software</em> más habitual, solo
 es cuestión de detectarlos y aplicar la lógica, y como no, nuestros conocimientos de código sostenible, para evitarlos
-y tener un código más fácil de interpretar y de manejar.</p>
-<p>Aunque tengamos una buena batería de <em>test</em> es necesario tener también un buen manejo y prevención de errores, algo que
+y tener un código más fácil de interpretar y de manejar.</p><p>Aunque tengamos una buena batería de <em>test</em> es necesario tener también un buen manejo y prevención de errores, algo que
 ocurre cuando tenemos en cuenta las posibles excepciones de nuestra aplicación y las manejas de una forma inteligente,
 notificándolas en un <em>log</em> de errores u otros sistemas de monitorización. Cuanto más entiendes el lenguaje de programación
 que está usando es más complicado que puedas introducir un error, ya que eres más consciente de cada cosa que realizas y
@@ -226,225 +73,20 @@ cubrir todos los escenarios posibles y que tengamos un código resiliente. Para 
 tenemos disponibles lenguajes <em>null safe</em> como Kotlin, pero si tú necesitas Java, por ejemplo, siempre tienes
 herramientas para usar en lugar de las excepciones, como los tipos Either y Try o el patrón notificación. Captúralas y
 envuélvelas en las tuyas propias para poder proporcionar información extendida y dar más contexto de por qué se pudo dar
-ese error. Nunca añadas un &rsquo;throws&rsquo; a la firma de tus métodos, es ignorar totalmente la excepción y no tiene sentido.</p>
-<p>Cuando queremos código sostenible no todo es código, ya que hay que cuidar otros aspectos que mejoran la calidad de
+ese error. Nunca añadas un &rsquo;throws&rsquo; a la firma de tus métodos, es ignorar totalmente la excepción y no tiene sentido.</p><p>Cuando queremos código sostenible no todo es código, ya que hay que cuidar otros aspectos que mejoran la calidad de
 nuestro trabajo, como puede ser la posibilidad de replicar los entornos productivos en uno local para poder solucionar
 rápidamente los <em>bugs</em>, hacer <em>pairing</em> para resolverlos, o incluso como forma de trabajo estándar, por el hecho de que dos cabezas
-pueden pensar una solución mejor y estudiar los riesgos minuciosamente.</p>
-<h2 id="conclusión">Conclusión</h2>
-<p>Hacer código sostenible no es una tarea compleja, pero tampoco es fácil, es el fruto del cuidado diario de nuestro
+pueden pensar una solución mejor y estudiar los riesgos minuciosamente.</p><h2 id=conclusión>Conclusión<a hidden class=anchor aria-hidden=true href=#conclusión>#</a></h2><p>Hacer código sostenible no es una tarea compleja, pero tampoco es fácil, es el fruto del cuidado diario de nuestro
 código tomando buenas decisiones en cada momento, huyendo de la complejidad y la sorpresa. Por experiencia propia, lo
 realmente complicado es no seguir las guías de código sostenible y tener que mantener ese código, es un quebradero de
 cabeza más grande que invertir nuestros esfuerzos en la aplicación de código sostenible. En definitiva, la fórmula
 perfecta para que un código sea mantenible, legible y escalable pasa por tener <em>test</em> suficientes y de calidad que
 cubran el código productivo, y que tanto los <em>test</em> como el código productivo sigan estos consejos que hemos aprendido
-con la lectura del libro y de este post.</p>
-
-</section>
-
-
-    <footer class="article-footer">
-    
-
-    </footer>
-
-
-    
-</article>
-
-    <aside class="related-contents--wrapper">
-    
-    
-</aside>
-
-     
-    
-        
-    <script src="https://utteranc.es/client.js" 
-        repo="raulpadilladelgado/blog"
-        issue-term="pathname"
-        
-        crossorigin="anonymous"
-        async
-        >
-</script>
-
-<style>
-    .utterances {
-        max-width: unset;
-    }
-</style>
-
-<script>
-    function setUtterancesTheme(theme) {
-        let utterances = document.querySelector('.utterances iframe');
-        if (utterances) {
-            utterances.contentWindow.postMessage(
-                {
-                    type: 'set-theme',
-                    theme: `github-${theme}`
-                },
-                'https://utteranc.es'
-            );
-        }
-    }
-
-    addEventListener('message', event => {
-        if (event.origin !== 'https://utteranc.es') return;
-        setUtterancesTheme(document.documentElement.dataset.scheme)
-    });
-
-    window.addEventListener('onColorSchemeChange', (e) => {
-        setUtterancesTheme(e.detail)
-    })
-</script>
-
-
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2020 - 
-        
-        2026 Raúl Padilla Delgado
-    </section>
-    
-    <section class="powerby">
-        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-    </section>
-</footer>
-
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
-
-            </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Tabla de contenido</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ol>
-    <li><a href="#introducción">Introducción</a></li>
-    <li><a href="#qué-es-código-sostenible">¿Qué es código sostenible?</a></li>
-    <li><a href="#cómo-consigo-un-código-sostenible">¿Cómo consigo un código sostenible?</a></li>
-    <li><a href="#conclusión">Conclusión</a></li>
-  </ol>
-</nav>
-                </div>
-            </section>
-        </aside>
-    
-
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
-</html>
+con la lectura del libro y de este post.</p></div><footer class=post-footer><ul class=post-tags></ul><nav class=paginav><a class=prev href=https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/><span class=title>« Anterior</span>
+<span>Comprobar versiones de dependencias de Gradle en las Pull Request</span>
+</a><a class=next href=https://raulpadilladelgado.github.io/blog/p/consumer-driven-contract-testing/><span class=title>Siguiente »</span>
+<span>Consumer Driven Contract Testing</span></a></nav></footer><div id=comments><script src=https://utteranc.es/client.js repo=raulpadilladelgado/blog issue-term=pathname label=comments theme=dark-blue crossorigin=anonymous async></script></div></article></main><footer class=footer><span>&copy; 2026 <a href=/blog/>Raúl Padilla Delgado</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copiar";function s(){t.innerHTML="¡copiado!",setTimeout(()=>{t.innerHTML="copiar"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

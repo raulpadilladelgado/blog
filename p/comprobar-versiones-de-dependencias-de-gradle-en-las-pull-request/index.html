@@ -1,185 +1,79 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.
-'><title>Comprobar versiones de dependencias de Gradle en las Pull Request</title>
-
-
-<link rel='canonical' href='https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/'>
-
-
-<link rel="stylesheet" href="/blog/scss/style.min.css"><meta property='og:title' content='Comprobar versiones de dependencias de Gradle en las Pull Request'>
-<meta property='og:description' content='Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.
-'>
-<meta property='og:url' content='https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/'>
-<meta property='og:site_name' content='Raúl Padilla Delgado'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-01-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-01-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/ghactionsgradle.png' />
-<meta name="twitter:title" content="Comprobar versiones de dependencias de Gradle en las Pull Request">
-<meta name="twitter:description" content="Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.
-"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/ghactionsgradle.png' />
-    </head>
-    <body class="
-    article-page has-toc
-">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex 
-    
-        extended
-    
-">
-    
-        <div id="article-toolbar">
-            <a href="/blog" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
-</svg>
-
-
-
-                <span>Volver</span>
-            </a>
-        </div>
-    
-<main class="main full-width">
-    <article class="has-image main-article">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/">
-                <img src="/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/ghactionsgradle.png"
-                        
-                        width="1005" 
-                        height="684" 
-                        loading="lazy"
-                        alt="Featured image of post Comprobar versiones de dependencias de Gradle en las Pull Request" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/blog/categories/manejo-de-dependencias/" >
-                Manejo-De-Dependencias
-            </a>
-        
-    </header>
-    
-
-    <h2 class="article-title">
-        <a href="/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/">Comprobar versiones de dependencias de Gradle en las Pull Request</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 02, 2023</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    5 minutos a leer
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-
-    <section class="article-content">
-    <h2 id="introducción">Introducción</h2>
-<p>Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de
+<!doctype html><html lang=es dir=auto data-theme=dark><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Comprobar versiones de dependencias de Gradle en las Pull Request | Raúl Padilla Delgado</title><meta name=keywords content><meta name=description content="Introducción
+Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de
 librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde
 ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de
 incorporar.
 Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un
 auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han
-ocurrido cambios que rompen con lo que actualmente usábamos.</p>
-<p>Partiendo de esta premisa, en la que no le estoy abriendo los ojos a nadie, me gustaría compartir una herramienta en la
+ocurrido cambios que rompen con lo que actualmente usábamos."><meta name=author content><link rel=canonical href=https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.e4fabc450c0ce1783aadfeceb2d26b403953ec5a64397309932d4e900982b40c.css integrity="sha256-5Pq8RQwM4Xg6rf7OstJrQDlT7FpkOXMJky1OkAmCtAw=" rel="preload stylesheet" as=style><link rel=icon href=https://raulpadilladelgado.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://raulpadilladelgado.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://raulpadilladelgado.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://raulpadilladelgado.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://raulpadilladelgado.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=es href=https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><meta property="og:url" content="https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/"><meta property="og:site_name" content="Raúl Padilla Delgado"><meta property="og:title" content="Comprobar versiones de dependencias de Gradle en las Pull Request"><meta property="og:description" content="Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos."><meta property="og:locale" content="es"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2023-01-02T00:00:00+00:00"><meta property="article:modified_time" content="2023-01-02T00:00:00+00:00"><meta property="og:image" content="https://raulpadilladelgado.github.io/blog/images/Raul.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://raulpadilladelgado.github.io/blog/images/Raul.png"><meta name=twitter:title content="Comprobar versiones de dependencias de Gradle en las Pull Request"><meta name=twitter:description content="Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://raulpadilladelgado.github.io/blog/post/"},{"@type":"ListItem","position":2,"name":"Comprobar versiones de dependencias de Gradle en las Pull Request","item":"https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Comprobar versiones de dependencias de Gradle en las Pull Request","name":"Comprobar versiones de dependencias de Gradle en las Pull Request","description":"Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.\n","keywords":[],"articleBody":"Introducción Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de incorporar. Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han ocurrido cambios que rompen con lo que actualmente usábamos.\nPartiendo de esta premisa, en la que no le estoy abriendo los ojos a nadie, me gustaría compartir una herramienta en la que he trabajado para solventar una necesidad que tenía en el día a día con mi equipo de trabajo y que puede ser útil para cualquier proyecto que busque una solución similar.\nTodos nuestros proyectos están escritos en Java o Kotlin usando como framework Spring Boot y Gradle como herramientas de compilación. En Gradle las dependencias se definen con un archivo build.gradle, que puede tener una estructura como la siguiente:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 plugins { id 'org.springframework.boot' version '2.7.4' id 'io.spring.dependency-management' version '1.0.14.RELEASE' id 'java' id \"com.github.ben-manes.versions\" version \"0.43.0\" } group = 'com.example' version = '0.0.1-SNAPSHOT' sourceCompatibility = '17' repositories { mavenCentral() } dependencies { testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2' testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2' testImplementation 'org.assertj:assertj-core:3.22.0' testImplementation 'org.mockito:mockito-core:4.5.1' testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2' } tasks.named('test') { useJUnitPlatform() } Problemática Para mantener nuestras dependencias actualizadas recurrimos a un plugin que tanto por consola como en un fichero de texto plano nos muestra las nuevas versiones a las que podemos actualizar las nuestras. Dicho plugin lo hemos visto en el anterior bloque de código id \"com.github.ben-manes.versions\" version \"0.43.0\" y este nos permite ejecutar el comando desde la consola ./gradlew dependencyUpdates.\nEs aquí donde surge nuestro «problema», y es que como hemos visto, debemos puntualizar o precisar el lanzamiento de dicho comando en local para saber si tenemos que actualizar algo y a qué versión en concreto, por lo que depende de la buena memoria de los developers a la hora de lanzar esto periódicamente y realizar los cambios pertinentes. Es entonces cuando se me ocurre que quizá esto se pueda automatizar aprovechando el CI/CD, por lo que me puse a buscar soluciones ya existentes. Para mi asombro, fue realmente simple encontrarlas en el marketplace de Github Actions para este propósito, pero no terminaban de convencerme. Resulta que todo lo que encontré eran soluciones en las que automáticamente se abría una Pull Request en el proyecto con las dependencias actualizadas para que los developers puedan mergearla, e incluso otras soluciones eran auto-mergeable ¿Suena bien verdad? Ahora bien, planteándome la situación en profundidad descubrí que esto no terminaba de ajustarse a nuestra forma de trabajo, ya que implicaría una revisión constante, estar pendiente de la sección de PR en los proyectos, por lo que si contamos con un sistema de microservicios este razonamiento nos suponía que era inviable. En ocasiones, los grandes cambios entre versiones de las dependencias puede conllevar que nuestros test no pasen en verde, lo que requiere de un trabajo extra, así que tuve que descartar las soluciones auto-mergeable. Mi impresión era que nos sería más sencillo y flexible a todos decidir en las Pull Request que haríamos con las actualizaciones pendientes que teníamos, teniendo la posibilidad de no actualizar algunas porque harían que algunos test no pasaran en verde o por cualquier otro factor que nos pudiese suponer un bloqueo para sacar la Pull Request adelante en un momento en el que quizá no podíamos permitirnos dedicarle demasiado tiempo.\nSolución Una vez identificada la problemática, me gustaría contaros la resolución a la que llegué. Básicamente, he desarrollado una Github Action que he publicado en el Marketplace de Github, donde te comenta las PR que abras con las dependencias que necesitas actualizar, o en su defecto con un comentario de que todo está actualizado. El código fuente de la action lo podéis encontrar aquí. Os pongo también dos GIF sobre como funciona:\nCuando tienes dependencias que actualizar: Cuando todas tus dependencias están actualizadas: Un poco más de Github Actions Además de compartir esta herramienta, me gustaría haceros una breve introducción para animaros a desarrollar vuestra propia Github Action alguna vez. Lo primero de todo es consultar la información más extendida en la documentación oficial de Github, sin embargo, trataré de resumir lo básico que necesité para crear la mía.\nExisten tres formas de crear GitHub Actions:\nUsando Javascript Usando Docker Compuestas En mi caso he optado por crear una acción que funciona dentro de un contenedor de Docker. El proyecto se compone de:\nUn archivo Dockerfile en el cual se define la imagen sobre la que se ejecutará el script bash que declaramos en el entrypoint. Un archivo de metadatos en el que se definen las entradas y salidas de la action así como otra información relevante para el marketplace de Github. El script de bash en el que se encuentra el core de nuestra action. Conclusión En un mundo ideal no debería ser necesario esta «manualidad» de tener que actualizar a mano las dependencias, pero hasta que conozca una solución cómoda y simple creo que esta forma de recordar que existen actualizaciones pendientes en las PR es una buena forma de no descuidar las dependencias de un proyecto Gradle.\nEspero que este post haya sido claro y preciso, a la vez que útil e informativo. ¡Gracias por dedicar una parte de vuestro tiempo a la lectura de este artículo!\n","wordCount":"942","inLanguage":"es","image":"https://raulpadilladelgado.github.io/blog/images/Raul.png","datePublished":"2023-01-02T00:00:00Z","dateModified":"2023-01-02T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://raulpadilladelgado.github.io/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/"},"publisher":{"@type":"Organization","name":"Raúl Padilla Delgado","logo":{"@type":"ImageObject","url":"https://raulpadilladelgado.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=/blog/ accesskey=h title="Raúl Padilla Delgado (Alt + H)"><img src=/blog/images/Raul_hu_bfdabb67a9c2c8a4.png alt aria-label=logo height=30>Raúl Padilla Delgado</a></div><ul id=menu class=menu><li><a href=https://github.com/raulpadilladelgado title=GitHub><span>GitHub</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li><li><a href=https://www.linkedin.com/in/raulpadilladelgado/ title=LinkedIn><span>LinkedIn</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li><li><a href=https://raulpadilladelgado.github.io/ title=Landing><span>Landing</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Comprobar versiones de dependencias de Gradle en las Pull Request</h1><div class=post-meta><span title='2023-01-02 00:00:00 +0000 UTC'>2023-01-02</span>&nbsp;·&nbsp;<span>5 min</span></div></header><details class=toc><summary accesskey=c title="(Alt + C)"><span class=title>Tabla de Contenidos</span></summary><div class=inner><ul><li><a href=#introducci%c3%b3n aria-label=Introducción>Introducción</a></li><li><a href=#problem%c3%a1tica aria-label=Problemática>Problemática</a></li><li><a href=#soluci%c3%b3n aria-label=Solución>Solución</a></li><li><a href=#un-poco-m%c3%a1s-de-github-actions aria-label="Un poco más de Github Actions">Un poco más de Github Actions</a></li><li><a href=#conclusi%c3%b3n aria-label=Conclusión>Conclusión</a></li></ul></div></details><div class="post-content md-content"><h2 id=introducción>Introducción<a hidden class=anchor aria-hidden=true href=#introducción>#</a></h2><p>Creo que es una realidad imperativa la relevancia de mantener actualizadas las versiones que utilizamos de
+librerías/dependencias externas en nuestros proyectos. Ya sea porque evitamos brechas de seguridad que se propagan desde
+ese factor externo hasta nuestro código o también incluso porque las pequeñas actualizaciones son más fáciles de
+incorporar.
+Cambiar algunas grandes versiones más adelante, junto con las complicaciones que esto conlleva, puede hacer que sea un
+auténtico sufrimiento tener que adaptar nuestro código a los nuevos mandatos de la dependencia externa, ya que han
+ocurrido cambios que rompen con lo que actualmente usábamos.</p><p>Partiendo de esta premisa, en la que no le estoy abriendo los ojos a nadie, me gustaría compartir una herramienta en la
 que he trabajado para solventar una necesidad que tenía en el día a día con mi equipo de trabajo y
-que puede ser útil para cualquier proyecto que busque una solución similar.</p>
-<p>Todos nuestros proyectos están escritos en Java o Kotlin usando como <em>framework</em> Spring Boot y Gradle como
+que puede ser útil para cualquier proyecto que busque una solución similar.</p><p>Todos nuestros proyectos están escritos en Java o Kotlin usando como <em>framework</em> Spring Boot y Gradle como
 herramientas de compilación. En Gradle las dependencias se definen con un archivo build.gradle, que puede tener una
-estructura como la siguiente:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="cl"><span class="n">plugins</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">id</span> <span class="s1">&#39;org.springframework.boot&#39;</span> <span class="n">version</span> <span class="s1">&#39;2.7.4&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">id</span> <span class="s1">&#39;io.spring.dependency-management&#39;</span> <span class="n">version</span> <span class="s1">&#39;1.0.14.RELEASE&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">id</span> <span class="s1">&#39;java&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">id</span> <span class="s2">&#34;com.github.ben-manes.versions&#34;</span> <span class="n">version</span> <span class="s2">&#34;0.43.0&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;com.example&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;0.0.1-SNAPSHOT&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="n">sourceCompatibility</span> <span class="o">=</span> <span class="s1">&#39;17&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">repositories</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">mavenCentral</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">testImplementation</span> <span class="s1">&#39;org.junit.jupiter:junit-jupiter-api:5.8.2&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">testImplementation</span> <span class="s1">&#39;org.junit.jupiter:junit-jupiter-params:5.8.2&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">testImplementation</span> <span class="s1">&#39;org.assertj:assertj-core:3.22.0&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">testImplementation</span> <span class="s1">&#39;org.mockito:mockito-core:4.5.1&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">testRuntimeOnly</span> <span class="s1">&#39;org.junit.jupiter:junit-jupiter-engine:5.8.2&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">tasks</span><span class="o">.</span><span class="na">named</span><span class="o">(</span><span class="s1">&#39;test&#39;</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">useJUnitPlatform</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h2 id="problemática">Problemática</h2>
-<p>Para mantener nuestras dependencias actualizadas recurrimos a un <em>plugin</em> que tanto por consola como en un fichero de
+estructura como la siguiente:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-groovy data-lang=groovy><span class=line><span class=cl><span class=n>plugins</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>id</span> <span class=s1>&#39;org.springframework.boot&#39;</span> <span class=n>version</span> <span class=s1>&#39;2.7.4&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>id</span> <span class=s1>&#39;io.spring.dependency-management&#39;</span> <span class=n>version</span> <span class=s1>&#39;1.0.14.RELEASE&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>id</span> <span class=s1>&#39;java&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>id</span> <span class=s2>&#34;com.github.ben-manes.versions&#34;</span> <span class=n>version</span> <span class=s2>&#34;0.43.0&#34;</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>group</span> <span class=o>=</span> <span class=s1>&#39;com.example&#39;</span>
+</span></span><span class=line><span class=cl><span class=n>version</span> <span class=o>=</span> <span class=s1>&#39;0.0.1-SNAPSHOT&#39;</span>
+</span></span><span class=line><span class=cl><span class=n>sourceCompatibility</span> <span class=o>=</span> <span class=s1>&#39;17&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>repositories</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>mavenCentral</span><span class=o>()</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>dependencies</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>testImplementation</span> <span class=s1>&#39;org.junit.jupiter:junit-jupiter-api:5.8.2&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>testImplementation</span> <span class=s1>&#39;org.junit.jupiter:junit-jupiter-params:5.8.2&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>testImplementation</span> <span class=s1>&#39;org.assertj:assertj-core:3.22.0&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>testImplementation</span> <span class=s1>&#39;org.mockito:mockito-core:4.5.1&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>testRuntimeOnly</span> <span class=s1>&#39;org.junit.jupiter:junit-jupiter-engine:5.8.2&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>tasks</span><span class=o>.</span><span class=na>named</span><span class=o>(</span><span class=s1>&#39;test&#39;</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>useJUnitPlatform</span><span class=o>()</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=problemática>Problemática<a hidden class=anchor aria-hidden=true href=#problemática>#</a></h2><p>Para mantener nuestras dependencias actualizadas recurrimos a un <em>plugin</em> que tanto por consola como en un fichero de
 texto plano nos muestra las nuevas versiones a las que podemos actualizar las nuestras. Dicho <em>plugin</em> lo hemos visto en
-el anterior bloque de código <code>id &quot;com.github.ben-manes.versions&quot; version &quot;0.43.0&quot;</code> y este nos permite ejecutar el
-comando desde la consola <code>./gradlew dependencyUpdates</code>.</p>
-<p>Es aquí donde surge nuestro «problema», y es que como hemos visto, debemos puntualizar o precisar el lanzamiento de
+el anterior bloque de código <code>id "com.github.ben-manes.versions" version "0.43.0"</code> y este nos permite ejecutar el
+comando desde la consola <code>./gradlew dependencyUpdates</code>.</p><p>Es aquí donde surge nuestro «problema», y es que como hemos visto, debemos puntualizar o precisar el lanzamiento de
 dicho comando en local para saber si tenemos que actualizar algo y a qué versión en concreto, por lo que depende de la
 buena memoria de los <em>developers</em> a la hora de lanzar esto periódicamente y realizar los cambios pertinentes. Es
 entonces cuando se me ocurre que quizá esto se pueda automatizar aprovechando el CI/CD, por lo que me puse a buscar
@@ -195,299 +89,27 @@ descartar las soluciones auto-mergeable. Mi impresión era que nos sería más s
 <em>Pull Request</em> que haríamos con las actualizaciones pendientes que teníamos, teniendo la posibilidad de no
 actualizar algunas porque harían que algunos <em>test</em> no pasaran en verde o por cualquier otro factor que nos pudiese
 suponer un bloqueo para sacar la Pull Request adelante en un momento en el que quizá no podíamos permitirnos dedicarle
-demasiado tiempo.</p>
-<h2 id="solución">Solución</h2>
-<p>Una vez identificada la problemática, me gustaría contaros la resolución a la que llegué. Básicamente, he desarrollado
+demasiado tiempo.</p><h2 id=solución>Solución<a hidden class=anchor aria-hidden=true href=#solución>#</a></h2><p>Una vez identificada la problemática, me gustaría contaros la resolución a la que llegué. Básicamente, he desarrollado
 una Github Action que he publicado en
-el <a class="link" href="https://github.com/marketplace/actions/check-dependencies-in-pull-request"  target="_blank" rel="noopener"
-    >Marketplace de Github</a>, donde te comenta
+el <a href=https://github.com/marketplace/actions/check-dependencies-in-pull-request>Marketplace de Github</a>, donde te comenta
 las PR que abras con las dependencias que necesitas actualizar, o en su defecto con un comentario de que todo está
 actualizado. El código fuente de la <em>action</em> lo podéis
-encontrar <a class="link" href="https://github.com/raulpadilladelgado/check-dependencies-in-pr-action"  target="_blank" rel="noopener"
-    >aquí</a>. Os pongo también dos GIF sobre
-como funciona:</p>
-<ul>
-<li>Cuando tienes dependencias que actualizar:</li>
-</ul>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 177; 
-			flex-basis: 426px"
-	>
-	<a href="/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/faltaActualizar.gif" data-size="600x338">
-		<img src="/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/faltaActualizar.gif"
-			width="600"
-			height="338"
-			
-			loading="lazy"
-			alt="Animación con dependencias por actualizar">
-	</a>
-	
-	<figcaption>Animación con dependencias por actualizar</figcaption>
-	
-</figure></p>
-<ul>
-<li>Cuando todas tus dependencias están actualizadas:</li>
-</ul>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 177; 
-			flex-basis: 426px"
-	>
-	<a href="/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/todoActualizado.gif" data-size="600x338">
-		<img src="/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/todoActualizado.gif"
-			width="600"
-			height="338"
-			
-			loading="lazy"
-			alt="Animación con todo actualizado">
-	</a>
-	
-	<figcaption>Animación con todo actualizado</figcaption>
-	
-</figure></p>
-<h2 id="un-poco-más-de-github-actions">Un poco más de Github Actions</h2>
-<p>Además de compartir esta herramienta, me gustaría haceros una breve introducción para animaros a desarrollar vuestra
+encontrar <a href=https://github.com/raulpadilladelgado/check-dependencies-in-pr-action>aquí</a>. Os pongo también dos GIF sobre
+como funciona:</p><ul><li>Cuando tienes dependencias que actualizar:</li></ul><p><img alt="Animación con dependencias por actualizar" loading=lazy src=/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/faltaActualizar.gif></p><ul><li>Cuando todas tus dependencias están actualizadas:</li></ul><p><img alt="Animación con todo actualizado" loading=lazy src=/blog/p/comprobar-versiones-de-dependencias-de-gradle-en-las-pull-request/images/todoActualizado.gif></p><h2 id=un-poco-más-de-github-actions>Un poco más de Github Actions<a hidden class=anchor aria-hidden=true href=#un-poco-más-de-github-actions>#</a></h2><p>Además de compartir esta herramienta, me gustaría haceros una breve introducción para animaros a desarrollar vuestra
 propia Github Action alguna vez. Lo primero de todo es consultar la información más extendida en
-la <a class="link" href="https://docs.github.com/en/actions/creating-actions"  target="_blank" rel="noopener"
-    >documentación oficial de Github</a>, sin embargo, trataré de
-resumir lo básico que necesité para crear la mía.</p>
-<p>Existen tres formas de crear GitHub Actions:</p>
-<ol>
-<li>Usando Javascript</li>
-<li>Usando Docker</li>
-<li>Compuestas</li>
-</ol>
-<p>En mi caso he optado por crear una acción que funciona dentro de un contenedor de Docker. El proyecto se compone de:</p>
-<ul>
-<li><a class="link" href="https://github.com/raulpadilladelgado/check-dependencies-in-pr-action/blob/main/Dockerfile"  target="_blank" rel="noopener"
-    >Un archivo Dockerfile</a> en
-el cual se define la imagen sobre la que se ejecutará el <em>script bash</em> que declaramos en el <em>entrypoint</em>.</li>
-<li><a class="link" href="https://github.com/raulpadilladelgado/check-dependencies-in-pr-action/blob/main/action.yml"  target="_blank" rel="noopener"
-    >Un archivo de metadatos</a>
+la <a href=https://docs.github.com/en/actions/creating-actions>documentación oficial de Github</a>, sin embargo, trataré de
+resumir lo básico que necesité para crear la mía.</p><p>Existen tres formas de crear GitHub Actions:</p><ol><li>Usando Javascript</li><li>Usando Docker</li><li>Compuestas</li></ol><p>En mi caso he optado por crear una acción que funciona dentro de un contenedor de Docker. El proyecto se compone de:</p><ul><li><a href=https://github.com/raulpadilladelgado/check-dependencies-in-pr-action/blob/main/Dockerfile>Un archivo Dockerfile</a> en
+el cual se define la imagen sobre la que se ejecutará el <em>script bash</em> que declaramos en el <em>entrypoint</em>.</li><li><a href=https://github.com/raulpadilladelgado/check-dependencies-in-pr-action/blob/main/action.yml>Un archivo de metadatos</a>
 en el que se definen las entradas y salidas de la <em>action</em> así como otra información relevante para el <em>marketplace</em>
-de Github.</li>
-<li><a class="link" href="https://github.com/raulpadilladelgado/check-dependencies-in-pr-action/blob/main/entrypoint.sh"  target="_blank" rel="noopener"
-    >El <em>script</em> de <em>bash</em></a>
-en el que se encuentra el core de nuestra <em>action</em>.</li>
-</ul>
-<h2 id="conclusión">Conclusión</h2>
-<p>En un mundo ideal no debería ser necesario esta «manualidad» de tener que actualizar a mano las dependencias, pero hasta
+de Github.</li><li><a href=https://github.com/raulpadilladelgado/check-dependencies-in-pr-action/blob/main/entrypoint.sh>El <em>script</em> de <em>bash</em></a>
+en el que se encuentra el core de nuestra <em>action</em>.</li></ul><h2 id=conclusión>Conclusión<a hidden class=anchor aria-hidden=true href=#conclusión>#</a></h2><p>En un mundo ideal no debería ser necesario esta «manualidad» de tener que actualizar a mano las dependencias, pero hasta
 que conozca una solución cómoda y simple creo que esta forma de recordar que existen actualizaciones pendientes en las
-PR es una buena forma de no descuidar las dependencias de un proyecto Gradle.</p>
-<p>Espero que este <em>post</em> haya sido claro y preciso, a la vez que útil e informativo. ¡Gracias por dedicar una parte de
-vuestro tiempo a la lectura de este artículo!</p>
-
-</section>
-
-
-    <footer class="article-footer">
-    
-
-    </footer>
-
-
-    
-</article>
-
-    <aside class="related-contents--wrapper">
-    
-    
-</aside>
-
-     
-    
-        
-    <script src="https://utteranc.es/client.js" 
-        repo="raulpadilladelgado/blog"
-        issue-term="pathname"
-        
-        crossorigin="anonymous"
-        async
-        >
-</script>
-
-<style>
-    .utterances {
-        max-width: unset;
-    }
-</style>
-
-<script>
-    function setUtterancesTheme(theme) {
-        let utterances = document.querySelector('.utterances iframe');
-        if (utterances) {
-            utterances.contentWindow.postMessage(
-                {
-                    type: 'set-theme',
-                    theme: `github-${theme}`
-                },
-                'https://utteranc.es'
-            );
-        }
-    }
-
-    addEventListener('message', event => {
-        if (event.origin !== 'https://utteranc.es') return;
-        setUtterancesTheme(document.documentElement.dataset.scheme)
-    });
-
-    window.addEventListener('onColorSchemeChange', (e) => {
-        setUtterancesTheme(e.detail)
-    })
-</script>
-
-
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2020 - 
-        
-        2026 Raúl Padilla Delgado
-    </section>
-    
-    <section class="powerby">
-        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-    </section>
-</footer>
-
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
-
-            </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Tabla de contenido</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ol>
-    <li><a href="#introducción">Introducción</a></li>
-    <li><a href="#problemática">Problemática</a></li>
-    <li><a href="#solución">Solución</a></li>
-    <li><a href="#un-poco-más-de-github-actions">Un poco más de Github Actions</a></li>
-    <li><a href="#conclusión">Conclusión</a></li>
-  </ol>
-</nav>
-                </div>
-            </section>
-        </aside>
-    
-
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
-</html>
+PR es una buena forma de no descuidar las dependencias de un proyecto Gradle.</p><p>Espero que este <em>post</em> haya sido claro y preciso, a la vez que útil e informativo. ¡Gracias por dedicar una parte de
+vuestro tiempo a la lectura de este artículo!</p></div><footer class=post-footer><ul class=post-tags></ul><nav class=paginav><a class=prev href=https://raulpadilladelgado.github.io/blog/p/programaci%C3%B3n-reactiva-que-es-y-como-usarla-en-spring-boot/><span class=title>« Anterior</span>
+<span>Programación reactiva, que es y como usarla en Spring Boot</span>
+</a><a class=next href=https://raulpadilladelgado.github.io/blog/p/c%C3%B3digo-sostenible/><span class=title>Siguiente »</span>
+<span>Código sostenible</span></a></nav></footer><div id=comments><script src=https://utteranc.es/client.js repo=raulpadilladelgado/blog issue-term=pathname label=comments theme=dark-blue crossorigin=anonymous async></script></div></article></main><footer class=footer><span>&copy; 2026 <a href=/blog/>Raúl Padilla Delgado</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copiar";function s(){t.innerHTML="¡copiado!",setTimeout(()=>{t.innerHTML="copiar"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
